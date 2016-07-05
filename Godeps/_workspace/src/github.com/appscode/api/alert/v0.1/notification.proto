@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package alert;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+// Alert service protobufs for cluster alert notification.
+service Notifications {
+  rpc Notify(NotifyRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post : "/appscode/api/alert/v0.1/notifications/notify"
+      body : "*"
+    };
+  }
+
+  rpc Acknowledge(AcknowledgeRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post : "/appscode/api/alert/v0.1/notifications/acknowledge"
+      body : "*"
+    };
+  }
+}
+
+message NotifyRequest {
+  string state_type = 1;
+  string state = 2;
+  string time = 3;
+  string service_output = 4;
+  string alert_phid = 5;
+  string host_name = 6;
+}
+
+message AcknowledgeRequest {
+  // Notification PHID
+  string phid = 1;
+  string comment = 2;
+}

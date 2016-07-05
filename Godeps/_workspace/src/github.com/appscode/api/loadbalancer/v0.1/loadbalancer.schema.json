@@ -1,0 +1,238 @@
+{
+  "definitions": {
+    "loadbalancerCreateRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "load_balancer": {
+          "$ref": "#/definitions/loadbalancerLoadBalancer"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerDeleteRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerHTTPLoadBalancerRule": {
+      "properties": {
+        "backend": {
+          "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
+        },
+        "header_rule": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "path": {
+          "type": "string"
+        },
+        "rewrite_rule": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerListRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerLoadBalancer": {
+      "properties": {
+        "creation_timestamp": {
+          "type": "string"
+        },
+        "json": {
+          "type": "string"
+        },
+        "kind": {
+          "description": "'kind' defines is it the regular kubernetes instance or the\nappscode superset called Extended Ingress. This field will\nstrictly contains only those two values\n'ingress' - default kubernetes ingress object.\n'extendedIngress' - appscode superset of ingress.\nwhen creating a Loadbalancer from UI this field will always\nbe only 'extendedIngress.' List, Describe, Update and Delete\nwill support both two modes.\nCreate will support only extendedIngress.\nFor Creating or Updating an regular ingress one must use the\nkubectl or direct API calls directly to kubernetes.",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "options": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "spec": {
+          "$ref": "#/definitions/loadbalancerSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/loadbalancerStatus"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerLoadBalancerBackend": {
+      "properties": {
+        "service_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "service_port": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerLoadBalancerRule": {
+      "properties": {
+        "SSL_secret_name": {
+          "description": "ssl secret name to enable https on the host.\nssl secret must contain data with the certs pem file.",
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        },
+        "http": {
+          "items": {
+            "$ref": "#/definitions/loadbalancerHTTPLoadBalancerRule"
+          },
+          "type": "array"
+        },
+        "tcp": {
+          "items": {
+            "$ref": "#/definitions/loadbalancerTCPLoadBalancerRule"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerLoadBalancerStatus": {
+      "properties": {
+        "IP": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerSpec": {
+      "properties": {
+        "backend": {
+          "$ref": "#/definitions/loadbalancerHTTPLoadBalancerRule"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/definitions/loadbalancerLoadBalancerRule"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerStatus": {
+      "properties": {
+        "status": {
+          "items": {
+            "$ref": "#/definitions/loadbalancerLoadBalancerStatus"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerTCPLoadBalancerRule": {
+      "properties": {
+        "backend": {
+          "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
+        },
+        "port": {
+          "type": "string"
+        },
+        "secret_pem_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "loadbalancerUpdateRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "load_balancer": {
+          "$ref": "#/definitions/loadbalancerLoadBalancer"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

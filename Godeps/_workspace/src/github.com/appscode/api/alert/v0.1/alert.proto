@@ -1,0 +1,123 @@
+syntax = "proto3";
+
+package alert;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+// Alert service protobufs for cluster alerts.
+service Alerts {
+  rpc List(ListRequest) returns (ListResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/alert/v0.1/alerts"
+    };
+  }
+
+  rpc Create(CreateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/appscode/api/alert/v0.1/alerts"
+      body: "*"
+    };
+  }
+
+  rpc Update(UpdateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/appscode/api/alert/v0.1/alerts/{phid}"
+      body: "*"
+    };
+  }
+
+  rpc Delete(DeleteRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete: "/appscode/api/alert/v0.1/alerts/{phid}"
+    };
+  }
+}
+
+message IcingaParam {
+  int64 check_interval_sec = 1;
+  int64 alert_interval_sec = 2;
+}
+
+message CheckInfluxData {
+  string kubernetes_namespace  = 1;
+  string object_name = 2;
+  map<string, string> query = 3;
+  string r  = 4;
+  string warning_condition = 5;
+  string critical_condition  = 6;
+}
+
+message CheckKubernetes {
+  string type = 1;
+  int64 count = 2;
+  string selector = 3;
+}
+
+message CommandParam {
+  CheckInfluxData check_influx_data = 1;
+  CheckKubernetes check_kubernetes = 2;
+}
+
+// This one is used in kubernetes/v0.1/client.proto
+// To send information if alert is set for app/pod
+message IcingaState {
+  int32 OK = 1;
+  int32 Warning = 2;
+  int32 Critical = 3;
+  int32 Unknown = 4;
+}
+
+message NotifierParam {
+  string state = 1;
+  string user_phid = 2;
+  string method = 3;
+}
+
+message Alert {
+  string phid = 1;
+  string name = 2;
+  string cluster = 3;
+  string plugin = 4;
+  string icinga_service = 5;
+  IcingaParam icinga_param = 6;
+  string check_command = 7;
+  CommandParam command_param = 8;
+  repeated NotifierParam notifier_param = 9;
+  string icingaweb_url = 10;
+}
+
+message ListRequest {
+  string cluster = 1;
+  string plugin = 2;
+  string kubernetes_namespace  = 3;
+  string object_name = 4;
+}
+
+message ListResponse {
+  dtypes.Status status = 1;
+  repeated Alert alerts = 2;
+}
+
+message CreateRequest {
+  string cluster = 1;
+  string plugin = 2;
+  string name = 3;
+  string icinga_service = 4;
+  IcingaParam icinga_param = 5;
+  string check_command = 6;
+  CommandParam command_param = 7;
+  repeated NotifierParam notifier_param = 8;
+}
+
+message UpdateRequest {
+  string phid = 1;
+  string name = 2;
+  IcingaParam icinga_param = 3;
+  CommandParam command_param = 4;
+  repeated NotifierParam notifier_param = 5;
+}
+
+message DeleteRequest {
+  string phid = 1;
+}

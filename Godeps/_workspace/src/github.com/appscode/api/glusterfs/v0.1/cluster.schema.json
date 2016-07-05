@@ -1,0 +1,63 @@
+{
+  "definitions": {
+    "glusterfsClusterCreateRequest": {
+      "properties": {
+        "disks": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "kube_cluster": {
+          "type": "string"
+        },
+        "mood": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "node": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "glusterfsClusterDeleteRequest": {
+      "properties": {
+        "kube_cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "glusterfsClusterDescribeRequest": {
+      "properties": {
+        "kube_cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "glusterfsClusterListRequest": {
+      "properties": {
+        "kube_cluster": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

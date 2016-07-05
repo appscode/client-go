@@ -1,0 +1,39 @@
+{
+  "definitions": {
+    "alertAcknowledgeRequest": {
+      "properties": {
+        "comment": {
+          "type": "string"
+        },
+        "phid": {
+          "title": "Notification PHID",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertNotifyRequest": {
+      "properties": {
+        "alert_phid": {
+          "type": "string"
+        },
+        "host_name": {
+          "type": "string"
+        },
+        "service_output": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "state_type": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

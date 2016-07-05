@@ -1,0 +1,158 @@
+syntax = "proto3";
+
+package dtypes;
+
+import "google/protobuf/any.proto";
+
+// The canonical error codes for AppsCode APIs.
+// The framework related errors code are defined here.
+// Application specific error codes will define as enum
+// in the application service.
+
+// Available Next Id 20.
+enum StatusCode {
+    // Not an error. Returned on success.
+    // Similar to HTTP Status code 2**.
+    OK = 0;
+
+    // Request Unsucesful
+    FAILED = 1;
+
+    // The request does not have valid authentication credentials for the
+    // operation. Similar to HTTP status code 401.
+    UNAUTHORIZED = 2;
+
+    // The request contains invalid arguments.
+    // Similar to HTTP status code 400
+    BADREQUEST = 3;
+
+    // The caller does not have permission to execute the specified
+    // operation. Reserved For further use.
+    // Similar to HTTP Status code 403
+    PERMISSION_DENIED = 4;
+
+    // Requested entity not found.
+    // Similar to HTTP status code 404
+    NOT_FOUND = 5;
+
+    // The operation is not implemented or is not supported/enabled
+    // Similar to HTTP status code 501
+    UNIMPLEMENTED = 6;
+
+    // Internal errors. This means that some invariants expected by the
+    // underlying system have been broken.
+    // Similar to HTTP status code 500
+    INTERNAL = 7;
+
+    // External Server Refuses Connection or Sends Invalid Data.
+    EXTERNAL = 8;
+
+    // The response contains invalid arguments.
+    BAD_RESPONSE = 9;
+
+    // Unknown error.
+    // Errors raised by APIs that do not return enough error information
+    // may be converted to this error.
+    // Similar to HTTP status code 500
+    UNKNOWN_ERROR = 10;
+
+
+
+    // Quota and payment related error codes.
+    // client request crossses the exisitng quta limits.
+    QUOTA_LIMIT_EXCEED = 11;
+
+    // no valid quta available
+    INVALID_QUOTA = 12;
+
+    // no payment informtaion avaible
+    PAYMENT_INFORMATION_UNAVAILABLE = 13;
+
+    // payment information not valid.
+    INVALID_PAYMENT_INFORMATION = 14;
+
+    // failed to transect the payment information
+    TRANSACTION_FAILED = 15;
+
+    // to give ARE_YOU_SURE option
+    ARE_YOU_SURE = 16;
+
+    //invalied data
+    INVALIED_DATA = 17;
+}
+
+
+// The `Status` type defines an logical stats of the response message.
+// It contains 4 feilds.
+// code should be a string of the enum value of [api.StatusCode]
+// or an application specific error code defined by application service.
+//
+// All OK response will return [StatusCode.Ok]("0"). Other codes will marked
+// as error and treated as so. message is user faceing information targeted to
+// user. It will display any information sends from server to users.
+// Both of success and errors can contains message for users.
+// Help Contains help url to display to user for further helping with
+// the tasks. Description field is of type `Any` to include the developer
+// faceing stacktrace of the request. Those will be logged in a file
+// that will help debug the issue in support mode if nessassry.
+
+// if an request was made and processed by the grpc api server
+// this will always sends back `http status code 200`.
+// no matter the if the request throws an error. error details
+// will always be set in the `Status` field. only if an
+// error returns from a request this means there are problems
+// with grpc server.
+
+// Next Id 5.
+message Status {
+    // Response status code
+    string code = 1;
+    // Response status code string.
+    string status = 2;
+
+    // User facing message.
+    string message = 3;
+
+    // Optional. Help link if there is an error.
+    Help help = 4;
+
+    // A list of messages that carry the error details.  There will be a
+    // common set of message types for APIs to use.
+    repeated google.protobuf.Any details = 5;
+}
+
+
+// Provides links to documentation or for performing an out of band action.
+// Next Id 3;
+message Help {
+    // Describe what link offers
+    string description = 1;
+
+    // The URL of The link.
+    string url = 2;
+}
+
+// Basic Error details message to send in response. Application specific
+// error messages can be provided.
+message ErrorDetails {
+    string requested_resource = 1;
+    string stacktrace = 2;
+}
+
+
+// Types for long running operation. usually called as jobs.
+
+// Available Next ID: 6
+message LongRunningResponse {
+    Status status = 1;
+    string type_id = 2;
+    string job_id = 3;
+    string job_type = 4;
+}
+
+// Void Requests and response to use with other types.
+message VoidRequest{}
+
+message VoidResponse {
+    Status status = 1;
+}

@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package billing;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Invoice {
+  rpc Create(InvoiceCreateRequest) returns (InvoiceCreateResponse) {
+    option (google.api.http) = {
+      post: "/appscode/api/billing/v0.1/invoice"
+    };
+  }
+}
+
+message InvoiceCreateRequest {
+    string time_unit = 1;
+}
+
+message InvoiceCreateResponse {
+  dtypes.Status status = 1;
+  string cost_usd = 2;
+}

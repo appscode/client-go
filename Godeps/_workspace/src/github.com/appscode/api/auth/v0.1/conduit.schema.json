@@ -1,0 +1,7 @@
+{
+  "definitions": {
+    "authConduitRequest": {
+      "type": "object"
+    }
+  }
+}

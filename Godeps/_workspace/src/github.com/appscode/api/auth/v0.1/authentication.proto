@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package auth;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Authentication {
+  // This rpc is used to check a valid user from other applications.
+  rpc Login(LoginRequest) returns (LoginResponse) {
+    option (google.api.http) = {
+      post : "/appscode/api/auth/v0.1/login"
+      body : "*"
+    };
+  }
+
+  rpc Logout(LogoutRequest) returns (LogoutResponse) {
+    option (google.api.http) = {
+      post : "/appscode/api/auth/v0.1/logout"
+      body : "*"
+    };
+  }
+  // appctl used this to validates the user token with phabricator.
+  rpc Token(TokenRequest) returns (TokenResponse) {
+    option (google.api.http) = {
+      post: "/appscode/api/auth/v0.1/token"
+      body: "*"
+    };
+  }
+}
+
+//Next Id 4
+message TokenRequest {
+  string namespace = 1;
+  string token = 2;
+}
+
+message TokenResponse {
+  dtypes.Status status = 1;
+}
+
+message LoginRequest {
+  string namespace = 1;
+  string username = 2;
+  string secret = 3;
+  bool issue_token = 4;
+}
+
+message LoginResponse {
+  dtypes.Status status = 1;
+  string token = 2;
+}
+
+message LogoutRequest {
+  string namespace = 1;
+  string token = 2;
+}
+
+message LogoutResponse {
+  dtypes.Status status = 1;
+}

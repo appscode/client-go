@@ -1,0 +1,12 @@
+{
+  "definitions": {
+    "certificateAcmeUserRegisterRequest": {
+      "properties": {
+        "email": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

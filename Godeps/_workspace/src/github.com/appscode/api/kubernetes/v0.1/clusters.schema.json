@@ -1,0 +1,136 @@
+{
+  "definitions": {
+    "dtypesVoidRequest": {
+      "description": "Void Requests and response to use with other types.",
+      "type": "object"
+    },
+    "kubernetesClusterClientConfigRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClusterCreateRequest": {
+      "properties": {
+        "cloud_credential": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "cloud_credential_data": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "kube_starter_version": {
+          "type": "string"
+        },
+        "kube_version": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "node_set": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "type": "object"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "saltbase_version": {
+          "type": "string"
+        },
+        "zone": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClusterDeleteRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "release_reserved_ip": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClusterDescribeRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClusterInstanceListRequest": {
+      "properties": {
+        "cluster_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClusterScaleRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "node_changes": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClusterStartupScriptRequest": {
+      "properties": {
+        "role": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClusterUpdateRequest": {
+      "properties": {
+        "kube_starter_version": {
+          "type": "string"
+        },
+        "kube_version": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "saltbase_version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

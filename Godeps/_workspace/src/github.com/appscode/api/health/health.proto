@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package health;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Health {
+  rpc Status(dtypes.VoidRequest) returns (Response) {
+    option (google.api.http) = {
+      get : "/appscode/api/healthz"
+    };
+  }
+}
+
+message Response {
+  dtypes.Status status = 1;
+  Version version = 2;
+}
+
+message Version {
+  string version = 1;
+  string status = 2;
+  string endpoint = 3;
+  string commit_hash = 4;
+
+  // Only development mode informations.
+  string Name = 5;
+  string git_branch = 6;
+  string git_tag = 7;
+  string commit_timestamp = 8;
+  string build_timestamp = 9;
+}

@@ -1,0 +1,92 @@
+{
+  "definitions": {
+    "ciAgentCreateRequest": {
+      "properties": {
+        "ci_starter_version": {
+          "type": "string"
+        },
+        "executors": {
+          "type": "integer"
+        },
+        "labels": {
+          "type": "string"
+        },
+        "ports": {
+          "items": {
+            "$ref": "#/definitions/ciPortInfo"
+          },
+          "type": "array"
+        },
+        "role": {
+          "type": "string"
+        },
+        "saltbase_version": {
+          "type": "string"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "user_startup_script": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciAgentDeleteRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciAgentDescribeRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciAgentListRequest": {
+      "properties": {
+        "from_timestamp": {
+          "title": "from > to, timestamp = seconds since epoch",
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        },
+        "to_timestamp": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "ciAgentRestartRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciPortInfo": {
+      "properties": {
+        "port_range": {
+          "type": "string"
+        },
+        "protocol": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

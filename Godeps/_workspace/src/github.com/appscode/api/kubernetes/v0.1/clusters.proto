@@ -1,0 +1,175 @@
+syntax = "proto3";
+
+package kubernetes;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Clusters {
+  rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v0.1/clusters/{name}"
+    };
+  }
+
+  rpc Create(ClusterCreateRequest) returns (dtypes.LongRunningResponse) {
+  	option (google.api.http) = {
+  	  put: "/appscode/api/kubernetes/v0.1/clusters"
+      body: "*"
+    };
+  }
+
+  rpc Scale(ClusterScaleRequest) returns (dtypes.LongRunningResponse) {
+  	option (google.api.http) = {
+  	  post: "/appscode/api/kubernetes/v0.1/clusters"
+      body: "*"
+    };
+  }
+
+  rpc Delete(ClusterDeleteRequest) returns (dtypes.LongRunningResponse) {
+  	option (google.api.http) = {
+  	  delete : "/appscode/api/kubernetes/v0.1/clusters/{name}"
+  	};
+  }
+
+  rpc Update(ClusterUpdateRequest) returns (dtypes.LongRunningResponse) {
+    option (google.api.http) = {
+       post : "/appscode/api/kubernetes/v0.1/clusters/{name}"
+    };
+  }
+
+  rpc List(dtypes.VoidRequest) returns (ClusterListResponse) {
+     option (google.api.http) = {
+       get : "/appscode/api/kubernetes/v0.1/clusters"
+     };
+  }
+
+  rpc StartupScript(ClusterStartupScriptRequest) returns (ClusterStartupScriptResponse) {
+     option (google.api.http) = {
+       get : "/appscode/api/kubernetes/v0.1/cluster-startup-script/{role}"
+     };
+  }
+
+  rpc ClientConfig(ClusterClientConfigRequest) returns (ClusterClientConfigResponse) {
+     option (google.api.http) = {
+       get : "/appscode/api/kubernetes/v0.1/clusters/{name}/client-config"
+     };
+  }
+
+  rpc Instances(ClusterInstanceListRequest) returns (ClusterInstanceListResponse) {
+     option (google.api.http) = {
+       get : "/appscode/api/kubernetes/v0.1/clusters/{cluster_name}/instances"
+     };
+  }
+}
+
+message Cluster {
+  string phid = 1;
+  string name = 2;
+  string provider = 3;
+  string os = 4;
+  string region = 5;
+  string zone = 6;
+  string status = 7;
+  int32 nodes = 8;
+  string created_at = 9;
+  map<string, string> links = 10;
+}
+
+
+message ClusterDescribeRequest {
+  string name = 1;
+}
+
+message ClusterDescribeResponse {
+  dtypes.Status status = 1;
+  Cluster cluster = 2;
+
+  message Specs {
+    int32 containers = 1;
+    int32 pods = 2;
+    int32 services = 3;
+    int32 rcs = 4;
+
+    int64 cpu_core = 5;
+    int64 total_memory = 6;
+  }
+  Specs specs = 3;
+}
+
+
+message ClusterListResponse {
+  dtypes.Status status = 1;
+  repeated Cluster clusters = 2;
+}
+
+message ClusterCreateRequest {
+  string name = 1;
+  string provider = 2;
+  string zone = 3;
+  string cloud_credential = 4;
+  map<string, string> cloud_credential_data = 5;
+  map<string, int64> node_set = 6;
+  string saltbase_version = 7;
+  string kube_starter_version = 8;
+  string kube_version = 9;
+}
+
+message ClusterScaleRequest {
+  string name = 1;
+  map<string, int64> node_changes = 2;
+}
+
+message ClusterDeleteRequest {
+  string name = 1;
+  bool release_reserved_ip = 2;
+}
+
+message ClusterStartupScriptRequest {
+  string role = 1;
+}
+
+message ClusterStartupScriptResponse {
+  dtypes.Status status = 1;
+  string configuration = 2;
+}
+
+message ClusterClientConfigRequest {
+  string name = 1;
+}
+
+message ClusterClientConfigResponse {
+  dtypes.Status status = 1;
+  string configuration = 2;
+}
+
+message ClusterClientContainerRequest {
+  string name = 1;
+  string disk_name = 2;
+}
+
+message ClusterInstanceListRequest {
+  string cluster_name = 1;
+}
+
+message ClusterInstance {
+  string phid = 1;
+  string external_id = 2;
+  string name = 3;
+  string external_ip = 4;
+  string internal_ip = 5;
+  string role = 6;
+  string sku = 7;
+}
+
+message ClusterInstanceListResponse {
+  dtypes.Status status = 1;
+  repeated ClusterInstance instances = 2;
+}
+
+message ClusterUpdateRequest {
+  string name = 1;
+  string saltbase_version = 2;
+  string kube_starter_version = 3;
+  string kube_version = 4;
+}

@@ -1,0 +1,43 @@
+{
+  "definitions": {
+    "billingPurchaseBeginRequest": {
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "product_sku": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "billingPurchaseCloseRequest": {
+      "properties": {
+        "object_phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "billingPurchaseCompleteRequest": {
+      "properties": {
+        "failed": {
+          "type": "boolean"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "object_phid": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

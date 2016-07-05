@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package glusterfs;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Clusters {
+  // Glusterfs cluster list. Needs to work with two modes.
+  // First is to list all the glusterfs cluster through the
+  // space with out considering the kubernetes cluster. if the
+  // cluster_name is provided then list all the glusterfs cluster
+  // with respect to the provided kube cluster space.
+  rpc List(ClusterListRequest) returns (ClusterListResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/glusterfs/v0.1/clusters/{kube_cluster}"
+    };
+  }
+
+  rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/glusterfs/v0.1/clusters/{kube_cluster}/{name}"
+    };
+  }
+
+  rpc Create(ClusterCreateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put : "/appscode/api/glusterfs/v0.1/clusters/{kube_cluster}"
+      body: "*"
+    };
+  }
+
+  rpc Delete(ClusterDeleteRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete : "/appscode/api/glusterfs/v0.1/clusters/{kube_cluster}/{name}"
+    };
+  }
+}
+
+message Cluster {
+  string phid = 1;
+  string name = 2;
+  string kube_cluster = 3;
+  string mood = 4;
+  string kube_namespace = 5;
+  int64 replica = 6;
+  int32 BaculaEnabled = 7;
+  string created = 8;
+}
+
+message ClusterListRequest {
+  string kube_cluster = 1;
+}
+
+message ClusterListResponse {
+  dtypes.Status status = 1;
+  repeated Cluster glusterfs = 2;
+}
+
+message ClusterDescribeRequest {
+  string kube_cluster = 1;
+  string name = 2;
+}
+
+message ClusterDescribeResponse {
+  dtypes.Status status = 1;
+}
+
+message ClusterCreateRequest {
+  string name = 1;
+  int64 node = 2;
+  string mood = 3;
+  repeated string disks = 4;
+  string kube_cluster = 5;
+}
+
+message ClusterDeleteRequest {
+  string kube_cluster = 1;
+  string name = 2;
+}

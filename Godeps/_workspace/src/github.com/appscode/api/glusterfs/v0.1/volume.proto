@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package glusterfs;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Volumes {
+  rpc List(VolumeListRequest) returns (VolumeListResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}/{glusterfs_cluster}"
+    };
+  }
+
+  rpc Create(VolumeCreateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put : "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}"
+      body: "*"
+    };
+  }
+
+  rpc Delete(VolumeDeleteRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete : "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}/{glusterfs_cluster}/{volume}"
+    };
+  }
+}
+
+message VolumeCreateRequest {
+  string kube_cluster = 1;
+  string glusterfs_cluster = 2;
+  string volume = 3;
+  int32 enable_bacula = 4;
+}
+
+message VolumeDeleteRequest {
+  string kube_cluster = 1;
+  string glusterfs_cluster = 2;
+  string volume = 3;
+}
+
+message VolumeListRequest {
+  string kube_cluster = 1;
+  string glusterfs_cluster = 2;
+}
+
+message VolumeListResponse {
+  dtypes.Status status = 1;
+  repeated Volume volumes = 2;
+}
+
+message Volume {
+  string path = 1;
+  string bricks = 2;
+  string endpoint = 3;
+  int64 replica = 4;
+}

@@ -1,0 +1,145 @@
+{
+  "definitions": {
+    "certificateCertificateCreateRequest": {
+      "properties": {
+        "account_phid": {
+          "type": "string"
+        },
+        "bundle": {
+          "type": "boolean"
+        },
+        "common_name": {
+          "type": "string"
+        },
+        "issue_private_cert": {
+          "type": "boolean"
+        },
+        "key_data": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "san": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "subject_info": {
+          "$ref": "#/definitions/certificateSubjectInfo"
+        }
+      },
+      "type": "object"
+    },
+    "certificateCertificateDeleteRequest": {
+      "properties": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateCertificateDeployRequest": {
+      "properties": {
+        "cluster_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "secret_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateCertificateDescribeRequest": {
+      "properties": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateCertificateImportRequest": {
+      "properties": {
+        "cert_data": {
+          "type": "string"
+        },
+        "key_data": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateCertificateRenewRequest": {
+      "properties": {
+        "account_phid": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateCertificateRevokeRequest": {
+      "properties": {
+        "account_phid": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "certificateSubjectInfo": {
+      "description": "A Name contains the SubjectInfo fields.",
+      "properties": {
+        "C": {
+          "type": "string"
+        },
+        "L": {
+          "type": "string"
+        },
+        "O": {
+          "type": "string"
+        },
+        "OU": {
+          "type": "string"
+        },
+        "ST": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "dtypesVoidRequest": {
+      "description": "Void Requests and response to use with other types.",
+      "type": "object"
+    }
+  }
+}

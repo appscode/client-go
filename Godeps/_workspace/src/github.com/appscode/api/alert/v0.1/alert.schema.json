@@ -1,0 +1,164 @@
+{
+  "definitions": {
+    "alertCheckInfluxData": {
+      "properties": {
+        "critical_condition": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "object_name": {
+          "type": "string"
+        },
+        "query": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "r": {
+          "type": "string"
+        },
+        "warning_condition": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertCheckKubernetes": {
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "selector": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertCommandParam": {
+      "properties": {
+        "check_influx_data": {
+          "$ref": "#/definitions/alertCheckInfluxData"
+        },
+        "check_kubernetes": {
+          "$ref": "#/definitions/alertCheckKubernetes"
+        }
+      },
+      "type": "object"
+    },
+    "alertCreateRequest": {
+      "properties": {
+        "check_command": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "command_param": {
+          "$ref": "#/definitions/alertCommandParam"
+        },
+        "icinga_param": {
+          "$ref": "#/definitions/alertIcingaParam"
+        },
+        "icinga_service": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "notifier_param": {
+          "items": {
+            "$ref": "#/definitions/alertNotifierParam"
+          },
+          "type": "array"
+        },
+        "plugin": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertDeleteRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertIcingaParam": {
+      "properties": {
+        "alert_interval_sec": {
+          "type": "integer"
+        },
+        "check_interval_sec": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "alertListRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "object_name": {
+          "type": "string"
+        },
+        "plugin": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertNotifierParam": {
+      "properties": {
+        "method": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "user_phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertUpdateRequest": {
+      "properties": {
+        "command_param": {
+          "$ref": "#/definitions/alertCommandParam"
+        },
+        "icinga_param": {
+          "$ref": "#/definitions/alertIcingaParam"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "notifier_param": {
+          "items": {
+            "$ref": "#/definitions/alertNotifierParam"
+          },
+          "type": "array"
+        },
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

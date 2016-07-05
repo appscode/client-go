@@ -1,0 +1,29 @@
+{
+  "definitions": {
+    "ciBuildDescribeRequest": {
+      "properties": {
+        "job_name": {
+          "type": "string"
+        },
+        "number": {
+          "type": "integer"
+        },
+        "parents": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciBuildListRequest": {
+      "properties": {
+        "job_name": {
+          "type": "string"
+        },
+        "parents": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}
