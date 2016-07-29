@@ -120,7 +120,7 @@ func init() {
         "state": {
           "type": "string"
         },
-        "user_phid": {
+        "user_uid": {
           "type": "string"
         }
       },
@@ -141,11 +141,6 @@ func init() {
       "$ref": "#/definitions/alertIcingaParam"
     },
     "icinga_service": {
-      "type": "string"
-    },
-    "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "notifier_param": {
@@ -236,7 +231,7 @@ func init() {
         "state": {
           "type": "string"
         },
-        "user_phid": {
+        "user_uid": {
           "type": "string"
         }
       },
@@ -249,11 +244,6 @@ func init() {
     },
     "icinga_param": {
       "$ref": "#/definitions/alertIcingaParam"
-    },
-    "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-      "type": "string"
     },
     "notifier_param": {
       "items": {

@@ -70,21 +70,20 @@ message IcingaState {
 
 message NotifierParam {
   string state = 1;
-  string user_phid = 2;
+  string user_uid = 2;
   string method = 3;
 }
 
 message Alert {
   string phid = 1;
-  string name = 2;
-  string cluster = 3;
-  string plugin = 4;
-  string icinga_service = 5;
-  IcingaParam icinga_param = 6;
-  string check_command = 7;
-  CommandParam command_param = 8;
-  repeated NotifierParam notifier_param = 9;
-  string icingaweb_url = 10;
+  string cluster = 2;
+  string plugin = 3;
+  string icinga_service = 4;
+  IcingaParam icinga_param = 5;
+  string check_command = 6;
+  CommandParam command_param = 7;
+  repeated NotifierParam notifier_param = 8;
+  string icingaweb_url = 9;
 }
 
 message ListRequest {
@@ -102,20 +101,18 @@ message ListResponse {
 message CreateRequest {
   string cluster = 1;
   string plugin = 2;
-  string name = 3;
-  string icinga_service = 4;
-  IcingaParam icinga_param = 5;
-  string check_command = 6;
-  CommandParam command_param = 7;
-  repeated NotifierParam notifier_param = 8;
+  string icinga_service = 3;
+  IcingaParam icinga_param = 4;
+  string check_command = 5;
+  CommandParam command_param = 6;
+  repeated NotifierParam notifier_param = 7;
 }
 
 message UpdateRequest {
   string phid = 1;
-  string name = 2;
-  IcingaParam icinga_param = 3;
-  CommandParam command_param = 4;
-  repeated NotifierParam notifier_param = 5;
+  IcingaParam icinga_param = 2;
+  CommandParam command_param = 3;
+  repeated NotifierParam notifier_param = 4;
 }
 
 message DeleteRequest {

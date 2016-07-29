@@ -105,6 +105,10 @@
           "format": "string",
           "type": "string"
         },
+        "do_not_delete": {
+          "format": "boolean",
+          "type": "boolean"
+        },
         "node": {
           "format": "int64",
           "type": "integer"
@@ -157,6 +161,10 @@
         "deleted": {
           "format": "string",
           "type": "string"
+        },
+        "do_not_delete": {
+          "format": "boolean",
+          "type": "boolean"
         },
         "last_backup": {
           "format": "string",
@@ -252,6 +260,10 @@
         "db_status": {
           "format": "string",
           "type": "string"
+        },
+        "do_not_delete": {
+          "format": "boolean",
+          "type": "boolean"
         },
         "kube": {
           "$ref": "#/definitions/dbKubeInfo"
@@ -356,6 +368,10 @@
         "credential": {
           "format": "string",
           "type": "string"
+        },
+        "do_not_delete": {
+          "format": "boolean",
+          "type": "boolean"
         },
         "dump": {
           "format": "boolean",
@@ -528,6 +544,23 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "dbUpdateRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "do_not_delete": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "uid": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -866,6 +899,44 @@
             "description": "Description",
             "schema": {
               "$ref": "#/definitions/dbDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Databases"
+        ]
+      },
+      "post": {
+        "operationId": "Update",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/dbUpdateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
             }
           }
         },

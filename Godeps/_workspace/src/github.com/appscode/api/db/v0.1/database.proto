@@ -26,6 +26,13 @@ service Databases {
     };
   }
 
+  rpc Update(UpdateRequest) returns (dtypes.VoidResponse) {
+  option (google.api.http) = {
+      post: "/appscode/api/db/v0.1/{cluster}/{uid}"
+      body: "*"
+    };
+  }
+
   rpc Describe(DescribeRequest) returns (DescribeResponse) {
     option (google.api.http) = {
       get: "/appscode/api/db/v0.1/{cluster}/{uid}"
@@ -82,6 +89,7 @@ message Database {
   string created = 14;
   string deleted = 15;
   string service_name = 16;
+  bool do_not_delete = 17;
 }
 
 message Snapshot {
@@ -139,12 +147,19 @@ message CreateRequest {
   string credential = 10;
   string bucket_name = 11;
   string region = 12;
+  bool do_not_delete = 13;
 }
 
 message AddStandbyRequest {
   string cluster = 1;
   string name = 2;
   string config = 3;
+}
+
+message UpdateRequest {
+  string cluster = 1;
+  string uid = 2;
+  bool do_not_delete = 3;
 }
 
 message DescribeRequest {
@@ -167,6 +182,7 @@ message DescribeResponse {
   string auth_secret = 12;
   string created = 13;
   string service_name = 14;
+  bool do_not_delete = 15;
 }
 
 message DeleteRequest {
@@ -212,6 +228,7 @@ message RestoreRequest {
   bool dump = 15;
   bool force = 16;
   string service_name = 17;
+  bool do_not_delete = 18;
 }
 
 message SnapshotListRequest {

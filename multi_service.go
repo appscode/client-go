@@ -2,6 +2,7 @@ package client
 
 import (
 	alert "github.com/appscode/api/alert/v0.1"
+	artifactory "github.com/appscode/api/artifactory/v0.1"
 	auth "github.com/appscode/api/auth/v0.1"
 	backup "github.com/appscode/api/backup/v0.1"
 	billing "github.com/appscode/api/billing/v0.1"
@@ -19,6 +20,7 @@ import (
 type multiClientInterface interface {
 	Alert() *alertService
 	Authentication() *authenticationService
+	Artifactory() *artifactoryService
 	Backup() *backupService
 	Billing() *billingService
 	CA() *caService
@@ -32,6 +34,7 @@ type multiClientInterface interface {
 
 type multiClientServices struct {
 	alertClient          *alertService
+	artifactoryClient    *artifactoryService
 	authenticationClient *authenticationService
 	backupClient         *backupService
 	billingClient        *billingService
@@ -48,6 +51,10 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 		alertClient: &alertService{
 			alertClient:        alert.NewAlertsClient(conn),
 			notificationClient: alert.NewNotificationsClient(conn),
+		},
+		artifactoryClient: &artifactoryService{
+			artifactClient: artifactory.NewArtifactsClient(conn),
+			versionClient:  artifactory.NewVersionsClient(conn),
 		},
 		authenticationClient: &authenticationService{
 			authenticationClient: auth.NewAuthenticationClient(conn),
@@ -95,6 +102,10 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 
 func (s *multiClientServices) Alert() *alertService {
 	return s.alertClient
+}
+
+func (s *multiClientServices) Artifactory() *artifactoryService {
+	return s.artifactoryClient
 }
 
 func (s *multiClientServices) Authentication() *authenticationService {
@@ -147,6 +158,19 @@ func (a *alertService) Alert() alert.AlertsClient {
 
 func (a *alertService) Notification() alert.NotificationsClient {
 	return a.notificationClient
+}
+
+type artifactoryService struct {
+	artifactClient artifactory.ArtifactsClient
+	versionClient  artifactory.VersionsClient
+}
+
+func (a *artifactoryService) Artifacts() artifactory.ArtifactsClient {
+	return a.artifactClient
+}
+
+func (a *artifactoryService) Versions() artifactory.VersionsClient {
+	return a.versionClient
 }
 
 type authenticationService struct {

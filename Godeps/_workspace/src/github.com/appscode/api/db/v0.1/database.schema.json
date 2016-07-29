@@ -126,6 +126,9 @@
         "credential": {
           "type": "string"
         },
+        "do_not_delete": {
+          "type": "boolean"
+        },
         "node": {
           "type": "integer"
         },
@@ -217,6 +220,9 @@
         "credential": {
           "type": "string"
         },
+        "do_not_delete": {
+          "type": "boolean"
+        },
         "dump": {
           "type": "boolean"
         },
@@ -267,6 +273,20 @@
       "properties": {
         "cluster": {
           "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "dbUpdateRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "do_not_delete": {
+          "type": "boolean"
         },
         "uid": {
           "type": "string"

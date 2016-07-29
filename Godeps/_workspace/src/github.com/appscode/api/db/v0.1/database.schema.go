@@ -12,6 +12,7 @@ var describeRequestSchema *gojsonschema.Schema
 var addStandbyRequestSchema *gojsonschema.Schema
 var listRequestSchema *gojsonschema.Schema
 var backupScheduleRequestSchema *gojsonschema.Schema
+var updateRequestSchema *gojsonschema.Schema
 var backupUnscheduleRequestSchema *gojsonschema.Schema
 var createRequestSchema *gojsonschema.Schema
 var snapshotListRequestSchema *gojsonschema.Schema
@@ -154,6 +155,24 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
+	updateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
+    },
+    "do_not_delete": {
+      "type": "boolean"
+    },
+    "uid": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
 	backupUnscheduleRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
@@ -201,6 +220,9 @@ func init() {
     },
     "credential": {
       "type": "string"
+    },
+    "do_not_delete": {
+      "type": "boolean"
     },
     "node": {
       "type": "integer"
@@ -280,6 +302,9 @@ func init() {
     "credential": {
       "type": "string"
     },
+    "do_not_delete": {
+      "type": "boolean"
+    },
     "dump": {
       "type": "boolean"
     },
@@ -355,6 +380,11 @@ func (m *BackupScheduleRequest) IsValid() (*gojsonschema.Result, error) {
 	return backupScheduleRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *BackupScheduleRequest) IsRequest() {}
+
+func (m *UpdateRequest) IsValid() (*gojsonschema.Result, error) {
+	return updateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *UpdateRequest) IsRequest() {}
 
 func (m *BackupUnscheduleRequest) IsValid() (*gojsonschema.Result, error) {
 	return backupUnscheduleRequestSchema.Validate(gojsonschema.NewGoLoader(m))

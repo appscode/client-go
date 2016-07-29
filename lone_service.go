@@ -2,7 +2,7 @@ package client
 
 import (
 	db "github.com/appscode/api/db/v0.1"
-	health "github.com/appscode/api/health"
+	"github.com/appscode/api/health"
 	k8s "github.com/appscode/api/kubernetes/v0.1"
 	loadbalancer "github.com/appscode/api/loadbalancer/v0.1"
 	mailinglist "github.com/appscode/api/mailinglist/v0.1"

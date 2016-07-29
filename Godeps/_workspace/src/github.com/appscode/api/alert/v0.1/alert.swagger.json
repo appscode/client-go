@@ -28,10 +28,6 @@
           "format": "string",
           "type": "string"
         },
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
         "notifier_param": {
           "items": {
             "$ref": "#/definitions/alertNotifierParam"
@@ -129,10 +125,6 @@
           "format": "string",
           "type": "string"
         },
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
         "notifier_param": {
           "items": {
             "$ref": "#/definitions/alertNotifierParam"
@@ -227,10 +219,6 @@
         },
         "icinga_param": {
           "$ref": "#/definitions/alertIcingaParam"
-        },
-        "name": {
-          "format": "string",
-          "type": "string"
         },
         "notifier_param": {
           "items": {
