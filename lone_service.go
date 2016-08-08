@@ -9,6 +9,7 @@ import (
 	namespace "github.com/appscode/api/namespace/v0.1"
 	ssh "github.com/appscode/api/ssh/v0.1"
 	"google.golang.org/grpc"
+	operation "github.com/appscode/api/operation/v0.1"
 )
 
 // single client service in api. returned directly the api client.
@@ -20,6 +21,7 @@ type loneClientInterface interface {
 	MailingList() mailinglist.MailingListClient
 	Namespace() namespace.NamespaceClient
 	SSH() ssh.SSHClient
+	Operation() operation.OperationsClient
 }
 
 type loneClientServices struct {
@@ -30,6 +32,7 @@ type loneClientServices struct {
 	loadBalancerClient loadbalancer.LoadBalancersClient
 	sshClient          ssh.SSHClient
 	mailingListClient  mailinglist.MailingListClient
+	operationClient    operation.OperationsClient
 }
 
 func newLoneClientService(conn *grpc.ClientConn) loneClientInterface {
@@ -40,6 +43,7 @@ func newLoneClientService(conn *grpc.ClientConn) loneClientInterface {
 		loadBalancerClient: loadbalancer.NewLoadBalancersClient(conn),
 		sshClient:          ssh.NewSSHClient(conn),
 		mailingListClient:  mailinglist.NewMailingListClient(conn),
+		operationClient:    operation.NewOperationsClient(conn),
 	}
 }
 
@@ -69,4 +73,8 @@ func (s *loneClientServices) SSH() ssh.SSHClient {
 
 func (s *loneClientServices) MailingList() mailinglist.MailingListClient {
 	return s.mailingListClient
+}
+
+func (s *loneClientServices) Operation() operation.OperationsClient {
+	return s.operationClient
 }

@@ -8,7 +8,7 @@ RETVAL=0
 
 go get github.com/appscode/api/...
 pushd ${GOPATH}/src/github.com/appscode/api
-./gen
+./hack/gen.sh
 popd
 go install
 exit ${RETVAL}
