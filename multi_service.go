@@ -11,7 +11,6 @@ import (
 	credential "github.com/appscode/api/credential/v0.1"
 	glusterfs "github.com/appscode/api/glusterfs/v0.1"
 	kubernetes "github.com/appscode/api/kubernetes/v0.1"
-	monitoring "github.com/appscode/api/monitoring/v0.1"
 	pv "github.com/appscode/api/pv/v0.1"
 	"google.golang.org/grpc"
 )
@@ -29,7 +28,6 @@ type multiClientInterface interface {
 	Credential() *credentialService
 	GlusterFS() *glusterFSService
 	Kubernetes() *kubernetesService
-	Monitoring() *monitoringService
 	PV() *pvService
 }
 
@@ -44,7 +42,6 @@ type multiClientServices struct {
 	credentialClient     *credentialService
 	glusterfsClient      *glusterFSService
 	kubernetesClient     *kubernetesService
-	monitoringClient     *monitoringService
 	pvClient             *pvService
 }
 
@@ -96,9 +93,6 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 			kubernetesClient: kubernetes.NewClientsClient(conn),
 			clusterClient:    kubernetes.NewClustersClient(conn),
 		},
-		monitoringClient: &monitoringService{
-			dashboardClient: monitoring.NewDashboardClient(conn),
-		},
 		pvClient: &pvService{
 			disk: pv.NewDisksClient(conn),
 			pv:   pv.NewPersistentVolumesClient(conn),
@@ -145,10 +139,6 @@ func (s *multiClientServices) GlusterFS() *glusterFSService {
 
 func (s *multiClientServices) Kubernetes() *kubernetesService {
 	return s.kubernetesClient
-}
-
-func (s *multiClientServices) Monitoring() *monitoringService {
-	return s.monitoringClient
 }
 
 func (s *multiClientServices) PV() *pvService {
@@ -303,14 +293,6 @@ func (k *kubernetesService) Client() kubernetes.ClientsClient {
 
 func (k *kubernetesService) Cluster() kubernetes.ClustersClient {
 	return k.clusterClient
-}
-
-type monitoringService struct {
-	dashboardClient monitoring.DashboardClient
-}
-
-func (m *monitoringService) Dashboard() monitoring.DashboardClient {
-	return m.dashboardClient
 }
 
 type pvService struct {
