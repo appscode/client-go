@@ -97,8 +97,6 @@ func (o *ClientOption) parse() []grpc.DialOption {
 
 	if o.timeout != time.Duration(0) {
 		dialOptions = append(dialOptions, grpc.WithTimeout(o.timeout))
-	} else {
-		dialOptions = append(dialOptions, grpc.WithTimeout(time.Minute*2))
 	}
 
 	if o.userAgent != "" {
