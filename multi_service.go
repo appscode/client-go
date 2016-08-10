@@ -12,6 +12,7 @@ import (
 	glusterfs "github.com/appscode/api/glusterfs/v0.1"
 	kubernetes "github.com/appscode/api/kubernetes/v0.1"
 	monitoring "github.com/appscode/api/monitoring/v0.1"
+	pv "github.com/appscode/api/pv/v0.1"
 	"google.golang.org/grpc"
 )
 
@@ -19,17 +20,17 @@ import (
 // clients are wrapped around with sub-service.
 type multiClientInterface interface {
 	Alert() *alertService
-	Authentication() *authenticationService
 	Artifactory() *artifactoryService
+	Authentication() *authenticationService
 	Backup() *backupService
 	Billing() *billingService
 	CA() *caService
 	CI() *ciService
 	Credential() *credentialService
-	// TODO(@saumen) implement pv clients here.
 	GlusterFS() *glusterFSService
 	Kubernetes() *kubernetesService
 	Monitoring() *monitoringService
+	PV() *pvService
 }
 
 type multiClientServices struct {
@@ -44,6 +45,7 @@ type multiClientServices struct {
 	glusterfsClient      *glusterFSService
 	kubernetesClient     *kubernetesService
 	monitoringClient     *monitoringService
+	pvClient             *pvService
 }
 
 func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
@@ -97,6 +99,11 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 		monitoringClient: &monitoringService{
 			dashboardClient: monitoring.NewDashboardClient(conn),
 		},
+		pvClient: &pvService{
+			disk: pv.NewDisksClient(conn),
+			pv:   pv.NewPersistentVolumesClient(conn),
+			pvc:  pv.NewPersistentVolumeClaimsClient(conn),
+		},
 	}
 }
 
@@ -144,9 +151,12 @@ func (s *multiClientServices) Monitoring() *monitoringService {
 	return s.monitoringClient
 }
 
+func (s *multiClientServices) PV() *pvService {
+	return s.pvClient
+}
+
 // original service clients that needs to exposed under grouped wrapper
 // services.
-
 type alertService struct {
 	alertClient        alert.AlertsClient
 	notificationClient alert.NotificationsClient
@@ -301,4 +311,22 @@ type monitoringService struct {
 
 func (m *monitoringService) Dashboard() monitoring.DashboardClient {
 	return m.dashboardClient
+}
+
+type pvService struct {
+	disk pv.DisksClient
+	pv   pv.PersistentVolumesClient
+	pvc  pv.PersistentVolumeClaimsClient
+}
+
+func (p *pvService) Disk() pv.DisksClient {
+	return p.disk
+}
+
+func (p *pvService) PersistentVolume() pv.PersistentVolumesClient {
+	return p.pv
+}
+
+func (p *pvService) PersistentVolumeClaim() pv.PersistentVolumeClaimsClient {
+	return p.pvc
 }

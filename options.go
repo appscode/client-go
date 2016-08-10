@@ -7,6 +7,7 @@ import (
 	"github.com/appscode/client/credential"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
+	"net"
 )
 
 var (
@@ -84,13 +85,11 @@ func (o *ClientOption) parse() []grpc.DialOption {
 		cred := o.auth.Credential()
 		dialOptions = append(dialOptions, grpc.WithPerRPCCredentials(cred))
 	}
-	if url := o.target(); o.tlsEnabled {
-		if strings.Contains(url, ":") {
-			url = url[:strings.LastIndex(url, ":")]
-		}
 
+	host, _, err := net.SplitHostPort(o.target())
+	if o.tlsEnabled && err == nil {
 		dialOptions = append(dialOptions, grpc.WithTransportCredentials(
-			credentials.NewClientTLSFromCert(nil, url),
+			credentials.NewClientTLSFromCert(nil, host),
 		))
 	} else {
 		dialOptions = append(dialOptions, grpc.WithInsecure())

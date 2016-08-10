@@ -17,9 +17,9 @@ type loneClientInterface interface {
 	Event() k8s.EventsClient
 	Health() health.HealthClient
 	LoadBalancer() loadbalancer.LoadBalancersClient
+	MailingList() mailinglist.MailingListClient
 	Namespace() namespace.NamespaceClient
 	SSH() ssh.SSHClient
-	MailingList() mailinglist.MailingListClient
 }
 
 type loneClientServices struct {
