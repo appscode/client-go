@@ -1,19 +1,21 @@
 package client
 
 import (
+	credential "github.com/appscode/api/credential/v0.1"
 	db "github.com/appscode/api/db/v0.1"
 	"github.com/appscode/api/health"
 	k8s "github.com/appscode/api/kubernetes/v0.1"
 	loadbalancer "github.com/appscode/api/loadbalancer/v0.1"
 	mailinglist "github.com/appscode/api/mailinglist/v0.1"
 	namespace "github.com/appscode/api/namespace/v0.1"
+	operation "github.com/appscode/api/operation/v0.1"
 	ssh "github.com/appscode/api/ssh/v0.1"
 	"google.golang.org/grpc"
-	operation "github.com/appscode/api/operation/v0.1"
 )
 
 // single client service in api. returned directly the api client.
 type loneClientInterface interface {
+	CloudCredential() credential.CloudCredentialClient
 	DB() db.DatabasesClient
 	Event() k8s.EventsClient
 	Health() health.HealthClient
@@ -25,6 +27,7 @@ type loneClientInterface interface {
 }
 
 type loneClientServices struct {
+	cloudClient        credential.CloudCredentialClient
 	dbClient           db.DatabasesClient
 	eventClient        k8s.EventsClient
 	healthClient       health.HealthClient
@@ -37,6 +40,7 @@ type loneClientServices struct {
 
 func newLoneClientService(conn *grpc.ClientConn) loneClientInterface {
 	return &loneClientServices{
+		cloudClient:        credential.NewCloudCredentialClient(conn),
 		dbClient:           db.NewDatabasesClient(conn),
 		eventClient:        k8s.NewEventsClient(conn),
 		healthClient:       health.NewHealthClient(conn),
@@ -45,6 +49,10 @@ func newLoneClientService(conn *grpc.ClientConn) loneClientInterface {
 		mailingListClient:  mailinglist.NewMailingListClient(conn),
 		operationClient:    operation.NewOperationsClient(conn),
 	}
+}
+
+func (s *loneClientServices) CloudCredential() credential.CloudCredentialClient {
+	return s.cloudClient
 }
 
 func (s *loneClientServices) DB() db.DatabasesClient {

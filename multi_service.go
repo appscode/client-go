@@ -8,7 +8,6 @@ import (
 	billing "github.com/appscode/api/billing/v0.1"
 	ca "github.com/appscode/api/certificate/v0.1"
 	ci "github.com/appscode/api/ci/v0.1"
-	credential "github.com/appscode/api/credential/v0.1"
 	glusterfs "github.com/appscode/api/glusterfs/v0.1"
 	kubernetes "github.com/appscode/api/kubernetes/v0.1"
 	pv "github.com/appscode/api/pv/v0.1"
@@ -25,7 +24,6 @@ type multiClientInterface interface {
 	Billing() *billingService
 	CA() *caService
 	CI() *ciService
-	Credential() *credentialService
 	GlusterFS() *glusterFSService
 	Kubernetes() *kubernetesService
 	PV() *pvService
@@ -39,7 +37,6 @@ type multiClientServices struct {
 	billingClient        *billingService
 	caClient             *caService
 	ciClient             *ciService
-	credentialClient     *credentialService
 	glusterfsClient      *glusterFSService
 	kubernetesClient     *kubernetesService
 	pvClient             *pvService
@@ -81,9 +78,6 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 			jobClient:    ci.NewJobsClient(conn),
 			masterClient: ci.NewMasterClient(conn),
 			agentClient:  ci.NewAgentsClient(conn),
-		},
-		credentialClient: &credentialService{
-			cloudClient: credential.NewCloudCredentialClient(conn),
 		},
 		glusterfsClient: &glusterFSService{
 			clusterClient: glusterfs.NewClustersClient(conn),
@@ -127,10 +121,6 @@ func (s *multiClientServices) CA() *caService {
 
 func (s *multiClientServices) CI() *ciService {
 	return s.ciClient
-}
-
-func (s *multiClientServices) Credential() *credentialService {
-	return s.credentialClient
 }
 
 func (s *multiClientServices) GlusterFS() *glusterFSService {
@@ -259,14 +249,6 @@ func (c *ciService) Master() ci.MasterClient {
 
 func (c *ciService) Slave() ci.AgentsClient {
 	return c.agentClient
-}
-
-type credentialService struct {
-	cloudClient credential.CloudCredentialClient
-}
-
-func (c *credentialService) Cloud() credential.CloudCredentialClient {
-	return c.cloudClient
 }
 
 type glusterFSService struct {
