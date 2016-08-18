@@ -109,15 +109,12 @@ func init() {
 	agentListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "from_timestamp": {
-      "title": "from > to, timestamp = seconds since epoch",
-      "type": "integer"
-    },
     "status": {
-      "type": "string"
-    },
-    "to_timestamp": {
-      "type": "integer"
+      "items": {
+        "type": "string"
+      },
+      "title": "List of status to get the agent filterd on the status\nvalues in\n  PENDING\n  FAILED\n  ONLINE\n  OFFLINE\n  DELETED",
+      "type": "array"
     }
   },
   "type": "object"

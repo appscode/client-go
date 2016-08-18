@@ -190,6 +190,9 @@
       },
       "type": "object"
     },
+    "certificateCertificateListRequest": {
+      "type": "object"
+    },
     "certificateCertificateListResponse": {
       "properties": {
         "certificates": {
@@ -285,11 +288,10 @@
           "type": "string"
         }
       },
-      "title": "Provides links to documentation or for performing an out of band action.\nNext Id 3;",
+      "title": "Provides links to documentation or for performing an out of band action.\nNext Id = 3",
       "type": "object"
     },
     "dtypesStatus": {
-      "description": "Next Id 5.",
       "properties": {
         "code": {
           "format": "string",
@@ -318,10 +320,7 @@
           "type": "string"
         }
       },
-      "type": "object"
-    },
-    "dtypesVoidRequest": {
-      "description": "Void Requests and response to use with other types.",
+      "title": "Next Id = 5",
       "type": "object"
     },
     "dtypesVoidResponse": {

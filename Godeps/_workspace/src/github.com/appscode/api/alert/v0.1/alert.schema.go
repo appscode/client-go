@@ -7,34 +7,13 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var listRequestSchema *gojsonschema.Schema
 var deleteRequestSchema *gojsonschema.Schema
 var createRequestSchema *gojsonschema.Schema
+var alertListRequestSchema *gojsonschema.Schema
 var updateRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	listRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "cluster": {
-      "type": "string"
-    },
-    "kubernetes_namespace": {
-      "type": "string"
-    },
-    "object_name": {
-      "type": "string"
-    },
-    "plugin": {
-      "type": "string"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
 	deleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
@@ -158,6 +137,27 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
+	alertListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
+    },
+    "kubernetes_namespace": {
+      "type": "string"
+    },
+    "object_name": {
+      "type": "string"
+    },
+    "plugin": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
 	updateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
@@ -262,11 +262,6 @@ func init() {
 	}
 }
 
-func (m *ListRequest) IsValid() (*gojsonschema.Result, error) {
-	return listRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *ListRequest) IsRequest() {}
-
 func (m *DeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return deleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
@@ -277,11 +272,16 @@ func (m *CreateRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *CreateRequest) IsRequest() {}
 
+func (m *AlertListRequest) IsValid() (*gojsonschema.Result, error) {
+	return alertListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *AlertListRequest) IsRequest() {}
+
 func (m *UpdateRequest) IsValid() (*gojsonschema.Result, error) {
 	return updateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *UpdateRequest) IsRequest() {}
 
-func (m *ListResponse) SetStatus(s *dtypes.Status) {
+func (m *AlertListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }

@@ -47,7 +47,7 @@
           "description": "The URL of The link."
         }
       },
-      "title": "Provides links to documentation or for performing an out of band action.\nNext Id 3;"
+      "title": "Provides links to documentation or for performing an out of band action.\nNext Id = 3"
     },
     "dtypesStatus": {
       "type": "object",
@@ -79,7 +79,7 @@
           "description": "Response status code string."
         }
       },
-      "description": "Next Id 5."
+      "title": "Next Id = 5"
     },
     "dtypesVoidRequest": {
       "type": "object",

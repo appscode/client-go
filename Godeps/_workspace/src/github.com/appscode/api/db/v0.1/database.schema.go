@@ -75,6 +75,13 @@ func init() {
 	listRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "status": {
+      "items": {
+        "type": "string"
+      },
+      "title": "List of status to get the agent filterd on the status\nvalues in\n  PENDING\n  FAILED\n  READY\n  DELETED",
+      "type": "array"
+    },
     "type": {
       "type": "string"
     }

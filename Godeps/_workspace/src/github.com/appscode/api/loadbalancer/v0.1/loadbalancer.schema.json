@@ -206,6 +206,9 @@
     },
     "loadbalancerTCPLoadBalancerRule": {
       "properties": {
+        "SSL_secret_name": {
+          "type": "string"
+        },
         "backend": {
           "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
         },

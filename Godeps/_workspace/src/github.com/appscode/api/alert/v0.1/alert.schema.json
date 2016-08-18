@@ -1,5 +1,22 @@
 {
   "definitions": {
+    "alertAlertListRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "object_name": {
+          "type": "string"
+        },
+        "plugin": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "alertCheckInfluxData": {
       "properties": {
         "critical_condition": {
@@ -99,23 +116,6 @@
       },
       "type": "object"
     },
-    "alertListRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "kubernetes_namespace": {
-          "type": "string"
-        },
-        "object_name": {
-          "type": "string"
-        },
-        "plugin": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "alertNotifierParam": {
       "properties": {
         "method": {
@@ -124,7 +124,7 @@
         "state": {
           "type": "string"
         },
-        "user_phid": {
+        "user_uid": {
           "type": "string"
         }
       },

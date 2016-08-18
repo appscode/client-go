@@ -9,6 +9,7 @@ import (
 
 var certificateImportRequestSchema *gojsonschema.Schema
 var certificateRenewRequestSchema *gojsonschema.Schema
+var certificateListRequestSchema *gojsonschema.Schema
 var certificateDeleteRequestSchema *gojsonschema.Schema
 var certificateRevokeRequestSchema *gojsonschema.Schema
 var certificateDescribeRequestSchema *gojsonschema.Schema
@@ -52,6 +53,13 @@ func init() {
       "type": "string"
     }
   },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	certificateListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object"
 }`))
 	if err != nil {
@@ -195,6 +203,11 @@ func (m *CertificateRenewRequest) IsValid() (*gojsonschema.Result, error) {
 	return certificateRenewRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *CertificateRenewRequest) IsRequest() {}
+
+func (m *CertificateListRequest) IsValid() (*gojsonschema.Result, error) {
+	return certificateListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *CertificateListRequest) IsRequest() {}
 
 func (m *CertificateDeleteRequest) IsValid() (*gojsonschema.Result, error) {
 	return certificateDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))

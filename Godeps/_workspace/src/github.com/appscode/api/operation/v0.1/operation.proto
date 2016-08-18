@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+package operation;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+import "api/certificate/v0.1/certificate.proto";
+import "api/ci/v0.1/agent.proto";
+import "api/kubernetes/v0.1/clusters.proto";
+import "api/db/v0.1/database.proto";
+import "api/namespace/v0.1/namespace.proto";
+
+service Operations {
+  rpc Describe(DescribeRequest) returns (DescribeResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/operation/v0.1/operations/{phid}"
+    };
+  }
+}
+
+message DescribeRequest {
+  string phid = 1;
+}
+
+message DescribeResponse {
+  dtypes.Status status = 1;
+  Operation op = 2;
+  message Log {
+    int64 timestamp = 1;
+    string message = 2;
+  }
+  repeated Log log = 3;
+}
+
+message Auth {
+  string namespace = 1;
+  string username = 2;
+  string token = 3;
+  string token_type = 4;
+}
+
+// Metadata holds other on request or operation specific data
+// that could be used inside that operation.
+// An welldefined message instead of a map is used
+// so that the data fields can be explicitly defined with
+// its own data type. Resolves data convertions.
+message Metadata {
+  // Contains PurchasePHID is this is a purchase request.
+  repeated string purchase_phid = 1;
+
+  // PHID of the user who requested this operation.
+  string author_phid = 2;
+  string author_name = 3;
+}
+
+// Next Id: 11
+enum OperationType {
+  UNKNOWN = 0;
+  CLUSTER_CREATE = 1;
+  CLUSTER_SCALE = 2;
+  CLUSTER_DELETE = 3;
+  CLUSTER_UPGRADE = 4;
+  CI_AGENT_CREATE = 5;
+  CI_AGENT_DELETE = 6;
+  DATA_BUCKET_DELETE = 7;
+  DATABASE_BACKUP = 8;
+  NAMESPACE_CREATE = 9;
+  NAMESPACE_ADMIN_TASK = 10;
+  CHECK_DNS = 11;
+}
+
+// Next Id: 16
+message Operation {
+  oneof request {
+    kubernetes.ClusterCreateRequest cluster_create_request = 1;
+    kubernetes.ClusterScaleRequest cluster_scale_request = 2;
+    kubernetes.ClusterDeleteRequest cluster_delete_request = 3;
+    kubernetes.ClusterUpgradeRequest cluster_upgrade_request = 4;
+    ci.AgentCreateRequest ci_agent_create_request = 5;
+    ci.AgentDeleteRequest ci_agent_delete_request = 6;
+    DataBucketDeleteRequest data_bucket_delete_request = 7;
+    db.BackupScheduleRequest db_backup_schedule_request = 8;
+    namespace.CreateRequest namespace_create_request = 9;
+    NamespaceAdminTaskRequest namespace_admin_task_request = 10;
+    certificate.DNSCheckRequest dns_check_request = 11;
+  }
+  OperationType type = 12;
+  string phid = 13;
+  Auth auth = 14;
+  Metadata metadata = 15;
+}
+
+message DataBucketDeleteRequest {
+  string data_type = 1;
+  string namespace = 2;
+  string prefix = 3;
+}
+
+message NamespaceAdminTaskRequest {
+	string namespace = 1;
+}

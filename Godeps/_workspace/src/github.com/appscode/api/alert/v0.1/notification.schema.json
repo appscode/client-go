@@ -12,6 +12,23 @@
       },
       "type": "object"
     },
+    "alertNotificationListRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "object_name": {
+          "type": "string"
+        },
+        "plugin": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "alertNotifyRequest": {
       "properties": {
         "alert_phid": {

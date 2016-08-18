@@ -4,40 +4,37 @@
     "application/json"
   ],
   "definitions": {
-    "credentialCloudCredentialCreateRequest": {
+    "artifactoryArtifact": {
       "properties": {
-        "data": {
-          "additionalProperties": {
-            "format": "string",
-            "type": "string"
-          },
-          "type": "object"
+        "last_modified_time": {
+          "format": "string",
+          "type": "string"
         },
         "name": {
           "format": "string",
           "type": "string"
         },
-        "provider": {
+        "type": {
           "format": "string",
           "type": "string"
         }
       },
       "type": "object"
     },
-    "credentialCloudCredentialDeleteRequest": {
+    "artifactoryArtifactListRequest": {
       "properties": {
-        "name": {
+        "type": {
           "format": "string",
           "type": "string"
         }
       },
       "type": "object"
     },
-    "credentialCloudCredentialListResponse": {
+    "artifactoryArtifactListResponse": {
       "properties": {
-        "credentials": {
+        "artifacts": {
           "items": {
-            "$ref": "#/definitions/credentialCredential"
+            "$ref": "#/definitions/artifactoryArtifact"
           },
           "type": "array"
         },
@@ -47,39 +44,29 @@
       },
       "type": "object"
     },
-    "credentialCloudCredentialUpdateRequest": {
+    "artifactoryArtifactSearchRequest": {
       "properties": {
-        "data": {
-          "additionalProperties": {
-            "format": "string",
-            "type": "string"
-          },
-          "type": "object"
-        },
-        "name": {
+        "query": {
           "format": "string",
           "type": "string"
         },
-        "provider": {
+        "type": {
           "format": "string",
           "type": "string"
         }
       },
       "type": "object"
     },
-    "credentialCredential": {
+    "artifactoryArtifactSearchResponse": {
       "properties": {
-        "information": {
-          "format": "string",
-          "type": "string"
+        "artifacts": {
+          "items": {
+            "$ref": "#/definitions/artifactoryArtifact"
+          },
+          "type": "array"
         },
-        "name": {
-          "format": "string",
-          "type": "string"
-        },
-        "provider": {
-          "format": "string",
-          "type": "string"
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         }
       },
       "type": "object"
@@ -97,11 +84,10 @@
           "type": "string"
         }
       },
-      "title": "Provides links to documentation or for performing an out of band action.\nNext Id 3;",
+      "title": "Provides links to documentation or for performing an out of band action.\nNext Id = 3",
       "type": "object"
     },
     "dtypesStatus": {
-      "description": "Next Id 5.",
       "properties": {
         "code": {
           "format": "string",
@@ -130,18 +116,7 @@
           "type": "string"
         }
       },
-      "type": "object"
-    },
-    "dtypesVoidRequest": {
-      "description": "Void Requests and response to use with other types.",
-      "type": "object"
-    },
-    "dtypesVoidResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
+      "title": "Next Id = 5",
       "type": "object"
     },
     "protobufAny": {
@@ -163,82 +138,18 @@
   },
   "host": "api.appscode.com",
   "info": {
-    "title": "credential.proto",
+    "title": "artifact.proto",
     "version": "0.1"
   },
   "paths": {
-    "/appscode/api/credentials/v0.1/cloud": {
+    "/appscode/api/artifactory/v0.1/artifacts/{type}": {
       "get": {
         "operationId": "List",
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/credentialCloudCredentialListResponse"
-            }
-          }
-        },
-        "tags": [
-          "CloudCredential"
-        ]
-      },
-      "post": {
-        "operationId": "Update",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/credentialCloudCredentialUpdateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "CloudCredential"
-        ]
-      },
-      "put": {
-        "operationId": "Create",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/credentialCloudCredentialCreateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "CloudCredential"
-        ]
-      }
-    },
-    "/appscode/api/credentials/v0.1/cloud/{name}": {
-      "delete": {
-        "operationId": "Delete",
         "parameters": [
           {
             "format": "string",
             "in": "path",
-            "name": "name",
+            "name": "type",
             "required": true,
             "type": "string"
           }
@@ -247,12 +158,28 @@
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
+              "$ref": "#/definitions/artifactoryArtifactListResponse"
             }
           }
         },
         "tags": [
-          "CloudCredential"
+          "Artifacts"
+        ]
+      }
+    },
+    "/appscode/api/artifactory/v0.1/search": {
+      "get": {
+        "operationId": "Search",
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/artifactoryArtifactSearchResponse"
+            }
+          }
+        },
+        "tags": [
+          "Artifacts"
         ]
       }
     }

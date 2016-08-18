@@ -190,6 +190,9 @@ func init() {
     },
     "loadbalancerTCPLoadBalancerRule": {
       "properties": {
+        "SSL_secret_name": {
+          "type": "string"
+        },
         "backend": {
           "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
         },
@@ -389,6 +392,9 @@ func init() {
     },
     "loadbalancerTCPLoadBalancerRule": {
       "properties": {
+        "SSL_secret_name": {
+          "type": "string"
+        },
         "backend": {
           "$ref": "#/definitions/loadbalancerLoadBalancerBackend"
         },

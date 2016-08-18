@@ -126,12 +126,19 @@ message KubeInfo {
 
 message ListRequest {
   string type = 1;
+
+  // List of status to get the agent filterd on the status
+  // values in
+  //   PENDING
+  //   FAILED
+  //   READY
+  //   DELETED
+  repeated string status = 2;
 }
 
 message ListResponse {
   dtypes.Status status = 1;
   repeated Database databases = 2;
-  repeated Database deleted_databases = 3;
 }
 
 message CreateRequest {

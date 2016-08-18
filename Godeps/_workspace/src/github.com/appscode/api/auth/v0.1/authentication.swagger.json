@@ -93,11 +93,10 @@
           "type": "string"
         }
       },
-      "title": "Provides links to documentation or for performing an out of band action.\nNext Id 3;",
+      "title": "Provides links to documentation or for performing an out of band action.\nNext Id = 3",
       "type": "object"
     },
     "dtypesStatus": {
-      "description": "Next Id 5.",
       "properties": {
         "code": {
           "format": "string",
@@ -126,6 +125,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id = 5",
       "type": "object"
     },
     "protobufAny": {

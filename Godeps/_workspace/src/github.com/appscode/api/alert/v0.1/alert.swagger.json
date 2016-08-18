@@ -45,6 +45,41 @@
       },
       "type": "object"
     },
+    "alertAlertListRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "object_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "plugin": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertListResponse": {
+      "properties": {
+        "alerts": {
+          "items": {
+            "$ref": "#/definitions/alertAlert"
+          },
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
     "alertCheckInfluxData": {
       "properties": {
         "critical_condition": {
@@ -160,41 +195,6 @@
       },
       "type": "object"
     },
-    "alertListRequest": {
-      "properties": {
-        "cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "kubernetes_namespace": {
-          "format": "string",
-          "type": "string"
-        },
-        "object_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "plugin": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertListResponse": {
-      "properties": {
-        "alerts": {
-          "items": {
-            "$ref": "#/definitions/alertAlert"
-          },
-          "type": "array"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "type": "object"
-    },
     "alertNotifierParam": {
       "properties": {
         "method": {
@@ -205,7 +205,7 @@
           "format": "string",
           "type": "string"
         },
-        "user_phid": {
+        "user_uid": {
           "format": "string",
           "type": "string"
         }
@@ -246,11 +246,10 @@
           "type": "string"
         }
       },
-      "title": "Provides links to documentation or for performing an out of band action.\nNext Id 3;",
+      "title": "Provides links to documentation or for performing an out of band action.\nNext Id = 3",
       "type": "object"
     },
     "dtypesStatus": {
-      "description": "Next Id 5.",
       "properties": {
         "code": {
           "format": "string",
@@ -279,6 +278,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id = 5",
       "type": "object"
     },
     "dtypesVoidResponse": {
@@ -319,7 +319,7 @@
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/alertListResponse"
+              "$ref": "#/definitions/alertAlertListResponse"
             }
           }
         },

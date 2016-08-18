@@ -19,6 +19,9 @@ func init() {
         "instance_id": {
           "type": "string"
         },
+        "instance_ip": {
+          "type": "string"
+        },
         "kind": {
           "type": "string"
         },

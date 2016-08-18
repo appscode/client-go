@@ -10,6 +10,10 @@
           "format": "string",
           "type": "string"
         },
+        "instance_ip": {
+          "format": "string",
+          "type": "string"
+        },
         "kind": {
           "format": "string",
           "type": "string"
@@ -85,11 +89,10 @@
           "type": "string"
         }
       },
-      "title": "Provides links to documentation or for performing an out of band action.\nNext Id 3;",
+      "title": "Provides links to documentation or for performing an out of band action.\nNext Id = 3",
       "type": "object"
     },
     "dtypesStatus": {
-      "description": "Next Id 5.",
       "properties": {
         "code": {
           "format": "string",
@@ -118,6 +121,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id = 5",
       "type": "object"
     },
     "kubernetesEventRequest": {

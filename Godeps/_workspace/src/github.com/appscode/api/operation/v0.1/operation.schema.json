@@ -1,0 +1,252 @@
+{
+  "definitions": {
+    "certificateDNSCheckRequest": {
+      "properties": {
+        "domain": {
+          "type": "string"
+        },
+        "key_auth": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciAgentCreateRequest": {
+      "properties": {
+        "ci_starter_version": {
+          "type": "string"
+        },
+        "executors": {
+          "type": "integer"
+        },
+        "labels": {
+          "type": "string"
+        },
+        "ports": {
+          "items": {
+            "$ref": "#/definitions/ciPortInfo"
+          },
+          "type": "array"
+        },
+        "role": {
+          "type": "string"
+        },
+        "saltbase_version": {
+          "type": "string"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "user_startup_script": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciAgentDeleteRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciPortInfo": {
+      "properties": {
+        "port_range": {
+          "type": "string"
+        },
+        "protocol": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "dbBackupScheduleRequest": {
+      "properties": {
+        "auth_secret_name": {
+          "type": "string"
+        },
+        "bucket_name": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "credential": {
+          "type": "string"
+        },
+        "dump": {
+          "type": "boolean"
+        },
+        "force": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "schedule_cron_expr": {
+          "type": "string"
+        },
+        "snapshot_name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "wal": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClusterCreateRequest": {
+      "properties": {
+        "cloud_credential": {
+          "type": "string"
+        },
+        "cloud_credential_data": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "do_not_delete": {
+          "type": "boolean"
+        },
+        "kube_starter_version": {
+          "type": "string"
+        },
+        "kube_version": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "node_set": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "type": "object"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "saltbase_version": {
+          "type": "string"
+        },
+        "zone": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClusterDeleteRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "release_reserved_ip": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClusterScaleRequest": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "node_changes": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClusterUpgradeRequest": {
+      "properties": {
+        "kube_starter_version": {
+          "type": "string"
+        },
+        "kube_version": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "saltbase_version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "namespaceCreateRequest": {
+      "properties": {
+        "client_ip": {
+          "type": "string"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "invite_email": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "subscription_type": {
+          "type": "string"
+        },
+        "user_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "operationDataBucketDeleteRequest": {
+      "properties": {
+        "data_type": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "operationDescribeRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "operationNamespaceAdminTaskRequest": {
+      "properties": {
+        "namespace": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

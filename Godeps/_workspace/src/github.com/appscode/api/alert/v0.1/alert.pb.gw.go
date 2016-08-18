@@ -32,7 +32,7 @@ var (
 )
 
 func request_Alerts_List_0(ctx context.Context, marshaler runtime.Marshaler, client AlertsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ListRequest
+	var protoReq AlertListRequest
 	var metadata runtime.ServerMetadata
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Alerts_List_0); err != nil {

@@ -6,48 +6,50 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Clusters {
-  rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
-    option (google.api.http) = {
-      get : "/appscode/api/kubernetes/v0.1/clusters/{name}"
-    };
-  }
-
-  rpc Create(ClusterCreateRequest) returns (dtypes.LongRunningResponse) {
-  	option (google.api.http) = {
-  	  put: "/appscode/api/kubernetes/v0.1/clusters"
-      body: "*"
-    };
-  }
-
-  rpc Scale(ClusterScaleRequest) returns (dtypes.LongRunningResponse) {
-  	option (google.api.http) = {
-  	  post: "/appscode/api/kubernetes/v0.1/clusters"
-      body: "*"
-    };
-  }
-
-  rpc Delete(ClusterDeleteRequest) returns (dtypes.LongRunningResponse) {
-  	option (google.api.http) = {
-  	  delete : "/appscode/api/kubernetes/v0.1/clusters/{name}"
-  	};
-  }
-
-  rpc Update(ClusterUpdateRequest) returns (dtypes.LongRunningResponse) {
-    option (google.api.http) = {
-       post : "/appscode/api/kubernetes/v0.1/clusters/{name}"
-    };
-  }
-
-  rpc List(dtypes.VoidRequest) returns (ClusterListResponse) {
+  rpc List(ClusterListRequest) returns (ClusterListResponse) {
      option (google.api.http) = {
        get : "/appscode/api/kubernetes/v0.1/clusters"
      };
   }
 
-  rpc StartupScript(ClusterStartupScriptRequest) returns (ClusterStartupScriptResponse) {
-     option (google.api.http) = {
-       get : "/appscode/api/kubernetes/v0.1/cluster-startup-script/{role}"
-     };
+  rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v0.1/clusters/{uid}"
+    };
+  }
+
+  rpc Create(ClusterCreateRequest) returns (dtypes.LongRunningResponse) {
+    option (google.api.http) = {
+      put: "/appscode/api/kubernetes/v0.1/clusters"
+      body: "*"
+    };
+  }
+
+  rpc Update(ClusterUpdateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+       post: "/appscode/api/kubernetes/v0.1/clusters/{name}"
+       body: "*"
+    };
+  }
+
+  rpc Scale(ClusterScaleRequest) returns (dtypes.LongRunningResponse) {
+    option (google.api.http) = {
+      post: "/appscode/api/kubernetes/v0.1/clusters/{name}/scale"
+      body: "*"
+    };
+  }
+
+  rpc Upgrade(ClusterUpgradeRequest) returns (dtypes.LongRunningResponse) {
+    option (google.api.http) = {
+       post: "/appscode/api/kubernetes/v0.1/clusters/{name}/upgrade"
+       body: "*"
+    };
+  }
+
+  rpc Delete(ClusterDeleteRequest) returns (dtypes.LongRunningResponse) {
+    option (google.api.http) = {
+      delete : "/appscode/api/kubernetes/v0.1/clusters/{name}"
+    };
   }
 
   rpc ClientConfig(ClusterClientConfigRequest) returns (ClusterClientConfigResponse) {
@@ -59,6 +61,12 @@ service Clusters {
   rpc Instances(ClusterInstanceListRequest) returns (ClusterInstanceListResponse) {
      option (google.api.http) = {
        get : "/appscode/api/kubernetes/v0.1/clusters/{cluster_name}/instances"
+     };
+  }
+
+  rpc StartupScript(ClusterStartupScriptRequest) returns (ClusterStartupScriptResponse) {
+     option (google.api.http) = {
+       get : "/appscode/api/kubernetes/v0.1/cluster-startup-script/{role}"
      };
   }
 }
@@ -74,11 +82,11 @@ message Cluster {
   int32 nodes = 8;
   string created_at = 9;
   map<string, string> links = 10;
+  bool do_not_delete = 11;
 }
 
-
 message ClusterDescribeRequest {
-  string name = 1;
+  string uid = 1;
 }
 
 message ClusterDescribeResponse {
@@ -97,6 +105,9 @@ message ClusterDescribeResponse {
   Specs specs = 3;
 }
 
+message ClusterListRequest {
+  repeated string status = 1;
+}
 
 message ClusterListResponse {
   dtypes.Status status = 1;
@@ -113,6 +124,7 @@ message ClusterCreateRequest {
   string saltbase_version = 7;
   string kube_starter_version = 8;
   string kube_version = 9;
+  bool do_not_delete = 10;
 }
 
 message ClusterScaleRequest {
@@ -158,8 +170,7 @@ message ClusterInstance {
   string name = 3;
   string external_ip = 4;
   string internal_ip = 5;
-  string role = 6;
-  string sku = 7;
+  string sku = 6;
 }
 
 message ClusterInstanceListResponse {
@@ -168,6 +179,11 @@ message ClusterInstanceListResponse {
 }
 
 message ClusterUpdateRequest {
+  string name = 1;
+  bool do_not_delete = 2;
+}
+
+message ClusterUpgradeRequest {
   string name = 1;
   string saltbase_version = 2;
   string kube_starter_version = 3;

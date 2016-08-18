@@ -6,7 +6,7 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Certificates {
-  rpc List(dtypes.VoidRequest) returns (CertificateListResponse) {
+  rpc List(CertificateListRequest) returns (CertificateListResponse) {
     option (google.api.http) = {
       get: "/appscode/api/certificate/v0.1/tls-cert"
     };
@@ -56,6 +56,9 @@ service Certificates {
       body: "*"
     };
   }
+}
+
+message CertificateListRequest {
 }
 
 message CertificateListResponse {

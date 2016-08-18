@@ -94,11 +94,10 @@
           "type": "string"
         }
       },
-      "title": "Provides links to documentation or for performing an out of band action.\nNext Id 3;",
+      "title": "Provides links to documentation or for performing an out of band action.\nNext Id = 3",
       "type": "object"
     },
     "dtypesStatus": {
-      "description": "Next Id 5.",
       "properties": {
         "code": {
           "format": "string",
@@ -127,6 +126,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id = 5",
       "type": "object"
     },
     "kubernetesApp": {
@@ -253,6 +253,10 @@
         "namespace": {
           "format": "string",
           "type": "string"
+        },
+        "raw": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -281,6 +285,9 @@
         "namespace": {
           "format": "string",
           "type": "string"
+        },
+        "raw": {
+          "$ref": "#/definitions/kubernetesRaw"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -318,6 +325,25 @@
         "name": {
           "format": "string",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesCopyResourceRequest": {
+      "properties": {
+        "destination": {
+          "$ref": "#/definitions/kubernetesKubeResource"
+        },
+        "source": {
+          "$ref": "#/definitions/kubernetesKubeResource"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesCopyResourceResponse": {
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
         }
       },
       "type": "object"
@@ -387,6 +413,27 @@
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesKubeResource": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -540,6 +587,19 @@
       },
       "type": "object"
     },
+    "kubernetesRaw": {
+      "properties": {
+        "data": {
+          "format": "string",
+          "type": "string"
+        },
+        "format": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "kubernetesReplicationController": {
       "properties": {
         "app": {
@@ -635,6 +695,10 @@
         "namespace": {
           "format": "string",
           "type": "string"
+        },
+        "raw": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -663,6 +727,9 @@
         "namespace": {
           "format": "string",
           "type": "string"
+        },
+        "raw": {
+          "$ref": "#/definitions/kubernetesRaw"
         },
         "resource_version": {
           "format": "string",
@@ -777,6 +844,32 @@
     "version": "0.1"
   },
   "paths": {
+    "/appscode/api/kubernetes/v0.1/actions/copy": {
+      "put": {
+        "operationId": "Copy",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/kubernetesCopyResourceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/kubernetesCopyResourceResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
     "/appscode/api/kubernetes/v0.1/client/{cluster}/apps": {
       "get": {
         "operationId": "Apps",

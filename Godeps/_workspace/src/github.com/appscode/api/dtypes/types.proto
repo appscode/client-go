@@ -9,7 +9,7 @@ import "google/protobuf/any.proto";
 // Application specific error codes will define as enum
 // in the application service.
 
-// Available Next Id 20.
+// Next Id = 20
 enum StatusCode {
     // Not an error. Returned on success.
     // Similar to HTTP Status code 2**.
@@ -56,8 +56,6 @@ enum StatusCode {
     // Similar to HTTP status code 500
     UNKNOWN_ERROR = 10;
 
-
-
     // Quota and payment related error codes.
     // client request crossses the exisitng quta limits.
     QUOTA_LIMIT_EXCEED = 11;
@@ -103,7 +101,7 @@ enum StatusCode {
 // error returns from a request this means there are problems
 // with grpc server.
 
-// Next Id 5.
+// Next Id = 5
 message Status {
     // Response status code
     string code = 1;
@@ -121,9 +119,8 @@ message Status {
     repeated google.protobuf.Any details = 5;
 }
 
-
 // Provides links to documentation or for performing an out of band action.
-// Next Id 3;
+// Next Id = 3
 message Help {
     // Describe what link offers
     string description = 1;
@@ -139,15 +136,11 @@ message ErrorDetails {
     string stacktrace = 2;
 }
 
-
 // Types for long running operation. usually called as jobs.
-
-// Available Next ID: 6
+// Next Id = 3
 message LongRunningResponse {
     Status status = 1;
-    string type_id = 2;
-    string job_id = 3;
-    string job_type = 4;
+    string job_phid = 2;
 }
 
 // Void Requests and response to use with other types.

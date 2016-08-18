@@ -140,18 +140,13 @@
     },
     "ciAgentListRequest": {
       "properties": {
-        "from_timestamp": {
-          "format": "int64",
-          "title": "from > to, timestamp = seconds since epoch",
-          "type": "integer"
-        },
         "status": {
-          "format": "string",
-          "type": "string"
-        },
-        "to_timestamp": {
-          "format": "int64",
-          "type": "integer"
+          "items": {
+            "format": "string",
+            "type": "string"
+          },
+          "title": "List of status to get the agent filterd on the status\nvalues in\n  PENDING\n  FAILED\n  ONLINE\n  OFFLINE\n  DELETED",
+          "type": "array"
         }
       },
       "type": "object"
@@ -213,32 +208,23 @@
           "type": "string"
         }
       },
-      "title": "Provides links to documentation or for performing an out of band action.\nNext Id 3;",
+      "title": "Provides links to documentation or for performing an out of band action.\nNext Id = 3",
       "type": "object"
     },
     "dtypesLongRunningResponse": {
       "properties": {
-        "job_id": {
-          "format": "string",
-          "type": "string"
-        },
-        "job_type": {
+        "job_phid": {
           "format": "string",
           "type": "string"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
-        },
-        "type_id": {
-          "format": "string",
-          "type": "string"
         }
       },
-      "title": "Available Next ID: 6",
+      "title": "Types for long running operation. usually called as jobs.\nNext Id = 3",
       "type": "object"
     },
     "dtypesStatus": {
-      "description": "Next Id 5.",
       "properties": {
         "code": {
           "format": "string",
@@ -267,6 +253,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id = 5",
       "type": "object"
     },
     "protobufAny": {

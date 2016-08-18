@@ -147,5 +147,6 @@ message HTTPLoadBalancerRule {
 message TCPLoadBalancerRule {
   string port = 1;
   LoadBalancerBackend backend = 2;
+  string SSL_secret_name = 3;
   string secret_pem_name = 4;
 }

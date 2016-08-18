@@ -89,6 +89,9 @@
       },
       "type": "object"
     },
+    "certificateCertificateListRequest": {
+      "type": "object"
+    },
     "certificateCertificateRenewRequest": {
       "properties": {
         "account_phid": {
@@ -135,10 +138,6 @@
           "type": "string"
         }
       },
-      "type": "object"
-    },
-    "dtypesVoidRequest": {
-      "description": "Void Requests and response to use with other types.",
       "type": "object"
     }
   }

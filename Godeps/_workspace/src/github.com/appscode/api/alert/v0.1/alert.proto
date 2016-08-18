@@ -7,7 +7,7 @@ import "api/dtypes/types.proto";
 
 // Alert service protobufs for cluster alerts.
 service Alerts {
-  rpc List(ListRequest) returns (ListResponse) {
+  rpc List(AlertListRequest) returns (AlertListResponse) {
     option (google.api.http) = {
       get: "/appscode/api/alert/v0.1/alerts"
     };
@@ -86,14 +86,14 @@ message Alert {
   string icingaweb_url = 9;
 }
 
-message ListRequest {
+message AlertListRequest {
   string cluster = 1;
   string plugin = 2;
   string kubernetes_namespace  = 3;
   string object_name = 4;
 }
 
-message ListResponse {
+message AlertListResponse {
   dtypes.Status status = 1;
   repeated Alert alerts = 2;
 }

@@ -39,10 +39,14 @@ service Agents {
 }
 
 message AgentListRequest {
-  string status = 1;
-  // from > to, timestamp = seconds since epoch
-  int64 from_timestamp = 2;
-  int64 to_timestamp = 3;
+  // List of status to get the agent filterd on the status
+  // values in
+  //   PENDING
+  //   FAILED
+  //   ONLINE
+  //   OFFLINE
+  //   DELETED
+  repeated string status = 1;
 }
 
 message AgentListResponse {

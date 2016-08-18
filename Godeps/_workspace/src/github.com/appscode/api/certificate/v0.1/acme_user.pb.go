@@ -15,6 +15,7 @@ It has these top-level messages:
 	AcmeUserRegisterResponse
 	CACreateRequest
 	CACreateResponse
+	CertificateListRequest
 	CertificateListResponse
 	CertificateDescribeRequest
 	CertificateDescribeResponse
