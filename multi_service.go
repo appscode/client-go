@@ -247,7 +247,7 @@ func (c *ciService) Master() ci.MasterClient {
 	return c.masterClient
 }
 
-func (c *ciService) Slave() ci.AgentsClient {
+func (c *ciService) Agent() ci.AgentsClient {
 	return c.agentClient
 }
 
