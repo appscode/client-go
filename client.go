@@ -41,21 +41,6 @@ func (c *Client) Close() error {
 	return c.connection.Close()
 }
 
-// returns the current state of the api connections
-func (c *Client) State() (grpc.ConnectivityState, error) {
-	return c.connection.State()
-}
-
-func (c *Client) IsReady() bool {
-	state, err := c.State()
-	if err != nil {
-		return false
-	}
-	if state != grpc.Ready {
-		return false
-	}
-	return true
-}
 
 func (c *Client) Context() context.Context {
 	return context.Background()

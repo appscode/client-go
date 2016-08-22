@@ -10,7 +10,7 @@ type bearerAuth struct {
 	BearerToken string
 }
 
-func NewBearerAuthCredential(namespace, token string) credentials.Credentials {
+func NewBearerAuthCredential(namespace, token string) credentials.PerRPCCredentials {
 	return &bearerAuth{
 		Namespace:   namespace,
 		BearerToken: token,

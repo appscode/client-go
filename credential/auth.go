@@ -35,7 +35,7 @@ func NewBearerAuth(ns, secret string) *Auth {
 	}
 }
 
-func (a *Auth) Credential() credentials.Credentials {
+func (a *Auth) Credential() credentials.PerRPCCredentials {
 	if a.AuthType == Basic {
 		return NewBasicAuthCredential(a.Namespace, a.Username, a.Secret)
 	}

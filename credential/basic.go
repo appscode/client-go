@@ -12,7 +12,7 @@ type basicAuth struct {
 	Password  string
 }
 
-func NewBasicAuthCredential(namespace, username, password string) credentials.Credentials {
+func NewBasicAuthCredential(namespace, username, password string) credentials.PerRPCCredentials {
 	return &basicAuth{
 		Namespace: namespace,
 		UserName:  username,
