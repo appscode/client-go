@@ -6,17 +6,16 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Master {
-  rpc Create(MasterCreateRequest) returns (MasterCreateResponse) {
+  rpc Create(MasterCreateRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
       put: "/appscode/api/ci/v0.1/master"
       body: "*"
     };
   }
 
-  rpc Delete(MasterDeleteRequest) returns (MasterDeleteResponse) {
+  rpc Delete(MasterDeleteRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/ci/v0.1/master"
-      body: "*"
+      delete: "/appscode/api/ci/v0.1/master/{namespace}/{cluster_name}"
     };
   }
 }
@@ -27,15 +26,7 @@ message MasterCreateRequest {
   string namespace = 3;
 }
 
-message MasterCreateResponse {
-  dtypes.Status status = 1;
-}
-
 message MasterDeleteRequest {
   string cluster_name = 1;
   string namespace = 2;
-}
-
-message MasterDeleteResponse {
-  dtypes.Status status = 1;
 }

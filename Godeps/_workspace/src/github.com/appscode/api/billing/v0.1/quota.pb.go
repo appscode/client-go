@@ -62,7 +62,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion2
+const _ = grpc.SupportPackageIsVersion3
 
 // Client API for Quota service
 
@@ -124,7 +124,8 @@ var _Quota_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Quota_Get_Handler,
 		},
 	},
-	Streams: []grpc.StreamDesc{},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: fileDescriptor4,
 }
 
 func init() { proto.RegisterFile("quota.proto", fileDescriptor4) }

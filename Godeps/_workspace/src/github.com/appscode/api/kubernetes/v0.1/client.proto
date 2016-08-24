@@ -137,6 +137,7 @@ message Node {
   string container_runtime = 7;
 
   string kubelet_version = 8;
+  string instance_type = 9;
 }
 
 message NamespaceListResponse {

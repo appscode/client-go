@@ -482,6 +482,10 @@
           "format": "string",
           "type": "string"
         },
+        "instance_type": {
+          "format": "string",
+          "type": "string"
+        },
         "kernel_version": {
           "format": "string",
           "type": "string"

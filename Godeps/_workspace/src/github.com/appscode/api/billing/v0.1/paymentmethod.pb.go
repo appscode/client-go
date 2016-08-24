@@ -26,7 +26,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion2
+const _ = grpc.SupportPackageIsVersion3
 
 // Client API for PaymentMethod service
 
@@ -88,7 +88,8 @@ var _PaymentMethod_serviceDesc = grpc.ServiceDesc{
 			Handler:    _PaymentMethod_Check_Handler,
 		},
 	},
-	Streams: []grpc.StreamDesc{},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: fileDescriptor2,
 }
 
 func init() { proto.RegisterFile("paymentmethod.proto", fileDescriptor2) }

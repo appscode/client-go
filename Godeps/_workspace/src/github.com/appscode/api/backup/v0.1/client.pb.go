@@ -57,7 +57,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion2
+const _ = grpc.SupportPackageIsVersion3
 
 // Client API for Client service
 
@@ -119,7 +119,8 @@ var _Client_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Client_ReConfigure_Handler,
 		},
 	},
-	Streams: []grpc.StreamDesc{},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: fileDescriptor0,
 }
 
 func init() { proto.RegisterFile("client.proto", fileDescriptor0) }

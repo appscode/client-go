@@ -21,14 +21,6 @@
       },
       "type": "object"
     },
-    "ciMasterCreateResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "type": "object"
-    },
     "ciMasterDeleteRequest": {
       "properties": {
         "cluster_name": {
@@ -38,14 +30,6 @@
         "namespace": {
           "format": "string",
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "ciMasterDeleteResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
         }
       },
       "type": "object"
@@ -64,6 +48,19 @@
         }
       },
       "title": "Provides links to documentation or for performing an out of band action.\nNext Id = 3",
+      "type": "object"
+    },
+    "dtypesLongRunningResponse": {
+      "properties": {
+        "job_phid": {
+          "format": "string",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "title": "Types for long running operation. usually called as jobs.\nNext Id = 3",
       "type": "object"
     },
     "dtypesStatus": {
@@ -123,14 +120,14 @@
   "paths": {
     "/appscode/api/ci/v0.1/master": {
       "put": {
-        "operationId": "Delete",
+        "operationId": "Create",
         "parameters": [
           {
             "in": "body",
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ciMasterDeleteRequest"
+              "$ref": "#/definitions/ciMasterCreateRequest"
             }
           }
         ],
@@ -138,7 +135,39 @@
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/ciMasterDeleteResponse"
+              "$ref": "#/definitions/dtypesLongRunningResponse"
+            }
+          }
+        },
+        "tags": [
+          "Master"
+        ]
+      }
+    },
+    "/appscode/api/ci/v0.1/master/{namespace}/{cluster_name}": {
+      "delete": {
+        "operationId": "Delete",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster_name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/dtypesLongRunningResponse"
             }
           }
         },

@@ -6,6 +6,7 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 import "api/certificate/v0.1/certificate.proto";
 import "api/ci/v0.1/agent.proto";
+import "api/ci/v0.1/master.proto";
 import "api/kubernetes/v0.1/clusters.proto";
 import "api/db/v0.1/database.proto";
 import "api/namespace/v0.1/namespace.proto";
@@ -60,13 +61,15 @@ enum OperationType {
   CLUSTER_SCALE = 2;
   CLUSTER_DELETE = 3;
   CLUSTER_UPGRADE = 4;
-  CI_AGENT_CREATE = 5;
-  CI_AGENT_DELETE = 6;
-  DATA_BUCKET_DELETE = 7;
-  DATABASE_BACKUP = 8;
-  NAMESPACE_CREATE = 9;
-  NAMESPACE_ADMIN_TASK = 10;
-  CHECK_DNS = 11;
+  CI_MASTER_CREATE = 5;
+  CI_MASTER_DELETE = 6;
+  CI_AGENT_CREATE = 7;
+  CI_AGENT_DELETE = 8;
+  DATA_BUCKET_DELETE = 9;
+  DATABASE_BACKUP = 10;
+  NAMESPACE_CREATE = 11;
+  NAMESPACE_ADMIN_TASK = 12;
+  CHECK_DNS = 13;
 }
 
 // Next Id: 16
@@ -76,18 +79,20 @@ message Operation {
     kubernetes.ClusterScaleRequest cluster_scale_request = 2;
     kubernetes.ClusterDeleteRequest cluster_delete_request = 3;
     kubernetes.ClusterUpgradeRequest cluster_upgrade_request = 4;
-    ci.AgentCreateRequest ci_agent_create_request = 5;
-    ci.AgentDeleteRequest ci_agent_delete_request = 6;
-    DataBucketDeleteRequest data_bucket_delete_request = 7;
-    db.BackupScheduleRequest db_backup_schedule_request = 8;
-    namespace.CreateRequest namespace_create_request = 9;
-    NamespaceAdminTaskRequest namespace_admin_task_request = 10;
-    certificate.DNSCheckRequest dns_check_request = 11;
+    ci.MasterCreateRequest ci_master_create_request = 5;
+    ci.MasterDeleteRequest ci_master_delete_request = 6;
+    ci.AgentCreateRequest ci_agent_create_request = 7;
+    ci.AgentDeleteRequest ci_agent_delete_request = 8;
+    DataBucketDeleteRequest data_bucket_delete_request = 9;
+    db.BackupScheduleRequest db_backup_schedule_request = 10;
+    namespace.CreateRequest namespace_create_request = 11;
+    NamespaceAdminTaskRequest namespace_admin_task_request = 12;
+    certificate.DNSCheckRequest dns_check_request = 13;
   }
-  OperationType type = 12;
-  string phid = 13;
-  Auth auth = 14;
-  Metadata metadata = 15;
+  OperationType type = 14;
+  string phid = 15;
+  Auth auth = 16;
+  Metadata metadata = 17;
 }
 
 message DataBucketDeleteRequest {

@@ -51,6 +51,31 @@
       },
       "type": "object"
     },
+    "ciMasterCreateRequest": {
+      "properties": {
+        "cluster_name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "volume_id": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciMasterDeleteRequest": {
+      "properties": {
+        "cluster_name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "ciPortInfo": {
       "properties": {
         "port_range": {

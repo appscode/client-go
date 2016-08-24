@@ -57,7 +57,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion2
+const _ = grpc.SupportPackageIsVersion3
 
 // Client API for Invoice service
 
@@ -119,7 +119,8 @@ var _Invoice_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Invoice_Create_Handler,
 		},
 	},
-	Streams: []grpc.StreamDesc{},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: fileDescriptor1,
 }
 
 func init() { proto.RegisterFile("invoice.proto", fileDescriptor1) }

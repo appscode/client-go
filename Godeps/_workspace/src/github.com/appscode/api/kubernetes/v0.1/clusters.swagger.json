@@ -4,26 +4,26 @@
     "application/json"
   ],
   "definitions": {
-    "ClusterDescribeResponseSpecs": {
+    "ClusterDescribeResponseSpec": {
       "properties": {
-        "containers": {
+        "container_count": {
           "format": "int32",
           "type": "integer"
         },
-        "cpu_core": {
+        "pod_count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "rc_count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "service_count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "total_cpu": {
           "format": "int64",
-          "type": "integer"
-        },
-        "pods": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "rcs": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "services": {
-          "format": "int32",
           "type": "integer"
         },
         "total_memory": {
@@ -104,6 +104,14 @@
     },
     "kubernetesCluster": {
       "properties": {
+        "api_server_url": {
+          "format": "string",
+          "type": "string"
+        },
+        "ca_cert": {
+          "format": "string",
+          "type": "string"
+        },
         "created_at": {
           "format": "string",
           "type": "string"
@@ -111,6 +119,30 @@
         "do_not_delete": {
           "format": "boolean",
           "type": "boolean"
+        },
+        "gce_project": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_bearer_token": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_password": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_server_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_starter_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_user": {
+          "format": "string",
+          "type": "string"
         },
         "links": {
           "additionalProperties": {
@@ -123,7 +155,7 @@
           "format": "string",
           "type": "string"
         },
-        "nodes": {
+        "node_count": {
           "format": "int32",
           "type": "integer"
         },
@@ -143,7 +175,15 @@
           "format": "string",
           "type": "string"
         },
+        "saltbase_version": {
+          "format": "string",
+          "type": "string"
+        },
         "status": {
+          "format": "string",
+          "type": "string"
+        },
+        "status_cause": {
           "format": "string",
           "type": "string"
         },
@@ -253,8 +293,8 @@
         "cluster": {
           "$ref": "#/definitions/kubernetesCluster"
         },
-        "specs": {
-          "$ref": "#/definitions/ClusterDescribeResponseSpecs"
+        "spec": {
+          "$ref": "#/definitions/ClusterDescribeResponseSpec"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"

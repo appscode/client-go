@@ -84,7 +84,7 @@ type JobDescribeResponse struct {
 	JobColor              string         `protobuf:"bytes,7,opt,name=job_color,json=jobColor" json:"job_color,omitempty"`
 	Buildable             bool           `protobuf:"varint,8,opt,name=buildable" json:"buildable,omitempty"`
 	BuildCount            int64          `protobuf:"varint,9,opt,name=build_count,json=buildCount" json:"build_count,omitempty"`
-	BuildIds              []int64        `protobuf:"varint,10,rep,name=build_ids,json=buildIds" json:"build_ids,omitempty"`
+	BuildIds              []int64        `protobuf:"varint,10,rep,packed,name=build_ids,json=buildIds" json:"build_ids,omitempty"`
 	FirstBuildId          int64          `protobuf:"varint,11,opt,name=first_build_id,json=firstBuildId" json:"first_build_id,omitempty"`
 	LastBuildId           int64          `protobuf:"varint,12,opt,name=last_build_id,json=lastBuildId" json:"last_build_id,omitempty"`
 	LastCompletedBuildId  int64          `protobuf:"varint,13,opt,name=last_completed_build_id,json=lastCompletedBuildId" json:"last_completed_build_id,omitempty"`
@@ -186,7 +186,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion2
+const _ = grpc.SupportPackageIsVersion3
 
 // Client API for Jobs service
 
@@ -413,7 +413,8 @@ var _Jobs_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Jobs_Delete_Handler,
 		},
 	},
-	Streams: []grpc.StreamDesc{},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: fileDescriptor2,
 }
 
 func init() { proto.RegisterFile("job.proto", fileDescriptor2) }

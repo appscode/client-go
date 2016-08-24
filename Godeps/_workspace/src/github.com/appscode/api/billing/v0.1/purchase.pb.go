@@ -88,7 +88,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion2
+const _ = grpc.SupportPackageIsVersion3
 
 // Client API for Purchase service
 
@@ -216,7 +216,8 @@ var _Purchase_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Purchase_Close_Handler,
 		},
 	},
-	Streams: []grpc.StreamDesc{},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: fileDescriptor3,
 }
 
 func init() { proto.RegisterFile("purchase.proto", fileDescriptor3) }

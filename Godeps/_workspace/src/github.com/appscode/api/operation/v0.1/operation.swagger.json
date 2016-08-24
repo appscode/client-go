@@ -78,6 +78,36 @@
       },
       "type": "object"
     },
+    "ciMasterCreateRequest": {
+      "properties": {
+        "cluster_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "volume_id": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ciMasterDeleteRequest": {
+      "properties": {
+        "cluster_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "namespace": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "ciPortInfo": {
       "properties": {
         "port_range": {
@@ -440,6 +470,12 @@
         "ci_agent_delete_request": {
           "$ref": "#/definitions/ciAgentDeleteRequest"
         },
+        "ci_master_create_request": {
+          "$ref": "#/definitions/ciMasterCreateRequest"
+        },
+        "ci_master_delete_request": {
+          "$ref": "#/definitions/ciMasterDeleteRequest"
+        },
         "cluster_create_request": {
           "$ref": "#/definitions/kubernetesClusterCreateRequest"
         },
@@ -489,6 +525,8 @@
         "CLUSTER_SCALE",
         "CLUSTER_DELETE",
         "CLUSTER_UPGRADE",
+        "CI_MASTER_CREATE",
+        "CI_MASTER_DELETE",
         "CI_AGENT_CREATE",
         "CI_AGENT_DELETE",
         "DATA_BUCKET_DELETE",
