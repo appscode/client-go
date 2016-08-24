@@ -24,11 +24,11 @@
         },
         "total_cpu": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "total_memory": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         }
       },
       "type": "object"
@@ -247,7 +247,7 @@
         "node_set": {
           "additionalProperties": {
             "format": "int64",
-            "type": "string"
+            "type": "integer"
           },
           "type": "object"
         },
@@ -389,7 +389,7 @@
         "node_changes": {
           "additionalProperties": {
             "format": "int64",
-            "type": "string"
+            "type": "integer"
           },
           "type": "object"
         }

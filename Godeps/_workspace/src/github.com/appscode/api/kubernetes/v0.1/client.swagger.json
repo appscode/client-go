@@ -8,15 +8,15 @@
       "properties": {
         "cpu": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "memory": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "pods": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         }
       },
       "type": "object"
@@ -235,7 +235,7 @@
         },
         "size": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         }
       },
       "type": "object"
@@ -626,7 +626,7 @@
         },
         "generation": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "name": {
           "format": "string",
@@ -638,7 +638,7 @@
         },
         "observed_generation": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "replicas": {
           "format": "int32",

@@ -46,7 +46,7 @@
     "alertCheckKubernetes": {
       "properties": {
         "count": {
-          "type": "string"
+          "type": "integer"
         },
         "selector": {
           "type": "string"
@@ -108,10 +108,10 @@
     "alertIcingaParam": {
       "properties": {
         "alert_interval_sec": {
-          "type": "string"
+          "type": "integer"
         },
         "check_interval_sec": {
-          "type": "string"
+          "type": "integer"
         }
       },
       "type": "object"

@@ -76,7 +76,7 @@ func init() {
       "type": "string"
     },
     "size": {
-      "type": "string"
+      "type": "integer"
     },
     "zone": {
       "type": "string"

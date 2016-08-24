@@ -8,7 +8,7 @@
       "properties": {
         "number": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "status": {
           "format": "string",
@@ -16,7 +16,7 @@
         },
         "timestamp": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         }
       },
       "type": "object"
@@ -29,7 +29,7 @@
         },
         "number": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "parents": {
           "format": "string",
@@ -46,7 +46,7 @@
         },
         "build_number": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "building": {
           "format": "boolean",
@@ -62,11 +62,11 @@
         },
         "duration": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "estimated_duration": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "full_display_name": {
           "format": "string",
@@ -237,7 +237,7 @@
             "in": "path",
             "name": "number",
             "required": true,
-            "type": "string"
+            "type": "integer"
           }
         ],
         "responses": {

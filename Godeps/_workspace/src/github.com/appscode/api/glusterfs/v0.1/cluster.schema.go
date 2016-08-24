@@ -81,7 +81,7 @@ func init() {
       "type": "string"
     },
     "node": {
-      "type": "string"
+      "type": "integer"
     }
   },
   "type": "object"

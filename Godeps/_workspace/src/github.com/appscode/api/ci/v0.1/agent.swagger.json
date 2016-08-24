@@ -106,7 +106,7 @@
         },
         "executors": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "label": {
           "format": "string",

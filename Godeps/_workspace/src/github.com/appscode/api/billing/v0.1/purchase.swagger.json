@@ -8,7 +8,7 @@
       "properties": {
         "count": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "product_sku": {
           "format": "string",

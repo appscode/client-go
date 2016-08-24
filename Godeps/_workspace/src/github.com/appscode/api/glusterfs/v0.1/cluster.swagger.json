@@ -92,7 +92,7 @@
         },
         "replica": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         }
       },
       "type": "object"
@@ -120,7 +120,7 @@
         },
         "node": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         }
       },
       "type": "object"

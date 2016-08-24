@@ -44,7 +44,7 @@ func init() {
     },
     "node_changes": {
       "additionalProperties": {
-        "type": "string"
+        "type": "integer"
       },
       "type": "object"
     }
@@ -180,7 +180,7 @@ func init() {
     },
     "node_set": {
       "additionalProperties": {
-        "type": "string"
+        "type": "integer"
       },
       "type": "object"
     },

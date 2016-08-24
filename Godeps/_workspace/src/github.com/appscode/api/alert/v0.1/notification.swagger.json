@@ -22,7 +22,7 @@
       "properties": {
         "count": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "host_name": {
           "format": "string",
@@ -30,7 +30,7 @@
         },
         "last_notified": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "phid": {
           "format": "string",

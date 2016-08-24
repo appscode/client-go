@@ -106,12 +106,12 @@
       "properties": {
         "build_count": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "build_ids": {
           "items": {
             "format": "int64",
-            "type": "string"
+            "type": "integer"
           },
           "type": "array"
         },
@@ -129,7 +129,7 @@
         },
         "first_build_id": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "health_report": {
           "items": {
@@ -147,19 +147,19 @@
         },
         "last_build_id": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "last_completed_build_id": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "last_failed_build_id": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "last_successful_build_id": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "name": {
           "format": "string",
@@ -167,7 +167,7 @@
         },
         "next_build_number": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "parents": {
           "format": "string",
@@ -187,7 +187,7 @@
         },
         "score": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         }
       },
       "type": "object"

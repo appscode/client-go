@@ -9,7 +9,7 @@
         "assigned": {
           "additionalProperties": {
             "format": "int64",
-            "type": "string"
+            "type": "integer"
           },
           "type": "object"
         },
@@ -19,7 +19,7 @@
         "used": {
           "additionalProperties": {
             "format": "int64",
-            "type": "string"
+            "type": "integer"
           },
           "type": "object"
         }

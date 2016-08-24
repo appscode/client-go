@@ -116,7 +116,7 @@
       "properties": {
         "count": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "selector": {
           "format": "string",
@@ -186,11 +186,11 @@
       "properties": {
         "alert_interval_sec": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         },
         "check_interval_sec": {
           "format": "int64",
-          "type": "string"
+          "type": "integer"
         }
       },
       "type": "object"
