@@ -24,11 +24,11 @@
         },
         "total_cpu": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "total_memory": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         }
       },
       "type": "object"
@@ -247,7 +247,7 @@
         "node_set": {
           "additionalProperties": {
             "format": "int64",
-            "type": "integer"
+            "type": "string"
           },
           "type": "object"
         },
@@ -389,7 +389,7 @@
         "node_changes": {
           "additionalProperties": {
             "format": "int64",
-            "type": "integer"
+            "type": "string"
           },
           "type": "object"
         }
@@ -488,7 +488,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesClusterStartupScriptResponse"
             }
@@ -504,7 +504,7 @@
         "operationId": "List",
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesClusterListResponse"
             }
@@ -528,7 +528,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesLongRunningResponse"
             }
@@ -553,7 +553,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesClusterInstanceListResponse"
             }
@@ -578,7 +578,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesLongRunningResponse"
             }
@@ -609,7 +609,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -634,7 +634,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesClusterClientConfigResponse"
             }
@@ -667,7 +667,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesLongRunningResponse"
             }
@@ -700,7 +700,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesLongRunningResponse"
             }
@@ -725,7 +725,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesClusterDescribeResponse"
             }

@@ -39,7 +39,7 @@
         },
         "node_set": {
           "additionalProperties": {
-            "type": "integer"
+            "type": "string"
           },
           "type": "object"
         },
@@ -106,7 +106,7 @@
         },
         "node_changes": {
           "additionalProperties": {
-            "type": "integer"
+            "type": "string"
           },
           "type": "object"
         }

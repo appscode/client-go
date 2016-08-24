@@ -6,13 +6,17 @@
   "definitions": {
     "billingSubscriptionSubscribeRequest": {
       "properties": {
+        "auto_extend": {
+          "format": "boolean",
+          "type": "boolean"
+        },
         "product_id": {
           "format": "string",
           "type": "string"
         },
         "start_time": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         }
       },
       "type": "object"
@@ -111,7 +115,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }

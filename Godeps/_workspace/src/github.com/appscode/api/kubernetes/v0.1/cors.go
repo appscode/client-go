@@ -1,6 +1,6 @@
 package kubernetes
 
-import "github.com/gengo/grpc-gateway/runtime"
+import "github.com/grpc-ecosystem/grpc-gateway/runtime"
 
 func Patterns() []runtime.Pattern {
 	patterns := make([]runtime.Pattern, 0)

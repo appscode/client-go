@@ -8,15 +8,15 @@
       "properties": {
         "cpu": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "memory": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "pods": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         }
       },
       "type": "object"
@@ -235,7 +235,7 @@
         },
         "size": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         }
       },
       "type": "object"
@@ -626,7 +626,7 @@
         },
         "generation": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "name": {
           "format": "string",
@@ -638,7 +638,7 @@
         },
         "observed_generation": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "replicas": {
           "format": "int32",
@@ -863,7 +863,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesCopyResourceResponse"
             }
@@ -888,7 +888,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesAppListResponse"
             }
@@ -927,7 +927,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesAppDescribeResponse"
             }
@@ -966,7 +966,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesPodListResponse"
             }
@@ -991,7 +991,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesConfigMapListResponse"
             }
@@ -1030,7 +1030,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesConfigMapDescribeResponse"
             }
@@ -1055,7 +1055,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesJobListResponse"
             }
@@ -1080,7 +1080,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesNamespaceListResponse"
             }
@@ -1105,7 +1105,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesNodeListResponse"
             }
@@ -1130,7 +1130,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesPodListResponse"
             }
@@ -1155,7 +1155,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesReplicationControllerListResponse"
             }
@@ -1180,7 +1180,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesSecretListResponse"
             }
@@ -1219,7 +1219,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesSecretDescribeResponse"
             }
@@ -1244,7 +1244,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesServiceListResponse"
             }

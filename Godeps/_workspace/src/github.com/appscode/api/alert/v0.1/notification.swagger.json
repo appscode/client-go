@@ -22,7 +22,7 @@
       "properties": {
         "count": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "host_name": {
           "format": "string",
@@ -30,7 +30,7 @@
         },
         "last_notified": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "phid": {
           "format": "string",
@@ -203,7 +203,7 @@
         "operationId": "List",
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/alertNotificationListResponse"
             }
@@ -227,7 +227,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -260,7 +260,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }

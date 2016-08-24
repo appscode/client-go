@@ -130,13 +130,13 @@
           "type": "boolean"
         },
         "node": {
-          "type": "integer"
+          "type": "string"
         },
         "pv": {
           "type": "string"
         },
         "pv_size": {
-          "type": "integer"
+          "type": "string"
         },
         "region": {
           "type": "string"
@@ -242,13 +242,13 @@
           "type": "string"
         },
         "node": {
-          "type": "integer"
+          "type": "string"
         },
         "pv": {
           "type": "string"
         },
         "pv_size": {
-          "type": "integer"
+          "type": "string"
         },
         "region": {
           "type": "string"

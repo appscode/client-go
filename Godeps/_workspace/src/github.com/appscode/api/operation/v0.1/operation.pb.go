@@ -22,7 +22,7 @@ package operation
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import _ "github.com/gengo/grpc-gateway/third_party/googleapis/google/api"
+import _ "github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api"
 import dtypes "github.com/appscode/api/dtypes"
 import certificate "github.com/appscode/api/certificate/v0.1"
 import ci "github.com/appscode/api/ci/v0.1"

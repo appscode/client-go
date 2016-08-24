@@ -116,7 +116,7 @@
       "properties": {
         "count": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "selector": {
           "format": "string",
@@ -186,11 +186,11 @@
       "properties": {
         "alert_interval_sec": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "check_interval_sec": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         }
       },
       "type": "object"
@@ -317,7 +317,7 @@
         "operationId": "List",
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/alertAlertListResponse"
             }
@@ -341,7 +341,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -366,7 +366,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -397,7 +397,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }

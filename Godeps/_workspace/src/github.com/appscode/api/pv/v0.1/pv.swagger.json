@@ -123,7 +123,7 @@
         },
         "size": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "status": {
           "format": "string",
@@ -160,7 +160,7 @@
         },
         "size": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         }
       },
       "type": "object"
@@ -206,7 +206,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -236,7 +236,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/pvPVDescribeResponse"
             }
@@ -274,7 +274,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }

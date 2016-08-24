@@ -52,7 +52,7 @@ func init() {
       "type": "string"
     },
     "size": {
-      "type": "integer"
+      "type": "string"
     }
   },
   "type": "object"

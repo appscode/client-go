@@ -3,7 +3,7 @@
     "billingPurchaseBeginRequest": {
       "properties": {
         "count": {
-          "type": "integer"
+          "type": "string"
         },
         "product_sku": {
           "type": "string"

@@ -34,7 +34,7 @@ func init() {
       "type": "string"
     },
     "number": {
-      "type": "integer"
+      "type": "string"
     },
     "parents": {
       "type": "string"

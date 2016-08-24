@@ -17,7 +17,7 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "count": {
-      "type": "integer"
+      "type": "string"
     },
     "product_sku": {
       "type": "string"

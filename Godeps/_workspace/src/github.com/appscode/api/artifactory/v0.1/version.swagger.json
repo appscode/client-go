@@ -255,7 +255,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/artifactoryVersionListResponse"
             }
@@ -280,7 +280,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/artifactoryVersionDescribeResponse"
             }

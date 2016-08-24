@@ -106,12 +106,12 @@
       "properties": {
         "build_count": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "build_ids": {
           "items": {
             "format": "int64",
-            "type": "integer"
+            "type": "string"
           },
           "type": "array"
         },
@@ -129,7 +129,7 @@
         },
         "first_build_id": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "health_report": {
           "items": {
@@ -147,19 +147,19 @@
         },
         "last_build_id": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "last_completed_build_id": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "last_failed_build_id": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "last_successful_build_id": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "name": {
           "format": "string",
@@ -167,7 +167,7 @@
         },
         "next_build_number": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "parents": {
           "format": "string",
@@ -187,7 +187,7 @@
         },
         "score": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         }
       },
       "type": "object"
@@ -299,7 +299,7 @@
         "operationId": "List",
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ciJobListResponse"
             }
@@ -324,7 +324,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -347,7 +347,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ciJobDescribeResponse"
             }
@@ -378,7 +378,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -411,7 +411,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -451,7 +451,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }

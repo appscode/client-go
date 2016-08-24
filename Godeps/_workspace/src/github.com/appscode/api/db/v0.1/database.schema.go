@@ -232,13 +232,13 @@ func init() {
       "type": "boolean"
     },
     "node": {
-      "type": "integer"
+      "type": "string"
     },
     "pv": {
       "type": "string"
     },
     "pv_size": {
-      "type": "integer"
+      "type": "string"
     },
     "region": {
       "type": "string"
@@ -324,13 +324,13 @@ func init() {
       "type": "string"
     },
     "node": {
-      "type": "integer"
+      "type": "string"
     },
     "pv": {
       "type": "string"
     },
     "pv_size": {
-      "type": "integer"
+      "type": "string"
     },
     "region": {
       "type": "string"

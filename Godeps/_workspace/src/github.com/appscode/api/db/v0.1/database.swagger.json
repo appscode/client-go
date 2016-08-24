@@ -111,7 +111,7 @@
         },
         "node": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "pv": {
           "format": "string",
@@ -119,7 +119,7 @@
         },
         "pv_size": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "region": {
           "format": "string",
@@ -188,7 +188,7 @@
         },
         "pv_size": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "schedule_cron_expr": {
           "format": "string",
@@ -309,15 +309,15 @@
       "properties": {
         "pods": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "rc": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "svc": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         }
       },
       "type": "object"
@@ -389,7 +389,7 @@
         },
         "node": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "pv": {
           "format": "string",
@@ -397,7 +397,7 @@
         },
         "pv_size": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "region": {
           "format": "string",
@@ -495,11 +495,11 @@
       "properties": {
         "backup_attempt": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "backup_success": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "last_backup": {
           "format": "string",
@@ -507,11 +507,11 @@
         },
         "restore_attempt": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "restore_success": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "schedule_cron_expr": {
           "format": "string",
@@ -651,7 +651,7 @@
         "operationId": "List",
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dbListResponse"
             }
@@ -684,7 +684,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -716,7 +716,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -756,7 +756,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -786,7 +786,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -826,7 +826,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -866,7 +866,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -898,7 +898,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dbDescribeResponse"
             }
@@ -936,7 +936,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -968,7 +968,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dbSnapshotListResponse"
             }

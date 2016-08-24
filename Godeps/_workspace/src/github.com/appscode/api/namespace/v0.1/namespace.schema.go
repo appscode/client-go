@@ -99,6 +99,9 @@ func (m *IsAvailableRequest) IsRequest() {}
 func (m *GetResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
+func (m *SubscriptionResponse) SetStatus(s *dtypes.Status) {
+	m.Status = s
+}
 func (m *CreateResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }

@@ -9,7 +9,7 @@
         "assigned": {
           "additionalProperties": {
             "format": "int64",
-            "type": "integer"
+            "type": "string"
           },
           "type": "object"
         },
@@ -19,7 +19,7 @@
         "used": {
           "additionalProperties": {
             "format": "int64",
-            "type": "integer"
+            "type": "string"
           },
           "type": "object"
         }
@@ -106,7 +106,7 @@
         "operationId": "Get",
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/billingQuotaGetResponse"
             }

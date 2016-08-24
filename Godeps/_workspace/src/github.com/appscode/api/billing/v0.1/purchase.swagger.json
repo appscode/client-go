@@ -8,7 +8,7 @@
       "properties": {
         "count": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         },
         "product_sku": {
           "format": "string",
@@ -159,7 +159,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/billingPurchaseBeginResponse"
             }
@@ -184,7 +184,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -217,7 +217,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }

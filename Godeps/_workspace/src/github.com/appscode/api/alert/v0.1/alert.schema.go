@@ -58,7 +58,7 @@ func init() {
     "alertCheckKubernetes": {
       "properties": {
         "count": {
-          "type": "integer"
+          "type": "string"
         },
         "selector": {
           "type": "string"
@@ -83,10 +83,10 @@ func init() {
     "alertIcingaParam": {
       "properties": {
         "alert_interval_sec": {
-          "type": "integer"
+          "type": "string"
         },
         "check_interval_sec": {
-          "type": "integer"
+          "type": "string"
         }
       },
       "type": "object"
@@ -190,7 +190,7 @@ func init() {
     "alertCheckKubernetes": {
       "properties": {
         "count": {
-          "type": "integer"
+          "type": "string"
         },
         "selector": {
           "type": "string"
@@ -215,10 +215,10 @@ func init() {
     "alertIcingaParam": {
       "properties": {
         "alert_interval_sec": {
-          "type": "integer"
+          "type": "string"
         },
         "check_interval_sec": {
-          "type": "integer"
+          "type": "string"
         }
       },
       "type": "object"

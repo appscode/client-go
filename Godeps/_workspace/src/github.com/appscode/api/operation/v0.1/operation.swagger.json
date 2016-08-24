@@ -12,7 +12,7 @@
         },
         "timestamp": {
           "format": "int64",
-          "type": "integer"
+          "type": "string"
         }
       },
       "type": "object"
@@ -254,7 +254,7 @@
         "node_set": {
           "additionalProperties": {
             "format": "int64",
-            "type": "integer"
+            "type": "string"
           },
           "type": "object"
         },
@@ -295,7 +295,7 @@
         "node_changes": {
           "additionalProperties": {
             "format": "int64",
-            "type": "integer"
+            "type": "string"
           },
           "type": "object"
         }
@@ -575,7 +575,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/operationDescribeResponse"
             }

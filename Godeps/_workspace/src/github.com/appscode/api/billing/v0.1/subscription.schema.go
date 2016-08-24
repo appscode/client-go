@@ -13,11 +13,14 @@ func init() {
 	subscriptionSubscribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "auto_extend": {
+      "type": "boolean"
+    },
     "product_id": {
       "type": "string"
     },
     "start_time": {
-      "type": "integer"
+      "type": "string"
     }
   },
   "type": "object"
