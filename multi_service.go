@@ -65,7 +65,6 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 			subscriptionClient:  billing.NewSubscriptionClient(conn),
 			purchaseClient:      billing.NewPurchaseClient(conn),
 			chargeClient:        billing.NewChargeClient(conn),
-			invoiceClient:       billing.NewInvoiceClient(conn),
 			quotaClient:         billing.NewQuotaClient(conn),
 		},
 		caClient: &caService{
@@ -194,7 +193,6 @@ type billingService struct {
 	subscriptionClient  billing.SubscriptionClient
 	purchaseClient      billing.PurchaseClient
 	chargeClient        billing.ChargeClient
-	invoiceClient       billing.InvoiceClient
 	quotaClient         billing.QuotaClient
 }
 
