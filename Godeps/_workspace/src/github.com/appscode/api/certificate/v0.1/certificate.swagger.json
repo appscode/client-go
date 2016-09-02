@@ -359,7 +359,7 @@
         "operationId": "List",
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/certificateCertificateListResponse"
             }
@@ -383,7 +383,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/certificateCertificateCreateResponse"
             }
@@ -416,7 +416,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -441,7 +441,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -464,7 +464,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/certificateCertificateDescribeResponse"
             }
@@ -497,7 +497,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -522,7 +522,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/certificateCertificateRenewResponse"
             }
@@ -547,7 +547,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }

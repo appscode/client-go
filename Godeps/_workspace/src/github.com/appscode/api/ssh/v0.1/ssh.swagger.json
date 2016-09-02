@@ -143,7 +143,7 @@
         "operationId": "Get",
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/sshSSHGetResponse"
             }

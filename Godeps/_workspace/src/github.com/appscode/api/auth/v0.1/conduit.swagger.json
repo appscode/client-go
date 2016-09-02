@@ -154,7 +154,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/authConduitUsersResponse"
             }
@@ -181,7 +181,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/authConduitWhoAmIResponse"
             }

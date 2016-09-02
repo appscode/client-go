@@ -2,6 +2,9 @@
   "definitions": {
     "billingSubscriptionSubscribeRequest": {
       "properties": {
+        "auto_extend": {
+          "type": "boolean"
+        },
         "product_id": {
           "type": "string"
         },

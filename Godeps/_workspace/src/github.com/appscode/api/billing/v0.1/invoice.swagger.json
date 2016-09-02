@@ -101,7 +101,7 @@
         "operationId": "Create",
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/billingInvoiceCreateResponse"
             }

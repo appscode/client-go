@@ -314,7 +314,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/pvDiskListResponse"
             }
@@ -346,7 +346,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -386,7 +386,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -425,7 +425,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/pvDiskDescribeResponse"
             }

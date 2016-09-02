@@ -1,6 +1,6 @@
 package namespace
 
-import "github.com/gengo/grpc-gateway/runtime"
+import "github.com/grpc-ecosystem/grpc-gateway/runtime"
 
 func Patterns() []runtime.Pattern {
 	return []runtime.Pattern{

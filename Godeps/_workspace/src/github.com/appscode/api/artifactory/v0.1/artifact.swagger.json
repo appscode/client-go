@@ -156,7 +156,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/artifactoryArtifactListResponse"
             }
@@ -172,7 +172,7 @@
         "operationId": "Search",
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/artifactoryArtifactSearchResponse"
             }

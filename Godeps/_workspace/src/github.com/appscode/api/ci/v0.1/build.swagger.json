@@ -210,7 +210,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ciBuildListResponse"
             }
@@ -242,7 +242,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/ciBuildDescribeResponse"
             }

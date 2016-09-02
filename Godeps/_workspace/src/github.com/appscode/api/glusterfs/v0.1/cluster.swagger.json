@@ -219,7 +219,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/glusterfsClusterListResponse"
             }
@@ -251,7 +251,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -283,7 +283,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesVoidResponse"
             }
@@ -313,7 +313,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Description",
+            "description": "",
             "schema": {
               "$ref": "#/definitions/glusterfsClusterDescribeResponse"
             }

@@ -7,9 +7,7 @@ import "api/dtypes/types.proto";
 
 // no authentication required, but rate limited apis.
 service Namespace {
-  /*
-  Creates a new namespace, if name is valid and no namespace with same name exists.
-  */
+  // Creates a new namespace, if name is valid and no namespace with same name exists.
   rpc Create(CreateRequest) returns (CreateResponse) {
 	  option (google.api.http) = {
 	    put: "/appscode/api/namespace/v0.1/{name}"
@@ -17,21 +15,24 @@ service Namespace {
     };
   }
 
-  /*
-  Gets a namespace, if exists. This can be used to check existence of a namespace.
-  */
+  // Gets a namespace, if exists. This can be used to check existence of a namespace.
   rpc Get(GetRequest) returns (GetResponse) {
 	  option (google.api.http) = {
 	    get: "/appscode/api/namespace/v0.1/{name}"
 	  };
   }
 
-  /*
-  Check if a namespace name is available meaning name is valid and no namespace with same name exists.
-  */
+  // Check if a namespace name is available meaning name is valid and no namespace with same name exists.
   rpc IsAvailable(IsAvailableRequest) returns (dtypes.VoidResponse) {
 	  option (google.api.http) = {
 	    get : "/appscode/api/namespace/v0.1/{name}/is-available"
+    };
+  }
+
+  // Checks current subscription of a namespace
+  rpc Subscription(dtypes.VoidRequest) returns (SubscriptionResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/namespace/v0.1/billing/subscription"
     };
   }
 }
@@ -62,4 +63,19 @@ message GetResponse {
 
 message IsAvailableRequest {
   string name = 1;
+}
+
+message SubscriptionResponse {
+  dtypes.Status status = 1;
+  message Product {
+    string sku = 1;
+    string type = 2;
+    string display_name = 3;
+    string pricing_model = 4;
+  }
+  Product product = 2;
+  bool auto_extend = 3;
+  string quota = 4;
+  string date_start = 5;
+  string date_end = 6;
 }
