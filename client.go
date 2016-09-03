@@ -41,7 +41,6 @@ func (c *Client) Close() error {
 	return c.connection.Close()
 }
 
-
 func (c *Client) Context() context.Context {
 	return context.Background()
 }

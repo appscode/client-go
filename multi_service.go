@@ -45,8 +45,8 @@ type multiClientServices struct {
 func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 	return &multiClientServices{
 		alertClient: &alertService{
-			alertClient:        alert.NewAlertsClient(conn),
-			notificationClient: alert.NewNotificationsClient(conn),
+			alertClient:    alert.NewAlertsClient(conn),
+			incidentClient: alert.NewIncidentsClient(conn),
 		},
 		artifactoryClient: &artifactoryService{
 			artifactClient: artifactory.NewArtifactsClient(conn),
@@ -137,16 +137,16 @@ func (s *multiClientServices) PV() *pvService {
 // original service clients that needs to exposed under grouped wrapper
 // services.
 type alertService struct {
-	alertClient        alert.AlertsClient
-	notificationClient alert.NotificationsClient
+	alertClient    alert.AlertsClient
+	incidentClient alert.IncidentsClient
 }
 
 func (a *alertService) Alert() alert.AlertsClient {
 	return a.alertClient
 }
 
-func (a *alertService) Notification() alert.NotificationsClient {
-	return a.notificationClient
+func (a *alertService) Incident() alert.IncidentsClient {
+	return a.incidentClient
 }
 
 type artifactoryService struct {
