@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+package alert;
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+// Alert service protobufs for cluster alert incident.
+service Incidents {
+  rpc List(IncidentListRequest) returns (IncidentListResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/alert/v0.1/incidents"
+    };
+  }
+
+  rpc Describe(IncidentDescribeRequest) returns (IncidentDescribeResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/alert/v0.1/incidents/{phid}"
+    };
+  }
+
+  rpc Notify(IncidentNotifyRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post : "/appscode/api/alert/v0.1/incidents"
+      body : "*"
+    };
+  }
+
+  rpc CreateEvent(IncidentEventCreateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post : "/appscode/api/alert/v0.1/incidents/{phid}/events"
+      body : "*"
+    };
+  }
+}
+
+message Incident {
+  string phid = 1;
+  string kubernetes_cluster = 2;
+  string kubernetes_namespace  = 3;
+  string kubernetes_objectType = 4;
+  string kubernetes_objectName = 5;
+  string kubernetes_node  = 6;
+  string kubernetes_pod = 7;
+  dtypes.Uid alert = 8;
+  string icinga_host = 9;
+  string icinga_service = 10;
+  string type = 11;
+  string state = 12;
+  dtypes.Uid user = 13;
+  // Timestamp of first reported event
+  int64 reported = 14;
+  // Timestamp of first acknowledgement
+  int64 acknowledged = 15;
+  int64 recovered = 16;
+  string icingaweb_url = 17;
+  message Event {
+    string type = 1;
+    string state = 2;
+    int64 reported = 3;
+    dtypes.Uid user = 4;
+    string comment = 5;
+  }
+  repeated Event events = 18;
+}
+
+message IncidentListRequest {
+  string kubernetes_cluster = 1;
+  string kubernetes_namespace  = 2;
+  string kubernetes_objectType = 3;
+  string kubernetes_objectName = 4;
+  repeated string state = 5;
+}
+
+message IncidentListResponse {
+  dtypes.Status status = 1;
+  repeated Incident incidents = 2;
+}
+
+message IncidentDescribeRequest {
+  string phid = 1;
+}
+
+message IncidentDescribeResponse {
+  dtypes.Status status = 1;
+  Incident incident = 2;
+}
+
+message IncidentNotifyRequest {
+  string alert_phid = 1;
+  string host_name = 2;
+  string type = 3;
+  string state = 4;
+  string output = 5;
+  string time = 6;
+}
+
+message IncidentEventCreateRequest {
+  // Incident PHID
+  string phid = 1;
+  string comment = 2;
+  bool acknowledge = 3;
+}

@@ -1,0 +1,182 @@
+{
+  "definitions": {
+    "alertAlertCreateRequest": {
+      "properties": {
+        "check_command": {
+          "type": "string"
+        },
+        "command_param": {
+          "$ref": "#/definitions/alertCommandParam"
+        },
+        "icinga_param": {
+          "$ref": "#/definitions/alertIcingaParam"
+        },
+        "icinga_service": {
+          "type": "string"
+        },
+        "kubernetes_cluster": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "type": "string"
+        },
+        "notifier_param": {
+          "items": {
+            "$ref": "#/definitions/alertNotifierParam"
+          },
+          "type": "array"
+        },
+        "plugin": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertDeleteRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertDescribeRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertListRequest": {
+      "properties": {
+        "kubernetes_cluster": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertSyncRequest": {
+      "properties": {
+        "kubernetes_cluster": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertAlertUpdateRequest": {
+      "properties": {
+        "command_param": {
+          "$ref": "#/definitions/alertCommandParam"
+        },
+        "icinga_param": {
+          "$ref": "#/definitions/alertIcingaParam"
+        },
+        "notifier_param": {
+          "items": {
+            "$ref": "#/definitions/alertNotifierParam"
+          },
+          "type": "array"
+        },
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertCheckInfluxData": {
+      "properties": {
+        "critical_condition": {
+          "type": "string"
+        },
+        "query": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "r": {
+          "type": "string"
+        },
+        "warning_condition": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertCheckKubernetes": {
+      "properties": {
+        "count": {
+          "type": "integer"
+        },
+        "selector": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertCommandParam": {
+      "properties": {
+        "check_influx_data": {
+          "$ref": "#/definitions/alertCheckInfluxData"
+        },
+        "check_kubernetes": {
+          "$ref": "#/definitions/alertCheckKubernetes"
+        }
+      },
+      "type": "object"
+    },
+    "alertIcingaParam": {
+      "properties": {
+        "alert_interval_sec": {
+          "type": "integer"
+        },
+        "check_interval_sec": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "alertNotifierParam": {
+      "properties": {
+        "method": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "user_uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

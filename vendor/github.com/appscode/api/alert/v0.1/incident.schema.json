@@ -1,0 +1,73 @@
+{
+  "definitions": {
+    "alertIncidentDescribeRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertIncidentEventCreateRequest": {
+      "properties": {
+        "acknowledge": {
+          "type": "boolean"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "phid": {
+          "title": "Incident PHID",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "alertIncidentListRequest": {
+      "properties": {
+        "kubernetes_cluster": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "type": "string"
+        },
+        "state": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "alertIncidentNotifyRequest": {
+      "properties": {
+        "alert_phid": {
+          "type": "string"
+        },
+        "host_name": {
+          "type": "string"
+        },
+        "output": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}
