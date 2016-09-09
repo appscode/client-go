@@ -4,7 +4,7 @@ jobs:
       image: appscode/golang-agent:1.5
     script: |
       echo $GOPATH
-      mv Godeps/_workspace/src/ $GOPATH || true #godep restore that actually works
+      mv vendor/* $GOPATH/src/ || true #godep restore that actually works
       mkdir -p $GOPATH/src/github.com/appscode/client
       cp -a . $GOPATH/src/github.com/appscode/client
       cd $GOPATH/src/github.com/appscode/client
