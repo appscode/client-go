@@ -1,5 +1,43 @@
 {
   "definitions": {
+    "AlertSyncRequestPodAncestor": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 3",
+      "type": "object"
+    },
+    "alertAlertSyncRequest": {
+      "properties": {
+        "kubernetes_cluster": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "type": "string"
+        },
+        "pod_ancestor": {
+          "items": {
+            "$ref": "#/definitions/AlertSyncRequestPodAncestor"
+          },
+          "type": "array"
+        }
+      },
+      "title": "Next Id: 6",
+      "type": "object"
+    },
     "certificateDNSCheckRequest": {
       "properties": {
         "domain": {
@@ -142,10 +180,16 @@
         "do_not_delete": {
           "type": "boolean"
         },
-        "kube_starter_version": {
+        "hostfacts_version": {
           "type": "string"
         },
-        "kube_version": {
+        "kube_saltbase_version": {
+          "type": "string"
+        },
+        "kube_server_version": {
+          "type": "string"
+        },
+        "kube_starter_version": {
           "type": "string"
         },
         "name": {
@@ -160,7 +204,7 @@
         "provider": {
           "type": "string"
         },
-        "saltbase_version": {
+        "version": {
           "type": "string"
         },
         "zone": {
@@ -199,16 +243,22 @@
     },
     "kubernetesClusterUpgradeRequest": {
       "properties": {
-        "kube_starter_version": {
+        "hostfacts_version": {
           "type": "string"
         },
-        "kube_version": {
+        "kube_saltbase_version": {
+          "type": "string"
+        },
+        "kube_server_version": {
+          "type": "string"
+        },
+        "kube_starter_version": {
           "type": "string"
         },
         "name": {
           "type": "string"
         },
-        "saltbase_version": {
+        "version": {
           "type": "string"
         }
       },

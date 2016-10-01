@@ -208,12 +208,40 @@
     },
     "kubernetesClusterClientConfigResponse": {
       "properties": {
+        "api_server_url": {
+          "format": "string",
+          "type": "string"
+        },
+        "ca_cert": {
+          "format": "string",
+          "type": "string"
+        },
+        "cluster_domain": {
+          "format": "string",
+          "type": "string"
+        },
+        "cluster_user_name": {
+          "format": "string",
+          "type": "string"
+        },
         "configuration": {
+          "format": "string",
+          "type": "string"
+        },
+        "context_name": {
           "format": "string",
           "type": "string"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
+        },
+        "user_cert": {
+          "format": "string",
+          "type": "string"
+        },
+        "user_key": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -235,11 +263,19 @@
           "format": "boolean",
           "type": "boolean"
         },
-        "kube_starter_version": {
+        "hostfacts_version": {
           "format": "string",
           "type": "string"
         },
-        "kube_version": {
+        "kube_saltbase_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_server_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_starter_version": {
           "format": "string",
           "type": "string"
         },
@@ -258,7 +294,7 @@
           "format": "string",
           "type": "string"
         },
-        "saltbase_version": {
+        "version": {
           "format": "string",
           "type": "string"
         },
@@ -338,6 +374,19 @@
       },
       "type": "object"
     },
+    "kubernetesClusterInstanceByIPRequest": {
+      "properties": {
+        "external_ip": {
+          "format": "string",
+          "type": "string"
+        },
+        "phid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "kubernetesClusterInstanceListRequest": {
       "properties": {
         "cluster_name": {
@@ -354,6 +403,17 @@
             "$ref": "#/definitions/kubernetesClusterInstance"
           },
           "type": "array"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClusterInstanceResponse": {
+      "properties": {
+        "instance": {
+          "$ref": "#/definitions/kubernetesClusterInstance"
         },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
@@ -427,6 +487,10 @@
         "role": {
           "format": "string",
           "type": "string"
+        },
+        "uid": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"
@@ -461,11 +525,19 @@
     },
     "kubernetesClusterUpgradeRequest": {
       "properties": {
-        "kube_starter_version": {
+        "hostfacts_version": {
           "format": "string",
           "type": "string"
         },
-        "kube_version": {
+        "kube_saltbase_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_server_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_starter_version": {
           "format": "string",
           "type": "string"
         },
@@ -473,7 +545,7 @@
           "format": "string",
           "type": "string"
         },
-        "saltbase_version": {
+        "version": {
           "format": "string",
           "type": "string"
         }
@@ -503,31 +575,6 @@
     "version": "0.1"
   },
   "paths": {
-    "/appscode/api/kubernetes/v0.1/cluster-startup-script/{role}": {
-      "get": {
-        "operationId": "StartupScript",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "role",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/kubernetesClusterStartupScriptResponse"
-            }
-          }
-        },
-        "tags": [
-          "Clusters"
-        ]
-      }
-    },
     "/appscode/api/kubernetes/v0.1/clusters": {
       "get": {
         "operationId": "List",
@@ -740,6 +787,38 @@
         ]
       }
     },
+    "/appscode/api/kubernetes/v0.1/clusters/{phid}/instance-by-ip/{external_ip}": {
+      "get": {
+        "operationId": "InstanceByIP",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "phid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "external_ip",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/kubernetesClusterInstanceResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
     "/appscode/api/kubernetes/v0.1/clusters/{uid}": {
       "get": {
         "operationId": "Describe",
@@ -757,6 +836,38 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/kubernetesClusterDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v0.1/clusters/{uid}/startup-script/{role}": {
+      "get": {
+        "operationId": "StartupScript",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "uid",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "role",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/kubernetesClusterStartupScriptResponse"
             }
           }
         },

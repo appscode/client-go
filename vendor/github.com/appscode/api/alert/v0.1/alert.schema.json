@@ -1,12 +1,21 @@
 {
   "definitions": {
+    "AlertSyncRequestPodAncestor": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 3",
+      "type": "object"
+    },
     "alertAlertCreateRequest": {
       "properties": {
         "check_command": {
           "type": "string"
-        },
-        "command_param": {
-          "$ref": "#/definitions/alertCommandParam"
         },
         "icinga_param": {
           "$ref": "#/definitions/alertIcingaParam"
@@ -32,10 +41,14 @@
           },
           "type": "array"
         },
-        "plugin": {
-          "type": "string"
+        "vars": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
         }
       },
+      "title": "Next Id: 12",
       "type": "object"
     },
     "alertAlertDeleteRequest": {
@@ -44,6 +57,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 2",
       "type": "object"
     },
     "alertAlertDescribeRequest": {
@@ -52,6 +66,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 2",
       "type": "object"
     },
     "alertAlertListRequest": {
@@ -69,6 +84,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 5",
       "type": "object"
     },
     "alertAlertSyncRequest": {
@@ -84,15 +100,19 @@
         },
         "kubernetes_objectType": {
           "type": "string"
+        },
+        "pod_ancestor": {
+          "items": {
+            "$ref": "#/definitions/AlertSyncRequestPodAncestor"
+          },
+          "type": "array"
         }
       },
+      "title": "Next Id: 6",
       "type": "object"
     },
     "alertAlertUpdateRequest": {
       "properties": {
-        "command_param": {
-          "$ref": "#/definitions/alertCommandParam"
-        },
         "icinga_param": {
           "$ref": "#/definitions/alertIcingaParam"
         },
@@ -104,53 +124,15 @@
         },
         "phid": {
           "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertCheckInfluxData": {
-      "properties": {
-        "critical_condition": {
-          "type": "string"
         },
-        "query": {
+        "vars": {
           "additionalProperties": {
             "type": "string"
           },
           "type": "object"
-        },
-        "r": {
-          "type": "string"
-        },
-        "warning_condition": {
-          "type": "string"
         }
       },
-      "type": "object"
-    },
-    "alertCheckKubernetes": {
-      "properties": {
-        "count": {
-          "type": "integer"
-        },
-        "selector": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "alertCommandParam": {
-      "properties": {
-        "check_influx_data": {
-          "$ref": "#/definitions/alertCheckInfluxData"
-        },
-        "check_kubernetes": {
-          "$ref": "#/definitions/alertCheckKubernetes"
-        }
-      },
+      "title": "Next Id: 6",
       "type": "object"
     },
     "alertIcingaParam": {

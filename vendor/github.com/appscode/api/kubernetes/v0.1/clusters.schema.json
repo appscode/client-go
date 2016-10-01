@@ -26,10 +26,16 @@
         "do_not_delete": {
           "type": "boolean"
         },
-        "kube_starter_version": {
+        "hostfacts_version": {
           "type": "string"
         },
-        "kube_version": {
+        "kube_saltbase_version": {
+          "type": "string"
+        },
+        "kube_server_version": {
+          "type": "string"
+        },
+        "kube_starter_version": {
           "type": "string"
         },
         "name": {
@@ -46,7 +52,7 @@
         "provider": {
           "type": "string"
         },
-        "saltbase_version": {
+        "version": {
           "type": "string"
         },
         "zone": {
@@ -74,6 +80,17 @@
     "kubernetesClusterDescribeRequest": {
       "properties": {
         "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "kubernetesClusterInstanceByIPRequest": {
+      "properties": {
+        "external_ip": {
+          "type": "string"
+        },
+        "phid": {
           "type": "string"
         }
       },
@@ -136,6 +153,9 @@
       "properties": {
         "role": {
           "type": "string"
+        },
+        "uid": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -158,10 +178,16 @@
     },
     "kubernetesClusterUpgradeRequest": {
       "properties": {
-        "kube_starter_version": {
+        "hostfacts_version": {
           "type": "string"
         },
-        "kube_version": {
+        "kube_saltbase_version": {
+          "type": "string"
+        },
+        "kube_server_version": {
+          "type": "string"
+        },
+        "kube_starter_version": {
           "type": "string"
         },
         "name": {
@@ -169,7 +195,7 @@
           "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
-        "saltbase_version": {
+        "version": {
           "type": "string"
         }
       },

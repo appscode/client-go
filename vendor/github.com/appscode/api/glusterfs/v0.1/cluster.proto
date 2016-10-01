@@ -19,7 +19,7 @@ service Clusters {
 
   rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/glusterfs/v0.1/clusters/{kube_cluster}/{name}"
+      get: "/appscode/api/glusterfs/v0.1/clusters/{kube_cluster}/{kube_namespace}/{name}"
     };
   }
 
@@ -32,7 +32,7 @@ service Clusters {
 
   rpc Delete(ClusterDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete : "/appscode/api/glusterfs/v0.1/clusters/{kube_cluster}/{name}"
+      delete : "/appscode/api/glusterfs/v0.1/clusters/{kube_cluster}/{kube_namespace}/{name}"
     };
   }
 }
@@ -41,15 +41,22 @@ message Cluster {
   string phid = 1;
   string name = 2;
   string kube_cluster = 3;
-  string mood = 4;
-  string kube_namespace = 5;
-  int64 replica = 6;
-  int32 BaculaEnabled = 7;
-  string created = 8;
+  string kube_namespace = 4;
+  int64 replica = 5;
+  string endpoint = 6;
+  string created = 7;
+  string status = 8;
 }
 
 message ClusterListRequest {
   string kube_cluster = 1;
+  // List of status to get the agent filterd on the status
+  // values in
+  //   PENDING
+  //   FAILED
+  //   READY
+  //   DELETED
+  repeated string status = 2;
 }
 
 message ClusterListResponse {
@@ -59,7 +66,8 @@ message ClusterListResponse {
 
 message ClusterDescribeRequest {
   string kube_cluster = 1;
-  string name = 2;
+  string kube_namespace = 2;
+  string name = 3;
 }
 
 message ClusterDescribeResponse {
@@ -69,12 +77,14 @@ message ClusterDescribeResponse {
 message ClusterCreateRequest {
   string name = 1;
   int64 node = 2;
-  string mood = 3;
-  repeated string disks = 4;
-  string kube_cluster = 5;
+  repeated string disks = 3;
+  string kube_cluster = 4;
+  string kube_namespace = 5;
+  bool bacula_enabled = 6;
 }
 
 message ClusterDeleteRequest {
   string kube_cluster = 1;
-  string name = 2;
+  string kube_namespace = 2;
+  string name = 3;
 }

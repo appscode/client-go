@@ -4,6 +4,20 @@
     "application/json"
   ],
   "definitions": {
+    "AlertSyncRequestPodAncestor": {
+      "properties": {
+        "name": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 3",
+      "type": "object"
+    },
     "DescribeResponseLog": {
       "properties": {
         "message": {
@@ -15,6 +29,34 @@
           "type": "integer"
         }
       },
+      "type": "object"
+    },
+    "alertAlertSyncRequest": {
+      "properties": {
+        "kubernetes_cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "format": "string",
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "format": "string",
+          "type": "string"
+        },
+        "pod_ancestor": {
+          "items": {
+            "$ref": "#/definitions/AlertSyncRequestPodAncestor"
+          },
+          "type": "array"
+        }
+      },
+      "title": "Next Id: 6",
       "type": "object"
     },
     "certificateDNSCheckRequest": {
@@ -239,11 +281,19 @@
           "format": "boolean",
           "type": "boolean"
         },
-        "kube_starter_version": {
+        "hostfacts_version": {
           "format": "string",
           "type": "string"
         },
-        "kube_version": {
+        "kube_saltbase_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_server_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_starter_version": {
           "format": "string",
           "type": "string"
         },
@@ -262,7 +312,7 @@
           "format": "string",
           "type": "string"
         },
-        "saltbase_version": {
+        "version": {
           "format": "string",
           "type": "string"
         },
@@ -308,11 +358,19 @@
     },
     "kubernetesClusterUpgradeRequest": {
       "properties": {
-        "kube_starter_version": {
+        "hostfacts_version": {
           "format": "string",
           "type": "string"
         },
-        "kube_version": {
+        "kube_saltbase_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_server_version": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_starter_version": {
           "format": "string",
           "type": "string"
         },
@@ -320,7 +378,7 @@
           "format": "string",
           "type": "string"
         },
-        "saltbase_version": {
+        "version": {
           "format": "string",
           "type": "string"
         }
@@ -465,6 +523,9 @@
     },
     "operationOperation": {
       "properties": {
+        "alert_sync_request": {
+          "$ref": "#/definitions/alertAlertSyncRequest"
+        },
         "auth": {
           "$ref": "#/definitions/operationAuth"
         },
@@ -518,7 +579,7 @@
           "$ref": "#/definitions/operationOperationType"
         }
       },
-      "title": "Next Id: 16",
+      "title": "Next Id: 19",
       "type": "object"
     },
     "operationOperationType": {
@@ -537,9 +598,10 @@
         "DATABASE_BACKUP",
         "NAMESPACE_CREATE",
         "NAMESPACE_ADMIN_TASK",
-        "CHECK_DNS"
+        "CHECK_DNS",
+        "ALERT_SYNC"
       ],
-      "title": "Next Id: 11",
+      "title": "Next Id: 15",
       "type": "string"
     },
     "protobufAny": {

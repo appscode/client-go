@@ -52,67 +52,9 @@
       "title": "Next Id = 5",
       "type": "object"
     },
-    "dtypesVoidResponse": {
-      "properties": {
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "type": "object"
-    },
     "glusterfsVolume": {
       "properties": {
-        "bricks": {
-          "format": "string",
-          "type": "string"
-        },
-        "endpoint": {
-          "format": "string",
-          "type": "string"
-        },
         "path": {
-          "format": "string",
-          "type": "string"
-        },
-        "replica": {
-          "format": "int64",
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "glusterfsVolumeCreateRequest": {
-      "properties": {
-        "enable_bacula": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "glusterfs_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "volume": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "glusterfsVolumeDeleteRequest": {
-      "properties": {
-        "glusterfs_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "kube_cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "volume": {
           "format": "string",
           "type": "string"
         }
@@ -126,6 +68,10 @@
           "type": "string"
         },
         "kube_cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "kube_namespace": {
           "format": "string",
           "type": "string"
         }
@@ -169,9 +115,9 @@
     "version": "0.1"
   },
   "paths": {
-    "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}": {
-      "put": {
-        "operationId": "Create",
+    "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}/{kube_namespace}/{glusterfs_cluster}": {
+      "get": {
+        "operationId": "List",
         "parameters": [
           {
             "format": "string",
@@ -181,35 +127,9 @@
             "type": "string"
           },
           {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/glusterfsVolumeCreateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "Volumes"
-        ]
-      }
-    },
-    "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}/{glusterfs_cluster}": {
-      "get": {
-        "operationId": "List",
-        "parameters": [
-          {
             "format": "string",
             "in": "path",
-            "name": "kube_cluster",
+            "name": "kube_namespace",
             "required": true,
             "type": "string"
           },
@@ -226,45 +146,6 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/glusterfsVolumeListResponse"
-            }
-          }
-        },
-        "tags": [
-          "Volumes"
-        ]
-      }
-    },
-    "/appscode/api/glusterfs/v0.1/volumes/{kube_cluster}/{glusterfs_cluster}/{volume}": {
-      "delete": {
-        "operationId": "Delete",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "kube_cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "glusterfs_cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "volume",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
             }
           }
         },

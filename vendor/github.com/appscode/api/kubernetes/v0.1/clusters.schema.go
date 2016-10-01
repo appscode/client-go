@@ -9,6 +9,7 @@ import (
 
 var clusterInstanceListRequestSchema *gojsonschema.Schema
 var clusterScaleRequestSchema *gojsonschema.Schema
+var clusterInstanceByIPRequestSchema *gojsonschema.Schema
 var clusterUpdateRequestSchema *gojsonschema.Schema
 var clusterDeleteRequestSchema *gojsonschema.Schema
 var clusterUpgradeRequestSchema *gojsonschema.Schema
@@ -47,6 +48,21 @@ func init() {
         "type": "integer"
       },
       "type": "object"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	clusterInstanceByIPRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "external_ip": {
+      "type": "string"
+    },
+    "phid": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -115,10 +131,16 @@ func init() {
 	clusterUpgradeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "kube_starter_version": {
+    "hostfacts_version": {
       "type": "string"
     },
-    "kube_version": {
+    "kube_saltbase_version": {
+      "type": "string"
+    },
+    "kube_server_version": {
+      "type": "string"
+    },
+    "kube_starter_version": {
       "type": "string"
     },
     "name": {
@@ -126,7 +148,7 @@ func init() {
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
-    "saltbase_version": {
+    "version": {
       "type": "string"
     }
   },
@@ -167,6 +189,9 @@ func init() {
   "properties": {
     "role": {
       "type": "string"
+    },
+    "uid": {
+      "type": "string"
     }
   },
   "type": "object"
@@ -191,10 +216,16 @@ func init() {
     "do_not_delete": {
       "type": "boolean"
     },
-    "kube_starter_version": {
+    "hostfacts_version": {
       "type": "string"
     },
-    "kube_version": {
+    "kube_saltbase_version": {
+      "type": "string"
+    },
+    "kube_server_version": {
+      "type": "string"
+    },
+    "kube_starter_version": {
       "type": "string"
     },
     "name": {
@@ -211,7 +242,7 @@ func init() {
     "provider": {
       "type": "string"
     },
-    "saltbase_version": {
+    "version": {
       "type": "string"
     },
     "zone": {
@@ -248,6 +279,11 @@ func (m *ClusterScaleRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterScaleRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ClusterScaleRequest) IsRequest() {}
+
+func (m *ClusterInstanceByIPRequest) IsValid() (*gojsonschema.Result, error) {
+	return clusterInstanceByIPRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *ClusterInstanceByIPRequest) IsRequest() {}
 
 func (m *ClusterUpdateRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterUpdateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
@@ -289,10 +325,10 @@ func (m *ClusterClientConfigRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *ClusterClientConfigRequest) IsRequest() {}
 
-func (m *ClusterListResponse) SetStatus(s *dtypes.Status) {
+func (m *ClusterDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-func (m *ClusterStartupScriptResponse) SetStatus(s *dtypes.Status) {
+func (m *ClusterListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
 func (m *ClusterClientConfigResponse) SetStatus(s *dtypes.Status) {
@@ -301,6 +337,9 @@ func (m *ClusterClientConfigResponse) SetStatus(s *dtypes.Status) {
 func (m *ClusterInstanceListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-func (m *ClusterDescribeResponse) SetStatus(s *dtypes.Status) {
+func (m *ClusterInstanceResponse) SetStatus(s *dtypes.Status) {
+	m.Status = s
+}
+func (m *ClusterStartupScriptResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }

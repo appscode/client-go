@@ -66,7 +66,13 @@ service Clusters {
 
   rpc StartupScript(ClusterStartupScriptRequest) returns (ClusterStartupScriptResponse) {
      option (google.api.http) = {
-       get : "/appscode/api/kubernetes/v0.1/cluster-startup-script/{role}"
+       get : "/appscode/api/kubernetes/v0.1/clusters/{uid}/startup-script/{role}"
+     };
+  }
+
+  rpc InstanceByIP(ClusterInstanceByIPRequest) returns (ClusterInstanceResponse) {
+     option (google.api.http) = {
+       get : "/appscode/api/kubernetes/v0.1/clusters/{phid}/instance-by-ip/{external_ip}"
      };
   }
 }
@@ -142,10 +148,12 @@ message ClusterCreateRequest {
   string cloud_credential = 4;
   map<string, string> cloud_credential_data = 5;
   map<string, int64> node_set = 6;
-  string saltbase_version = 7;
+  string kube_saltbase_version = 7;
   string kube_starter_version = 8;
-  string kube_version = 9;
+  string kube_server_version = 9;
   bool do_not_delete = 10;
+  string hostfacts_version = 11;
+  string version = 12;
 }
 
 message ClusterScaleRequest {
@@ -160,12 +168,23 @@ message ClusterDeleteRequest {
 }
 
 message ClusterStartupScriptRequest {
-  string role = 1;
+  string uid = 1;
+  string role = 2;
 }
 
 message ClusterStartupScriptResponse {
   dtypes.Status status = 1;
   string configuration = 2;
+}
+
+message ClusterInstanceByIPRequest {
+  string phid = 1;
+  string external_ip = 2;
+}
+
+message ClusterInstanceResponse {
+  dtypes.Status status = 1;
+  ClusterInstance instance = 2;
 }
 
 message ClusterClientConfigRequest {
@@ -174,7 +193,14 @@ message ClusterClientConfigRequest {
 
 message ClusterClientConfigResponse {
   dtypes.Status status = 1;
-  string configuration = 2;
+  string configuration = 2 [deprecated=true];
+  string cluster_domain = 3;
+  string ca_cert = 4;
+  string api_server_url = 5;
+  string cluster_user_name = 6;
+  string user_cert = 7;
+  string user_key = 8;
+  string context_name = 9;
 }
 
 message ClusterClientContainerRequest {
@@ -208,7 +234,9 @@ message ClusterUpdateRequest {
 
 message ClusterUpgradeRequest {
   string name = 1;
-  string saltbase_version = 2;
+  string kube_saltbase_version = 2;
   string kube_starter_version = 3;
-  string kube_version = 4;
+  string kube_server_version = 4;
+  string hostfacts_version = 5;
+  string version = 6;
 }

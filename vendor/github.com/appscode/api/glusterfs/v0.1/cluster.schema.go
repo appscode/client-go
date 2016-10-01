@@ -20,6 +20,9 @@ func init() {
     "kube_cluster": {
       "type": "string"
     },
+    "kube_namespace": {
+      "type": "string"
+    },
     "name": {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
@@ -36,6 +39,13 @@ func init() {
   "properties": {
     "kube_cluster": {
       "type": "string"
+    },
+    "status": {
+      "items": {
+        "type": "string"
+      },
+      "title": "List of status to get the agent filterd on the status\nvalues in\n  PENDING\n  FAILED\n  READY\n  DELETED",
+      "type": "array"
     }
   },
   "type": "object"
@@ -47,6 +57,9 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "kube_cluster": {
+      "type": "string"
+    },
+    "kube_namespace": {
       "type": "string"
     },
     "name": {
@@ -63,6 +76,9 @@ func init() {
 	clusterCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "bacula_enabled": {
+      "type": "boolean"
+    },
     "disks": {
       "items": {
         "type": "string"
@@ -72,7 +88,7 @@ func init() {
     "kube_cluster": {
       "type": "string"
     },
-    "mood": {
+    "kube_namespace": {
       "type": "string"
     },
     "name": {

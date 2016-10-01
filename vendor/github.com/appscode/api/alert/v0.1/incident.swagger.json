@@ -64,19 +64,11 @@
           "format": "string",
           "type": "string"
         },
-        "kubernetes_node": {
-          "format": "string",
-          "type": "string"
-        },
         "kubernetes_objectName": {
           "format": "string",
           "type": "string"
         },
         "kubernetes_objectType": {
-          "format": "string",
-          "type": "string"
-        },
-        "kubernetes_pod": {
           "format": "string",
           "type": "string"
         },
@@ -114,6 +106,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 2",
       "type": "object"
     },
     "alertIncidentDescribeResponse": {
@@ -143,6 +136,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 4",
       "type": "object"
     },
     "alertIncidentListRequest": {
@@ -171,6 +165,7 @@
           "type": "array"
         }
       },
+      "title": "Next Id: 6",
       "type": "object"
     },
     "alertIncidentListResponse": {
@@ -190,6 +185,14 @@
     "alertIncidentNotifyRequest": {
       "properties": {
         "alert_phid": {
+          "format": "string",
+          "type": "string"
+        },
+        "author": {
+          "format": "string",
+          "type": "string"
+        },
+        "comment": {
           "format": "string",
           "type": "string"
         },
@@ -214,6 +217,7 @@
           "type": "string"
         }
       },
+      "title": "Next Id: 9",
       "type": "object"
     },
     "dtypesHelp": {

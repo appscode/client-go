@@ -6,6 +6,8 @@ import "google/api/annotations.proto";
 import "api/dtypes/types.proto";
 import "api/alert/v0.1/alert.proto";
 
+// All those clients api in v0.1 are deprecated. will be removed in future version.
+// Use v0.2 apis instead.
 service Clients {
   rpc Copy(CopyResourceRequest) returns (CopyResourceResponse) {
     option (google.api.http) = {

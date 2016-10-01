@@ -20,6 +20,12 @@ func init() {
     "alert_phid": {
       "type": "string"
     },
+    "author": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "string"
+    },
     "host_name": {
       "type": "string"
     },
@@ -36,6 +42,7 @@ func init() {
       "type": "string"
     }
   },
+  "title": "Next Id: 9",
   "type": "object"
 }`))
 	if err != nil {
@@ -55,6 +62,7 @@ func init() {
       "type": "string"
     }
   },
+  "title": "Next Id: 4",
   "type": "object"
 }`))
 	if err != nil {
@@ -82,6 +90,7 @@ func init() {
       "type": "array"
     }
   },
+  "title": "Next Id: 6",
   "type": "object"
 }`))
 	if err != nil {
@@ -94,6 +103,7 @@ func init() {
       "type": "string"
     }
   },
+  "title": "Next Id: 2",
   "type": "object"
 }`))
 	if err != nil {
