@@ -12,47 +12,6 @@
       "title": "Next Id: 3",
       "type": "object"
     },
-    "dbBackupScheduleRequest": {
-      "properties": {
-        "auth_secret_name": {
-          "type": "string"
-        },
-        "bucket_name": {
-          "type": "string"
-        },
-        "cluster": {
-          "type": "string"
-        },
-        "credential": {
-          "type": "string"
-        },
-        "dump": {
-          "type": "boolean"
-        },
-        "force": {
-          "type": "boolean"
-        },
-        "name": {
-          "type": "string"
-        },
-        "region": {
-          "type": "string"
-        },
-        "schedule_cron_expr": {
-          "type": "string"
-        },
-        "snapshot_name": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        },
-        "wal": {
-          "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
     "namespacev1beta1CreateRequest": {
       "properties": {
         "client_ip": {
@@ -159,6 +118,39 @@
         }
       },
       "title": "Next Id: 6",
+      "type": "object"
+    },
+    "v1beta1BackupScheduleRequest": {
+      "properties": {
+        "auth_secret_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "bucket_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "credential_uid": {
+          "type": "string"
+        },
+        "schedule_cron_expr": {
+          "type": "string"
+        },
+        "snapshot_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 13",
       "type": "object"
     },
     "v1beta1ClusterCreateRequest": {
@@ -297,6 +289,21 @@
       },
       "type": "object"
     },
+    "v1beta1DatabaseCheckRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "purchase_phid": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 4",
+      "type": "object"
+    },
     "v1beta1MasterCreateRequest": {
       "properties": {
         "cluster_name": {
@@ -349,6 +356,18 @@
           "type": "string"
         }
       },
+      "type": "object"
+    },
+    "v1beta1SnapshotCheckRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 4",
       "type": "object"
     }
   }

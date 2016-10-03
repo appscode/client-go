@@ -1,0 +1,105 @@
+syntax = "proto3";
+
+package db.v1beta1;
+
+option go_package = "v1beta1";
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Snapshots {
+  rpc List(SnapshotListRequest) returns (SnapshotListResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/db/v1beta1/snapshots/{cluster}/{uid}"
+    };
+  }
+
+  rpc BackupSchedule(BackupScheduleRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/appscode/api/db/v1beta1/snapshots/{cluster}/{uid}/backup"
+      body: "*"
+    };
+  }
+
+  rpc BackupUnschedule(BackupUnscheduleRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/appscode/api/db/v1beta1/snapshots/{cluster}/{uid}/backup"
+    };
+  }
+
+  rpc Restore(RestoreRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/appscode/api/db/v1beta1/snapshots/{cluster}/{uid}/restore"
+      body: "*"
+    };
+  }
+}
+
+// Next Id: 4
+message DatabaseInfo {
+  string cluster = 1;
+  string name = 2;
+  string type = 3;
+}
+
+// Next Id: 15
+message Snapshot {
+  string name = 1;
+  string phid = 2;
+  string provider = 3;
+  string cloud_credential = 4;
+  string bucket = 5;
+  string region = 6;
+  string zone = 7;
+  string status = 8;
+  string process = 9;
+  string type = 10;
+  int32 is_scheduled_backup = 11;
+  string source_database = 12;
+  string source_snapshot = 13;
+  int64 created_at = 14;
+}
+
+// Next Id: 3
+message SnapshotListRequest {
+  string cluster = 1;
+  string uid = 2;
+}
+
+// Next Id: 4
+message SnapshotListResponse {
+  dtypes.Status status = 1;
+  DatabaseInfo database_info = 2;
+  repeated Snapshot list = 3;
+}
+
+// Next Id: 13
+message BackupScheduleRequest {
+  string cluster = 1;
+  string uid = 2;
+  string credential_uid = 4;
+  string bucket_name = 5;
+  string snapshot_name = 6;
+  string auth_secret_name = 8;
+  string schedule_cron_expr = 9;
+}
+
+// Next Id: 3
+message BackupUnscheduleRequest {
+  string cluster = 1;
+  string uid = 2;
+}
+
+// Next Id: 19
+message RestoreRequest {
+  string cluster = 1;
+  string uid = 2;
+  string snapshot_phid = 8;
+  string auth_secret_name = 13;
+}
+
+// Next Id: 4
+message SnapshotCheckRequest {
+  string cluster = 1;
+  string phid = 2;
+}

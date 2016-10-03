@@ -2,7 +2,6 @@ package client
 
 import (
 	credential "github.com/appscode/api/credential/v1beta1"
-	db "github.com/appscode/api/db/v0.1"
 	"github.com/appscode/api/health"
 	k8s "github.com/appscode/api/kubernetes/v1beta1"
 	loadbalancer "github.com/appscode/api/loadbalancer/v1beta1"
@@ -16,7 +15,6 @@ import (
 // single client service in api. returned directly the api client.
 type loneClientInterface interface {
 	CloudCredential() credential.CloudCredentialsClient
-	DB() db.DatabasesClient
 	Event() k8s.EventsClient
 	Health() health.HealthClient
 	LoadBalancer() loadbalancer.LoadBalancersClient
@@ -28,7 +26,6 @@ type loneClientInterface interface {
 
 type loneClientServices struct {
 	cloudClient        credential.CloudCredentialsClient
-	dbClient           db.DatabasesClient
 	eventClient        k8s.EventsClient
 	healthClient       health.HealthClient
 	teamClient         namespace.TeamsClient
@@ -41,7 +38,6 @@ type loneClientServices struct {
 func newLoneClientService(conn *grpc.ClientConn) loneClientInterface {
 	return &loneClientServices{
 		cloudClient:        credential.NewCloudCredentialsClient(conn),
-		dbClient:           db.NewDatabasesClient(conn),
 		eventClient:        k8s.NewEventsClient(conn),
 		healthClient:       health.NewHealthClient(conn),
 		loadBalancerClient: loadbalancer.NewLoadBalancersClient(conn),
@@ -53,10 +49,6 @@ func newLoneClientService(conn *grpc.ClientConn) loneClientInterface {
 
 func (s *loneClientServices) CloudCredential() credential.CloudCredentialsClient {
 	return s.cloudClient
-}
-
-func (s *loneClientServices) DB() db.DatabasesClient {
-	return s.dbClient
 }
 
 func (s *loneClientServices) Event() k8s.EventsClient {

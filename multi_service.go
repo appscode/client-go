@@ -12,6 +12,7 @@ import (
 	kubernetes "github.com/appscode/api/kubernetes/v1beta1"
 	pv "github.com/appscode/api/pv/v1beta1"
 	"google.golang.org/grpc"
+	db "github.com/appscode/api/db/v1beta1"
 )
 
 // multi client services are grouped by there main client. the api service
@@ -27,6 +28,7 @@ type multiClientInterface interface {
 	GlusterFS() *glusterFSService
 	Kubernetes() *kubernetesService
 	PV() *pvService
+	DB() *dbService
 }
 
 type multiClientServices struct {
@@ -40,6 +42,7 @@ type multiClientServices struct {
 	glusterfsClient      *glusterFSService
 	kubernetesClient     *kubernetesService
 	pvClient             *pvService
+	dbClient             *dbService
 }
 
 func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
@@ -91,6 +94,10 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 			pv:   pv.NewPersistentVolumesClient(conn),
 			pvc:  pv.NewPersistentVolumeClaimsClient(conn),
 		},
+		dbClient: &dbService{
+			database:   db.NewDatabasesClient(conn),
+			snapshot:  db.NewSnapshotsClient(conn),
+		},
 	}
 }
 
@@ -132,6 +139,10 @@ func (s *multiClientServices) Kubernetes() *kubernetesService {
 
 func (s *multiClientServices) PV() *pvService {
 	return s.pvClient
+}
+
+func (s *multiClientServices) DB() *dbService {
+	return s.dbClient
 }
 
 // original service clients that needs to exposed under grouped wrapper
@@ -291,4 +302,17 @@ func (p *pvService) PersistentVolume() pv.PersistentVolumesClient {
 
 func (p *pvService) PersistentVolumeClaim() pv.PersistentVolumeClaimsClient {
 	return p.pvc
+}
+
+type dbService struct {
+	database  db.DatabasesClient
+	snapshot  db.SnapshotsClient
+}
+
+func (p *dbService) Database() db.DatabasesClient {
+	return p.database
+}
+
+func (p *dbService)Ssnapshot() db.SnapshotsClient {
+	return p.snapshot
 }
