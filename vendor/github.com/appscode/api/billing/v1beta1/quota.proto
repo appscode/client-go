@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package billing.v1beta1;
+
+option go_package = "v1beta1";
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Quotas {
+  rpc Get(dtypes.VoidRequest) returns (QuotaGetResponse) {
+    option (google.api.http) = {
+        get: "/appscode/api/billing/v1beta1/quotas"
+    };
+  }
+}
+
+message QuotaGetResponse {
+  dtypes.Status status = 1;
+  map<string, int64> assigned = 2;
+  map<string, int64> used = 3;
+}

@@ -1,0 +1,111 @@
+syntax = "proto3";
+
+package operation.v1beta1;
+
+option go_package = "v1beta1";
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+import "api/certificate/v1beta1/certificate.proto";
+import "api/ci/v1beta1/agent.proto";
+import "api/ci/v1beta1/master.proto";
+import "api/kubernetes/v1beta1/cluster.proto";
+import "api/db/v0.1/database.proto";
+import "api/namespace/v1beta1/team.proto";
+import "api/alert/v1beta1/alert.proto";
+
+service Operations {
+  rpc Describe(DescribeRequest) returns (DescribeResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/operation/v1beta1/operations/{phid}"
+    };
+  }
+}
+
+message DescribeRequest {
+  string phid = 1;
+}
+
+message DescribeResponse {
+  dtypes.Status status = 1;
+  Operation op = 2;
+  message Log {
+    int64 timestamp = 1;
+    string message = 2;
+  }
+  repeated Log log = 3;
+}
+
+message Auth {
+  string namespace = 1;
+  string username = 2;
+  string token = 3;
+  string token_type = 4;
+}
+
+// Metadata holds other on request or operation specific data
+// that could be used inside that operation.
+// An welldefined message instead of a map is used
+// so that the data fields can be explicitly defined with
+// its own data type. Resolves data convertions.
+message Metadata {
+  // Contains PurchasePHID is this is a purchase request.
+  repeated string purchase_phid = 1;
+
+  // PHID of the user who requested this operation.
+  string author_phid = 2;
+  string author_name = 3;
+}
+
+// Next Id: 15
+enum OperationType {
+  UNKNOWN = 0;
+  CLUSTER_CREATE = 1;
+  CLUSTER_SCALE = 2;
+  CLUSTER_DELETE = 3;
+  CLUSTER_UPGRADE = 4;
+  CI_MASTER_CREATE = 5;
+  CI_MASTER_DELETE = 6;
+  CI_AGENT_CREATE = 7;
+  CI_AGENT_DELETE = 8;
+  DATA_BUCKET_DELETE = 9;
+  DATABASE_BACKUP = 10;
+  NAMESPACE_CREATE = 11;
+  NAMESPACE_ADMIN_TASK = 12;
+  CHECK_DNS = 13;
+  ALERT_SYNC = 14;
+}
+
+// Next Id: 19
+message Operation {
+  oneof request {
+    kubernetes.v1beta1.ClusterCreateRequest cluster_create_request = 1;
+    kubernetes.v1beta1.ClusterScaleRequest cluster_scale_request = 2;
+    kubernetes.v1beta1.ClusterDeleteRequest cluster_delete_request = 3;
+    kubernetes.v1beta1.ClusterUpgradeRequest cluster_upgrade_request = 4;
+    ci.v1beta1.MasterCreateRequest ci_master_create_request = 5;
+    ci.v1beta1.MasterDeleteRequest ci_master_delete_request = 6;
+    ci.v1beta1.AgentCreateRequest ci_agent_create_request = 7;
+    ci.v1beta1.AgentDeleteRequest ci_agent_delete_request = 8;
+    DataBucketDeleteRequest data_bucket_delete_request = 9;
+    db.BackupScheduleRequest db_backup_schedule_request = 10;
+    namespace.v1beta1.CreateRequest namespace_create_request = 11;
+    NamespaceAdminTaskRequest namespace_admin_task_request = 12;
+    certificate.v1beta1.DNSCheckRequest dns_check_request = 13;
+    alert.v1beta1.AlertSyncRequest alert_sync_request = 18;
+  }
+  OperationType type = 14;
+  string phid = 15;
+  Auth auth = 16;
+  Metadata metadata = 17;
+}
+
+message DataBucketDeleteRequest {
+  string data_type = 1;
+  string namespace = 2;
+  string prefix = 3;
+}
+
+message NamespaceAdminTaskRequest {
+	string namespace = 1;
+}

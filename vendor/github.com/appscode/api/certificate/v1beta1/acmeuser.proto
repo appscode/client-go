@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package certificate.v1beta1;
+
+option go_package = "v1beta1";
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service AcmeUsers {
+  rpc Register(AcmeUserRegisterRequest) returns (AcmeUserRegisterResponse) {
+    option (google.api.http) = {
+      put: "/appscode/api/certificate/v1beta1/acme-users"
+    };
+  }
+}
+
+message AcmeUserRegisterRequest {
+  string email = 1;
+}
+
+message AcmeUserRegisterResponse {
+  dtypes.Status status = 1;
+  string phid = 2;
+}

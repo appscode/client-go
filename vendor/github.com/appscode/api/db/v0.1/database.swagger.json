@@ -646,7 +646,7 @@
     "version": "0.1"
   },
   "paths": {
-    "/appscode/api/db/v0.1": {
+    "/appscode/api/db/v1beta1": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -662,7 +662,7 @@
         ]
       }
     },
-    "/appscode/api/db/v0.1/{cluster}": {
+    "/appscode/api/db/v1beta1/{cluster}": {
       "put": {
         "operationId": "Create",
         "parameters": [
@@ -695,7 +695,7 @@
         ]
       }
     },
-    "/appscode/api/db/v0.1/{cluster}/{name}": {
+    "/appscode/api/db/v1beta1/{cluster}/{name}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -727,7 +727,7 @@
         ]
       }
     },
-    "/appscode/api/db/v0.1/{cluster}/{name}/backup": {
+    "/appscode/api/db/v1beta1/{cluster}/{name}/backup": {
       "post": {
         "operationId": "BackupSchedule",
         "parameters": [
@@ -797,7 +797,7 @@
         ]
       }
     },
-    "/appscode/api/db/v0.1/{cluster}/{name}/restore": {
+    "/appscode/api/db/v1beta1/{cluster}/{name}/restore": {
       "put": {
         "operationId": "Restore",
         "parameters": [
@@ -837,7 +837,7 @@
         ]
       }
     },
-    "/appscode/api/db/v0.1/{cluster}/{name}/standby": {
+    "/appscode/api/db/v1beta1/{cluster}/{name}/standby": {
       "post": {
         "operationId": "AddStandby",
         "parameters": [
@@ -877,7 +877,7 @@
         ]
       }
     },
-    "/appscode/api/db/v0.1/{cluster}/{uid}": {
+    "/appscode/api/db/v1beta1/{cluster}/{uid}": {
       "get": {
         "operationId": "Describe",
         "parameters": [
@@ -947,7 +947,7 @@
         ]
       }
     },
-    "/appscode/api/db/v0.1/{cluster}/{uid}/snapshot": {
+    "/appscode/api/db/v1beta1/{cluster}/{uid}/snapshot": {
       "get": {
         "operationId": "SnapshotList",
         "parameters": [

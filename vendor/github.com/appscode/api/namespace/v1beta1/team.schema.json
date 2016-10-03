@@ -1,0 +1,62 @@
+{
+  "definitions": {
+    "dtypesVoidRequest": {
+      "description": "Void Requests and response to use with other types.",
+      "type": "object"
+    },
+    "v1beta1CreateRequest": {
+      "properties": {
+        "client_ip": {
+          "type": "string"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "invite_email": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "subscription_type": {
+          "type": "string"
+        },
+        "user_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1GetRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1IsAvailableRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

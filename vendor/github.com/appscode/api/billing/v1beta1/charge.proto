@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package billing.v1beta1;
+
+option go_package = "v1beta1";
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Charges {
+  rpc Estimate(dtypes.VoidRequest) returns (ChargeEstimateResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/billing/v1beta1/charges"
+    };
+  }
+}
+
+message ChargeEstimateResponse {
+  dtypes.Status status = 1;
+  string cost_usd = 2;
+}

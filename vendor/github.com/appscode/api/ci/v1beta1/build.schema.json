@@ -1,0 +1,29 @@
+{
+  "definitions": {
+    "v1beta1BuildDescribeRequest": {
+      "properties": {
+        "job_name": {
+          "type": "string"
+        },
+        "number": {
+          "type": "integer"
+        },
+        "parents": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1BuildListRequest": {
+      "properties": {
+        "job_name": {
+          "type": "string"
+        },
+        "parents": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

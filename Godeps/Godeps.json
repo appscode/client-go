@@ -7,80 +7,80 @@
 	],
 	"Deps": [
 		{
-			"ImportPath": "github.com/appscode/api/alert/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"ImportPath": "github.com/appscode/api/alert/v1beta1",
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
-			"ImportPath": "github.com/appscode/api/artifactory/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"ImportPath": "github.com/appscode/api/artifactory/v1beta1",
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
-			"ImportPath": "github.com/appscode/api/auth/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"ImportPath": "github.com/appscode/api/auth/v1beta1",
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
-			"ImportPath": "github.com/appscode/api/backup/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"ImportPath": "github.com/appscode/api/backup/v1beta1",
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
-			"ImportPath": "github.com/appscode/api/billing/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"ImportPath": "github.com/appscode/api/billing/v1beta1",
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
-			"ImportPath": "github.com/appscode/api/certificate/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"ImportPath": "github.com/appscode/api/certificate/v1beta1",
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
-			"ImportPath": "github.com/appscode/api/ci/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"ImportPath": "github.com/appscode/api/ci/v1beta1",
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
-			"ImportPath": "github.com/appscode/api/credential/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"ImportPath": "github.com/appscode/api/credential/v1beta1",
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
 			"ImportPath": "github.com/appscode/api/db/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
 			"ImportPath": "github.com/appscode/api/dtypes",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
-			"ImportPath": "github.com/appscode/api/glusterfs/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"ImportPath": "github.com/appscode/api/glusterfs/v1beta1",
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
 			"ImportPath": "github.com/appscode/api/health",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
-			"ImportPath": "github.com/appscode/api/kubernetes/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"ImportPath": "github.com/appscode/api/kubernetes/v1beta1",
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
-			"ImportPath": "github.com/appscode/api/loadbalancer/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"ImportPath": "github.com/appscode/api/loadbalancer/v1beta1",
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
-			"ImportPath": "github.com/appscode/api/mailinglist/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"ImportPath": "github.com/appscode/api/mailinglist/v1beta1",
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
-			"ImportPath": "github.com/appscode/api/namespace/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"ImportPath": "github.com/appscode/api/namespace/v1beta1",
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
-			"ImportPath": "github.com/appscode/api/operation/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"ImportPath": "github.com/appscode/api/operation/v1beta1",
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
-			"ImportPath": "github.com/appscode/api/pv/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"ImportPath": "github.com/appscode/api/pv/v1beta1",
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
-			"ImportPath": "github.com/appscode/api/ssh/v0.1",
-			"Rev": "9933cd0162ea9451d39c49f8265ec3053ee7bc86"
+			"ImportPath": "github.com/appscode/api/ssh/v1beta1",
+			"Rev": "ee8426d86d105bd4b5460d16e45f290e1512af07"
 		},
 		{
 			"ImportPath": "github.com/davecgh/go-spew/spew",

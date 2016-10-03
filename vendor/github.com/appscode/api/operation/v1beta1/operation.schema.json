@@ -1,0 +1,355 @@
+{
+  "definitions": {
+    "AlertSyncRequestPodAncestor": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 3",
+      "type": "object"
+    },
+    "dbBackupScheduleRequest": {
+      "properties": {
+        "auth_secret_name": {
+          "type": "string"
+        },
+        "bucket_name": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "credential": {
+          "type": "string"
+        },
+        "dump": {
+          "type": "boolean"
+        },
+        "force": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "schedule_cron_expr": {
+          "type": "string"
+        },
+        "snapshot_name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "wal": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "namespacev1beta1CreateRequest": {
+      "properties": {
+        "client_ip": {
+          "type": "string"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "invite_email": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "subscription_type": {
+          "type": "string"
+        },
+        "user_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "operationv1beta1DescribeRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1AgentCreateRequest": {
+      "properties": {
+        "ci_starter_version": {
+          "type": "string"
+        },
+        "executors": {
+          "type": "integer"
+        },
+        "labels": {
+          "type": "string"
+        },
+        "ports": {
+          "items": {
+            "$ref": "#/definitions/v1beta1PortInfo"
+          },
+          "type": "array"
+        },
+        "role": {
+          "type": "string"
+        },
+        "saltbase_version": {
+          "type": "string"
+        },
+        "sku": {
+          "type": "string"
+        },
+        "user_startup_script": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1AgentDeleteRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1AlertSyncRequest": {
+      "properties": {
+        "kubernetes_cluster": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "type": "string"
+        },
+        "pod_ancestor": {
+          "items": {
+            "$ref": "#/definitions/AlertSyncRequestPodAncestor"
+          },
+          "type": "array"
+        }
+      },
+      "title": "Next Id: 6",
+      "type": "object"
+    },
+    "v1beta1ClusterCreateRequest": {
+      "properties": {
+        "cloud_credential": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "cloud_credential_data": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "do_not_delete": {
+          "type": "boolean"
+        },
+        "hostfacts_version": {
+          "type": "string"
+        },
+        "kube_saltbase_version": {
+          "type": "string"
+        },
+        "kube_server_version": {
+          "type": "string"
+        },
+        "kube_starter_version": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "node_set": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "type": "object"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "zone": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterDeleteRequest": {
+      "properties": {
+        "force": {
+          "type": "boolean"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "release_reserved_ip": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterScaleRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "node_set": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "New node configuration for the cluster",
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterUpgradeRequest": {
+      "properties": {
+        "hostfacts_version": {
+          "type": "string"
+        },
+        "kube_saltbase_version": {
+          "type": "string"
+        },
+        "kube_server_version": {
+          "type": "string"
+        },
+        "kube_starter_version": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1DNSCheckRequest": {
+      "properties": {
+        "domain": {
+          "type": "string"
+        },
+        "key_auth": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1DataBucketDeleteRequest": {
+      "properties": {
+        "data_type": {
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1MasterCreateRequest": {
+      "properties": {
+        "cluster_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "volume_id": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1MasterDeleteRequest": {
+      "properties": {
+        "cluster_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1NamespaceAdminTaskRequest": {
+      "properties": {
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1PortInfo": {
+      "properties": {
+        "port_range": {
+          "type": "string"
+        },
+        "protocol": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

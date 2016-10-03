@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package backup.v1beta1;
+
+option go_package = "v1beta1";
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Clients {
+  rpc Reconfigure(ClientReconfigureRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/appscode/api/backup/v1beta1/clients/reconfigure"
+      body: "*"
+    };
+  }
+}
+
+message ClientReconfigureRequest {
+  string cluster_name = 1;
+}

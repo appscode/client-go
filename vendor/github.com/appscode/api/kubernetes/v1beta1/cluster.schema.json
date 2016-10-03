@@ -1,0 +1,206 @@
+{
+  "definitions": {
+    "v1beta1ClusterClientConfigRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterCreateRequest": {
+      "properties": {
+        "cloud_credential": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "cloud_credential_data": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "do_not_delete": {
+          "type": "boolean"
+        },
+        "hostfacts_version": {
+          "type": "string"
+        },
+        "kube_saltbase_version": {
+          "type": "string"
+        },
+        "kube_server_version": {
+          "type": "string"
+        },
+        "kube_starter_version": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "node_set": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "type": "object"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "zone": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterDeleteRequest": {
+      "properties": {
+        "force": {
+          "type": "boolean"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "release_reserved_ip": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterDescribeRequest": {
+      "properties": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterInstanceByIPRequest": {
+      "properties": {
+        "external_ip": {
+          "type": "string"
+        },
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterInstanceListRequest": {
+      "properties": {
+        "cluster_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterListRequest": {
+      "properties": {
+        "status": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterScaleRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "node_set": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "New node configuration for the cluster",
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterSettings": {
+      "properties": {
+        "log_index_prefix": {
+          "type": "string"
+        },
+        "log_storage_lifetime": {
+          "title": "Number of secs logs will be stored in ElasticSearch",
+          "type": "integer"
+        },
+        "monitoring_storage_lifetime": {
+          "title": "Number of secs logs will be stored in InfluxDB",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterStartupScriptRequest": {
+      "properties": {
+        "role": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterUpdateRequest": {
+      "properties": {
+        "do_not_delete": {
+          "type": "boolean"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "settings": {
+          "$ref": "#/definitions/v1beta1ClusterSettings"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1ClusterUpgradeRequest": {
+      "properties": {
+        "hostfacts_version": {
+          "type": "string"
+        },
+        "kube_saltbase_version": {
+          "type": "string"
+        },
+        "kube_server_version": {
+          "type": "string"
+        },
+        "kube_starter_version": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

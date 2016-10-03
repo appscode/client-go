@@ -8,66 +8,66 @@ import "api/dtypes/types.proto";
 service Databases {
   rpc List(ListRequest) returns (ListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/db/v0.1"
+      get: "/appscode/api/db/v1beta1"
     };
   }
 
   rpc Create(CreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put : "/appscode/api/db/v0.1/{cluster}"
+      put : "/appscode/api/db/v1beta1/{cluster}"
       body : "*"
     };
   }
 
   rpc AddStandby(AddStandbyRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/db/v0.1/{cluster}/{name}/standby"
+      post: "/appscode/api/db/v1beta1/{cluster}/{name}/standby"
       body: "*"
     };
   }
 
   rpc Update(UpdateRequest) returns (dtypes.VoidResponse) {
   option (google.api.http) = {
-      post: "/appscode/api/db/v0.1/{cluster}/{uid}"
+      post: "/appscode/api/db/v1beta1/{cluster}/{uid}"
       body: "*"
     };
   }
 
   rpc Describe(DescribeRequest) returns (DescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/db/v0.1/{cluster}/{uid}"
+      get: "/appscode/api/db/v1beta1/{cluster}/{uid}"
     };
   }
 
   rpc Delete(DeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/db/v0.1/{cluster}/{name}"
+      delete: "/appscode/api/db/v1beta1/{cluster}/{name}"
     };
   }
 
   rpc BackupSchedule(BackupScheduleRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/db/v0.1/{cluster}/{name}/backup"
+      post: "/appscode/api/db/v1beta1/{cluster}/{name}/backup"
       body: "*"
     };
   }
 
   rpc BackupUnschedule(BackupUnscheduleRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/db/v0.1/{cluster}/{name}/backup"
+      put: "/appscode/api/db/v1beta1/{cluster}/{name}/backup"
     };
   }
 
   rpc Restore(RestoreRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/db/v0.1/{cluster}/{name}/restore"
+      put: "/appscode/api/db/v1beta1/{cluster}/{name}/restore"
       body: "*"
     };
   }
 
   rpc SnapshotList(SnapshotListRequest) returns (SnapshotListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/db/v0.1/{cluster}/{uid}/snapshot"
+      get: "/appscode/api/db/v1beta1/{cluster}/{uid}/snapshot"
     };
   }
 }

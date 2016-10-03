@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package billing.v1beta1;
+
+option go_package = "v1beta1";
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Subscriptions {
+  rpc Subscribe(SubscriptionSubscribeRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      post: "/appscode/api/billing/v1beta1/subscriptions"
+      body: "*"
+    };
+  }
+}
+
+message SubscriptionSubscribeRequest {
+    string product_id = 1;
+    bool auto_extend = 2;
+    int64 start_time = 3;
+}

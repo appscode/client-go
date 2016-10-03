@@ -1,0 +1,83 @@
+{
+  "definitions": {
+    "v1beta1IncidentDescribeRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 2",
+      "type": "object"
+    },
+    "v1beta1IncidentEventCreateRequest": {
+      "properties": {
+        "acknowledge": {
+          "type": "boolean"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "phid": {
+          "title": "Incident PHID",
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 4",
+      "type": "object"
+    },
+    "v1beta1IncidentListRequest": {
+      "properties": {
+        "kubernetes_cluster": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "type": "string"
+        },
+        "state": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "title": "Next Id: 6",
+      "type": "object"
+    },
+    "v1beta1IncidentNotifyRequest": {
+      "properties": {
+        "alert_phid": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "host_name": {
+          "type": "string"
+        },
+        "output": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 9",
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package artifactory.v1beta1;
+
+option go_package = "v1beta1";
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Artifacts {
+  rpc Search(ArtifactSearchRequest) returns(ArtifactSearchResponse) {
+    option(google.api.http) = {
+      get: "/appscode/api/artifactory/v1beta1/search"
+    };
+  }
+
+  rpc List(ArtifactListRequest) returns (ArtifactListResponse) {
+    option (google.api.http) = {
+      // Provides lists of artifacts of am particular types.
+      // Recives {type} in - `docker, maven, composer, npm` and `all`
+      // for all artifacts - as path parameter.
+      get: "/appscode/api/artifactory/v1beta1/artifacts/{type}"
+    };
+  }
+}
+
+message ArtifactSearchRequest {
+  string query = 1;
+  string type = 2;
+}
+
+message ArtifactSearchResponse {
+  dtypes.Status status = 1;
+  repeated Artifact artifacts = 2;
+}
+
+message ArtifactListRequest {
+  string type = 1;
+}
+
+message ArtifactListResponse {
+  dtypes.Status status = 1;
+  repeated Artifact artifacts = 2;
+}
+
+message Artifact {
+  string name = 1;
+  string type = 2;
+  string last_modified_time = 3;
+}

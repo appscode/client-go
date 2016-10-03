@@ -1,0 +1,164 @@
+{
+  "definitions": {
+    "AlertSyncRequestPodAncestor": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 3",
+      "type": "object"
+    },
+    "v1beta1AlertCreateRequest": {
+      "properties": {
+        "check_command": {
+          "type": "string"
+        },
+        "icinga_param": {
+          "$ref": "#/definitions/v1beta1IcingaParam"
+        },
+        "icinga_service": {
+          "type": "string"
+        },
+        "kubernetes_cluster": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "type": "string"
+        },
+        "notifier_param": {
+          "items": {
+            "$ref": "#/definitions/v1beta1NotifierParam"
+          },
+          "type": "array"
+        },
+        "vars": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "title": "Next Id: 12",
+      "type": "object"
+    },
+    "v1beta1AlertDeleteRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 2",
+      "type": "object"
+    },
+    "v1beta1AlertDescribeRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 2",
+      "type": "object"
+    },
+    "v1beta1AlertListRequest": {
+      "properties": {
+        "kubernetes_cluster": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 5",
+      "type": "object"
+    },
+    "v1beta1AlertSyncRequest": {
+      "properties": {
+        "kubernetes_cluster": {
+          "type": "string"
+        },
+        "kubernetes_namespace": {
+          "type": "string"
+        },
+        "kubernetes_objectName": {
+          "type": "string"
+        },
+        "kubernetes_objectType": {
+          "type": "string"
+        },
+        "pod_ancestor": {
+          "items": {
+            "$ref": "#/definitions/AlertSyncRequestPodAncestor"
+          },
+          "type": "array"
+        }
+      },
+      "title": "Next Id: 6",
+      "type": "object"
+    },
+    "v1beta1AlertUpdateRequest": {
+      "properties": {
+        "icinga_param": {
+          "$ref": "#/definitions/v1beta1IcingaParam"
+        },
+        "notifier_param": {
+          "items": {
+            "$ref": "#/definitions/v1beta1NotifierParam"
+          },
+          "type": "array"
+        },
+        "phid": {
+          "type": "string"
+        },
+        "vars": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        }
+      },
+      "title": "Next Id: 6",
+      "type": "object"
+    },
+    "v1beta1IcingaParam": {
+      "properties": {
+        "alert_interval_sec": {
+          "type": "integer"
+        },
+        "check_interval_sec": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1NotifierParam": {
+      "properties": {
+        "method": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "user_uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

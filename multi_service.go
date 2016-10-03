@@ -1,16 +1,16 @@
 package client
 
 import (
-	alert "github.com/appscode/api/alert/v0.1"
-	artifactory "github.com/appscode/api/artifactory/v0.1"
-	auth "github.com/appscode/api/auth/v0.1"
-	backup "github.com/appscode/api/backup/v0.1"
-	billing "github.com/appscode/api/billing/v0.1"
-	ca "github.com/appscode/api/certificate/v0.1"
-	ci "github.com/appscode/api/ci/v0.1"
-	glusterfs "github.com/appscode/api/glusterfs/v0.1"
-	kubernetes "github.com/appscode/api/kubernetes/v0.1"
-	pv "github.com/appscode/api/pv/v0.1"
+	alert "github.com/appscode/api/alert/v1beta1"
+	artifactory "github.com/appscode/api/artifactory/v1beta1"
+	auth "github.com/appscode/api/auth/v1beta1"
+	backup "github.com/appscode/api/backup/v1beta1"
+	billing "github.com/appscode/api/billing/v1beta1"
+	ca "github.com/appscode/api/certificate/v1beta1"
+	ci "github.com/appscode/api/ci/v1beta1"
+	glusterfs "github.com/appscode/api/glusterfs/v1beta1"
+	kubernetes "github.com/appscode/api/kubernetes/v1beta1"
+	pv "github.com/appscode/api/pv/v1beta1"
 	"google.golang.org/grpc"
 )
 
@@ -57,15 +57,15 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 			conduitClient:        auth.NewConduitClient(conn),
 		},
 		backupClient: &backupService{
-			backupServerClient: backup.NewServerClient(conn),
-			backupClientClient: backup.NewClientClient(conn),
+			backupServerClient: backup.NewServersClient(conn),
+			backupClientClient: backup.NewClientsClient(conn),
 		},
 		billingClient: &billingService{
-			paymentMethodClient: billing.NewPaymentMethodClient(conn),
-			subscriptionClient:  billing.NewSubscriptionClient(conn),
-			purchaseClient:      billing.NewPurchaseClient(conn),
-			chargeClient:        billing.NewChargeClient(conn),
-			quotaClient:         billing.NewQuotaClient(conn),
+			paymentMethodClient: billing.NewPaymentMethodsClient(conn),
+			subscriptionClient:  billing.NewSubscriptionsClient(conn),
+			purchaseClient:      billing.NewPurchasesClient(conn),
+			chargeClient:        billing.NewChargesClient(conn),
+			quotaClient:         billing.NewQuotasClient(conn),
 		},
 		caClient: &caService{
 			caClient:          ca.NewCAsClient(conn),
@@ -176,35 +176,35 @@ func (a *authenticationService) Conduit() auth.ConduitClient {
 }
 
 type backupService struct {
-	backupServerClient backup.ServerClient
-	backupClientClient backup.ClientClient
+	backupServerClient backup.ServersClient
+	backupClientClient backup.ClientsClient
 }
 
-func (b *backupService) Server() backup.ServerClient {
+func (b *backupService) Server() backup.ServersClient {
 	return b.backupServerClient
 }
 
-func (b *backupService) Client() backup.ClientClient {
+func (b *backupService) Client() backup.ClientsClient {
 	return b.backupClientClient
 }
 
 type billingService struct {
-	paymentMethodClient billing.PaymentMethodClient
-	subscriptionClient  billing.SubscriptionClient
-	purchaseClient      billing.PurchaseClient
-	chargeClient        billing.ChargeClient
-	quotaClient         billing.QuotaClient
+	paymentMethodClient billing.PaymentMethodsClient
+	subscriptionClient  billing.SubscriptionsClient
+	purchaseClient      billing.PurchasesClient
+	chargeClient        billing.ChargesClient
+	quotaClient         billing.QuotasClient
 }
 
-func (b *billingService) Charge() billing.ChargeClient {
+func (b *billingService) Charge() billing.ChargesClient {
 	return b.chargeClient
 }
 
-func (b *billingService) Subscription() billing.SubscriptionClient {
+func (b *billingService) Subscription() billing.SubscriptionsClient {
 	return b.subscriptionClient
 }
 
-func (b *billingService) Quota() billing.QuotaClient {
+func (b *billingService) Quota() billing.QuotasClient {
 	return b.quotaClient
 }
 

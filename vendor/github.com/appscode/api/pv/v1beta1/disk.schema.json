@@ -1,0 +1,61 @@
+{
+  "definitions": {
+    "v1beta1DiskCreateRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "disk_type": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "zone": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1DiskDeleteRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1DiskDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "plugin": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1DiskListRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

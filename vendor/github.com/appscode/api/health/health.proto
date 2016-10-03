@@ -8,7 +8,7 @@ import "api/dtypes/types.proto";
 service Health {
   rpc Status(dtypes.VoidRequest) returns (Response) {
     option (google.api.http) = {
-      get : "/appscode/api/healthz"
+      get : "/appscode/api/health"
     };
   }
 }

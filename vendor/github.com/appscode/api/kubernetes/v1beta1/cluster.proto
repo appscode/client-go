@@ -1,0 +1,251 @@
+syntax = "proto3";
+
+package kubernetes.v1beta1;
+
+option go_package = "v1beta1";
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Clusters {
+  rpc List(ClusterListRequest) returns (ClusterListResponse) {
+     option (google.api.http) = {
+       get : "/appscode/api/kubernetes/v1beta1/clusters"
+     };
+  }
+
+  rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/clusters/{uid}"
+    };
+  }
+
+  rpc Create(ClusterCreateRequest) returns (dtypes.LongRunningResponse) {
+    option (google.api.http) = {
+      post: "/appscode/api/kubernetes/v1beta1/clusters"
+      body: "*"
+    };
+  }
+
+  rpc Update(ClusterUpdateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+       put: "/appscode/api/kubernetes/v1beta1/clusters/{name}"
+       body: "*"
+    };
+  }
+
+  rpc Scale(ClusterScaleRequest) returns (dtypes.LongRunningResponse) {
+    option (google.api.http) = {
+      put: "/appscode/api/kubernetes/v1beta1/clusters/{name}/scale"
+      body: "*"
+    };
+  }
+
+  rpc Upgrade(ClusterUpgradeRequest) returns (dtypes.LongRunningResponse) {
+    option (google.api.http) = {
+       put: "/appscode/api/kubernetes/v1beta1/clusters/{name}/upgrade"
+       body: "*"
+    };
+  }
+
+  rpc Delete(ClusterDeleteRequest) returns (dtypes.LongRunningResponse) {
+    option (google.api.http) = {
+      delete : "/appscode/api/kubernetes/v1beta1/clusters/{name}"
+    };
+  }
+
+  rpc ClientConfig(ClusterClientConfigRequest) returns (ClusterClientConfigResponse) {
+     option (google.api.http) = {
+       get : "/appscode/api/kubernetes/v1beta1/clusters/{name}/client-config"
+     };
+  }
+
+  rpc Instances(ClusterInstanceListRequest) returns (ClusterInstanceListResponse) {
+     option (google.api.http) = {
+       get : "/appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/instances"
+     };
+  }
+
+  rpc StartupScript(ClusterStartupScriptRequest) returns (ClusterStartupScriptResponse) {
+     option (google.api.http) = {
+       get : "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-script/{role}"
+     };
+  }
+
+  rpc InstanceByIP(ClusterInstanceByIPRequest) returns (ClusterInstanceResponse) {
+     option (google.api.http) = {
+       get : "/appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}"
+     };
+  }
+}
+
+message ClusterSettings {
+  string log_index_prefix = 1;
+  // Number of secs logs will be stored in ElasticSearch
+  int64 log_storage_lifetime = 2;
+  // Number of secs logs will be stored in InfluxDB
+  int64 monitoring_storage_lifetime = 3;
+}
+
+message Cluster {
+  string phid = 1;
+  string name = 2;
+  string provider = 3;
+  string os = 4;
+  string region = 5;
+  string zone = 6;
+  int64 created_at = 7;
+  map<string, string> links = 8;
+  bool do_not_delete = 9;
+  string status = 10;
+  string status_cause = 11;
+  string gce_project = 12;
+  string kube_server_version = 13;
+  string kube_saltbase_version = 14;
+  string kube_starter_version = 15;
+
+  int32 node_count = 16;
+  string api_server_url = 17;
+  string kube_user = 18;
+  string kube_password = 19;
+  string ca_cert = 20;
+  string kube_bearer_token = 21;
+
+  ClusterSettings settings = 22;
+
+  string instance_root_password = 23;
+  string version = 24;
+  string sku = 25;
+  string created_by = 26;
+}
+
+message ClusterDescribeRequest {
+  string uid = 1;
+}
+
+message ClusterDescribeResponse {
+  dtypes.Status status = 1;
+  Cluster cluster = 2;
+
+  message Spec {
+    int32 container_count = 1;
+    int32 pod_count = 2;
+    int32 service_count = 3;
+    int32 rc_count = 4;
+
+    int64 total_cpu = 5;
+    int64 total_memory = 6;
+  }
+  Spec spec = 3;
+}
+
+message ClusterListRequest {
+  repeated string status = 1;
+}
+
+message ClusterListResponse {
+  dtypes.Status status = 1;
+  repeated Cluster clusters = 2;
+}
+
+message ClusterCreateRequest {
+  string name = 1;
+  string provider = 2;
+  string zone = 3;
+  string cloud_credential = 4;
+  map<string, string> cloud_credential_data = 5;
+  map<string, int64> node_set = 6;
+  string kube_saltbase_version = 7;
+  string kube_starter_version = 8;
+  string kube_server_version = 9;
+  bool do_not_delete = 10;
+  string hostfacts_version = 11;
+  string version = 12;
+}
+
+message ClusterScaleRequest {
+  string name = 1;
+  // New node configuration for the cluster
+  map<string, int64> node_set = 2;
+}
+
+message ClusterDeleteRequest {
+  string name = 1;
+  bool release_reserved_ip = 2;
+  bool force = 3;
+}
+
+message ClusterStartupScriptRequest {
+  string uid = 1;
+  string role = 2;
+}
+
+message ClusterStartupScriptResponse {
+  dtypes.Status status = 1;
+  string configuration = 2;
+}
+
+message ClusterInstanceByIPRequest {
+  string phid = 1;
+  string external_ip = 2;
+}
+
+message ClusterInstanceResponse {
+  dtypes.Status status = 1;
+  ClusterInstance instance = 2;
+}
+
+message ClusterClientConfigRequest {
+  string name = 1;
+}
+
+message ClusterClientConfigResponse {
+  dtypes.Status status = 1;
+  string configuration = 2 [deprecated=true];
+  string cluster_domain = 3;
+  string ca_cert = 4;
+  string api_server_url = 5;
+  string cluster_user_name = 6;
+  string user_cert = 7;
+  string user_key = 8;
+  string context_name = 9;
+  string user_token = 10;
+}
+
+message ClusterClientContainerRequest {
+  string name = 1;
+  string disk_name = 2;
+}
+
+message ClusterInstanceListRequest {
+  string cluster_name = 1;
+}
+
+message ClusterInstance {
+  string phid = 1;
+  string external_id = 2;
+  string name = 3;
+  string external_ip = 4;
+  string internal_ip = 5;
+  string sku = 6;
+}
+
+message ClusterInstanceListResponse {
+  dtypes.Status status = 1;
+  repeated ClusterInstance instances = 2;
+}
+
+message ClusterUpdateRequest {
+  string name = 1;
+  bool do_not_delete = 2;
+  ClusterSettings settings = 3;
+}
+
+message ClusterUpgradeRequest {
+  string name = 1;
+  string kube_saltbase_version = 2;
+  string kube_starter_version = 3;
+  string kube_server_version = 4;
+  string hostfacts_version = 5;
+  string version = 6;
+}

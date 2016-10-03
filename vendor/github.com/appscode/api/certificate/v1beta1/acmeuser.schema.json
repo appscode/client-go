@@ -1,0 +1,12 @@
+{
+  "definitions": {
+    "v1beta1AcmeUserRegisterRequest": {
+      "properties": {
+        "email": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,361 @@
+syntax = "proto3";
+
+package kubernetes.v1beta1;
+
+option go_package = "v1beta1";
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+import "api/alert/v1beta1/alert.proto";
+
+// All those clients api in v1beta1 are deprecated. will be removed in future version.
+// Use v0.2 apis instead.
+service Clients {
+  rpc Copy(CopyResourceRequest) returns (CopyResourceResponse) {
+    option (google.api.http) = {
+      put : "/appscode/api/kubernetes/v1beta1/actions/copy"
+      body : "*"
+    };
+  }
+
+  rpc Nodes(ClientRequest) returns (NodeListResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/nodes"
+    };
+  }
+
+  rpc Apps(ClientRequest) returns (AppListResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/apps"
+    };
+  }
+
+  rpc App(AppDescribeRequest) returns (AppDescribeResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/apps/{namespace}/{name}"
+    };
+  }
+
+  rpc AppPods(AppDescribeRequest) returns (PodListResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/apps/{namespace}/{name}/pods"
+    };
+  }
+
+  rpc Namespaces(ClientRequest) returns (NamespaceListResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/namespaces"
+    };
+  }
+
+  rpc Secrets(ClientRequest) returns (SecretListResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/secrets"
+    };
+  }
+
+  rpc Secret(SecretDescribeRequest) returns (SecretDescribeResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/secrets/{namespace}/{name}"
+    };
+  }
+
+  rpc Jobs(ClientRequest) returns (JobListResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/jobs"
+    };
+  }
+
+  rpc Pods(ClientRequest) returns (PodListResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/pods"
+    };
+  }
+
+  rpc Services(ClientRequest) returns (ServiceListResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/services"
+    };
+  }
+
+  rpc ReplicationControllers(ClientRequest) returns (ReplicationControllerListResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/rcs"
+    };
+  }
+
+  rpc ConfigMaps(ClientRequest) returns (ConfigMapListResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/configmaps"
+    };
+  }
+
+  rpc ConfigMap(ConfigMapDescribeRequest) returns (ConfigMapDescribeResponse) {
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/configmaps/{namespace}/{name}"
+    };
+  }
+}
+
+
+message KubeResource {
+  string type = 1;
+  string name = 2;
+  string namespace = 3;
+  string cluster = 4;
+}
+
+message CopyResourceRequest {
+  KubeResource source = 1;
+  KubeResource destination = 2;
+}
+
+message CopyResourceResponse {
+  dtypes.Status status = 1;
+}
+
+message ClientRequest {
+  string cluster = 1;
+}
+
+message NodeListResponse {
+  dtypes.Status status = 1;
+  repeated Node nodes = 2;
+}
+
+message Node {
+  string name = 1;
+  string provider_id = 2;
+
+  int64 created_at = 3;
+
+  message NodeCapacity {
+    int64 cpu = 1;
+    int64 memory = 2;
+    int64 pods = 3;
+  }
+  NodeCapacity capacity = 4;
+
+  string os_image = 5;
+  string kernel_version = 6;
+  string container_runtime = 7;
+
+  string kubelet_version = 8;
+  string instance_type = 9;
+  bool is_master = 10;
+}
+
+message NamespaceListResponse {
+  dtypes.Status status = 1;
+  repeated Namespace namespaces = 2;
+}
+
+message Namespace {
+  string name = 1;
+  int64 created_at = 2;
+  string phase = 3;
+}
+
+message SecretListResponse {
+  dtypes.Status status = 1;
+  repeated Secret secrets = 2;
+}
+
+message Secret {
+  string name = 1;
+  string namespace = 2;
+
+  string resource_version = 3;
+  string secret_type = 4;
+
+  int64 created_at = 5;
+}
+
+message JobListResponse {
+  dtypes.Status status = 1;
+  repeated Job jobs = 2;
+}
+
+message Job {
+  string name = 1;
+  string namespace = 2;
+  string app = 3;
+  int64 created_at = 4;
+
+  int32 parallelism = 5;
+  int32 completions = 6;
+
+  repeated Container containers = 7;
+
+  string start_time = 8;
+  string completion_time = 9;
+
+  int32 active = 10;
+  int32 succeeded = 11;
+  int32 failed = 12;
+}
+
+message PodListResponse {
+  dtypes.Status status = 1;
+  repeated Pod pods = 2;
+}
+
+message Pod {
+  string name = 1;
+  string namespace = 2;
+  string app = 3;
+  int64 created_at = 4;
+
+  repeated Container containers = 5;
+
+  string service_account = 6;
+  string node_name = 7;
+
+  string phase = 8;
+  string start_time = 9;
+  string message = 10;
+
+  map<string, string> links = 11;
+}
+
+message Container {
+  string name = 1;
+  string image = 2;
+  repeated string commands = 3;
+}
+
+message ServiceListResponse {
+  dtypes.Status status = 1;
+  repeated Service services = 2;
+}
+
+message Service {
+  string name = 1;
+  string namespace = 2;
+  string app = 3;
+  int64 created_at = 4;
+
+  string type = 5;
+  string cluster_ip = 6;
+
+  message Port {
+    string name = 1;
+    string protocol = 2;
+    int32 port = 3;
+    string target_port = 4;
+    int32 node_port = 5;
+  }
+  repeated Port ports = 7;
+  repeated string external_ips = 8;
+
+  message LoadBalancerIngress {
+    string host_name = 1;
+    string ip = 2;
+  }
+  repeated LoadBalancerIngress loadbalancer_ingresses = 9;
+}
+
+message AppDescribeRequest {
+  string name = 1;
+  string cluster = 2;
+  string namespace = 3;
+}
+
+message AppDescribeResponse {
+  dtypes.Status status = 1;
+  Service app = 2;
+  map<string, string> links = 3;
+  alert.v1beta1.IcingaState icinga_state = 4;
+}
+
+message AppListResponse {
+  dtypes.Status status = 1;
+  repeated App apps = 2;
+}
+
+message App {
+  string name = 1;
+  string namespace = 2;
+  int64 created_at = 4;
+
+  string type = 5;
+  string cluster_ip = 6;
+}
+
+
+message ReplicationControllerListResponse {
+  dtypes.Status status = 1;
+  repeated ReplicationController replication_controllers = 2;
+}
+
+message ReplicationController {
+  string name = 1;
+  string namespace = 2;
+  string app = 3;
+  int64 created_at = 4;
+
+  int64 generation = 5;
+  int32 current_replicas = 6;
+  int32 replicas = 7;
+  int64 observed_generation = 8;
+
+  repeated Container containers = 9;
+}
+
+message ConfigMapListResponse {
+  dtypes.Status status = 1;
+  repeated ConfigMap config_map = 2;
+}
+
+message ConfigMap {
+  string name = 1;
+  string namespace = 2;
+  int64 size = 3;
+  int64 created_at = 4;
+  string resource_version = 5;
+}
+
+message ConfigMapDescribeRequest {
+  string cluster = 1;
+  string name = 2;
+  string namespace = 3;
+
+  string raw = 4;
+}
+
+message ConfigMapDescribeResponse {
+  dtypes.Status status = 1;
+  string name = 2;
+  string namespace = 3;
+  string cluster = 4;
+  string created_time = 5;
+  map <string, string> data = 6;
+
+  Raw raw = 7;
+}
+
+message SecretDescribeRequest {
+  string cluster = 1;
+  string name = 2;
+  string namespace = 3;
+
+  string raw = 4;
+}
+
+message SecretDescribeResponse {
+  dtypes.Status status = 1;
+  string cluster = 2;
+  string name = 3;
+  string namespace = 4;
+  int64 created_at = 5;
+  string resource_version = 6;
+  string type = 7;
+  map <string, string> data = 8;
+
+  Raw raw = 9;
+}
+
+message Raw {
+  string format = 1;
+  string data = 2;
+}

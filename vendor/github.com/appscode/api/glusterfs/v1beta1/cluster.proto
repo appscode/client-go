@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+package glusterfs.v1beta1;
+
+option go_package = "v1beta1";
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Clusters {
+  // Glusterfs cluster list. Needs to work with two modes.
+  // First is to list all the glusterfs cluster through the
+  // space with out considering the kubernetes cluster. if the
+  // cluster_name is provided then list all the glusterfs cluster
+  // with respect to the provided kube cluster space.
+  rpc List(ClusterListRequest) returns (ClusterListResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/glusterfs/v1beta1/clusters/{kube_cluster}"
+    };
+  }
+
+  rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/glusterfs/v1beta1/clusters/{kube_cluster}/{kube_namespace}/{name}"
+    };
+  }
+
+  rpc Create(ClusterCreateRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put : "/appscode/api/glusterfs/v1beta1/clusters/{kube_cluster}"
+      body: "*"
+    };
+  }
+
+  rpc Delete(ClusterDeleteRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete : "/appscode/api/glusterfs/v1beta1/clusters/{kube_cluster}/{kube_namespace}/{name}"
+    };
+  }
+}
+
+message Cluster {
+  string phid = 1;
+  string name = 2;
+  string kube_cluster = 3;
+  string kube_namespace = 4;
+  int64 replica = 5;
+  string endpoint = 6;
+  string created = 7;
+  string status = 8;
+}
+
+message ClusterListRequest {
+  string kube_cluster = 1;
+  // List of status to get the agent filterd on the status
+  // values in
+  //   PENDING
+  //   FAILED
+  //   READY
+  //   DELETED
+  repeated string status = 2;
+}
+
+message ClusterListResponse {
+  dtypes.Status status = 1;
+  repeated Cluster glusterfs = 2;
+}
+
+message ClusterDescribeRequest {
+  string kube_cluster = 1;
+  string kube_namespace = 2;
+  string name = 3;
+}
+
+message ClusterDescribeResponse {
+  dtypes.Status status = 1;
+}
+
+message ClusterCreateRequest {
+  string name = 1;
+  int64 node = 2;
+  repeated string disks = 3;
+  string kube_cluster = 4;
+  string kube_namespace = 5;
+  bool bacula_enabled = 6;
+}
+
+message ClusterDeleteRequest {
+  string kube_cluster = 1;
+  string kube_namespace = 2;
+  string name = 3;
+}

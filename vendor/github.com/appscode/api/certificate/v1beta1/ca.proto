@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package certificate.v1beta1;
+
+option go_package = "v1beta1";
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service CAs {
+  rpc Create(CACreateRequest) returns (CACreateResponse) {
+    option (google.api.http) = {
+	    post: "/appscode/api/certificate/v1beta1/cas"
+	    body: "*"
+	  };
+  }
+}
+
+// Use specific requests for protos
+message  CACreateRequest {
+  string name = 1;
+  string csr = 2;
+}
+
+message CACreateResponse {
+  dtypes.Status status = 1;
+  string phid = 2;
+  bytes cert = 3;
+  bytes key = 4;
+  bytes root = 5;
+}

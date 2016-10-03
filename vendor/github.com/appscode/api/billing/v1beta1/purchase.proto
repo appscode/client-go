@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package billing.v1beta1;
+
+option go_package = "v1beta1";
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Purchases {
+  rpc Begin(PurchaseBeginRequest) returns (PurchaseBeginResponse) {
+    option (google.api.http) = {
+      post: "/appscode/api/billing/v1beta1/purchases"
+      body: "*"
+    };
+  }
+
+  rpc Complete(PurchaseCompleteRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      put: "/appscode/api/billing/v1beta1/purchases/{phid}"
+      body: "*"
+    };
+  }
+
+  rpc Close(PurchaseCloseRequest) returns (dtypes.VoidResponse) {
+    option (google.api.http) = {
+      delete: "/appscode/api/billing/v1beta1/purchases/{object_phid}"
+    };
+  }
+}
+
+message PurchaseBeginRequest {
+  string product_sku = 1;
+  int64 count = 2;
+}
+
+message PurchaseBeginResponse {
+  dtypes.Status status = 1;
+  repeated string phid_list = 2;
+}
+
+message PurchaseCompleteRequest {
+  string phid = 1;
+  string object_phid = 2;
+  bool failed = 3;
+  map<string,string> metadata = 4;
+}
+
+message PurchaseCloseRequest {
+  string object_phid = 1;
+}

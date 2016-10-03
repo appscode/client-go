@@ -1,0 +1,7 @@
+{
+  "definitions": {
+    "v1beta1ConduitRequest": {
+      "type": "object"
+    }
+  }
+}

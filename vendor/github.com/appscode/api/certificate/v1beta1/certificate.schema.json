@@ -1,0 +1,144 @@
+{
+  "definitions": {
+    "v1beta1CertificateCreateRequest": {
+      "properties": {
+        "account_phid": {
+          "type": "string"
+        },
+        "bundle": {
+          "type": "boolean"
+        },
+        "common_name": {
+          "type": "string"
+        },
+        "issue_private_cert": {
+          "type": "boolean"
+        },
+        "key_data": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "san": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "subject_info": {
+          "$ref": "#/definitions/v1beta1SubjectInfo"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1CertificateDeleteRequest": {
+      "properties": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1CertificateDeployRequest": {
+      "properties": {
+        "cluster_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "namespace": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "secret_name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1CertificateDescribeRequest": {
+      "properties": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1CertificateImportRequest": {
+      "properties": {
+        "cert_data": {
+          "type": "string"
+        },
+        "key_data": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1CertificateListRequest": {
+      "type": "object"
+    },
+    "v1beta1CertificateRenewRequest": {
+      "properties": {
+        "account_phid": {
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1CertificateRevokeRequest": {
+      "properties": {
+        "account_phid": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1SubjectInfo": {
+      "description": "A Name contains the SubjectInfo fields.",
+      "properties": {
+        "C": {
+          "type": "string"
+        },
+        "L": {
+          "type": "string"
+        },
+        "O": {
+          "type": "string"
+        },
+        "OU": {
+          "type": "string"
+        },
+        "ST": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

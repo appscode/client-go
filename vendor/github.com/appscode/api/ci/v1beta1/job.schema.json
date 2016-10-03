@@ -1,0 +1,81 @@
+{
+  "definitions": {
+    "v1beta1JobBuildRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "param": {
+          "type": "string"
+        },
+        "parents": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1JobCopyRequest": {
+      "properties": {
+        "destination": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1JobCreateRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "parents": {
+          "type": "string"
+        },
+        "sh_file": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1JobDeleteRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "parents": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1JobDescribeRequest": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        },
+        "parents": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1JobListRequest": {
+      "properties": {
+        "parents": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}

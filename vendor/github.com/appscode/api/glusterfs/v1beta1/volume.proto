@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package glusterfs.v1beta1;
+
+option go_package = "v1beta1";
+
+import "google/api/annotations.proto";
+import "api/dtypes/types.proto";
+
+service Volumes {
+  rpc List(VolumeListRequest) returns (VolumeListResponse) {
+    option (google.api.http) = {
+      get: "/appscode/api/glusterfs/v1beta1/volumes/{kube_cluster}/{kube_namespace}/{glusterfs_cluster}"
+    };
+  }
+}
+
+message VolumeListRequest {
+  string kube_cluster = 1;
+  string kube_namespace = 2;
+  string glusterfs_cluster = 3;
+}
+
+message VolumeListResponse {
+  dtypes.Status status = 1;
+  repeated Volume volumes = 2;
+}
+
+message Volume {
+  string path = 1;
+}

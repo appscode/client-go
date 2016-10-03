@@ -709,25 +709,25 @@ func RegisterDatabasesHandler(ctx context.Context, mux *runtime.ServeMux, conn *
 }
 
 var (
-	pattern_Databases_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"appscode", "api", "db", "v0.1"}, ""))
+	pattern_Databases_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"appscode", "api", "db", "v1beta1"}, ""))
 
-	pattern_Databases_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"appscode", "api", "db", "v0.1", "cluster"}, ""))
+	pattern_Databases_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4}, []string{"appscode", "api", "db", "v1beta1", "cluster"}, ""))
 
-	pattern_Databases_AddStandby_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "db", "v0.1", "cluster", "name", "standby"}, ""))
+	pattern_Databases_AddStandby_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "db", "v1beta1", "cluster", "name", "standby"}, ""))
 
-	pattern_Databases_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "db", "v0.1", "cluster", "uid"}, ""))
+	pattern_Databases_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "db", "v1beta1", "cluster", "uid"}, ""))
 
-	pattern_Databases_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "db", "v0.1", "cluster", "uid"}, ""))
+	pattern_Databases_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "db", "v1beta1", "cluster", "uid"}, ""))
 
-	pattern_Databases_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "db", "v0.1", "cluster", "name"}, ""))
+	pattern_Databases_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "db", "v1beta1", "cluster", "name"}, ""))
 
-	pattern_Databases_BackupSchedule_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "db", "v0.1", "cluster", "name", "backup"}, ""))
+	pattern_Databases_BackupSchedule_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "db", "v1beta1", "cluster", "name", "backup"}, ""))
 
-	pattern_Databases_BackupUnschedule_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "db", "v0.1", "cluster", "name", "backup"}, ""))
+	pattern_Databases_BackupUnschedule_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "db", "v1beta1", "cluster", "name", "backup"}, ""))
 
-	pattern_Databases_Restore_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "db", "v0.1", "cluster", "name", "restore"}, ""))
+	pattern_Databases_Restore_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "db", "v1beta1", "cluster", "name", "restore"}, ""))
 
-	pattern_Databases_SnapshotList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "db", "v0.1", "cluster", "uid", "snapshot"}, ""))
+	pattern_Databases_SnapshotList_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "db", "v1beta1", "cluster", "uid", "snapshot"}, ""))
 )
 
 var (
