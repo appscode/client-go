@@ -22,7 +22,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/healthResponse"
+              "$ref": "#/definitions/healthStatusResponse"
             }
           }
         },
@@ -85,7 +85,7 @@
       "type": "object",
       "description": "Void Requests and response to use with other types."
     },
-    "healthResponse": {
+    "healthStatusResponse": {
       "type": "object",
       "properties": {
         "status": {
