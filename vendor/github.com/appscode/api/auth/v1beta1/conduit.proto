@@ -45,4 +45,11 @@ message ConduitUser {
   string uri = 5;
   repeated string roles = 6;
   string primary_email = 7;
+  Preferences preferences = 8;
+}
+
+message Preferences {
+  string time_zone = 1;
+  string time_format = 2;
+  string date_formate = 3;
 }

@@ -295,8 +295,8 @@
           "type": "string"
         },
         "time": {
-          "format": "string",
-          "type": "string"
+          "format": "int64",
+          "type": "integer"
         },
         "type": {
           "format": "string",

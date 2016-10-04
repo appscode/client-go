@@ -20,6 +20,7 @@ It has these top-level messages:
 	ConduitWhoAmIResponse
 	ConduitUsersResponse
 	ConduitUser
+	Preferences
 */
 package v1beta1
 

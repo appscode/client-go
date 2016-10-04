@@ -78,6 +78,6 @@ message SubscriptionResponse {
   Product product = 2;
   bool auto_extend = 3;
   string quota = 4;
-  string date_start = 5;
-  string date_end = 6;
+  int64 date_start = 5;
+  int64 date_end = 6;
 }

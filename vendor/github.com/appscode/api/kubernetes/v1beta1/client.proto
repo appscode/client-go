@@ -187,8 +187,8 @@ message Job {
 
   repeated Container containers = 7;
 
-  string start_time = 8;
-  string completion_time = 9;
+  int64 start_time = 8;
+  int64 completion_time = 9;
 
   int32 active = 10;
   int32 succeeded = 11;
@@ -212,7 +212,7 @@ message Pod {
   string node_name = 7;
 
   string phase = 8;
-  string start_time = 9;
+  int64 start_time = 9;
   string message = 10;
 
   map<string, string> links = 11;
@@ -328,7 +328,7 @@ message ConfigMapDescribeResponse {
   string name = 2;
   string namespace = 3;
   string cluster = 4;
-  string created_time = 5;
+  int64 created_time = 5;
   map <string, string> data = 6;
 
   Raw raw = 7;

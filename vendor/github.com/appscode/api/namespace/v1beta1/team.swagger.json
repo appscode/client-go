@@ -186,12 +186,12 @@
           "type": "boolean"
         },
         "date_end": {
-          "format": "string",
-          "type": "string"
+          "format": "int64",
+          "type": "integer"
         },
         "date_start": {
-          "format": "string",
-          "type": "string"
+          "format": "int64",
+          "type": "integer"
         },
         "product": {
           "$ref": "#/definitions/SubscriptionResponseProduct"

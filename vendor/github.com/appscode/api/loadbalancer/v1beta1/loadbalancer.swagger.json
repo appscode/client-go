@@ -212,8 +212,8 @@
     "v1beta1LoadBalancer": {
       "properties": {
         "creation_timestamp": {
-          "format": "string",
-          "type": "string"
+          "format": "int64",
+          "type": "integer"
         },
         "json": {
           "format": "string",

@@ -78,9 +78,9 @@
     },
     "v1beta1Cluster": {
       "properties": {
-        "created": {
-          "format": "string",
-          "type": "string"
+        "created_at": {
+          "format": "int64",
+          "type": "integer"
         },
         "endpoint": {
           "format": "string",

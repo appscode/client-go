@@ -81,6 +81,9 @@
           "format": "string",
           "type": "string"
         },
+        "preferences": {
+          "$ref": "#/definitions/v1beta1Preferences"
+        },
         "primary_email": {
           "format": "string",
           "type": "string"
@@ -128,6 +131,23 @@
         },
         "user": {
           "$ref": "#/definitions/v1beta1ConduitUser"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1Preferences": {
+      "properties": {
+        "date_formate": {
+          "format": "string",
+          "type": "string"
+        },
+        "time_format": {
+          "format": "string",
+          "type": "string"
+        },
+        "time_zone": {
+          "format": "string",
+          "type": "string"
         }
       },
       "type": "object"

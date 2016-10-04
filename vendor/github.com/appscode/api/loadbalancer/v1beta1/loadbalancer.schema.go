@@ -92,7 +92,7 @@ func init() {
     "v1beta1LoadBalancer": {
       "properties": {
         "creation_timestamp": {
-          "type": "string"
+          "type": "integer"
         },
         "json": {
           "type": "string"
@@ -294,7 +294,7 @@ func init() {
     "v1beta1LoadBalancer": {
       "properties": {
         "creation_timestamp": {
-          "type": "string"
+          "type": "integer"
         },
         "json": {
           "type": "string"

@@ -95,7 +95,7 @@ message IncidentNotifyRequest {
   string type = 3;
   string state = 4;
   string output = 5;
-  string time = 6;
+  int64 time = 6;
   string author = 7;
   string comment = 8;
 }

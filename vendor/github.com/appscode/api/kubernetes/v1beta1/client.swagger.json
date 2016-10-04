@@ -262,8 +262,8 @@
           "type": "string"
         },
         "created_time": {
-          "format": "string",
-          "type": "string"
+          "format": "int64",
+          "type": "integer"
         },
         "data": {
           "additionalProperties": {
@@ -375,8 +375,8 @@
           "type": "string"
         },
         "completion_time": {
-          "format": "string",
-          "type": "string"
+          "format": "int64",
+          "type": "integer"
         },
         "completions": {
           "format": "int32",
@@ -409,8 +409,8 @@
           "type": "integer"
         },
         "start_time": {
-          "format": "string",
-          "type": "string"
+          "format": "int64",
+          "type": "integer"
         },
         "succeeded": {
           "format": "int32",
@@ -591,8 +591,8 @@
           "type": "string"
         },
         "start_time": {
-          "format": "string",
-          "type": "string"
+          "format": "int64",
+          "type": "integer"
         }
       },
       "type": "object"

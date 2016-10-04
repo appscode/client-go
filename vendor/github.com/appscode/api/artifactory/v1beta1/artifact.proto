@@ -46,5 +46,5 @@ message ArtifactListResponse {
 message Artifact {
   string name = 1;
   string type = 2;
-  string last_modified_time = 3;
+  int64 last_modified = 3;
 }

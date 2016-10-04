@@ -111,8 +111,8 @@ message Certificate {
   string name = 2;
   string common_name = 3;
   string issued_by = 4;
-  string valid_from = 5;
-  string expire_date = 6;
+  int64 valid_from = 5;
+  int64 expire_date = 6;
 
   // those feilds will not included into list response.
   // only describe response will include the underlying

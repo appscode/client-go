@@ -46,7 +46,7 @@ message Cluster {
   string kube_namespace = 4;
   int64 replica = 5;
   string endpoint = 6;
-  string created = 7;
+  int64 created_at = 7;
   string status = 8;
 }
 

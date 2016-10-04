@@ -87,8 +87,8 @@
           "type": "string"
         },
         "expire_date": {
-          "format": "string",
-          "type": "string"
+          "format": "int64",
+          "type": "integer"
         },
         "issued_by": {
           "format": "string",
@@ -119,8 +119,8 @@
           "type": "string"
         },
         "valid_from": {
-          "format": "string",
-          "type": "string"
+          "format": "int64",
+          "type": "integer"
         },
         "version": {
           "format": "int32",

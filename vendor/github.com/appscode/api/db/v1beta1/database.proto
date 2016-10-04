@@ -59,7 +59,7 @@ message Database {
   string auth_secret = 9;
   string schedule_cron_expr = 10;
   int64 pv_size = 11;
-  string last_backup = 12;
+  int64 last_backup = 12;
   string status = 13;
   int64 created_at = 14;
   int64 deleted_at = 15;

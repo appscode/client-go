@@ -36,7 +36,7 @@ func init() {
       "type": "string"
     },
     "time": {
-      "type": "string"
+      "type": "integer"
     },
     "type": {
       "type": "string"
