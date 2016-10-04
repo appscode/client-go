@@ -8,11 +8,11 @@ import (
 	billing "github.com/appscode/api/billing/v1beta1"
 	ca "github.com/appscode/api/certificate/v1beta1"
 	ci "github.com/appscode/api/ci/v1beta1"
+	db "github.com/appscode/api/db/v1beta1"
 	glusterfs "github.com/appscode/api/glusterfs/v1beta1"
 	kubernetes "github.com/appscode/api/kubernetes/v1beta1"
 	pv "github.com/appscode/api/pv/v1beta1"
 	"google.golang.org/grpc"
-	db "github.com/appscode/api/db/v1beta1"
 )
 
 // multi client services are grouped by there main client. the api service
@@ -95,8 +95,8 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 			pvc:  pv.NewPersistentVolumeClaimsClient(conn),
 		},
 		dbClient: &dbService{
-			database:   db.NewDatabasesClient(conn),
-			snapshot:  db.NewSnapshotsClient(conn),
+			database: db.NewDatabasesClient(conn),
+			snapshot: db.NewSnapshotsClient(conn),
 		},
 	}
 }
@@ -305,14 +305,14 @@ func (p *pvService) PersistentVolumeClaim() pv.PersistentVolumeClaimsClient {
 }
 
 type dbService struct {
-	database  db.DatabasesClient
-	snapshot  db.SnapshotsClient
+	database db.DatabasesClient
+	snapshot db.SnapshotsClient
 }
 
 func (p *dbService) Database() db.DatabasesClient {
 	return p.database
 }
 
-func (p *dbService)Ssnapshot() db.SnapshotsClient {
+func (p *dbService) Snapshot() db.SnapshotsClient {
 	return p.snapshot
 }

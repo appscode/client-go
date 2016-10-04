@@ -9,8 +9,8 @@ import (
 
 var backupUnscheduleRequestSchema *gojsonschema.Schema
 var backupScheduleRequestSchema *gojsonschema.Schema
-var restoreRequestSchema *gojsonschema.Schema
 var snapshotListRequestSchema *gojsonschema.Schema
+var snapshotRestoreRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
@@ -67,7 +67,23 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	restoreRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	snapshotListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
+    },
+    "uid": {
+      "type": "string"
+    }
+  },
+  "title": "Next Id: 3",
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	snapshotRestoreRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "auth_secret_name": {
@@ -91,22 +107,6 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	snapshotListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "cluster": {
-      "type": "string"
-    },
-    "uid": {
-      "type": "string"
-    }
-  },
-  "title": "Next Id: 3",
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
 }
 
 func (m *BackupUnscheduleRequest) IsValid() (*gojsonschema.Result, error) {
@@ -119,15 +119,15 @@ func (m *BackupScheduleRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *BackupScheduleRequest) IsRequest() {}
 
-func (m *RestoreRequest) IsValid() (*gojsonschema.Result, error) {
-	return restoreRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *RestoreRequest) IsRequest() {}
-
 func (m *SnapshotListRequest) IsValid() (*gojsonschema.Result, error) {
 	return snapshotListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *SnapshotListRequest) IsRequest() {}
+
+func (m *SnapshotRestoreRequest) IsValid() (*gojsonschema.Result, error) {
+	return snapshotRestoreRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *SnapshotRestoreRequest) IsRequest() {}
 
 func (m *SnapshotListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s

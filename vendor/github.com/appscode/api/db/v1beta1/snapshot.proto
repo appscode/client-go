@@ -27,7 +27,7 @@ service Snapshots {
     };
   }
 
-  rpc Restore(RestoreRequest) returns (dtypes.VoidResponse) {
+  rpc Restore(SnapshotRestoreRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       post: "/appscode/api/db/v1beta1/snapshots/{cluster}/{uid}/restore"
       body: "*"
@@ -91,7 +91,7 @@ message BackupUnscheduleRequest {
 }
 
 // Next Id: 19
-message RestoreRequest {
+message SnapshotRestoreRequest {
   string cluster = 1;
   string uid = 2;
   string snapshot_phid = 8;

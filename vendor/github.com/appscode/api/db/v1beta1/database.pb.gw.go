@@ -45,7 +45,7 @@ func request_Databases_List_0(ctx context.Context, marshaler runtime.Marshaler, 
 }
 
 func request_Databases_Create_0(ctx context.Context, marshaler runtime.Marshaler, client DatabasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq CreateRequest
+	var protoReq DatabaseCreateRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
@@ -76,7 +76,7 @@ func request_Databases_Create_0(ctx context.Context, marshaler runtime.Marshaler
 }
 
 func request_Databases_Scale_0(ctx context.Context, marshaler runtime.Marshaler, client DatabasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ScaleRequest
+	var protoReq DatabaseScaleRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
@@ -118,7 +118,7 @@ func request_Databases_Scale_0(ctx context.Context, marshaler runtime.Marshaler,
 }
 
 func request_Databases_Update_0(ctx context.Context, marshaler runtime.Marshaler, client DatabasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq UpdateRequest
+	var protoReq DatabaseUpdateRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
@@ -160,7 +160,7 @@ func request_Databases_Update_0(ctx context.Context, marshaler runtime.Marshaler
 }
 
 func request_Databases_Describe_0(ctx context.Context, marshaler runtime.Marshaler, client DatabasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DescribeRequest
+	var protoReq DatabaseDescribeRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -198,7 +198,7 @@ func request_Databases_Describe_0(ctx context.Context, marshaler runtime.Marshal
 }
 
 func request_Databases_Delete_0(ctx context.Context, marshaler runtime.Marshaler, client DatabasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DeleteRequest
+	var protoReq DatabaseDeleteRequest
 	var metadata runtime.ServerMetadata
 
 	var (

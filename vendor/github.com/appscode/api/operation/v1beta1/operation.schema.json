@@ -12,48 +12,6 @@
       "title": "Next Id: 3",
       "type": "object"
     },
-    "namespacev1beta1CreateRequest": {
-      "properties": {
-        "client_ip": {
-          "type": "string"
-        },
-        "display_name": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "invite_email": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "subscription_type": {
-          "type": "string"
-        },
-        "user_name": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "operationv1beta1DescribeRequest": {
-      "properties": {
-        "phid": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1beta1AgentCreateRequest": {
       "properties": {
         "ci_starter_version": {
@@ -89,8 +47,6 @@
     "v1beta1AgentDeleteRequest": {
       "properties": {
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -123,13 +79,9 @@
     "v1beta1BackupScheduleRequest": {
       "properties": {
         "auth_secret_name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "bucket_name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "cluster": {
@@ -142,8 +94,6 @@
           "type": "string"
         },
         "snapshot_name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "uid": {
@@ -156,8 +106,6 @@
     "v1beta1ClusterCreateRequest": {
       "properties": {
         "cloud_credential": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "cloud_credential_data": {
@@ -182,8 +130,6 @@
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "node_set": {
@@ -210,8 +156,6 @@
           "type": "boolean"
         },
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "release_reserved_ip": {
@@ -223,8 +167,6 @@
     "v1beta1ClusterScaleRequest": {
       "properties": {
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "node_set": {
@@ -252,11 +194,41 @@
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "version": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1beta1CreateRequest": {
+      "properties": {
+        "client_ip": {
+          "type": "string"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "invite_email": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "subscription_type": {
+          "type": "string"
+        },
+        "user_name": {
           "type": "string"
         }
       },
@@ -279,8 +251,6 @@
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "prefix": {
@@ -304,16 +274,20 @@
       "title": "Next Id: 4",
       "type": "object"
     },
+    "v1beta1DescribeRequest": {
+      "properties": {
+        "phid": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1beta1MasterCreateRequest": {
       "properties": {
         "cluster_name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "volume_id": {
@@ -325,13 +299,9 @@
     "v1beta1MasterDeleteRequest": {
       "properties": {
         "cluster_name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         }
       },
@@ -340,8 +310,6 @@
     "v1beta1NamespaceAdminTaskRequest": {
       "properties": {
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         }
       },

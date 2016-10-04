@@ -14,34 +14,34 @@ service Databases {
     };
   }
 
-  rpc Create(CreateRequest) returns (dtypes.VoidResponse) {
+  rpc Create(DatabaseCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       post : "/appscode/api/db/v1beta1/databases/{cluster}"
       body : "*"
     };
   }
 
-  rpc Scale(ScaleRequest) returns (dtypes.VoidResponse) {
+  rpc Scale(DatabaseScaleRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/appscode/api/db/v1beta1/databases/{cluster}/{uid}/scale"
       body: "*"
     };
   }
 
-  rpc Update(UpdateRequest) returns (dtypes.VoidResponse) {
+  rpc Update(DatabaseUpdateRequest) returns (dtypes.VoidResponse) {
   option (google.api.http) = {
       put: "/appscode/api/db/v1beta1/databases/{cluster}/{uid}"
       body: "*"
     };
   }
 
-  rpc Describe(DescribeRequest) returns (DescribeResponse) {
+  rpc Describe(DatabaseDescribeRequest) returns (DatabaseDescribeResponse) {
     option (google.api.http) = {
       get: "/appscode/api/db/v1beta1/databases/{cluster}/{uid}"
     };
   }
 
-  rpc Delete(DeleteRequest) returns (dtypes.VoidResponse) {
+  rpc Delete(DatabaseDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       delete: "/appscode/api/db/v1beta1/databases/{cluster}/{uid}"
     };
@@ -90,7 +90,7 @@ message DatabaseListResponse {
 }
 
 // Next Id: 15
-message CreateRequest {
+message DatabaseCreateRequest {
   string cluster = 1;
   string service_name = 2;
   string type = 3;
@@ -104,21 +104,21 @@ message CreateRequest {
 }
 
 // Next Id: 4
-message ScaleRequest {
+message DatabaseScaleRequest {
   string cluster = 1;
   string uid = 2;
   int64 size = 3;
 }
 
 // Next Id: 4
-message UpdateRequest {
+message DatabaseUpdateRequest {
   string cluster = 1;
   string uid = 2;
   bool do_not_delete = 3;
 }
 
 // Next Id: 3
-message DescribeRequest {
+message DatabaseDescribeRequest {
   string cluster = 1;
   string uid = 2;
 }
@@ -132,14 +132,14 @@ message SnapshotSummary {
 }
 
 // Next Id: 17
-message DescribeResponse {
+message DatabaseDescribeResponse {
   dtypes.Status status = 1;
   SnapshotSummary snapshot_summary = 9;
-  Database databases = 16;
+  Database database = 16;
 }
 
 // Next Id: 3
-message DeleteRequest {
+message DatabaseDeleteRequest {
   string cluster = 1;
   string uid = 2;
 }

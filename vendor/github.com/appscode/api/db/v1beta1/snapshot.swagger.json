@@ -142,28 +142,6 @@
       "title": "Next Id: 4",
       "type": "object"
     },
-    "v1beta1RestoreRequest": {
-      "properties": {
-        "auth_secret_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "snapshot_phid": {
-          "format": "string",
-          "type": "string"
-        },
-        "uid": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 19",
-      "type": "object"
-    },
     "v1beta1Snapshot": {
       "properties": {
         "bucket": {
@@ -256,6 +234,28 @@
         }
       },
       "title": "Next Id: 4",
+      "type": "object"
+    },
+    "v1beta1SnapshotRestoreRequest": {
+      "properties": {
+        "auth_secret_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "snapshot_phid": {
+          "format": "string",
+          "type": "string"
+        },
+        "uid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 19",
       "type": "object"
     }
   },
@@ -390,7 +390,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta1RestoreRequest"
+              "$ref": "#/definitions/v1beta1SnapshotRestoreRequest"
             }
           }
         ],

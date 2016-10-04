@@ -7,16 +7,16 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var deleteRequestSchema *gojsonschema.Schema
-var describeRequestSchema *gojsonschema.Schema
+var databaseDeleteRequestSchema *gojsonschema.Schema
+var databaseUpdateRequestSchema *gojsonschema.Schema
+var databaseCreateRequestSchema *gojsonschema.Schema
 var databaseListRequestSchema *gojsonschema.Schema
-var updateRequestSchema *gojsonschema.Schema
-var createRequestSchema *gojsonschema.Schema
-var scaleRequestSchema *gojsonschema.Schema
+var databaseScaleRequestSchema *gojsonschema.Schema
+var databaseDescribeRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	deleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	databaseDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster": {
@@ -32,43 +32,7 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	describeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "cluster": {
-      "type": "string"
-    },
-    "uid": {
-      "type": "string"
-    }
-  },
-  "title": "Next Id: 3",
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
-	databaseListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "status": {
-      "items": {
-        "type": "string"
-      },
-      "title": "List of status to get the agent filterd on the status\nvalues in\n  PENDING\n  FAILED\n  READY\n  DELETING\n  DELETED\n  DESTROYED",
-      "type": "array"
-    },
-    "type": {
-      "type": "string"
-    }
-  },
-  "title": "Next Id: 3",
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
-	updateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	databaseUpdateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster": {
@@ -87,7 +51,7 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	databaseCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "auth_secret_name": {
@@ -131,7 +95,27 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	scaleRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	databaseListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "status": {
+      "items": {
+        "type": "string"
+      },
+      "title": "List of status to get the agent filterd on the status\nvalues in\n  PENDING\n  FAILED\n  READY\n  DELETING\n  DELETED\n  DESTROYED",
+      "type": "array"
+    },
+    "type": {
+      "type": "string"
+    }
+  },
+  "title": "Next Id: 3",
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	databaseScaleRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster": {
@@ -150,41 +134,57 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
+	databaseDescribeRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
+    },
+    "uid": {
+      "type": "string"
+    }
+  },
+  "title": "Next Id: 3",
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
 }
 
-func (m *DeleteRequest) IsValid() (*gojsonschema.Result, error) {
-	return deleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *DatabaseDeleteRequest) IsValid() (*gojsonschema.Result, error) {
+	return databaseDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *DeleteRequest) IsRequest() {}
+func (m *DatabaseDeleteRequest) IsRequest() {}
 
-func (m *DescribeRequest) IsValid() (*gojsonschema.Result, error) {
-	return describeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *DatabaseUpdateRequest) IsValid() (*gojsonschema.Result, error) {
+	return databaseUpdateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *DescribeRequest) IsRequest() {}
+func (m *DatabaseUpdateRequest) IsRequest() {}
+
+func (m *DatabaseCreateRequest) IsValid() (*gojsonschema.Result, error) {
+	return databaseCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *DatabaseCreateRequest) IsRequest() {}
 
 func (m *DatabaseListRequest) IsValid() (*gojsonschema.Result, error) {
 	return databaseListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *DatabaseListRequest) IsRequest() {}
 
-func (m *UpdateRequest) IsValid() (*gojsonschema.Result, error) {
-	return updateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *DatabaseScaleRequest) IsValid() (*gojsonschema.Result, error) {
+	return databaseScaleRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *UpdateRequest) IsRequest() {}
+func (m *DatabaseScaleRequest) IsRequest() {}
 
-func (m *CreateRequest) IsValid() (*gojsonschema.Result, error) {
-	return createRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *DatabaseDescribeRequest) IsValid() (*gojsonschema.Result, error) {
+	return databaseDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *CreateRequest) IsRequest() {}
-
-func (m *ScaleRequest) IsValid() (*gojsonschema.Result, error) {
-	return scaleRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *ScaleRequest) IsRequest() {}
+func (m *DatabaseDescribeRequest) IsRequest() {}
 
 func (m *DatabaseListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-func (m *DescribeResponse) SetStatus(s *dtypes.Status) {
+func (m *DatabaseDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }

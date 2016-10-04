@@ -76,52 +76,6 @@
       },
       "type": "object"
     },
-    "v1beta1CreateRequest": {
-      "properties": {
-        "auth_secret_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "hostname": {
-          "format": "string",
-          "type": "string"
-        },
-        "pv_size": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "service_name": {
-          "format": "string",
-          "type": "string"
-        },
-        "size": {
-          "format": "int64",
-          "type": "integer"
-        },
-        "sku": {
-          "format": "string",
-          "type": "string"
-        },
-        "snapshot_phid": {
-          "format": "string",
-          "type": "string"
-        },
-        "type": {
-          "format": "string",
-          "type": "string"
-        },
-        "version": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 15",
-      "type": "object"
-    },
     "v1beta1Database": {
       "properties": {
         "auth_secret": {
@@ -192,6 +146,95 @@
       "title": "Next Id: 19",
       "type": "object"
     },
+    "v1beta1DatabaseCreateRequest": {
+      "properties": {
+        "auth_secret_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "hostname": {
+          "format": "string",
+          "type": "string"
+        },
+        "pv_size": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "service_name": {
+          "format": "string",
+          "type": "string"
+        },
+        "size": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "sku": {
+          "format": "string",
+          "type": "string"
+        },
+        "snapshot_phid": {
+          "format": "string",
+          "type": "string"
+        },
+        "type": {
+          "format": "string",
+          "type": "string"
+        },
+        "version": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 15",
+      "type": "object"
+    },
+    "v1beta1DatabaseDeleteRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "uid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 3",
+      "type": "object"
+    },
+    "v1beta1DatabaseDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "uid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 3",
+      "type": "object"
+    },
+    "v1beta1DatabaseDescribeResponse": {
+      "properties": {
+        "database": {
+          "$ref": "#/definitions/v1beta1Database"
+        },
+        "snapshot_summary": {
+          "$ref": "#/definitions/v1beta1SnapshotSummary"
+        },
+        "status": {
+          "$ref": "#/definitions/dtypesStatus"
+        }
+      },
+      "title": "Next Id: 17",
+      "type": "object"
+    },
     "v1beta1DatabaseListRequest": {
       "properties": {
         "status": {
@@ -225,50 +268,7 @@
       "title": "Next Id: 3",
       "type": "object"
     },
-    "v1beta1DeleteRequest": {
-      "properties": {
-        "cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "uid": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 3",
-      "type": "object"
-    },
-    "v1beta1DescribeRequest": {
-      "properties": {
-        "cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "uid": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 3",
-      "type": "object"
-    },
-    "v1beta1DescribeResponse": {
-      "properties": {
-        "databases": {
-          "$ref": "#/definitions/v1beta1Database"
-        },
-        "snapshot_summary": {
-          "$ref": "#/definitions/v1beta1SnapshotSummary"
-        },
-        "status": {
-          "$ref": "#/definitions/dtypesStatus"
-        }
-      },
-      "title": "Next Id: 17",
-      "type": "object"
-    },
-    "v1beta1ScaleRequest": {
+    "v1beta1DatabaseScaleRequest": {
       "properties": {
         "cluster": {
           "format": "string",
@@ -277,6 +277,24 @@
         "size": {
           "format": "int64",
           "type": "integer"
+        },
+        "uid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 4",
+      "type": "object"
+    },
+    "v1beta1DatabaseUpdateRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "do_not_delete": {
+          "format": "boolean",
+          "type": "boolean"
         },
         "uid": {
           "format": "string",
@@ -306,24 +324,6 @@
         }
       },
       "title": "Next Id: 7",
-      "type": "object"
-    },
-    "v1beta1UpdateRequest": {
-      "properties": {
-        "cluster": {
-          "format": "string",
-          "type": "string"
-        },
-        "do_not_delete": {
-          "format": "boolean",
-          "type": "boolean"
-        },
-        "uid": {
-          "format": "string",
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 4",
       "type": "object"
     }
   },
@@ -365,7 +365,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta1CreateRequest"
+              "$ref": "#/definitions/v1beta1DatabaseCreateRequest"
             }
           }
         ],
@@ -435,7 +435,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta1DescribeResponse"
+              "$ref": "#/definitions/v1beta1DatabaseDescribeResponse"
             }
           }
         },
@@ -465,7 +465,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta1UpdateRequest"
+              "$ref": "#/definitions/v1beta1DatabaseUpdateRequest"
             }
           }
         ],
@@ -505,7 +505,7 @@
             "name": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/v1beta1ScaleRequest"
+              "$ref": "#/definitions/v1beta1DatabaseScaleRequest"
             }
           }
         ],

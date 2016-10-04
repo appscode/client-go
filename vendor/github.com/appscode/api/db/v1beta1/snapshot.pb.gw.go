@@ -146,7 +146,7 @@ func request_Snapshots_BackupUnschedule_0(ctx context.Context, marshaler runtime
 }
 
 func request_Snapshots_Restore_0(ctx context.Context, marshaler runtime.Marshaler, client SnapshotsClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq RestoreRequest
+	var protoReq SnapshotRestoreRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {

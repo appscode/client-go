@@ -1,6 +1,6 @@
 {
   "definitions": {
-    "v1beta1CreateRequest": {
+    "v1beta1DatabaseCreateRequest": {
       "properties": {
         "auth_secret_name": {
           "maxLength": 63,
@@ -40,6 +40,30 @@
       "title": "Next Id: 15",
       "type": "object"
     },
+    "v1beta1DatabaseDeleteRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 3",
+      "type": "object"
+    },
+    "v1beta1DatabaseDescribeRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 3",
+      "type": "object"
+    },
     "v1beta1DatabaseListRequest": {
       "properties": {
         "status": {
@@ -56,31 +80,7 @@
       "title": "Next Id: 3",
       "type": "object"
     },
-    "v1beta1DeleteRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "uid": {
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 3",
-      "type": "object"
-    },
-    "v1beta1DescribeRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "uid": {
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 3",
-      "type": "object"
-    },
-    "v1beta1ScaleRequest": {
+    "v1beta1DatabaseScaleRequest": {
       "properties": {
         "cluster": {
           "type": "string"
@@ -95,7 +95,7 @@
       "title": "Next Id: 4",
       "type": "object"
     },
-    "v1beta1UpdateRequest": {
+    "v1beta1DatabaseUpdateRequest": {
       "properties": {
         "cluster": {
           "type": "string"

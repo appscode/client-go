@@ -45,7 +45,19 @@
       "title": "Next Id: 3",
       "type": "object"
     },
-    "v1beta1RestoreRequest": {
+    "v1beta1SnapshotListRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 3",
+      "type": "object"
+    },
+    "v1beta1SnapshotRestoreRequest": {
       "properties": {
         "auth_secret_name": {
           "maxLength": 63,
@@ -63,18 +75,6 @@
         }
       },
       "title": "Next Id: 19",
-      "type": "object"
-    },
-    "v1beta1SnapshotListRequest": {
-      "properties": {
-        "cluster": {
-          "type": "string"
-        },
-        "uid": {
-          "type": "string"
-        }
-      },
-      "title": "Next Id: 3",
       "type": "object"
     }
   }
