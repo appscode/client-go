@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package version;
+
+message Version {
+  string name              = 1;
+  string version           = 2;
+  string os                = 3;
+  string arch              = 4;
+  string commit_hash       = 5;
+  string git_branch        = 6;
+  string git_tag           = 7;
+  string commit_timestamp  = 8;
+  string build_timestamp   = 9;
+  string build_host        = 10;
+  string build_host_os     = 11;
+  string build_host_arch   = 12;
+}
