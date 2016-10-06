@@ -274,6 +274,21 @@
       "title": "Next Id: 4",
       "type": "object"
     },
+    "v1beta1DatabaseDeleteRequest": {
+      "properties": {
+        "cluster": {
+          "type": "string"
+        },
+        "destroy": {
+          "type": "boolean"
+        },
+        "uid": {
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 4",
+      "type": "object"
+    },
     "v1beta1DescribeRequest": {
       "properties": {
         "phid": {

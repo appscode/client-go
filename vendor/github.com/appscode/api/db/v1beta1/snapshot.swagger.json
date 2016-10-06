@@ -176,10 +176,6 @@
           "format": "string",
           "type": "string"
         },
-        "region": {
-          "format": "string",
-          "type": "string"
-        },
         "source_database": {
           "format": "string",
           "type": "string"
@@ -193,10 +189,6 @@
           "type": "string"
         },
         "type": {
-          "format": "string",
-          "type": "string"
-        },
-        "zone": {
           "format": "string",
           "type": "string"
         }
@@ -265,9 +257,9 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/db/v1beta1/snapshots/{cluster}/{uid}": {
-      "get": {
-        "operationId": "List",
+    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/restore": {
+      "post": {
+        "operationId": "Restore",
         "parameters": [
           {
             "format": "string",
@@ -282,13 +274,21 @@
             "name": "uid",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1SnapshotRestoreRequest"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta1SnapshotListResponse"
+              "$ref": "#/definitions/dtypesVoidResponse"
             }
           }
         },
@@ -297,7 +297,7 @@
         ]
       }
     },
-    "/appscode/api/db/v1beta1/snapshots/{cluster}/{uid}/backup": {
+    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/schedule-backup": {
       "post": {
         "operationId": "BackupSchedule",
         "parameters": [
@@ -335,7 +335,9 @@
         "tags": [
           "Snapshots"
         ]
-      },
+      }
+    },
+    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/unschedule-backup": {
       "put": {
         "operationId": "BackupUnschedule",
         "parameters": [
@@ -367,9 +369,9 @@
         ]
       }
     },
-    "/appscode/api/db/v1beta1/snapshots/{cluster}/{uid}/restore": {
-      "post": {
-        "operationId": "Restore",
+    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots": {
+      "get": {
+        "operationId": "List",
         "parameters": [
           {
             "format": "string",
@@ -384,21 +386,13 @@
             "name": "uid",
             "required": true,
             "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta1SnapshotRestoreRequest"
-            }
           }
         ],
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
+              "$ref": "#/definitions/v1beta1SnapshotListResponse"
             }
           }
         },

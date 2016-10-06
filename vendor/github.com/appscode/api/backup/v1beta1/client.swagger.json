@@ -78,7 +78,7 @@
     },
     "v1beta1ClientReconfigureRequest": {
       "properties": {
-        "cluster_name": {
+        "cluster": {
           "format": "string",
           "type": "string"
         }
@@ -92,10 +92,17 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/backup/v1beta1/clients/reconfigure": {
+    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula/actions/reconfigure": {
       "put": {
         "operationId": "Reconfigure",
         "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "body",
             "name": "body",

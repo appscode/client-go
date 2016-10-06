@@ -310,7 +310,7 @@ message ConfigMapListResponse {
 message ConfigMap {
   string name = 1;
   string namespace = 2;
-  int64 size = 3;
+  int32 size = 3;
   int64 created_at = 4;
   string resource_version = 5;
 }
@@ -328,7 +328,7 @@ message ConfigMapDescribeResponse {
   string name = 2;
   string namespace = 3;
   string cluster = 4;
-  int64 created_time = 5;
+  int64 created_at = 5;
   map <string, string> data = 6;
 
   Raw raw = 7;

@@ -294,6 +294,32 @@
     "version": "1beta1"
   },
   "paths": {
+    "/appscode/api/ci/v1beta1/actions/copy": {
+      "put": {
+        "operationId": "Copy",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1JobCopyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "Jobs"
+        ]
+      }
+    },
     "/appscode/api/ci/v1beta1/jobs": {
       "get": {
         "operationId": "List",
@@ -302,6 +328,30 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/v1beta1JobListResponse"
+            }
+          }
+        },
+        "tags": [
+          "Jobs"
+        ]
+      },
+      "post": {
+        "operationId": "Create",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1JobCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
             }
           }
         },
@@ -356,40 +406,9 @@
         "tags": [
           "Jobs"
         ]
-      },
-      "post": {
-        "operationId": "Create",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "name",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta1JobCreateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "Jobs"
-        ]
       }
     },
-    "/appscode/api/ci/v1beta1/jobs/{name}/build": {
+    "/appscode/api/ci/v1beta1/jobs/{name}/actions/build": {
       "post": {
         "operationId": "Build",
         "parameters": [
@@ -406,46 +425,6 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/v1beta1JobBuildRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "Jobs"
-        ]
-      }
-    },
-    "/appscode/api/ci/v1beta1/jobs/{source}/{destination}": {
-      "put": {
-        "operationId": "Copy",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "source",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "destination",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta1JobCopyRequest"
             }
           }
         ],

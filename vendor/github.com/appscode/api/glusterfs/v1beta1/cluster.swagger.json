@@ -103,7 +103,7 @@
           "type": "string"
         },
         "replica": {
-          "format": "int64",
+          "format": "int32",
           "type": "integer"
         },
         "status": {
@@ -139,7 +139,7 @@
           "type": "string"
         },
         "node": {
-          "format": "int64",
+          "format": "int32",
           "type": "integer"
         }
       },
@@ -181,6 +181,9 @@
     },
     "v1beta1ClusterDescribeResponse": {
       "properties": {
+        "glusterfs": {
+          "$ref": "#/definitions/v1beta1Cluster"
+        },
         "status": {
           "$ref": "#/definitions/dtypesStatus"
         }
@@ -225,7 +228,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/glusterfs/v1beta1/clusters/{kube_cluster}": {
+    "/appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/glusterfs": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -249,14 +252,23 @@
         "tags": [
           "Clusters"
         ]
-      },
-      "put": {
+      }
+    },
+    "/appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs": {
+      "post": {
         "operationId": "Create",
         "parameters": [
           {
             "format": "string",
             "in": "path",
             "name": "kube_cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "kube_namespace",
             "required": true,
             "type": "string"
           },
@@ -282,7 +294,7 @@
         ]
       }
     },
-    "/appscode/api/glusterfs/v1beta1/clusters/{kube_cluster}/{kube_namespace}/{name}": {
+    "/appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [

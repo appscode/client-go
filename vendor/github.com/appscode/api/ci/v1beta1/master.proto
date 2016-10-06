@@ -17,7 +17,7 @@ service Master {
 
   rpc Delete(MasterDeleteRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/ci/v1beta1/masters/{namespace}/{cluster_name}"
+      delete: "/appscode/api/ci/v1beta1/masters"
     };
   }
 }

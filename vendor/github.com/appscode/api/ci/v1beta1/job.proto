@@ -22,21 +22,21 @@ service Jobs {
 
   rpc Create(JobCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/ci/v1beta1/jobs/{name}"
+      post: "/appscode/api/ci/v1beta1/jobs"
       body: "*"
     };
   }
 
   rpc Copy(JobCopyRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/ci/v1beta1/jobs/{source}/{destination}"
+      put: "/appscode/api/ci/v1beta1/actions/copy"
       body: "*"
     };
   }
 
   rpc Build(JobBuildRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/ci/v1beta1/jobs/{name}/build"
+      post: "/appscode/api/ci/v1beta1/jobs/{name}/actions/build"
       body: "*"
     };
   }

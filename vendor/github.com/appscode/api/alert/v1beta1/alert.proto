@@ -11,40 +11,40 @@ import "api/dtypes/types.proto";
 service Alerts {
   rpc List(AlertListRequest) returns (AlertListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/alert/v1beta1/alerts"
+      get: "/appscode/api/kubernetes/v1beta1/alerts"
     };
   }
 
   rpc Create(AlertCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/alert/v1beta1/alerts"
+      post: "/appscode/api/kubernetes/v1beta1/alerts"
       body: "*"
     };
   }
 
   rpc Describe(AlertDescribeRequest) returns (AlertDescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/alert/v1beta1/alerts/{phid}"
+      get: "/appscode/api/kubernetes/v1beta1/alerts/{phid}"
     };
   }
 
   rpc Update(AlertUpdateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/alert/v1beta1/alerts/{phid}"
+      put: "/appscode/api/kubernetes/v1beta1/alerts/{phid}"
       body: "*"
     };
   }
 
   rpc Sync(AlertSyncRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/alert/v1beta1/alerts:SYNC"
+      post: "/appscode/api/kubernetes/v1beta1/clusters/{kubernetes_cluster}/actions/sync-alerts"
       body: "*"
     };
   }
 
   rpc Delete(AlertDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/alert/v1beta1/alerts/{phid}"
+      delete: "/appscode/api/kubernetes/v1beta1/alerts/{phid}"
     };
   }
 }

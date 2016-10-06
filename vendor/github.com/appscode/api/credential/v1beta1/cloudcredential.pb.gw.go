@@ -57,6 +57,24 @@ func request_CloudCredentials_Update_0(ctx context.Context, marshaler runtime.Ma
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["name"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+	}
+
+	protoReq.Name, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
 	msg, err := client.Update(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
@@ -235,13 +253,13 @@ func RegisterCloudCredentialsHandler(ctx context.Context, mux *runtime.ServeMux,
 }
 
 var (
-	pattern_CloudCredentials_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "credential", "v1beta1", "cloud-credentials"}, ""))
+	pattern_CloudCredentials_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "cloud", "v1beta1", "credentials"}, ""))
 
-	pattern_CloudCredentials_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "credential", "v1beta1", "cloud-credentials"}, ""))
+	pattern_CloudCredentials_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "cloud", "v1beta1", "credentials"}, ""))
 
-	pattern_CloudCredentials_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "credential", "v1beta1", "cloud-credentials"}, ""))
+	pattern_CloudCredentials_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "cloud", "v1beta1", "credentials", "name"}, ""))
 
-	pattern_CloudCredentials_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "credential", "v1beta1", "cloud-credentials", "name"}, ""))
+	pattern_CloudCredentials_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "cloud", "v1beta1", "credentials", "name"}, ""))
 )
 
 var (

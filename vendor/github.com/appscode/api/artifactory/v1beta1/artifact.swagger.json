@@ -70,7 +70,7 @@
     },
     "v1beta1Artifact": {
       "properties": {
-        "last_modified": {
+        "modified_at": {
           "format": "int64",
           "type": "integer"
         },

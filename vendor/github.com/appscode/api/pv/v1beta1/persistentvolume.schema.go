@@ -50,7 +50,7 @@ func init() {
     "plugin": {
       "type": "string"
     },
-    "size": {
+    "size_gb": {
       "type": "integer"
     }
   },

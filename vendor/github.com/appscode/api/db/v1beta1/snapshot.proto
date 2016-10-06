@@ -10,26 +10,26 @@ import "api/dtypes/types.proto";
 service Snapshots {
   rpc List(SnapshotListRequest) returns (SnapshotListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/db/v1beta1/snapshots/{cluster}/{uid}"
+      get: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots"
     };
   }
 
   rpc BackupSchedule(BackupScheduleRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/db/v1beta1/snapshots/{cluster}/{uid}/backup"
+      post: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/schedule-backup"
       body: "*"
     };
   }
 
   rpc BackupUnschedule(BackupUnscheduleRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/db/v1beta1/snapshots/{cluster}/{uid}/backup"
+      put: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/unschedule-backup"
     };
   }
 
   rpc Restore(SnapshotRestoreRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/db/v1beta1/snapshots/{cluster}/{uid}/restore"
+      post: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/restore"
       body: "*"
     };
   }
@@ -49,8 +49,6 @@ message Snapshot {
   string provider = 3;
   string cloud_credential = 4;
   string bucket = 5;
-  string region = 6;
-  string zone = 7;
   string status = 8;
   string process = 9;
   string type = 10;

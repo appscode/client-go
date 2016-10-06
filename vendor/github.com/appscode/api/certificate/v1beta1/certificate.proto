@@ -29,7 +29,7 @@ service Certificates {
 
   rpc Import(CertificateImportRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/certificate/v1beta1/certificates/{name}/import"
+      put: "/appscode/api/certificate/v1beta1/certificates/{name}/actions/import"
       body: "*"
     };
   }
@@ -42,19 +42,19 @@ service Certificates {
 
   rpc Renew(CertificateRenewRequest) returns (CertificateRenewResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/certificate/v1beta1/certificates/{uid}/renew"
+      post: "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/renew"
     };
   }
 
   rpc Revoke(CertificateRevokeRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/certificate/v1beta1/certificates/{uid}/revoke"
+      put: "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/revoke"
     };
   }
 
   rpc Deploy(CertificateDeployRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/certificate/v1beta1/certificates/{uid}/deploy"
+      put: "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/deploy"
       body: "*"
     };
   }

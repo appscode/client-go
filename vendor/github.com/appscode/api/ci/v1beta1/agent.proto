@@ -35,7 +35,7 @@ service Agents {
 
   rpc Restart(AgentRestartRequest) returns (AgentRestartResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/ci/v1beta1/agents/{name}/reboot"
+      post: "/appscode/api/ci/v1beta1/agents/{name}/actions/reboot"
     };
   }
 }

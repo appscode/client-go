@@ -87,24 +87,6 @@ func request_Jobs_Create_0(ctx context.Context, marshaler runtime.Marshaler, cli
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["name"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
-	}
-
-	protoReq.Name, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
 	msg, err := client.Create(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
@@ -116,35 +98,6 @@ func request_Jobs_Copy_0(ctx context.Context, marshaler runtime.Marshaler, clien
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["source"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "source")
-	}
-
-	protoReq.Source, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
-	val, ok = pathParams["destination"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "destination")
-	}
-
-	protoReq.Destination, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
 	}
 
 	msg, err := client.Copy(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -424,11 +377,11 @@ var (
 
 	pattern_Jobs_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "ci", "v1beta1", "jobs", "name"}, ""))
 
-	pattern_Jobs_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "ci", "v1beta1", "jobs", "name"}, ""))
+	pattern_Jobs_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "ci", "v1beta1", "jobs"}, ""))
 
-	pattern_Jobs_Copy_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"appscode", "api", "ci", "v1beta1", "jobs", "source", "destination"}, ""))
+	pattern_Jobs_Copy_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"appscode", "api", "ci", "v1beta1", "actions", "copy"}, ""))
 
-	pattern_Jobs_Build_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "ci", "v1beta1", "jobs", "name", "build"}, ""))
+	pattern_Jobs_Build_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"appscode", "api", "ci", "v1beta1", "jobs", "name", "actions", "build"}, ""))
 
 	pattern_Jobs_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "ci", "v1beta1", "jobs", "name"}, ""))
 )

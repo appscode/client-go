@@ -52,7 +52,7 @@ message ArtifactVersion {
   string id = 1;
   string name = 2;
   string version = 3;
-  int64 last_modified = 4;
+  int64 modified_at = 4;
   string type = 5;
   oneof specs {
     JavaSpec java = 6;

@@ -367,7 +367,7 @@
         ]
       }
     },
-    "/appscode/api/ci/v1beta1/agents/{name}/reboot": {
+    "/appscode/api/ci/v1beta1/agents/{name}/actions/reboot": {
       "post": {
         "operationId": "Restart",
         "parameters": [

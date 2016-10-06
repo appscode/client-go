@@ -35,6 +35,24 @@ func request_Clients_Reconfigure_0(ctx context.Context, marshaler runtime.Marsha
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["cluster"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+	}
+
+	protoReq.Cluster, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
 	msg, err := client.Reconfigure(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
@@ -102,7 +120,7 @@ func RegisterClientsHandler(ctx context.Context, mux *runtime.ServeMux, conn *gr
 }
 
 var (
-	pattern_Clients_Reconfigure_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"appscode", "api", "backup", "v1beta1", "clients", "reconfigure"}, ""))
+	pattern_Clients_Reconfigure_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7, 2, 8, 2, 9}, []string{"appscode", "api", "kubernetes", "v1beta1", "clusters", "cluster", "apps", "bacula", "actions", "reconfigure"}, ""))
 )
 
 var (

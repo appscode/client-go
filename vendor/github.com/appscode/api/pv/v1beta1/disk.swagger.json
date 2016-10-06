@@ -102,7 +102,7 @@
           "format": "string",
           "type": "string"
         },
-        "size": {
+        "size_gb": {
           "format": "int64",
           "type": "integer"
         },
@@ -142,7 +142,7 @@
           "format": "string",
           "type": "string"
         },
-        "size": {
+        "size_gb": {
           "format": "int64",
           "type": "integer"
         },
@@ -159,7 +159,7 @@
           "format": "string",
           "type": "string"
         },
-        "identifier": {
+        "uid": {
           "format": "string",
           "type": "string"
         }
@@ -235,7 +235,7 @@
           "format": "string",
           "type": "string"
         },
-        "size": {
+        "size_gb": {
           "format": "int64",
           "type": "integer"
         },
@@ -264,7 +264,7 @@
           "format": "string",
           "type": "string"
         },
-        "size": {
+        "size_gb": {
           "format": "int64",
           "type": "integer"
         },
@@ -300,7 +300,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/pv/v1beta1/disks/{cluster}": {
+    "/appscode/api/cloud/v1beta1/clusters/{cluster}/disks": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -323,55 +323,14 @@
         "tags": [
           "Disks"
         ]
-      }
-    },
-    "/appscode/api/pv/v1beta1/disks/{cluster}/{identifier}": {
-      "delete": {
-        "operationId": "Delete",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "identifier",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "Disks"
-        ]
-      }
-    },
-    "/appscode/api/pv/v1beta1/disks/{cluster}/{name}": {
-      "put": {
+      },
+      "post": {
         "operationId": "Create",
         "parameters": [
           {
             "format": "string",
             "in": "path",
             "name": "cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "name",
             "required": true,
             "type": "string"
           },
@@ -397,7 +356,7 @@
         ]
       }
     },
-    "/appscode/api/pv/v1beta1/disks/{cluster}/{name}/{plugin}": {
+    "/appscode/api/cloud/v1beta1/clusters/{cluster}/disks/{name}": {
       "get": {
         "operationId": "Describe",
         "parameters": [
@@ -414,11 +373,36 @@
             "name": "name",
             "required": true,
             "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1DiskDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "Disks"
+        ]
+      }
+    },
+    "/appscode/api/cloud/v1beta1/clusters/{cluster}/disks/{uid}": {
+      "delete": {
+        "operationId": "Delete",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
           },
           {
             "format": "string",
             "in": "path",
-            "name": "plugin",
+            "name": "uid",
             "required": true,
             "type": "string"
           }
@@ -427,7 +411,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/v1beta1DiskDescribeResponse"
+              "$ref": "#/definitions/dtypesVoidResponse"
             }
           }
         },

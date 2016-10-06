@@ -12,7 +12,7 @@ service Teams {
   // Creates a new namespace, if name is valid and no namespace with same name exists.
   rpc Create(CreateRequest) returns (CreateResponse) {
 	  option (google.api.http) = {
-	    put: "/appscode/api/namespace/v1beta1/teams/{name}"
+	    post: "/appscode/api/namespace/v1beta1/teams"
 	    body: "*"
     };
   }

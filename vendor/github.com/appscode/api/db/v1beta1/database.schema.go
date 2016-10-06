@@ -22,11 +22,14 @@ func init() {
     "cluster": {
       "type": "string"
     },
+    "destroy": {
+      "type": "boolean"
+    },
     "uid": {
       "type": "string"
     }
   },
-  "title": "Next Id: 3",
+  "title": "Next Id: 4",
   "type": "object"
 }`))
 	if err != nil {
@@ -65,7 +68,7 @@ func init() {
     "hostname": {
       "type": "string"
     },
-    "pv_size": {
+    "pv_size_gb": {
       "type": "integer"
     },
     "service_name": {
@@ -82,6 +85,9 @@ func init() {
     "snapshot_phid": {
       "type": "string"
     },
+    "storage_class": {
+      "type": "string"
+    },
     "type": {
       "type": "string"
     },
@@ -89,7 +95,7 @@ func init() {
       "type": "string"
     }
   },
-  "title": "Next Id: 15",
+  "title": "Next Id: 16",
   "type": "object"
 }`))
 	if err != nil {
@@ -98,6 +104,9 @@ func init() {
 	databaseListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "cluster": {
+      "type": "string"
+    },
     "status": {
       "items": {
         "type": "string"

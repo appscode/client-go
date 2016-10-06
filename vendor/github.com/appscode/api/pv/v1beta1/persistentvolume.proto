@@ -10,20 +10,20 @@ import "api/dtypes/types.proto";
 service PersistentVolumes {
  rpc Describe(PVDescribeRequest) returns (PVDescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/pv/v1beta1/persistent-volumes/{cluster}/{name}"
+      get: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumes/{name}"
     };
   }
 
   rpc Register(PVRegisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/pv/v1beta1/persistent-volumes/{cluster}/{name}"
+      put: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumes/{name}"
       body: "*"
     };
   }
 
   rpc Unregister(PVUnregisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/pv/v1beta1/persistent-volumes/{cluster}/{name}"
+      delete: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumes/{name}"
     };
   }
 }
@@ -33,7 +33,7 @@ message PVRegisterRequest {
   string name = 2;
   string identifier = 3;
   string plugin = 4;
-  int64 size = 5;
+  int64 size_gb = 5;
   string endpoint = 6;
 }
 
@@ -49,7 +49,7 @@ message PVDescribeRequest {
 
 message PVInfo {
   string name = 1;
-  int64 size = 2;
+  int64 size_gb = 2;
   string status = 3;
   string volume = 4;
   string claim = 5;

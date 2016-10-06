@@ -79,7 +79,7 @@
     "v1beta1PurchaseBeginRequest": {
       "properties": {
         "count": {
-          "format": "int64",
+          "format": "int32",
           "type": "integer"
         },
         "product_sku": {

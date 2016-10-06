@@ -10,7 +10,7 @@
           "format": "string",
           "type": "string"
         },
-        "reported": {
+        "reported_at": {
           "format": "int64",
           "type": "integer"
         },
@@ -116,7 +116,7 @@
     },
     "v1beta1Incident": {
       "properties": {
-        "acknowledged": {
+        "acknowledged_at": {
           "format": "int64",
           "title": "Timestamp of first acknowledgement",
           "type": "integer"
@@ -162,11 +162,11 @@
           "format": "string",
           "type": "string"
         },
-        "recovered": {
+        "recovered_at": {
           "format": "int64",
           "type": "integer"
         },
-        "reported": {
+        "reported_at": {
           "format": "int64",
           "title": "Timestamp of first reported event",
           "type": "integer"
@@ -295,6 +295,7 @@
           "type": "string"
         },
         "time": {
+          "description": "The time object is used in icinga to send request. This\nindicates detection time from icinga.",
           "format": "int64",
           "type": "integer"
         },
@@ -313,24 +314,17 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/alert/v1beta1/incidents": {
-      "get": {
-        "operationId": "List",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1beta1IncidentListResponse"
-            }
-          }
-        },
-        "tags": [
-          "Incidents"
-        ]
-      },
+    "/appscode/api/kubernetes/v1beta1/alerts/{alert_phid}/actions/notify": {
       "post": {
         "operationId": "Notify",
         "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "alert_phid",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "body",
             "name": "body",
@@ -353,7 +347,23 @@
         ]
       }
     },
-    "/appscode/api/alert/v1beta1/incidents/{phid}": {
+    "/appscode/api/kubernetes/v1beta1/incidents": {
+      "get": {
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1IncidentListResponse"
+            }
+          }
+        },
+        "tags": [
+          "Incidents"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v1beta1/incidents/{phid}": {
       "get": {
         "operationId": "Describe",
         "parameters": [
@@ -378,7 +388,7 @@
         ]
       }
     },
-    "/appscode/api/alert/v1beta1/incidents/{phid}/events": {
+    "/appscode/api/kubernetes/v1beta1/incidents/{phid}/events": {
       "post": {
         "operationId": "CreateEvent",
         "parameters": [

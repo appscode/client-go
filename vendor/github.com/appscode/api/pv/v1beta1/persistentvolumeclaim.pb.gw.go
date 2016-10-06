@@ -49,23 +49,23 @@ func request_PersistentVolumeClaims_Describe_0(ctx context.Context, marshaler ru
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["name"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
-	}
-
-	protoReq.Name, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
 	val, ok = pathParams["namespace"]
 	if !ok {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
 	}
 
 	protoReq.Namespace, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	val, ok = pathParams["name"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+	}
+
+	protoReq.Name, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
@@ -97,6 +97,17 @@ func request_PersistentVolumeClaims_Register_0(ctx context.Context, marshaler ru
 	}
 
 	protoReq.Cluster, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	val, ok = pathParams["namespace"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
+	}
+
+	protoReq.Namespace, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
@@ -140,23 +151,23 @@ func request_PersistentVolumeClaims_Unregister_0(ctx context.Context, marshaler 
 		return nil, metadata, err
 	}
 
-	val, ok = pathParams["name"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
-	}
-
-	protoReq.Name, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
-
 	val, ok = pathParams["namespace"]
 	if !ok {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "namespace")
 	}
 
 	protoReq.Namespace, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	val, ok = pathParams["name"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
+	}
+
+	protoReq.Name, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, err
@@ -285,11 +296,11 @@ func RegisterPersistentVolumeClaimsHandler(ctx context.Context, mux *runtime.Ser
 }
 
 var (
-	pattern_PersistentVolumeClaims_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"appscode", "api", "pv", "v1beta1", "persistent-volume-claims", "cluster", "name", "namespace"}, ""))
+	pattern_PersistentVolumeClaims_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8, 1, 0, 4, 1, 5, 9}, []string{"appscode", "api", "kubernetes", "v1beta1", "clusters", "cluster", "namespaces", "namespace", "persistentvolumeclaims", "name"}, ""))
 
-	pattern_PersistentVolumeClaims_Register_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6}, []string{"appscode", "api", "pv", "v1beta1", "persistent-volume-claims", "cluster", "name"}, ""))
+	pattern_PersistentVolumeClaims_Register_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8, 1, 0, 4, 1, 5, 9}, []string{"appscode", "api", "kubernetes", "v1beta1", "clusters", "cluster", "namespaces", "namespace", "persistentvolumeclaims", "name"}, ""))
 
-	pattern_PersistentVolumeClaims_Unregister_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 1, 0, 4, 1, 5, 6, 1, 0, 4, 1, 5, 7}, []string{"appscode", "api", "pv", "v1beta1", "persistent-volume-claims", "cluster", "name", "namespace"}, ""))
+	pattern_PersistentVolumeClaims_Unregister_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8, 1, 0, 4, 1, 5, 9}, []string{"appscode", "api", "kubernetes", "v1beta1", "clusters", "cluster", "namespaces", "namespace", "persistentvolumeclaims", "name"}, ""))
 )
 
 var (

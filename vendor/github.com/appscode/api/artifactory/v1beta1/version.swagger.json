@@ -80,7 +80,7 @@
         "java": {
           "$ref": "#/definitions/v1beta1JavaSpec"
         },
-        "last_modified": {
+        "modified_at": {
           "format": "int64",
           "type": "integer"
         },

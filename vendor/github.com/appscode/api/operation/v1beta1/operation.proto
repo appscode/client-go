@@ -58,7 +58,7 @@ message Metadata {
   string author_name = 3;
 }
 
-// Next Id: 17
+// Next Id: 18
 enum OperationType {
   UNKNOWN = 0;
   CLUSTER_CREATE = 1;
@@ -77,9 +77,10 @@ enum OperationType {
   ALERT_SYNC = 14;
   DATABASE_CHECK = 15;
   SNAPSHOT_CHECK = 16;
+  DATABASE_DELETE = 17;
 }
 
-// Next Id: 21
+// Next Id: 22
 message Operation {
   oneof request {
     kubernetes.v1beta1.ClusterCreateRequest cluster_create_request = 1;
@@ -98,6 +99,7 @@ message Operation {
     alert.v1beta1.AlertSyncRequest alert_sync_request = 18;
     db.v1beta1.DatabaseCheckRequest database_check_request = 19;
     db.v1beta1.SnapshotCheckRequest snapshot_check_request = 20;
+    db.v1beta1.DatabaseDeleteRequest database_delete_request = 21;
   }
   OperationType type = 14;
   string phid = 15;

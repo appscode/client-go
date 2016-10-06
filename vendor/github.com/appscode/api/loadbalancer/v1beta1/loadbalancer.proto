@@ -11,33 +11,33 @@ import "api/dtypes/types.proto";
 service LoadBalancers {
   rpc List(ListRequest) returns (ListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/loadbalancer/v1beta1/loadbalancers/{cluster}"
+      get: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers"
     };
   }
 
   rpc Describe(DescribeRequest) returns (DescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/loadbalancer/v1beta1/loadbalancers/{cluster}/{name}"
+      get: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}"
     };
   }
 
   rpc Create(CreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post: "/appscode/api/loadbalancer/v1beta1/loadbalancers"
+      post: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers"
       body: "*"
     };
   }
 
   rpc Update(UpdateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/loadbalancer/v1beta1/loadbalancers"
+      put: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}"
       body: "*"
     };
   }
 
   rpc Delete(DeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/loadbalancer/v1beta1/loadbalancers/{name}"
+      delete: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}"
     };
   }
 }
@@ -74,7 +74,6 @@ message CreateRequest {
 message UpdateRequest {
   string name = 1;
   string cluster = 2;
-
   LoadBalancer load_balancer = 3;
 }
 

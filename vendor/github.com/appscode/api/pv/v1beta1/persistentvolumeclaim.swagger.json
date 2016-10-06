@@ -121,7 +121,7 @@
           "format": "string",
           "type": "string"
         },
-        "size": {
+        "size_gb": {
           "format": "int64",
           "type": "integer"
         },
@@ -150,7 +150,7 @@
           "format": "string",
           "type": "string"
         },
-        "size": {
+        "size_gb": {
           "format": "int64",
           "type": "integer"
         }
@@ -181,47 +181,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/pv/v1beta1/persistent-volume-claims/{cluster}/{name}": {
-      "put": {
-        "operationId": "Register",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "cluster",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "name",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta1PVCRegisterRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "PersistentVolumeClaims"
-        ]
-      }
-    },
-    "/appscode/api/pv/v1beta1/persistent-volume-claims/{cluster}/{name}/{namespace}": {
+    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/namespaces/{namespace}/persistentvolumeclaims/{name}": {
       "delete": {
         "operationId": "Unregister",
         "parameters": [
@@ -235,14 +195,14 @@
           {
             "format": "string",
             "in": "path",
-            "name": "name",
+            "name": "namespace",
             "required": true,
             "type": "string"
           },
           {
             "format": "string",
             "in": "path",
-            "name": "namespace",
+            "name": "name",
             "required": true,
             "type": "string"
           }
@@ -272,14 +232,14 @@
           {
             "format": "string",
             "in": "path",
-            "name": "name",
+            "name": "namespace",
             "required": true,
             "type": "string"
           },
           {
             "format": "string",
             "in": "path",
-            "name": "namespace",
+            "name": "name",
             "required": true,
             "type": "string"
           }
@@ -289,6 +249,51 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/v1beta1PVCDescribeResponse"
+            }
+          }
+        },
+        "tags": [
+          "PersistentVolumeClaims"
+        ]
+      },
+      "put": {
+        "operationId": "Register",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "namespace",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1PVCRegisterRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
             }
           }
         },

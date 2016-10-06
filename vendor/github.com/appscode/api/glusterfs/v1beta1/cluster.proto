@@ -15,26 +15,26 @@ service Clusters {
   // with respect to the provided kube cluster space.
   rpc List(ClusterListRequest) returns (ClusterListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/glusterfs/v1beta1/clusters/{kube_cluster}"
+      get: "/appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/glusterfs"
     };
   }
 
   rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/glusterfs/v1beta1/clusters/{kube_cluster}/{kube_namespace}/{name}"
+      get: "/appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}"
     };
   }
 
   rpc Create(ClusterCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put : "/appscode/api/glusterfs/v1beta1/clusters/{kube_cluster}"
+      post : "/appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs"
       body: "*"
     };
   }
 
   rpc Delete(ClusterDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete : "/appscode/api/glusterfs/v1beta1/clusters/{kube_cluster}/{kube_namespace}/{name}"
+      delete : "/appscode/api/kubernetes/v1beta1/clusters/{kube_cluster}/namespaces/{kube_namespace}/glusterfs/{name}"
     };
   }
 }
@@ -44,7 +44,7 @@ message Cluster {
   string name = 2;
   string kube_cluster = 3;
   string kube_namespace = 4;
-  int64 replica = 5;
+  int32 replica = 5;
   string endpoint = 6;
   int64 created_at = 7;
   string status = 8;
@@ -74,11 +74,12 @@ message ClusterDescribeRequest {
 
 message ClusterDescribeResponse {
   dtypes.Status status = 1;
+  Cluster glusterfs = 2;
 }
 
 message ClusterCreateRequest {
   string name = 1;
-  int64 node = 2;
+  int32 node = 2;
   repeated string disks = 3;
   string kube_cluster = 4;
   string kube_namespace = 5;

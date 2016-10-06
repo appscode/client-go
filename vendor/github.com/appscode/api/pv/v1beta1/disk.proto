@@ -10,26 +10,26 @@ import "api/dtypes/types.proto";
 service Disks {
   rpc List(DiskListRequest) returns (DiskListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/pv/v1beta1/disks/{cluster}"
+      get: "/appscode/api/cloud/v1beta1/clusters/{cluster}/disks"
     };
   }
 
   rpc Describe(DiskDescribeRequest) returns (DiskDescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/pv/v1beta1/disks/{cluster}/{name}/{plugin}"
+      get: "/appscode/api/cloud/v1beta1/clusters/{cluster}/disks/{name}"
     };
   }
 
   rpc Create(DiskCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/pv/v1beta1/disks/{cluster}/{name}"
+      post: "/appscode/api/cloud/v1beta1/clusters/{cluster}/disks"
       body: "*"
     };
   }
 
   rpc Delete(DiskDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      delete: "/appscode/api/pv/v1beta1/disks/{cluster}/{identifier}"
+      delete: "/appscode/api/cloud/v1beta1/clusters/{cluster}/disks/{uid}"
     };
   }
 }
@@ -39,12 +39,12 @@ message DiskCreateRequest {
   string name = 2;
   string zone = 3;
   string disk_type = 4;
-  int64 size = 5;
+  int64 size_gb = 5;
 }
 
 message DiskDeleteRequest {
   string cluster = 1;
-  string identifier = 2;
+  string uid = 2;
 }
 
 message DiskListRequest {
@@ -67,7 +67,7 @@ message Disk{
   string name = 1;
   string id = 2;
   string plugin = 3;
-  int64 size = 4;
+  int64 size_gb = 4;
   string type = 5;
   string zone = 6;
   string status = 7;
@@ -79,7 +79,7 @@ message Disk{
 
 message PV {
   string name = 1;
-  int64 size = 2;
+  int64 size_gb = 2;
   string status = 3;
   string claim = 4;
   string volume = 5;
@@ -89,7 +89,7 @@ message PV {
 
 message PVC{
   string name = 1;
-  int64 size = 2;
+  int64 size_gb = 2;
   string namespace = 3;
   string status = 4;
   string volume = 5;

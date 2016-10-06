@@ -230,6 +230,33 @@
         ]
       }
     },
+    "/appscode/api/namespace/v1beta1/teams": {
+      "post": {
+        "operationId": "Create",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1CreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1CreateResponse"
+            }
+          }
+        },
+        "summary": "Creates a new namespace, if name is valid and no namespace with same name exists.",
+        "tags": [
+          "Teams"
+        ]
+      }
+    },
     "/appscode/api/namespace/v1beta1/teams/{name}": {
       "get": {
         "operationId": "Get",
@@ -251,38 +278,6 @@
           }
         },
         "summary": "Gets a namespace, if exists. This can be used to check existence of a namespace.",
-        "tags": [
-          "Teams"
-        ]
-      },
-      "put": {
-        "operationId": "Create",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "name",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta1CreateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1beta1CreateResponse"
-            }
-          }
-        },
-        "summary": "Creates a new namespace, if name is valid and no namespace with same name exists.",
         "tags": [
           "Teams"
         ]

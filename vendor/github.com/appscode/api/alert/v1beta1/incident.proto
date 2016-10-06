@@ -11,26 +11,26 @@ import "api/dtypes/types.proto";
 service Incidents {
   rpc List(IncidentListRequest) returns (IncidentListResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/alert/v1beta1/incidents"
+      get: "/appscode/api/kubernetes/v1beta1/incidents"
     };
   }
 
   rpc Describe(IncidentDescribeRequest) returns (IncidentDescribeResponse) {
     option (google.api.http) = {
-      get: "/appscode/api/alert/v1beta1/incidents/{phid}"
+      get: "/appscode/api/kubernetes/v1beta1/incidents/{phid}"
     };
   }
 
   rpc Notify(IncidentNotifyRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post : "/appscode/api/alert/v1beta1/incidents"
+      post : "/appscode/api/kubernetes/v1beta1/alerts/{alert_phid}/actions/notify"
       body : "*"
     };
   }
 
   rpc CreateEvent(IncidentEventCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-      post : "/appscode/api/alert/v1beta1/incidents/{phid}/events"
+      post : "/appscode/api/kubernetes/v1beta1/incidents/{phid}/events"
       body : "*"
     };
   }
@@ -49,15 +49,15 @@ message Incident {
   string state = 10;
   dtypes.Uid user = 11;
   // Timestamp of first reported event
-  int64 reported = 12;
+  int64 reported_at = 12;
   // Timestamp of first acknowledgement
-  int64 acknowledged = 13;
-  int64 recovered = 14;
+  int64 acknowledged_at = 13;
+  int64 recovered_at = 14;
   string icingaweb_url = 15;
   message Event {
     string type = 1;
     string state = 2;
-    int64 reported = 3;
+    int64 reported_at = 3;
     dtypes.Uid user = 4;
     string comment = 5;
   }
@@ -95,6 +95,8 @@ message IncidentNotifyRequest {
   string type = 3;
   string state = 4;
   string output = 5;
+  // The time object is used in icinga to send request. This
+  // indicates detection time from icinga.
   int64 time = 6;
   string author = 7;
   string comment = 8;

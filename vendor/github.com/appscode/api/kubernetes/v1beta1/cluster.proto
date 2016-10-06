@@ -36,14 +36,14 @@ service Clusters {
 
   rpc Scale(ClusterScaleRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-      put: "/appscode/api/kubernetes/v1beta1/clusters/{name}/scale"
+      put: "/appscode/api/kubernetes/v1beta1/clusters/{name}/actions/scale"
       body: "*"
     };
   }
 
   rpc Upgrade(ClusterUpgradeRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
-       put: "/appscode/api/kubernetes/v1beta1/clusters/{name}/upgrade"
+       put: "/appscode/api/kubernetes/v1beta1/clusters/{name}/actions/upgrade"
        body: "*"
     };
   }

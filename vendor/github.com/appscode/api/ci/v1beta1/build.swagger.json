@@ -196,7 +196,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/ci/v1beta1/builds/{job_name}": {
+    "/appscode/api/ci/v1beta1/jobs/{job_name}/builds": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -221,7 +221,7 @@
         ]
       }
     },
-    "/appscode/api/ci/v1beta1/builds/{job_name}/{number}": {
+    "/appscode/api/ci/v1beta1/jobs/{job_name}/builds/{number}": {
       "get": {
         "operationId": "Describe",
         "parameters": [

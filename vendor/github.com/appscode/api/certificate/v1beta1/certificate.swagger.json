@@ -394,7 +394,7 @@
         ]
       }
     },
-    "/appscode/api/certificate/v1beta1/certificates/{name}/import": {
+    "/appscode/api/certificate/v1beta1/certificates/{name}/actions/import": {
       "put": {
         "operationId": "Import",
         "parameters": [
@@ -475,7 +475,7 @@
         ]
       }
     },
-    "/appscode/api/certificate/v1beta1/certificates/{uid}/deploy": {
+    "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/deploy": {
       "put": {
         "operationId": "Deploy",
         "parameters": [
@@ -508,7 +508,7 @@
         ]
       }
     },
-    "/appscode/api/certificate/v1beta1/certificates/{uid}/renew": {
+    "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/renew": {
       "post": {
         "operationId": "Renew",
         "parameters": [
@@ -533,7 +533,7 @@
         ]
       }
     },
-    "/appscode/api/certificate/v1beta1/certificates/{uid}/revoke": {
+    "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/revoke": {
       "put": {
         "operationId": "Revoke",
         "parameters": [

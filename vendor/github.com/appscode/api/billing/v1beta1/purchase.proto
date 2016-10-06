@@ -31,7 +31,7 @@ service Purchases {
 
 message PurchaseBeginRequest {
   string product_sku = 1;
-  int64 count = 2;
+  int32 count = 2;
 }
 
 message PurchaseBeginResponse {
@@ -43,7 +43,7 @@ message PurchaseCompleteRequest {
   string phid = 1;
   string object_phid = 2;
   bool failed = 3;
-  map<string,string> metadata = 4;
+  map<string, string> metadata = 4;
 }
 
 message PurchaseCloseRequest {

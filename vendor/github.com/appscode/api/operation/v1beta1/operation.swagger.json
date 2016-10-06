@@ -436,6 +436,24 @@
       "title": "Next Id: 4",
       "type": "object"
     },
+    "v1beta1DatabaseDeleteRequest": {
+      "properties": {
+        "cluster": {
+          "format": "string",
+          "type": "string"
+        },
+        "destroy": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "uid": {
+          "format": "string",
+          "type": "string"
+        }
+      },
+      "title": "Next Id: 4",
+      "type": "object"
+    },
     "v1beta1DescribeRequest": {
       "properties": {
         "phid": {
@@ -565,6 +583,9 @@
         "database_check_request": {
           "$ref": "#/definitions/v1beta1DatabaseCheckRequest"
         },
+        "database_delete_request": {
+          "$ref": "#/definitions/v1beta1DatabaseDeleteRequest"
+        },
         "dns_check_request": {
           "$ref": "#/definitions/v1beta1DNSCheckRequest"
         },
@@ -588,7 +609,7 @@
           "$ref": "#/definitions/v1beta1OperationType"
         }
       },
-      "title": "Next Id: 21",
+      "title": "Next Id: 22",
       "type": "object"
     },
     "v1beta1OperationType": {
@@ -610,9 +631,10 @@
         "CHECK_DNS",
         "ALERT_SYNC",
         "DATABASE_CHECK",
-        "SNAPSHOT_CHECK"
+        "SNAPSHOT_CHECK",
+        "DATABASE_DELETE"
       ],
-      "title": "Next Id: 17",
+      "title": "Next Id: 18",
       "type": "string"
     },
     "v1beta1PortInfo": {

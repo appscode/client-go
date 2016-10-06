@@ -717,32 +717,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{name}/client-config": {
-      "get": {
-        "operationId": "ClientConfig",
-        "parameters": [
-          {
-            "format": "string",
-            "in": "path",
-            "name": "name",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/v1beta1ClusterClientConfigResponse"
-            }
-          }
-        },
-        "tags": [
-          "Clusters"
-        ]
-      }
-    },
-    "/appscode/api/kubernetes/v1beta1/clusters/{name}/scale": {
+    "/appscode/api/kubernetes/v1beta1/clusters/{name}/actions/scale": {
       "put": {
         "operationId": "Scale",
         "parameters": [
@@ -775,7 +750,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/clusters/{name}/upgrade": {
+    "/appscode/api/kubernetes/v1beta1/clusters/{name}/actions/upgrade": {
       "put": {
         "operationId": "Upgrade",
         "parameters": [
@@ -800,6 +775,31 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/dtypesLongRunningResponse"
+            }
+          }
+        },
+        "tags": [
+          "Clusters"
+        ]
+      }
+    },
+    "/appscode/api/kubernetes/v1beta1/clusters/{name}/client-config": {
+      "get": {
+        "operationId": "ClientConfig",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/v1beta1ClusterClientConfigResponse"
             }
           }
         },

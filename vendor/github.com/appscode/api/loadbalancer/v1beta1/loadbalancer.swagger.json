@@ -357,57 +357,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/loadbalancer/v1beta1/loadbalancers": {
-      "post": {
-        "operationId": "Create",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta1CreateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "LoadBalancers"
-        ]
-      },
-      "put": {
-        "operationId": "Update",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta1UpdateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/dtypesVoidResponse"
-            }
-          }
-        },
-        "tags": [
-          "LoadBalancers"
-        ]
-      }
-    },
-    "/appscode/api/loadbalancer/v1beta1/loadbalancers/{cluster}": {
+    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers": {
       "get": {
         "operationId": "List",
         "parameters": [
@@ -430,9 +380,70 @@
         "tags": [
           "LoadBalancers"
         ]
+      },
+      "post": {
+        "operationId": "Create",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1CreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "LoadBalancers"
+        ]
       }
     },
-    "/appscode/api/loadbalancer/v1beta1/loadbalancers/{cluster}/{name}": {
+    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}": {
+      "delete": {
+        "operationId": "Delete",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "string",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/dtypesVoidResponse"
+            }
+          }
+        },
+        "tags": [
+          "LoadBalancers"
+        ]
+      },
       "get": {
         "operationId": "Describe",
         "parameters": [
@@ -462,18 +473,31 @@
         "tags": [
           "LoadBalancers"
         ]
-      }
-    },
-    "/appscode/api/loadbalancer/v1beta1/loadbalancers/{name}": {
-      "delete": {
-        "operationId": "Delete",
+      },
+      "put": {
+        "operationId": "Update",
         "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
           {
             "format": "string",
             "in": "path",
             "name": "name",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1beta1UpdateRequest"
+            }
           }
         ],
         "responses": {

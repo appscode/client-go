@@ -228,7 +228,7 @@
           "type": "string"
         },
         "size": {
-          "format": "int64",
+          "format": "int32",
           "type": "integer"
         }
       },
@@ -261,7 +261,7 @@
           "format": "string",
           "type": "string"
         },
-        "created_time": {
+        "created_at": {
           "format": "int64",
           "type": "integer"
         },

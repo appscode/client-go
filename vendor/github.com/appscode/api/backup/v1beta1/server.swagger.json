@@ -82,7 +82,7 @@
           "format": "string",
           "type": "string"
         },
-        "cluster_name": {
+        "cluster": {
           "format": "string",
           "type": "string"
         },
@@ -104,7 +104,7 @@
     },
     "v1beta1ServerDeleteRequest": {
       "properties": {
-        "cluster_name": {
+        "cluster": {
           "format": "string",
           "type": "string"
         },
@@ -122,9 +122,18 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/backup/v1beta1/servers": {
+    "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/apps/bacula": {
       "delete": {
         "operationId": "Delete",
+        "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -140,6 +149,13 @@
       "post": {
         "operationId": "Create",
         "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "cluster",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "body",
             "name": "body",

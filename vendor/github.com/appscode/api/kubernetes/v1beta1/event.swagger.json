@@ -189,7 +189,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/kubernetes/v1beta1/events/{cluster_name}/construct": {
+    "/appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/actions/construct-event": {
       "put": {
         "operationId": "Constructive",
         "parameters": [
@@ -222,7 +222,7 @@
         ]
       }
     },
-    "/appscode/api/kubernetes/v1beta1/events/{cluster_name}/destruct": {
+    "/appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/actions/destruct-event": {
       "put": {
         "operationId": "Destructive",
         "parameters": [

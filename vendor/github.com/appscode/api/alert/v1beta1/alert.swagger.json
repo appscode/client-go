@@ -347,7 +347,7 @@
     "version": "1beta1"
   },
   "paths": {
-    "/appscode/api/alert/v1beta1/alerts": {
+    "/appscode/api/kubernetes/v1beta1/alerts": {
       "get": {
         "operationId": "List",
         "responses": {
@@ -387,7 +387,7 @@
         ]
       }
     },
-    "/appscode/api/alert/v1beta1/alerts/{phid}": {
+    "/appscode/api/kubernetes/v1beta1/alerts/{phid}": {
       "delete": {
         "operationId": "Delete",
         "parameters": [
@@ -466,10 +466,17 @@
         ]
       }
     },
-    "/appscode/api/alert/v1beta1/alerts:SYNC": {
+    "/appscode/api/kubernetes/v1beta1/clusters/{kubernetes_cluster}/actions/sync-alerts": {
       "post": {
         "operationId": "Sync",
         "parameters": [
+          {
+            "format": "string",
+            "in": "path",
+            "name": "kubernetes_cluster",
+            "required": true,
+            "type": "string"
+          },
           {
             "in": "body",
             "name": "body",

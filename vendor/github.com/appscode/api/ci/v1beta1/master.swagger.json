@@ -119,18 +119,8 @@
   },
   "paths": {
     "/appscode/api/ci/v1beta1/masters": {
-      "post": {
-        "operationId": "Create",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1beta1MasterCreateRequest"
-            }
-          }
-        ],
+      "delete": {
+        "operationId": "Delete",
         "responses": {
           "200": {
             "description": "",
@@ -142,25 +132,17 @@
         "tags": [
           "Master"
         ]
-      }
-    },
-    "/appscode/api/ci/v1beta1/masters/{namespace}/{cluster_name}": {
-      "delete": {
-        "operationId": "Delete",
+      },
+      "post": {
+        "operationId": "Create",
         "parameters": [
           {
-            "format": "string",
-            "in": "path",
-            "name": "namespace",
+            "in": "body",
+            "name": "body",
             "required": true,
-            "type": "string"
-          },
-          {
-            "format": "string",
-            "in": "path",
-            "name": "cluster_name",
-            "required": true,
-            "type": "string"
+            "schema": {
+              "$ref": "#/definitions/v1beta1MasterCreateRequest"
+            }
           }
         ],
         "responses": {
