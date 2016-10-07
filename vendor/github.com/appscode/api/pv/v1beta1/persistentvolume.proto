@@ -5,12 +5,16 @@ package pv.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service PersistentVolumes {
  rpc Describe(PVDescribeRequest) returns (PVDescribeResponse) {
     option (google.api.http) = {
       get: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumes/{name}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -19,11 +23,17 @@ service PersistentVolumes {
       put: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumes/{name}"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Unregister(PVUnregisterRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       delete: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/persistentvolumes/{name}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

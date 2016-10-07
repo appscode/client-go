@@ -5,6 +5,7 @@ package auth.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Authentication {
@@ -14,6 +15,9 @@ service Authentication {
       post : "/appscode/api/auth/v1beta1/login"
       body : "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Logout(LogoutRequest) returns (LogoutResponse) {
@@ -21,12 +25,18 @@ service Authentication {
       post : "/appscode/api/auth/v1beta1/logout"
       body : "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
   // appctl used this to validates the user token with phabricator.
   rpc Token(TokenRequest) returns (TokenResponse) {
     option (google.api.http) = {
       post: "/appscode/api/auth/v1beta1/token"
       body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

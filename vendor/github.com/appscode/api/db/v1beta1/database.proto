@@ -5,12 +5,16 @@ package db.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Databases {
   rpc List(DatabaseListRequest) returns (DatabaseListResponse) {
     option (google.api.http) = {
       get: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -19,6 +23,9 @@ service Databases {
       post : "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases"
       body : "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Scale(DatabaseScaleRequest) returns (dtypes.VoidResponse) {
@@ -26,12 +33,18 @@ service Databases {
       put: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/scale"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Update(DatabaseUpdateRequest) returns (dtypes.VoidResponse) {
-  option (google.api.http) = {
+    option (google.api.http) = {
       put: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}"
       body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -39,11 +52,17 @@ service Databases {
     option (google.api.http) = {
       get: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Delete(DatabaseDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       delete: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

@@ -5,6 +5,7 @@ package kubernetes.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 import "api/alert/v1beta1/alert.proto";
 
@@ -16,11 +17,17 @@ service Clients {
       put : "/appscode/api/kubernetes/v1beta1/actions/copy"
       body : "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Nodes(ClientRequest) returns (NodeListResponse) {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/nodes"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -28,11 +35,17 @@ service Clients {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/apps"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc App(AppDescribeRequest) returns (AppDescribeResponse) {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/apps/{namespace}/{name}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -40,11 +53,17 @@ service Clients {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/apps/{namespace}/{name}/pods"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Namespaces(ClientRequest) returns (NamespaceListResponse) {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/namespaces"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -52,11 +71,17 @@ service Clients {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/secrets"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Secret(SecretDescribeRequest) returns (SecretDescribeResponse) {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/secrets/{namespace}/{name}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -64,11 +89,17 @@ service Clients {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/jobs"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Pods(ClientRequest) returns (PodListResponse) {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/pods"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -76,11 +107,17 @@ service Clients {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/services"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc ReplicationControllers(ClientRequest) returns (ReplicationControllerListResponse) {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/rcs"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -88,11 +125,17 @@ service Clients {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/configmaps"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc ConfigMap(ConfigMapDescribeRequest) returns (ConfigMapDescribeResponse) {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta1/client/{cluster}/configmaps/{namespace}/{name}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

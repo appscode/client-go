@@ -5,6 +5,7 @@ package ci.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Builds {
@@ -12,11 +13,17 @@ service Builds {
     option (google.api.http) = {
       get: "/appscode/api/ci/v1beta1/jobs/{job_name}/builds/{number}"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc List(BuildListRequest) returns (BuildListResponse) {
     option (google.api.http) = {
       get: "/appscode/api/ci/v1beta1/jobs/{job_name}/builds"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

@@ -5,29 +5,39 @@ package namespace.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 // no authentication required, but rate limited apis.
 service Teams {
   // Creates a new namespace, if name is valid and no namespace with same name exists.
   rpc Create(CreateRequest) returns (CreateResponse) {
-	  option (google.api.http) = {
-	    post: "/appscode/api/namespace/v1beta1/teams"
-	    body: "*"
+    option (google.api.http) = {
+    post: "/appscode/api/namespace/v1beta1/teams"
+      body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
   // Gets a namespace, if exists. This can be used to check existence of a namespace.
   rpc Get(GetRequest) returns (GetResponse) {
-	  option (google.api.http) = {
-	    get: "/appscode/api/namespace/v1beta1/teams/{name}"
-	  };
+    option (google.api.http) = {
+      get: "/appscode/api/namespace/v1beta1/teams/{name}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   // Check if a namespace name is available meaning name is valid and no namespace with same name exists.
   rpc IsAvailable(IsAvailableRequest) returns (dtypes.VoidResponse) {
-	  option (google.api.http) = {
-	    get : "/appscode/api/namespace/v1beta1/teams/{name}/is-available"
+    option (google.api.http) = {
+      get : "/appscode/api/namespace/v1beta1/teams/{name}/is-available"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -35,6 +45,9 @@ service Teams {
   rpc Subscription(dtypes.VoidRequest) returns (SubscriptionResponse) {
     option (google.api.http) = {
       get : "/appscode/api/namespace/v1beta1/billing/subscription"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

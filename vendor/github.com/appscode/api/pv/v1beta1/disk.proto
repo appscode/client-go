@@ -5,6 +5,7 @@ package pv.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Disks {
@@ -12,11 +13,17 @@ service Disks {
     option (google.api.http) = {
       get: "/appscode/api/cloud/v1beta1/clusters/{cluster}/disks"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Describe(DiskDescribeRequest) returns (DiskDescribeResponse) {
     option (google.api.http) = {
       get: "/appscode/api/cloud/v1beta1/clusters/{cluster}/disks/{name}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -25,11 +32,17 @@ service Disks {
       post: "/appscode/api/cloud/v1beta1/clusters/{cluster}/disks"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Delete(DiskDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       delete: "/appscode/api/cloud/v1beta1/clusters/{cluster}/disks/{uid}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

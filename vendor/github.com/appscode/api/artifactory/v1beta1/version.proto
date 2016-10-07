@@ -5,6 +5,7 @@ package artifactory.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Versions {
@@ -15,6 +16,9 @@ service Versions {
       // and `name` as query parametrs.
       get: "/appscode/api/artifactory/v1beta1/artifacts/{type}/versions"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Describe(VersionDescribeRequest) returns (VersionDescribeResponse) {
@@ -23,6 +27,9 @@ service Versions {
       // Recives {type} in - `docker, maven, composer, npm` as path parameter
       // and `id` `name` as query parametrs.
       get: "/appscode/api/artifactory/v1beta1/artifacts/{type}/versions/description"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

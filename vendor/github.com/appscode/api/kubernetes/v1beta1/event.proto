@@ -5,6 +5,7 @@ package kubernetes.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Events {
@@ -13,12 +14,18 @@ service Events {
       put: "/appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/actions/construct-event"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Destructive(EventRequest) returns (EventResponse) {
     option (google.api.http) = {
       put: "/appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/actions/destruct-event"
       body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

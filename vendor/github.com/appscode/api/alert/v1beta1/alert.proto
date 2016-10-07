@@ -5,6 +5,7 @@ package alert.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 // Alert service protobufs for cluster alerts.
@@ -13,6 +14,9 @@ service Alerts {
     option (google.api.http) = {
       get: "/appscode/api/kubernetes/v1beta1/alerts"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Create(AlertCreateRequest) returns (dtypes.VoidResponse) {
@@ -20,11 +24,17 @@ service Alerts {
       post: "/appscode/api/kubernetes/v1beta1/alerts"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Describe(AlertDescribeRequest) returns (AlertDescribeResponse) {
     option (google.api.http) = {
       get: "/appscode/api/kubernetes/v1beta1/alerts/{phid}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -33,6 +43,9 @@ service Alerts {
       put: "/appscode/api/kubernetes/v1beta1/alerts/{phid}"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Sync(AlertSyncRequest) returns (dtypes.VoidResponse) {
@@ -40,11 +53,17 @@ service Alerts {
       post: "/appscode/api/kubernetes/v1beta1/clusters/{kubernetes_cluster}/actions/sync-alerts"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Delete(AlertDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       delete: "/appscode/api/kubernetes/v1beta1/alerts/{phid}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

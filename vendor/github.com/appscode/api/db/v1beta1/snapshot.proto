@@ -5,12 +5,16 @@ package db.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Snapshots {
   rpc List(SnapshotListRequest) returns (SnapshotListResponse) {
     option (google.api.http) = {
       get: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/snapshots"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -19,11 +23,17 @@ service Snapshots {
       post: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/schedule-backup"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc BackupUnschedule(BackupUnscheduleRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/unschedule-backup"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -31,6 +41,9 @@ service Snapshots {
     option (google.api.http) = {
       post: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/databases/{uid}/actions/restore"
       body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

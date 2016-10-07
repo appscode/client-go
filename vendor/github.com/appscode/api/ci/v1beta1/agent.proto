@@ -5,6 +5,7 @@ package ci.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Agents {
@@ -12,11 +13,17 @@ service Agents {
     option (google.api.http) = {
       get: "/appscode/api/ci/v1beta1/agents"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Describe(AgentDescribeRequest) returns (AgentDescribeResponse) {
     option (google.api.http) = {
       get: "/appscode/api/ci/v1beta1/agents/{name}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -25,17 +32,26 @@ service Agents {
       post: "/appscode/api/ci/v1beta1/agents"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Delete(AgentDeleteRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
       delete: "/appscode/api/ci/v1beta1/agents/{name}"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Restart(AgentRestartRequest) returns (AgentRestartResponse) {
     option (google.api.http) = {
       post: "/appscode/api/ci/v1beta1/agents/{name}/actions/reboot"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

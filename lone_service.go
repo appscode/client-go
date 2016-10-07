@@ -14,7 +14,7 @@ import (
 
 // single client service in api. returned directly the api client.
 type loneClientInterface interface {
-	CloudCredential() credential.CloudCredentialsClient
+	CloudCredential() credential.CredentialsClient
 	Event() k8s.EventsClient
 	Health() health.HealthClient
 	LoadBalancer() loadbalancer.LoadBalancersClient
@@ -25,7 +25,7 @@ type loneClientInterface interface {
 }
 
 type loneClientServices struct {
-	cloudClient        credential.CloudCredentialsClient
+	credClient         credential.CredentialsClient
 	eventClient        k8s.EventsClient
 	healthClient       health.HealthClient
 	teamClient         namespace.TeamsClient
@@ -37,7 +37,7 @@ type loneClientServices struct {
 
 func newLoneClientService(conn *grpc.ClientConn) loneClientInterface {
 	return &loneClientServices{
-		cloudClient:        credential.NewCloudCredentialsClient(conn),
+		credClient:        credential.NewCredentialsClient(conn),
 		eventClient:        k8s.NewEventsClient(conn),
 		healthClient:       health.NewHealthClient(conn),
 		loadBalancerClient: loadbalancer.NewLoadBalancersClient(conn),
@@ -47,8 +47,8 @@ func newLoneClientService(conn *grpc.ClientConn) loneClientInterface {
 	}
 }
 
-func (s *loneClientServices) CloudCredential() credential.CloudCredentialsClient {
-	return s.cloudClient
+func (s *loneClientServices) CloudCredential() credential.CredentialsClient {
+	return s.credClient
 }
 
 func (s *loneClientServices) Event() k8s.EventsClient {

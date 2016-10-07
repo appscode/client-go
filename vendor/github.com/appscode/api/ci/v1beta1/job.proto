@@ -5,6 +5,7 @@ package ci.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Jobs {
@@ -12,11 +13,17 @@ service Jobs {
     option (google.api.http) = {
       get: "/appscode/api/ci/v1beta1/jobs"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Describe(JobDescribeRequest) returns (JobDescribeResponse) {
     option (google.api.http) = {
       get: "/appscode/api/ci/v1beta1/jobs/{name}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -25,6 +32,9 @@ service Jobs {
       post: "/appscode/api/ci/v1beta1/jobs"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Copy(JobCopyRequest) returns (dtypes.VoidResponse) {
@@ -32,12 +42,18 @@ service Jobs {
       put: "/appscode/api/ci/v1beta1/actions/copy"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Build(JobBuildRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       post: "/appscode/api/ci/v1beta1/jobs/{name}/actions/build"
       body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 

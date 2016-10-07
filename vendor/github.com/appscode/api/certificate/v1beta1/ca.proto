@@ -5,14 +5,18 @@ package certificate.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service CAs {
   rpc Create(CACreateRequest) returns (CACreateResponse) {
     option (google.api.http) = {
-	    post: "/appscode/api/certificate/v1beta1/cas"
-	    body: "*"
-	  };
+	  post: "/appscode/api/certificate/v1beta1/cas"
+	  body: "*"
+	};
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 }
 

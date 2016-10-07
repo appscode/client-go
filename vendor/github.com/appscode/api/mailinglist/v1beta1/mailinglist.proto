@@ -5,6 +5,7 @@ package mailinglist.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service MailingList {
@@ -13,11 +14,18 @@ service MailingList {
       post: "/appscode/api/mail/v1beta1"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
+
   rpc Subscribe(SubscribeRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/appscode/api/mailinglist/v1beta1/subscribe"
       body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

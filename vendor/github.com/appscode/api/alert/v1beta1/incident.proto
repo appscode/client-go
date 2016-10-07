@@ -5,6 +5,7 @@ package alert.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 // Alert service protobufs for cluster alert incident.
@@ -13,11 +14,17 @@ service Incidents {
     option (google.api.http) = {
       get: "/appscode/api/kubernetes/v1beta1/incidents"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Describe(IncidentDescribeRequest) returns (IncidentDescribeResponse) {
     option (google.api.http) = {
       get: "/appscode/api/kubernetes/v1beta1/incidents/{phid}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -26,12 +33,18 @@ service Incidents {
       post : "/appscode/api/kubernetes/v1beta1/alerts/{alert_phid}/actions/notify"
       body : "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc CreateEvent(IncidentEventCreateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       post : "/appscode/api/kubernetes/v1beta1/incidents/{phid}/events"
       body : "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

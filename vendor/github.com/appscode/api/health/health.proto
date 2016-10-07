@@ -3,6 +3,7 @@ syntax = "proto3";
 package health;
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 import "api/version/version.proto";
 
@@ -10,6 +11,9 @@ service Health {
   rpc Status(dtypes.VoidRequest) returns (StatusResponse) {
     option (google.api.http) = {
       get : "/appscode/api/health"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

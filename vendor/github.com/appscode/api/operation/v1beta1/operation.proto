@@ -5,6 +5,7 @@ package operation.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 import "api/certificate/v1beta1/certificate.proto";
 import "api/ci/v1beta1/agent.proto";
@@ -19,6 +20,9 @@ service Operations {
   rpc Describe(DescribeRequest) returns (DescribeResponse) {
     option (google.api.http) = {
       get: "/appscode/api/operation/v1beta1/operations/{phid}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

@@ -5,6 +5,7 @@ package certificate.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Certificates {
@@ -12,11 +13,17 @@ service Certificates {
     option (google.api.http) = {
       get: "/appscode/api/certificate/v1beta1/certificates"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Describe(CertificateDescribeRequest) returns (CertificateDescribeResponse) {
     option (google.api.http) = {
       get: "/appscode/api/certificate/v1beta1/certificates/{uid}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -25,6 +32,9 @@ service Certificates {
       post: "/appscode/api/certificate/v1beta1/certificates"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Import(CertificateImportRequest) returns (dtypes.VoidResponse) {
@@ -32,11 +42,17 @@ service Certificates {
       put: "/appscode/api/certificate/v1beta1/certificates/{name}/actions/import"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Delete(CertificateDeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       delete: "/appscode/api/certificate/v1beta1/certificates/{uid}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -44,11 +60,17 @@ service Certificates {
     option (google.api.http) = {
       post: "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/renew"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Revoke(CertificateRevokeRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       put: "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/revoke"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -56,6 +78,9 @@ service Certificates {
     option (google.api.http) = {
       put: "/appscode/api/certificate/v1beta1/certificates/{uid}/actions/deploy"
       body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

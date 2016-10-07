@@ -5,12 +5,16 @@ package billing.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service PaymentMethods {
   rpc Check(dtypes.VoidRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       get: "/appscode/api/billing/v1beta1/paymentmethods"
-   };
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 }

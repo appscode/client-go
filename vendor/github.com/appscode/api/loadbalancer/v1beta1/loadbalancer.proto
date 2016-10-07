@@ -5,6 +5,7 @@ package loadbalancer.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 // alert service protobufs for clusters alerts.
@@ -13,11 +14,17 @@ service LoadBalancers {
     option (google.api.http) = {
       get: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Describe(DescribeRequest) returns (DescribeResponse) {
     option (google.api.http) = {
       get: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -26,6 +33,9 @@ service LoadBalancers {
       post: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Update(UpdateRequest) returns (dtypes.VoidResponse) {
@@ -33,11 +43,17 @@ service LoadBalancers {
       put: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Delete(DeleteRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
       delete: "/appscode/api/kubernetes/v1beta1/clusters/{cluster}/loadbalancers/{name}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

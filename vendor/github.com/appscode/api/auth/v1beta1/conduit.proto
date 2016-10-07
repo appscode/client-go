@@ -5,15 +5,19 @@ package auth.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Conduit {
   // This rpc is used to check a valid user from other applications.
   rpc WhoAmI(ConduitRequest) returns (ConduitWhoAmIResponse) {
     option (google.api.http) = {
-    post : "/appscode/api/auth/v1beta1/conduits/whoami"
-    body : "*"
-  };
+      post : "/appscode/api/auth/v1beta1/conduits/whoami"
+      body : "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
 }
 
   // appctl used this to validates the user token with phabricator.
@@ -21,6 +25,9 @@ service Conduit {
     option (google.api.http) = {
       post: "/appscode/api/auth/v1beta1/conduits/users"
       body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 }

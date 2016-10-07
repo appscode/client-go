@@ -5,18 +5,25 @@ package kubernetes.v1beta1;
 option go_package = "v1beta1";
 
 import "google/api/annotations.proto";
+import "appscode/api/annotations.proto";
 import "api/dtypes/types.proto";
 
 service Clusters {
   rpc List(ClusterListRequest) returns (ClusterListResponse) {
-     option (google.api.http) = {
-       get : "/appscode/api/kubernetes/v1beta1/clusters"
-     };
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/clusters"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Describe(ClusterDescribeRequest) returns (ClusterDescribeResponse) {
     option (google.api.http) = {
       get : "/appscode/api/kubernetes/v1beta1/clusters/{uid}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -25,12 +32,18 @@ service Clusters {
       post: "/appscode/api/kubernetes/v1beta1/clusters"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Update(ClusterUpdateRequest) returns (dtypes.VoidResponse) {
     option (google.api.http) = {
-       put: "/appscode/api/kubernetes/v1beta1/clusters/{name}"
-       body: "*"
+      put: "/appscode/api/kubernetes/v1beta1/clusters/{name}"
+      body: "*"
+    };
+    option (appscode.api.cors) = {
+      enable: true
     };
   }
 
@@ -39,6 +52,9 @@ service Clusters {
       put: "/appscode/api/kubernetes/v1beta1/clusters/{name}/actions/scale"
       body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Upgrade(ClusterUpgradeRequest) returns (dtypes.LongRunningResponse) {
@@ -46,36 +62,54 @@ service Clusters {
        put: "/appscode/api/kubernetes/v1beta1/clusters/{name}/actions/upgrade"
        body: "*"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Delete(ClusterDeleteRequest) returns (dtypes.LongRunningResponse) {
     option (google.api.http) = {
       delete : "/appscode/api/kubernetes/v1beta1/clusters/{name}"
     };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc ClientConfig(ClusterClientConfigRequest) returns (ClusterClientConfigResponse) {
-     option (google.api.http) = {
-       get : "/appscode/api/kubernetes/v1beta1/clusters/{name}/client-config"
-     };
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/clusters/{name}/client-config"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc Instances(ClusterInstanceListRequest) returns (ClusterInstanceListResponse) {
-     option (google.api.http) = {
-       get : "/appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/instances"
-     };
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/clusters/{cluster_name}/instances"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc StartupScript(ClusterStartupScriptRequest) returns (ClusterStartupScriptResponse) {
-     option (google.api.http) = {
-       get : "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-script/{role}"
-     };
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/clusters/{uid}/startup-script/{role}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 
   rpc InstanceByIP(ClusterInstanceByIPRequest) returns (ClusterInstanceResponse) {
-     option (google.api.http) = {
-       get : "/appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}"
-     };
+    option (google.api.http) = {
+      get : "/appscode/api/kubernetes/v1beta1/clusters/{phid}/instance-by-ip/{external_ip}"
+    };
+    option (appscode.api.cors) = {
+      enable: true
+    };
   }
 }
 
