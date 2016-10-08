@@ -1,0 +1,81 @@
+package: github.com/appscode/client
+import:
+- package: github.com/appscode/api
+  version: 8c809404226e775d39e43fcdc9ee2f2ba0588512
+  subpackages:
+  - alert/v1beta1
+  - artifactory/v1beta1
+  - auth/v1beta1
+  - backup/v1beta1
+  - billing/v1beta1
+  - certificate/v1beta1
+  - ci/v1beta1
+  - credential/v1beta1
+  - db/v1beta1
+  - dtypes
+  - glusterfs/v1beta1
+  - health
+  - kubernetes/v1beta1
+  - loadbalancer/v1beta1
+  - mailinglist/v1beta1
+  - namespace/v1beta1
+  - operation/v1beta1
+  - pv/v1beta1
+  - ssh/v1beta1
+  - version
+- package: github.com/davecgh/go-spew
+  version: 3e6e67c4dcea3ac2f25fd4731abc0e1deaf36216
+  subpackages:
+  - spew
+- package: github.com/golang/glog
+  version: 44145f04b68cf362d9c4df2182967c2275eaefed
+- package: github.com/golang/protobuf
+  version: 888eb0692c857ec880338addf316bd662d5e630e
+  subpackages:
+  - jsonpb
+  - proto
+  - protoc-gen-go/descriptor
+  - ptypes/any
+- package: github.com/grpc-ecosystem/grpc-gateway
+  version: 1923bb600d4a5a045b73f5c61549398bc5de9d56
+  subpackages:
+  - runtime
+  - runtime/internal
+  - third_party/appscodeapis/appscode/api
+  - third_party/googleapis/google/api
+  - utilities
+- package: github.com/pmezard/go-difflib
+  version: v1.0.0
+  subpackages:
+  - difflib
+- package: github.com/stretchr/testify
+  version: e3a8ff8ce36581f87a15341206f205b1da467059
+  subpackages:
+  - assert
+- package: github.com/xeipuuv/gojsonpointer
+  version: e0fe6f68307607d540ed8eac07a342c33fa1b54a
+- package: github.com/xeipuuv/gojsonreference
+  version: e02fc20de94c78484cd5ffb007f8af96be030a45
+- package: github.com/xeipuuv/gojsonschema
+  version: 93e72a773fade158921402d6a24c819b48aba29d
+- package: golang.org/x/net
+  version: f4b625ec9b21d620bb5ce57f2dfc3e08ca97fce6
+  subpackages:
+  - context
+  - http2
+  - http2/hpack
+  - idna
+  - internal/timeseries
+  - lex/httplex
+  - trace
+- package: google.golang.org/grpc
+  version: v1.0.1-GA
+  subpackages:
+  - codes
+  - credentials
+  - grpclog
+  - internal
+  - metadata
+  - naming
+  - peer
+  - transport
