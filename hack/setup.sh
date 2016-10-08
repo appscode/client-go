@@ -13,14 +13,6 @@ deps() {
     cd $owd
 }
 
-godep() {
-    local -r owd=$PWD
-    cd $GOPATH/src/github.com/appscode/client
-    rm -rf Godeps vendor
-    GO15VENDOREXPERIMENT=1 $GOPATH/bin/godep save ./...
-    cd $owd
-}
-
 build() {
     local -r owd=$PWD
     cd $GOPATH/src/github.com/appscode/client
@@ -37,14 +29,11 @@ case "$1" in
 	deps)
 		deps
 		;;
-	godep)
-		godep
-		;;
 	build)
 		build
 		;;
 	*)	(10)
-		echo $"Usage: $0 {deps|godep|build}"
+		echo $"Usage: $0 {deps|build}"
 		RETVAL=1
 esac
 exit $RETVAL
