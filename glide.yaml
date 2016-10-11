@@ -1,7 +1,6 @@
 package: github.com/appscode/client
 import:
 - package: github.com/appscode/api
-  version: 8c809404226e775d39e43fcdc9ee2f2ba0588512
   subpackages:
   - alert/v1beta1
   - artifactory/v1beta1

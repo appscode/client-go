@@ -16,5 +16,6 @@ import "github.com/grpc-ecosystem/grpc-gateway/runtime"
 func ExportOperationsCorsPatterns() []runtime.Pattern {
 	return []runtime.Pattern{
 		pattern_Operations_Describe_0,
+		pattern_Operations_DescribeLog_0,
 	}
 }
