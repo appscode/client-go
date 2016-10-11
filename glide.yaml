@@ -1,6 +1,8 @@
 package: github.com/appscode/client
 import:
 - package: github.com/appscode/api
+  vcs: git
+  repo: git@diffusion.appscode.com:appscode/37/api.git
   subpackages:
   - alert/v1beta1
   - artifactory/v1beta1

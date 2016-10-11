@@ -18,6 +18,7 @@ func ExportCredentialsCorsPatterns() []runtime.Pattern {
 		pattern_Credentials_List_0,
 		pattern_Credentials_Create_0,
 		pattern_Credentials_Update_0,
+		pattern_Credentials_IsAuthorized_0,
 		pattern_Credentials_Delete_0,
 	}
 }

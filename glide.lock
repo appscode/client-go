@@ -1,8 +1,10 @@
-hash: 1c62a835a502b1bdf552eb339f94588d2167cc67400848ec51cc407d0e2cebba
-updated: 2016-10-11T00:19:08.861570386-07:00
+hash: 884c2002617ef4ce934ccaf8702ef41ad1ab1d048f649afdc75e1497d534079c
+updated: 2016-10-11T14:35:40.666693508-07:00
 imports:
 - name: github.com/appscode/api
-  version: c30be6c694d1c6a99a52c3c99b4ae66c3565350b
+  version: 139377da7ab565d9e67fa39b2730b0b42b5f463e
+  repo: git@diffusion.appscode.com:appscode/37/api.git
+  vcs: git
   subpackages:
   - alert/v1beta1
   - artifactory/v1beta1
