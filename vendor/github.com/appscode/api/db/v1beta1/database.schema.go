@@ -12,6 +12,7 @@ var databaseUpdateRequestSchema *gojsonschema.Schema
 var databaseCreateRequestSchema *gojsonschema.Schema
 var databaseListRequestSchema *gojsonschema.Schema
 var databaseScaleRequestSchema *gojsonschema.Schema
+var databaseRecoverRequestSchema *gojsonschema.Schema
 var databaseDescribeRequestSchema *gojsonschema.Schema
 
 func init() {
@@ -68,13 +69,16 @@ func init() {
     "hostname": {
       "type": "string"
     },
-    "pv_size_gb": {
-      "type": "integer"
+    "ignore_validation": {
+      "type": "boolean"
     },
-    "service_name": {
+    "name": {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
+    },
+    "pv_size_gb": {
+      "type": "integer"
     },
     "size": {
       "type": "integer"
@@ -95,7 +99,7 @@ func init() {
       "type": "string"
     }
   },
-  "title": "Next Id: 16",
+  "title": "Next Id: 18",
   "type": "object"
 }`))
 	if err != nil {
@@ -118,7 +122,7 @@ func init() {
       "type": "string"
     }
   },
-  "title": "Next Id: 3",
+  "title": "Next Id: 4",
   "type": "object"
 }`))
 	if err != nil {
@@ -138,6 +142,22 @@ func init() {
     }
   },
   "title": "Next Id: 4",
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	databaseRecoverRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cluster": {
+      "type": "string"
+    },
+    "uid": {
+      "type": "string"
+    }
+  },
+  "title": "Next Id: 3",
   "type": "object"
 }`))
 	if err != nil {
@@ -185,6 +205,11 @@ func (m *DatabaseScaleRequest) IsValid() (*gojsonschema.Result, error) {
 	return databaseScaleRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *DatabaseScaleRequest) IsRequest() {}
+
+func (m *DatabaseRecoverRequest) IsValid() (*gojsonschema.Result, error) {
+	return databaseRecoverRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *DatabaseRecoverRequest) IsRequest() {}
 
 func (m *DatabaseDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 	return databaseDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))

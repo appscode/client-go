@@ -261,6 +261,48 @@ func request_Databases_Delete_0(ctx context.Context, marshaler runtime.Marshaler
 
 }
 
+func request_Databases_Recover_0(ctx context.Context, marshaler runtime.Marshaler, client DatabasesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DatabaseRecoverRequest
+	var metadata runtime.ServerMetadata
+
+	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["cluster"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "cluster")
+	}
+
+	protoReq.Cluster, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	val, ok = pathParams["uid"]
+	if !ok {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "uid")
+	}
+
+	protoReq.Uid, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, err
+	}
+
+	msg, err := client.Recover(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
 // RegisterDatabasesHandlerFromEndpoint is same as RegisterDatabasesHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
 func RegisterDatabasesHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
@@ -459,6 +501,34 @@ func RegisterDatabasesHandler(ctx context.Context, mux *runtime.ServeMux, conn *
 
 	})
 
+	mux.Handle("PUT", pattern_Databases_Recover_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(ctx)
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
+		}
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, req)
+		if err != nil {
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+		}
+		resp, md, err := request_Databases_Recover_0(rctx, inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_Databases_Recover_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	return nil
 }
 
@@ -474,6 +544,8 @@ var (
 	pattern_Databases_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7}, []string{"appscode", "api", "kubernetes", "v1beta1", "clusters", "cluster", "databases", "uid"}, ""))
 
 	pattern_Databases_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7}, []string{"appscode", "api", "kubernetes", "v1beta1", "clusters", "cluster", "databases", "uid"}, ""))
+
+	pattern_Databases_Recover_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8, 2, 9}, []string{"appscode", "api", "kubernetes", "v1beta1", "clusters", "cluster", "databases", "uid", "actions", "recover"}, ""))
 )
 
 var (
@@ -488,4 +560,6 @@ var (
 	forward_Databases_Describe_0 = runtime.ForwardResponseMessage
 
 	forward_Databases_Delete_0 = runtime.ForwardResponseMessage
+
+	forward_Databases_Recover_0 = runtime.ForwardResponseMessage
 )
