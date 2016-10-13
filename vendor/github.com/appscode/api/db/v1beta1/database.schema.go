@@ -57,6 +57,59 @@ func init() {
 	}
 	databaseCreateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "DatabaseCreateRequestInitialScript": {
+      "properties": {
+        "config_map": {
+          "$ref": "#/definitions/InitialScriptConfigMap"
+        },
+        "git_repo": {
+          "$ref": "#/definitions/InitialScriptGitRepo"
+        },
+        "script_path": {
+          "type": "string"
+        },
+        "secret": {
+          "$ref": "#/definitions/InitialScriptSecret"
+        }
+      },
+      "type": "object"
+    },
+    "InitialScriptConfigMap": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "InitialScriptGitRepo": {
+      "properties": {
+        "directory": {
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "InitialScriptSecret": {
+      "properties": {
+        "name": {
+          "maxLength": 63,
+          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
   "properties": {
     "auth_secret_name": {
       "maxLength": 63,
@@ -71,6 +124,9 @@ func init() {
     },
     "ignore_validation": {
       "type": "boolean"
+    },
+    "initial_script": {
+      "$ref": "#/definitions/DatabaseCreateRequestInitialScript"
     },
     "name": {
       "maxLength": 63,
@@ -99,7 +155,7 @@ func init() {
       "type": "string"
     }
   },
-  "title": "Next Id: 18",
+  "title": "Next Id: 19",
   "type": "object"
 }`))
 	if err != nil {
