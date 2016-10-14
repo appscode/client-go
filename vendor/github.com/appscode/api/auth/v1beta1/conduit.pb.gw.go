@@ -13,6 +13,7 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/appscode/api/dtypes"
 	"github.com/golang/protobuf/proto"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/utilities"
@@ -28,7 +29,7 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
 func request_Conduit_WhoAmI_0(ctx context.Context, marshaler runtime.Marshaler, client ConduitClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ConduitRequest
+	var protoReq dtypes.VoidRequest
 	var metadata runtime.ServerMetadata
 
 	msg, err := client.WhoAmI(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -37,7 +38,7 @@ func request_Conduit_WhoAmI_0(ctx context.Context, marshaler runtime.Marshaler, 
 }
 
 func request_Conduit_Users_0(ctx context.Context, marshaler runtime.Marshaler, client ConduitClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ConduitRequest
+	var protoReq dtypes.VoidRequest
 	var metadata runtime.ServerMetadata
 
 	msg, err := client.Users(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
