@@ -18,7 +18,7 @@ func ExportCertificatesCorsPatterns() []runtime.Pattern {
 		pattern_Certificates_List_0,
 		pattern_Certificates_Describe_0,
 		pattern_Certificates_Create_0,
-		pattern_Certificates_Import_0,
+		pattern_Certificates_Obtain_0,
 		pattern_Certificates_Delete_0,
 		pattern_Certificates_Renew_0,
 		pattern_Certificates_Revoke_0,

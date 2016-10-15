@@ -7,7 +7,7 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var certificateImportRequestSchema *gojsonschema.Schema
+var certificateObtainRequestSchema *gojsonschema.Schema
 var certificateRenewRequestSchema *gojsonschema.Schema
 var certificateListRequestSchema *gojsonschema.Schema
 var certificateDeleteRequestSchema *gojsonschema.Schema
@@ -18,7 +18,7 @@ var certificateDeployRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	certificateImportRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	certificateObtainRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cert_data": {
@@ -194,10 +194,10 @@ func init() {
 	}
 }
 
-func (m *CertificateImportRequest) IsValid() (*gojsonschema.Result, error) {
-	return certificateImportRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *CertificateObtainRequest) IsValid() (*gojsonschema.Result, error) {
+	return certificateObtainRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *CertificateImportRequest) IsRequest() {}
+func (m *CertificateObtainRequest) IsRequest() {}
 
 func (m *CertificateRenewRequest) IsValid() (*gojsonschema.Result, error) {
 	return certificateRenewRequestSchema.Validate(gojsonschema.NewGoLoader(m))
