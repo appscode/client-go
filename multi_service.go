@@ -88,6 +88,8 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 		kubernetesClient: &kubernetesService{
 			kubernetesClient: kubernetes.NewClientsClient(conn),
 			clusterClient:    kubernetes.NewClustersClient(conn),
+			eventsClient:    kubernetes.NewEventsClient(conn),
+			metdataClient:    kubernetes.NewMetadataClient(conn),
 		},
 		pvClient: &pvService{
 			disk: pv.NewDisksClient(conn),
@@ -276,6 +278,8 @@ func (g *glusterFSService) Volume() glusterfs.VolumesClient {
 type kubernetesService struct {
 	kubernetesClient kubernetes.ClientsClient
 	clusterClient    kubernetes.ClustersClient
+	eventsClient     kubernetes.EventsClient
+	metdataClient    kubernetes.MetadataClient
 }
 
 func (k *kubernetesService) Client() kubernetes.ClientsClient {
@@ -284,6 +288,14 @@ func (k *kubernetesService) Client() kubernetes.ClientsClient {
 
 func (k *kubernetesService) Cluster() kubernetes.ClustersClient {
 	return k.clusterClient
+}
+
+func (k *kubernetesService) Event() kubernetes.EventsClient {
+	return k.eventsClient
+}
+
+func (k *kubernetesService) Metadata() kubernetes.MetadataClient {
+	return k.metdataClient
 }
 
 type pvService struct {

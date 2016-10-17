@@ -9,6 +9,7 @@ It is generated from these files:
 	client.proto
 	cluster.proto
 	event.proto
+	metadata.proto
 
 It has these top-level messages:
 	KubeResource
@@ -64,6 +65,10 @@ It has these top-level messages:
 	ClusterUpgradeRequest
 	EventRequest
 	EventResponse
+	ListRegionsRequest
+	ListRegionsResponse
+	ListZonesRequest
+	ListZonesResponse
 */
 package v1beta1
 
