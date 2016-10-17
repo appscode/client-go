@@ -25,7 +25,7 @@ func init() {
     "email": {
       "type": "string"
     },
-    "invite_email": {
+    "invite_emails": {
       "items": {
         "type": "string"
       },

@@ -83,7 +83,7 @@ func init() {
     "kubernetes_objectType": {
       "type": "string"
     },
-    "state": {
+    "states": {
       "items": {
         "type": "string"
       },

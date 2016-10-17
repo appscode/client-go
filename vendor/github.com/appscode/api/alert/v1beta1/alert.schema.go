@@ -62,7 +62,7 @@ func init() {
     "icinga_param": {
       "$ref": "#/definitions/v1beta1IcingaParam"
     },
-    "notifier_param": {
+    "notifier_params": {
       "items": {
         "$ref": "#/definitions/v1beta1NotifierParam"
       },
@@ -157,7 +157,7 @@ func init() {
     "kubernetes_objectType": {
       "type": "string"
     },
-    "notifier_param": {
+    "notifier_params": {
       "items": {
         "$ref": "#/definitions/v1beta1NotifierParam"
       },
@@ -218,7 +218,7 @@ func init() {
     "kubernetes_objectType": {
       "type": "string"
     },
-    "pod_ancestor": {
+    "pod_ancestors": {
       "items": {
         "$ref": "#/definitions/AlertSyncRequestPodAncestor"
       },

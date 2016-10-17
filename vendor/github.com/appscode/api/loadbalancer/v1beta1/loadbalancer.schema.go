@@ -71,7 +71,7 @@ func init() {
         "backend": {
           "$ref": "#/definitions/v1beta1LoadBalancerBackend"
         },
-        "header_rule": {
+        "header_rules": {
           "items": {
             "type": "string"
           },
@@ -80,7 +80,7 @@ func init() {
         "path": {
           "type": "string"
         },
-        "rewrite_rule": {
+        "rewrite_rules": {
           "items": {
             "type": "string"
           },
@@ -273,7 +273,7 @@ func init() {
         "backend": {
           "$ref": "#/definitions/v1beta1LoadBalancerBackend"
         },
-        "header_rule": {
+        "header_rules": {
           "items": {
             "type": "string"
           },
@@ -282,7 +282,7 @@ func init() {
         "path": {
           "type": "string"
         },
-        "rewrite_rule": {
+        "rewrite_rules": {
           "items": {
             "type": "string"
           },
