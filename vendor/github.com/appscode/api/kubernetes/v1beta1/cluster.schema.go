@@ -127,10 +127,10 @@ func init() {
 	clusterDeleteRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
-    "destroy_dynamic_volumes": {
+    "delete_dynamic_volumes": {
       "type": "boolean"
     },
-    "destroy_lodabalancers": {
+    "delete_lodabalancers": {
       "type": "boolean"
     },
     "force": {
