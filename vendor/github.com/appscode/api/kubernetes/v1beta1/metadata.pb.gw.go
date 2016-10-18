@@ -198,9 +198,9 @@ func RegisterMetadataHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 }
 
 var (
-	pattern_Metadata_ListRegions_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "cloud", "v1beta1", "metadata", "provider", "regions"}, ""))
+	pattern_Metadata_ListRegions_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7}, []string{"appscode", "api", "cloud", "v1beta1", "metadata", "providers", "provider", "regions"}, ""))
 
-	pattern_Metadata_ListZones_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8}, []string{"appscode", "api", "cloud", "v1beta1", "metadata", "provider", "regions", "region", "zones"}, ""))
+	pattern_Metadata_ListZones_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 1, 0, 4, 1, 5, 8, 2, 9}, []string{"appscode", "api", "cloud", "v1beta1", "metadata", "providers", "provider", "regions", "region", "zones"}, ""))
 )
 
 var (
