@@ -17,5 +17,6 @@ func ExportMetadataCorsPatterns() []runtime.Pattern {
 	return []runtime.Pattern{
 		pattern_Metadata_ListRegions_0,
 		pattern_Metadata_ListZones_0,
+		pattern_Metadata_ListBuckets_0,
 	}
 }

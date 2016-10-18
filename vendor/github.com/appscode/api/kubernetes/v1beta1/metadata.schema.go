@@ -7,20 +7,18 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var listZonesRequestSchema *gojsonschema.Schema
-var listRegionsRequestSchema *gojsonschema.Schema
+var zoneListRequestSchema *gojsonschema.Schema
+var bucketListRequestSchema *gojsonschema.Schema
+var regionListRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	listZonesRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	zoneListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cloud_credential": {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-      "type": "string"
-    },
-    "provider": {
       "type": "string"
     },
     "region": {
@@ -32,15 +30,26 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
-	listRegionsRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+	bucketListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cloud_credential": {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
-    },
-    "provider": {
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
+	regionListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "cloud_credential": {
+      "maxLength": 63,
+      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -51,19 +60,27 @@ func init() {
 	}
 }
 
-func (m *ListZonesRequest) IsValid() (*gojsonschema.Result, error) {
-	return listZonesRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *ZoneListRequest) IsValid() (*gojsonschema.Result, error) {
+	return zoneListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ListZonesRequest) IsRequest() {}
+func (m *ZoneListRequest) IsRequest() {}
 
-func (m *ListRegionsRequest) IsValid() (*gojsonschema.Result, error) {
-	return listRegionsRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+func (m *BucketListRequest) IsValid() (*gojsonschema.Result, error) {
+	return bucketListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
-func (m *ListRegionsRequest) IsRequest() {}
+func (m *BucketListRequest) IsRequest() {}
 
-func (m *ListRegionsResponse) SetStatus(s *dtypes.Status) {
+func (m *RegionListRequest) IsValid() (*gojsonschema.Result, error) {
+	return regionListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *RegionListRequest) IsRequest() {}
+
+func (m *RegionListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-func (m *ListZonesResponse) SetStatus(s *dtypes.Status) {
+func (m *BucketListResponse) SetStatus(s *dtypes.Status) {
+	m.Status = s
+}
+func (m *ZoneListResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }

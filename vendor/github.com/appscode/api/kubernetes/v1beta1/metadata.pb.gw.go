@@ -28,30 +28,12 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
 var (
-	filter_Metadata_ListRegions_0 = &utilities.DoubleArray{Encoding: map[string]int{"provider": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+	filter_Metadata_ListRegions_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
 func request_Metadata_ListRegions_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ListRegionsRequest
+	var protoReq RegionListRequest
 	var metadata runtime.ServerMetadata
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["provider"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "provider")
-	}
-
-	protoReq.Provider, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
 
 	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Metadata_ListRegions_0); err != nil {
 		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
@@ -63,11 +45,11 @@ func request_Metadata_ListRegions_0(ctx context.Context, marshaler runtime.Marsh
 }
 
 var (
-	filter_Metadata_ListZones_0 = &utilities.DoubleArray{Encoding: map[string]int{"provider": 0, "region": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
+	filter_Metadata_ListZones_0 = &utilities.DoubleArray{Encoding: map[string]int{"region": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
 func request_Metadata_ListZones_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ListZonesRequest
+	var protoReq ZoneListRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -76,17 +58,6 @@ func request_Metadata_ListZones_0(ctx context.Context, marshaler runtime.Marshal
 		err error
 		_   = err
 	)
-
-	val, ok = pathParams["provider"]
-	if !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "missing parameter %s", "provider")
-	}
-
-	protoReq.Provider, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, err
-	}
 
 	val, ok = pathParams["region"]
 	if !ok {
@@ -104,6 +75,23 @@ func request_Metadata_ListZones_0(ctx context.Context, marshaler runtime.Marshal
 	}
 
 	msg, err := client.ListZones(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+var (
+	filter_Metadata_ListBuckets_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+)
+
+func request_Metadata_ListBuckets_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq BucketListRequest
+	var metadata runtime.ServerMetadata
+
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_Metadata_ListBuckets_0); err != nil {
+		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.ListBuckets(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
@@ -194,17 +182,49 @@ func RegisterMetadataHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 
 	})
 
+	mux.Handle("GET", pattern_Metadata_ListBuckets_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(ctx)
+		defer cancel()
+		if cn, ok := w.(http.CloseNotifier); ok {
+			go func(done <-chan struct{}, closed <-chan bool) {
+				select {
+				case <-done:
+				case <-closed:
+					cancel()
+				}
+			}(ctx.Done(), cn.CloseNotify())
+		}
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, req)
+		if err != nil {
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+		}
+		resp, md, err := request_Metadata_ListBuckets_0(rctx, inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_Metadata_ListBuckets_0(ctx, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	return nil
 }
 
 var (
-	pattern_Metadata_ListRegions_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7}, []string{"appscode", "api", "cloud", "v1beta1", "metadata", "providers", "provider", "regions"}, ""))
+	pattern_Metadata_ListRegions_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "cloud", "v1beta1", "regions"}, ""))
 
-	pattern_Metadata_ListZones_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 1, 0, 4, 1, 5, 8, 2, 9}, []string{"appscode", "api", "cloud", "v1beta1", "metadata", "providers", "provider", "regions", "region", "zones"}, ""))
+	pattern_Metadata_ListZones_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"appscode", "api", "cloud", "v1beta1", "regions", "region", "zones"}, ""))
+
+	pattern_Metadata_ListBuckets_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "cloud", "v1beta1", "buckets"}, ""))
 )
 
 var (
 	forward_Metadata_ListRegions_0 = runtime.ForwardResponseMessage
 
 	forward_Metadata_ListZones_0 = runtime.ForwardResponseMessage
+
+	forward_Metadata_ListBuckets_0 = runtime.ForwardResponseMessage
 )

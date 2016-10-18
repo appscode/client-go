@@ -65,10 +65,12 @@ It has these top-level messages:
 	ClusterUpgradeRequest
 	EventRequest
 	EventResponse
-	ListRegionsRequest
-	ListRegionsResponse
-	ListZonesRequest
-	ListZonesResponse
+	RegionListRequest
+	RegionListResponse
+	ZoneListRequest
+	ZoneListResponse
+	BucketListRequest
+	BucketListResponse
 */
 package v1beta1
 
