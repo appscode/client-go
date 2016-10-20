@@ -133,10 +133,10 @@ func init() {
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
-    "pv_size_gb": {
+    "node_count": {
       "type": "integer"
     },
-    "size": {
+    "pv_size_gb": {
       "type": "integer"
     },
     "sku": {
@@ -190,7 +190,7 @@ func init() {
     "cluster": {
       "type": "string"
     },
-    "size": {
+    "node_count": {
       "type": "integer"
     },
     "uid": {
