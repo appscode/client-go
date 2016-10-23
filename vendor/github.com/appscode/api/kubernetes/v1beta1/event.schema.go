@@ -36,10 +36,13 @@ func init() {
           },
           "type": "array"
         },
+        "instance_external_ip": {
+          "type": "string"
+        },
         "instance_id": {
           "type": "string"
         },
-        "instance_ip": {
+        "instance_internal_ip": {
           "type": "string"
         },
         "kind": {
