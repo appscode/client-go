@@ -24,6 +24,9 @@ func init() {
 	clusterStartupScriptRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
+    "context_version": {
+      "type": "integer"
+    },
     "role": {
       "type": "string"
     },
