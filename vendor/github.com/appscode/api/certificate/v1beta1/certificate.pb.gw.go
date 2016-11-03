@@ -499,7 +499,7 @@ var (
 
 	pattern_Certificates_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4}, []string{"appscode", "api", "certificate", "v1beta1", "certificates"}, ""))
 
-	pattern_Certificates_Obtain_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"appscode", "api", "certificate", "v1beta1", "certificates", "name", "actions", "import"}, ""))
+	pattern_Certificates_Obtain_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"appscode", "api", "certificate", "v1beta1", "certificates", "name", "actions", "obtain"}, ""))
 
 	pattern_Certificates_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"appscode", "api", "certificate", "v1beta1", "certificates", "uid"}, ""))
 
