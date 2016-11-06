@@ -71,8 +71,6 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 			quotaClient:         billing.NewQuotasClient(conn),
 		},
 		caClient: &caService{
-			caClient:          ca.NewCAsClient(conn),
-			acmeUsersClient:   ca.NewAcmeUsersClient(conn),
 			certificateClient: ca.NewCertificatesClient(conn),
 		},
 		ciClient: &ciService{
@@ -222,17 +220,7 @@ func (b *billingService) Quota() billing.QuotasClient {
 }
 
 type caService struct {
-	caClient          ca.CAsClient
-	acmeUsersClient   ca.AcmeUsersClient
 	certificateClient ca.CertificatesClient
-}
-
-func (c *caService) CAsClient() ca.CAsClient {
-	return c.caClient
-}
-
-func (c *caService) AcmeUsersClient() ca.AcmeUsersClient {
-	return c.acmeUsersClient
 }
 
 func (c *caService) CertificatesClient() ca.CertificatesClient {
