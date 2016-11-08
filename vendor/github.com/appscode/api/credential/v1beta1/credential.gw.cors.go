@@ -16,6 +16,7 @@ import "github.com/grpc-ecosystem/grpc-gateway/runtime"
 func ExportCredentialsCorsPatterns() []runtime.Pattern {
 	return []runtime.Pattern{
 		pattern_Credentials_List_0,
+		pattern_Credentials_Describe_0,
 		pattern_Credentials_Create_0,
 		pattern_Credentials_Update_0,
 		pattern_Credentials_IsAuthorized_0,
