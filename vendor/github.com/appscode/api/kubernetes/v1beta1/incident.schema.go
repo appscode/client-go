@@ -29,6 +29,15 @@ func init() {
     "host_name": {
       "type": "string"
     },
+    "kubernetes_alert_name": {
+      "type": "string"
+    },
+    "kubernetes_cluster": {
+      "type": "string"
+    },
+    "kubernetes_namespace": {
+      "type": "string"
+    },
     "output": {
       "type": "string"
     },
@@ -36,13 +45,14 @@ func init() {
       "type": "string"
     },
     "time": {
+      "description": "The time object is used in icinga to send request. This\nindicates detection time from icinga.",
       "type": "integer"
     },
     "type": {
       "type": "string"
     }
   },
-  "title": "Next Id: 9",
+  "title": "Next Id: 12",
   "type": "object"
 }`))
 	if err != nil {
@@ -77,10 +87,10 @@ func init() {
     "kubernetes_namespace": {
       "type": "string"
     },
-    "kubernetes_objectName": {
+    "kubernetes_object_name": {
       "type": "string"
     },
-    "kubernetes_objectType": {
+    "kubernetes_object_type": {
       "type": "string"
     },
     "states": {

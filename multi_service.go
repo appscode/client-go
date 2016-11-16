@@ -1,7 +1,6 @@
 package client
 
 import (
-	alert "github.com/appscode/api/alert/v1beta1"
 	artifactory "github.com/appscode/api/artifactory/v1beta1"
 	auth "github.com/appscode/api/auth/v1beta1"
 	backup "github.com/appscode/api/backup/v1beta1"
@@ -18,7 +17,6 @@ import (
 // multi client services are grouped by there main client. the api service
 // clients are wrapped around with sub-service.
 type multiClientInterface interface {
-	Alert() *alertService
 	Artifactory() *artifactoryService
 	Authentication() *authenticationService
 	Backup() *backupService
@@ -32,7 +30,6 @@ type multiClientInterface interface {
 }
 
 type multiClientServices struct {
-	alertClient          *alertService
 	artifactoryClient    *artifactoryService
 	authenticationClient *authenticationService
 	backupClient         *backupService
@@ -47,10 +44,6 @@ type multiClientServices struct {
 
 func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 	return &multiClientServices{
-		alertClient: &alertService{
-			alertClient:    alert.NewAlertsClient(conn),
-			incidentClient: alert.NewIncidentsClient(conn),
-		},
 		artifactoryClient: &artifactoryService{
 			artifactClient: artifactory.NewArtifactsClient(conn),
 			versionClient:  artifactory.NewVersionsClient(conn),
@@ -86,8 +79,9 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 		kubernetesClient: &kubernetesService{
 			kubernetesClient: kubernetes.NewClientsClient(conn),
 			clusterClient:    kubernetes.NewClustersClient(conn),
-			eventsClient:    kubernetes.NewEventsClient(conn),
+			eventsClient:     kubernetes.NewEventsClient(conn),
 			metdataClient:    kubernetes.NewMetadataClient(conn),
+			incidentClient:   kubernetes.NewIncidentsClient(conn),
 		},
 		pvClient: &pvService{
 			disk: pv.NewDisksClient(conn),
@@ -99,10 +93,6 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 			snapshot: db.NewSnapshotsClient(conn),
 		},
 	}
-}
-
-func (s *multiClientServices) Alert() *alertService {
-	return s.alertClient
 }
 
 func (s *multiClientServices) Artifactory() *artifactoryService {
@@ -147,19 +137,6 @@ func (s *multiClientServices) DB() *dbService {
 
 // original service clients that needs to exposed under grouped wrapper
 // services.
-type alertService struct {
-	alertClient    alert.AlertsClient
-	incidentClient alert.IncidentsClient
-}
-
-func (a *alertService) Alert() alert.AlertsClient {
-	return a.alertClient
-}
-
-func (a *alertService) Incident() alert.IncidentsClient {
-	return a.incidentClient
-}
-
 type artifactoryService struct {
 	artifactClient artifactory.ArtifactsClient
 	versionClient  artifactory.VersionsClient
@@ -268,6 +245,7 @@ type kubernetesService struct {
 	clusterClient    kubernetes.ClustersClient
 	eventsClient     kubernetes.EventsClient
 	metdataClient    kubernetes.MetadataClient
+	incidentClient   kubernetes.IncidentsClient
 }
 
 func (k *kubernetesService) Client() kubernetes.ClientsClient {
@@ -284,6 +262,10 @@ func (k *kubernetesService) Event() kubernetes.EventsClient {
 
 func (k *kubernetesService) Metadata() kubernetes.MetadataClient {
 	return k.metdataClient
+}
+
+func (a *kubernetesService) Incident() kubernetes.IncidentsClient {
+	return a.incidentClient
 }
 
 type pvService struct {

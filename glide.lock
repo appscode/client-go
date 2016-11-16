@@ -1,8 +1,8 @@
 hash: 884c2002617ef4ce934ccaf8702ef41ad1ab1d048f649afdc75e1497d534079c
-updated: 2016-11-07T23:13:45.658948166-08:00
+updated: 2016-11-16T06:51:51.693922684-08:00
 imports:
 - name: github.com/appscode/api
-  version: 27aa1103034b5224716f8e1b539f7dfc43da1e1a
+  version: 328c7c4320fe9a6f50474e31c7ff5a36f2e3246a
   repo: git@diffusion.appscode.com:appscode/37/api.git
   vcs: git
   subpackages:
