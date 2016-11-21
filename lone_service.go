@@ -4,7 +4,7 @@ import (
 	credential "github.com/appscode/api/credential/v1beta1"
 	"github.com/appscode/api/health"
 	k8s "github.com/appscode/api/kubernetes/v1beta1"
-	loadbalancer "github.com/appscode/api/loadbalancer/v1beta1"
+	loadbalancer "github.com/appscode/api/kubernetes/v1beta1"
 	mailinglist "github.com/appscode/api/mailinglist/v1beta1"
 	namespace "github.com/appscode/api/namespace/v1beta1"
 	operation "github.com/appscode/api/operation/v1beta1"
