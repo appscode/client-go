@@ -49,6 +49,27 @@ func (m *SSHGetRequest) String() string            { return proto.CompactTextStr
 func (*SSHGetRequest) ProtoMessage()               {}
 func (*SSHGetRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *SSHGetRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *SSHGetRequest) GetClusterName() string {
+	if m != nil {
+		return m.ClusterName
+	}
+	return ""
+}
+
+func (m *SSHGetRequest) GetInstanceName() string {
+	if m != nil {
+		return m.InstanceName
+	}
+	return ""
+}
+
 // return phid ?
 type SSHGetResponse struct {
 	Status       *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -78,6 +99,34 @@ func (m *SSHGetResponse) GetSshKey() *SSHKey {
 	return nil
 }
 
+func (m *SSHGetResponse) GetInstanceAddr() string {
+	if m != nil {
+		return m.InstanceAddr
+	}
+	return ""
+}
+
+func (m *SSHGetResponse) GetInstancePort() int32 {
+	if m != nil {
+		return m.InstancePort
+	}
+	return 0
+}
+
+func (m *SSHGetResponse) GetUser() string {
+	if m != nil {
+		return m.User
+	}
+	return ""
+}
+
+func (m *SSHGetResponse) GetCommand() string {
+	if m != nil {
+		return m.Command
+	}
+	return ""
+}
+
 type SSHKey struct {
 	PublicKey          []byte `protobuf:"bytes,1,opt,name=public_key,json=publicKey,proto3" json:"public_key,omitempty"`
 	PrivateKey         []byte `protobuf:"bytes,2,opt,name=private_key,json=privateKey,proto3" json:"private_key,omitempty"`
@@ -89,6 +138,34 @@ func (m *SSHKey) Reset()                    { *m = SSHKey{} }
 func (m *SSHKey) String() string            { return proto.CompactTextString(m) }
 func (*SSHKey) ProtoMessage()               {}
 func (*SSHKey) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+
+func (m *SSHKey) GetPublicKey() []byte {
+	if m != nil {
+		return m.PublicKey
+	}
+	return nil
+}
+
+func (m *SSHKey) GetPrivateKey() []byte {
+	if m != nil {
+		return m.PrivateKey
+	}
+	return nil
+}
+
+func (m *SSHKey) GetAwsFingerprint() string {
+	if m != nil {
+		return m.AwsFingerprint
+	}
+	return ""
+}
+
+func (m *SSHKey) GetOpensshFingerprint() string {
+	if m != nil {
+		return m.OpensshFingerprint
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*SSHGetRequest)(nil), "appscode.ssh.v1beta1.SSHGetRequest")
@@ -102,7 +179,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for SSH service
 
@@ -165,7 +242,7 @@ var _SSH_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "ssh.proto",
 }
 
 func init() { proto.RegisterFile("ssh.proto", fileDescriptor0) }

@@ -33,6 +33,27 @@ func (m *DatabaseInfo) String() string            { return proto.CompactTextStri
 func (*DatabaseInfo) ProtoMessage()               {}
 func (*DatabaseInfo) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
 
+func (m *DatabaseInfo) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *DatabaseInfo) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *DatabaseInfo) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
 // Next Id: 15
 type Snapshot struct {
 	Name              string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
@@ -54,6 +75,90 @@ func (m *Snapshot) String() string            { return proto.CompactTextString(m
 func (*Snapshot) ProtoMessage()               {}
 func (*Snapshot) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
 
+func (m *Snapshot) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Snapshot) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
+func (m *Snapshot) GetProvider() string {
+	if m != nil {
+		return m.Provider
+	}
+	return ""
+}
+
+func (m *Snapshot) GetCloudCredential() string {
+	if m != nil {
+		return m.CloudCredential
+	}
+	return ""
+}
+
+func (m *Snapshot) GetBucket() string {
+	if m != nil {
+		return m.Bucket
+	}
+	return ""
+}
+
+func (m *Snapshot) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
+func (m *Snapshot) GetProcess() string {
+	if m != nil {
+		return m.Process
+	}
+	return ""
+}
+
+func (m *Snapshot) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *Snapshot) GetIsScheduledBackup() int32 {
+	if m != nil {
+		return m.IsScheduledBackup
+	}
+	return 0
+}
+
+func (m *Snapshot) GetSourceDatabase() string {
+	if m != nil {
+		return m.SourceDatabase
+	}
+	return ""
+}
+
+func (m *Snapshot) GetSourceSnapshot() string {
+	if m != nil {
+		return m.SourceSnapshot
+	}
+	return ""
+}
+
+func (m *Snapshot) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
 // Next Id: 3
 type SnapshotListRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -64,6 +169,20 @@ func (m *SnapshotListRequest) Reset()                    { *m = SnapshotListRequ
 func (m *SnapshotListRequest) String() string            { return proto.CompactTextString(m) }
 func (*SnapshotListRequest) ProtoMessage()               {}
 func (*SnapshotListRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
+
+func (m *SnapshotListRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *SnapshotListRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
 
 // Next Id: 4
 type SnapshotListResponse struct {
@@ -114,6 +233,55 @@ func (m *BackupScheduleRequest) String() string            { return proto.Compac
 func (*BackupScheduleRequest) ProtoMessage()               {}
 func (*BackupScheduleRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{4} }
 
+func (m *BackupScheduleRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *BackupScheduleRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
+
+func (m *BackupScheduleRequest) GetCredentialUid() string {
+	if m != nil {
+		return m.CredentialUid
+	}
+	return ""
+}
+
+func (m *BackupScheduleRequest) GetBucketName() string {
+	if m != nil {
+		return m.BucketName
+	}
+	return ""
+}
+
+func (m *BackupScheduleRequest) GetSnapshotName() string {
+	if m != nil {
+		return m.SnapshotName
+	}
+	return ""
+}
+
+func (m *BackupScheduleRequest) GetAuthSecretName() string {
+	if m != nil {
+		return m.AuthSecretName
+	}
+	return ""
+}
+
+func (m *BackupScheduleRequest) GetScheduleCronExpr() string {
+	if m != nil {
+		return m.ScheduleCronExpr
+	}
+	return ""
+}
+
 // Next Id: 3
 type BackupUnscheduleRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -124,6 +292,20 @@ func (m *BackupUnscheduleRequest) Reset()                    { *m = BackupUnsche
 func (m *BackupUnscheduleRequest) String() string            { return proto.CompactTextString(m) }
 func (*BackupUnscheduleRequest) ProtoMessage()               {}
 func (*BackupUnscheduleRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{5} }
+
+func (m *BackupUnscheduleRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *BackupUnscheduleRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
 
 // Next Id: 19
 type SnapshotRestoreRequest struct {
@@ -138,6 +320,34 @@ func (m *SnapshotRestoreRequest) String() string            { return proto.Compa
 func (*SnapshotRestoreRequest) ProtoMessage()               {}
 func (*SnapshotRestoreRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{6} }
 
+func (m *SnapshotRestoreRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *SnapshotRestoreRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
+
+func (m *SnapshotRestoreRequest) GetSnapshotPhid() string {
+	if m != nil {
+		return m.SnapshotPhid
+	}
+	return ""
+}
+
+func (m *SnapshotRestoreRequest) GetAuthSecretName() string {
+	if m != nil {
+		return m.AuthSecretName
+	}
+	return ""
+}
+
 // Next Id: 5
 type SnapshotCheckRequest struct {
 	Cluster        string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -149,6 +359,27 @@ func (m *SnapshotCheckRequest) Reset()                    { *m = SnapshotCheckRe
 func (m *SnapshotCheckRequest) String() string            { return proto.CompactTextString(m) }
 func (*SnapshotCheckRequest) ProtoMessage()               {}
 func (*SnapshotCheckRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{7} }
+
+func (m *SnapshotCheckRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *SnapshotCheckRequest) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
+func (m *SnapshotCheckRequest) GetScheduleBackup() bool {
+	if m != nil {
+		return m.ScheduleBackup
+	}
+	return false
+}
 
 func init() {
 	proto.RegisterType((*DatabaseInfo)(nil), "appscode.db.v1beta1.DatabaseInfo")
@@ -167,7 +398,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Snapshots service
 
@@ -329,7 +560,7 @@ var _Snapshots_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor1,
+	Metadata: "snapshot.proto",
 }
 
 func init() { proto.RegisterFile("snapshot.proto", fileDescriptor1) }

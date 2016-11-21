@@ -72,7 +72,7 @@ import:
   - lex/httplex
   - trace
 - package: google.golang.org/grpc
-  version: v1.0.1-GA
+  version: v1.0.4
   subpackages:
   - codes
   - credentials

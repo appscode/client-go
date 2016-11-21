@@ -32,6 +32,27 @@ func (m *BuildDescribeRequest) String() string            { return proto.Compact
 func (*BuildDescribeRequest) ProtoMessage()               {}
 func (*BuildDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
 
+func (m *BuildDescribeRequest) GetJobName() string {
+	if m != nil {
+		return m.JobName
+	}
+	return ""
+}
+
+func (m *BuildDescribeRequest) GetParents() string {
+	if m != nil {
+		return m.Parents
+	}
+	return ""
+}
+
+func (m *BuildDescribeRequest) GetNumber() int64 {
+	if m != nil {
+		return m.Number
+	}
+	return 0
+}
+
 type BuildDescribeResponse struct {
 	Status            *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	JobName           string                  `protobuf:"bytes,2,opt,name=job_name,json=jobName" json:"job_name,omitempty"`
@@ -59,6 +80,83 @@ func (m *BuildDescribeResponse) GetStatus() *appscode_dtypes.Status {
 	return nil
 }
 
+func (m *BuildDescribeResponse) GetJobName() string {
+	if m != nil {
+		return m.JobName
+	}
+	return ""
+}
+
+func (m *BuildDescribeResponse) GetParents() string {
+	if m != nil {
+		return m.Parents
+	}
+	return ""
+}
+
+func (m *BuildDescribeResponse) GetBuildNumber() int64 {
+	if m != nil {
+		return m.BuildNumber
+	}
+	return 0
+}
+
+func (m *BuildDescribeResponse) GetBaseUrl() string {
+	if m != nil {
+		return m.BaseUrl
+	}
+	return ""
+}
+
+func (m *BuildDescribeResponse) GetBuilding() bool {
+	if m != nil {
+		return m.Building
+	}
+	return false
+}
+
+func (m *BuildDescribeResponse) GetBuiltOn() string {
+	if m != nil {
+		return m.BuiltOn
+	}
+	return ""
+}
+
+func (m *BuildDescribeResponse) GetDuration() int64 {
+	if m != nil {
+		return m.Duration
+	}
+	return 0
+}
+
+func (m *BuildDescribeResponse) GetEstimatedDuration() int64 {
+	if m != nil {
+		return m.EstimatedDuration
+	}
+	return 0
+}
+
+func (m *BuildDescribeResponse) GetFullDisplayName() string {
+	if m != nil {
+		return m.FullDisplayName
+	}
+	return ""
+}
+
+func (m *BuildDescribeResponse) GetResult() string {
+	if m != nil {
+		return m.Result
+	}
+	return ""
+}
+
+func (m *BuildDescribeResponse) GetConsoleOutput() string {
+	if m != nil {
+		return m.ConsoleOutput
+	}
+	return ""
+}
+
 type BuildListRequest struct {
 	JobName string `protobuf:"bytes,1,opt,name=job_name,json=jobName" json:"job_name,omitempty"`
 	Parents string `protobuf:"bytes,2,opt,name=parents" json:"parents,omitempty"`
@@ -68,6 +166,20 @@ func (m *BuildListRequest) Reset()                    { *m = BuildListRequest{} 
 func (m *BuildListRequest) String() string            { return proto.CompactTextString(m) }
 func (*BuildListRequest) ProtoMessage()               {}
 func (*BuildListRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
+
+func (m *BuildListRequest) GetJobName() string {
+	if m != nil {
+		return m.JobName
+	}
+	return ""
+}
+
+func (m *BuildListRequest) GetParents() string {
+	if m != nil {
+		return m.Parents
+	}
+	return ""
+}
 
 type BuildListResponse struct {
 	Status  *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -88,6 +200,20 @@ func (m *BuildListResponse) GetStatus() *appscode_dtypes.Status {
 	return nil
 }
 
+func (m *BuildListResponse) GetJobName() string {
+	if m != nil {
+		return m.JobName
+	}
+	return ""
+}
+
+func (m *BuildListResponse) GetParents() string {
+	if m != nil {
+		return m.Parents
+	}
+	return ""
+}
+
 func (m *BuildListResponse) GetBuilds() []*Build {
 	if m != nil {
 		return m.Builds
@@ -106,6 +232,27 @@ func (m *Build) String() string            { return proto.CompactTextString(m) }
 func (*Build) ProtoMessage()               {}
 func (*Build) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{4} }
 
+func (m *Build) GetNumber() int64 {
+	if m != nil {
+		return m.Number
+	}
+	return 0
+}
+
+func (m *Build) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
+func (m *Build) GetTimestamp() int64 {
+	if m != nil {
+		return m.Timestamp
+	}
+	return 0
+}
+
 func init() {
 	proto.RegisterType((*BuildDescribeRequest)(nil), "appscode.ci.v1beta1.BuildDescribeRequest")
 	proto.RegisterType((*BuildDescribeResponse)(nil), "appscode.ci.v1beta1.BuildDescribeResponse")
@@ -120,7 +267,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Builds service
 
@@ -216,7 +363,7 @@ var _Builds_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor1,
+	Metadata: "build.proto",
 }
 
 func init() { proto.RegisterFile("build.proto", fileDescriptor1) }

@@ -2,29 +2,6 @@
 // source: loadbalancer.proto
 // DO NOT EDIT!
 
-/*
-Package v1beta1 is a generated protocol buffer package.
-
-It is generated from these files:
-	loadbalancer.proto
-
-It has these top-level messages:
-	ListRequest
-	ListResponse
-	DescribeRequest
-	DescribeResponse
-	CreateRequest
-	UpdateRequest
-	DeleteRequest
-	LoadBalancer
-	Spec
-	Status
-	LoadBalancerStatus
-	LoadBalancerBackend
-	LoadBalancerRule
-	HTTPLoadBalancerRule
-	TCPLoadBalancerRule
-*/
 package v1beta1
 
 import proto "github.com/golang/protobuf/proto"
@@ -44,12 +21,6 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-// This is a compile-time assertion to ensure that this generated file
-// is compatible with the proto package it is being compiled against.
-// A compilation error at this line likely means your copy of the
-// proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
-
 type ListRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
 }
@@ -57,7 +28,14 @@ type ListRequest struct {
 func (m *ListRequest) Reset()                    { *m = ListRequest{} }
 func (m *ListRequest) String() string            { return proto.CompactTextString(m) }
 func (*ListRequest) ProtoMessage()               {}
-func (*ListRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
+func (*ListRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{0} }
+
+func (m *ListRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
 
 type ListResponse struct {
 	Status        *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -67,7 +45,7 @@ type ListResponse struct {
 func (m *ListResponse) Reset()                    { *m = ListResponse{} }
 func (m *ListResponse) String() string            { return proto.CompactTextString(m) }
 func (*ListResponse) ProtoMessage()               {}
-func (*ListResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+func (*ListResponse) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{1} }
 
 func (m *ListResponse) GetStatus() *appscode_dtypes.Status {
 	if m != nil {
@@ -93,7 +71,35 @@ type DescribeRequest struct {
 func (m *DescribeRequest) Reset()                    { *m = DescribeRequest{} }
 func (m *DescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*DescribeRequest) ProtoMessage()               {}
-func (*DescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+func (*DescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{2} }
+
+func (m *DescribeRequest) GetKind() string {
+	if m != nil {
+		return m.Kind
+	}
+	return ""
+}
+
+func (m *DescribeRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *DescribeRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *DescribeRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
 
 type DescribeResponse struct {
 	Status       *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -103,7 +109,7 @@ type DescribeResponse struct {
 func (m *DescribeResponse) Reset()                    { *m = DescribeResponse{} }
 func (m *DescribeResponse) String() string            { return proto.CompactTextString(m) }
 func (*DescribeResponse) ProtoMessage()               {}
-func (*DescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
+func (*DescribeResponse) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{3} }
 
 func (m *DescribeResponse) GetStatus() *appscode_dtypes.Status {
 	if m != nil {
@@ -129,7 +135,28 @@ type CreateRequest struct {
 func (m *CreateRequest) Reset()                    { *m = CreateRequest{} }
 func (m *CreateRequest) String() string            { return proto.CompactTextString(m) }
 func (*CreateRequest) ProtoMessage()               {}
-func (*CreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+func (*CreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{4} }
+
+func (m *CreateRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *CreateRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *CreateRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
 
 func (m *CreateRequest) GetLoadBalancer() *LoadBalancer {
 	if m != nil {
@@ -147,7 +174,21 @@ type UpdateRequest struct {
 func (m *UpdateRequest) Reset()                    { *m = UpdateRequest{} }
 func (m *UpdateRequest) String() string            { return proto.CompactTextString(m) }
 func (*UpdateRequest) ProtoMessage()               {}
-func (*UpdateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
+func (*UpdateRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{5} }
+
+func (m *UpdateRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *UpdateRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
 
 func (m *UpdateRequest) GetLoadBalancer() *LoadBalancer {
 	if m != nil {
@@ -166,7 +207,35 @@ type DeleteRequest struct {
 func (m *DeleteRequest) Reset()                    { *m = DeleteRequest{} }
 func (m *DeleteRequest) String() string            { return proto.CompactTextString(m) }
 func (*DeleteRequest) ProtoMessage()               {}
-func (*DeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
+func (*DeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{6} }
+
+func (m *DeleteRequest) GetKind() string {
+	if m != nil {
+		return m.Kind
+	}
+	return ""
+}
+
+func (m *DeleteRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *DeleteRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *DeleteRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
 
 type LoadBalancer struct {
 	// 'kind' defines is it the regular kubernetes instance or the
@@ -193,7 +262,35 @@ type LoadBalancer struct {
 func (m *LoadBalancer) Reset()                    { *m = LoadBalancer{} }
 func (m *LoadBalancer) String() string            { return proto.CompactTextString(m) }
 func (*LoadBalancer) ProtoMessage()               {}
-func (*LoadBalancer) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{7} }
+func (*LoadBalancer) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{7} }
+
+func (m *LoadBalancer) GetKind() string {
+	if m != nil {
+		return m.Kind
+	}
+	return ""
+}
+
+func (m *LoadBalancer) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *LoadBalancer) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *LoadBalancer) GetCreationTimestamp() int64 {
+	if m != nil {
+		return m.CreationTimestamp
+	}
+	return 0
+}
 
 func (m *LoadBalancer) GetOptions() map[string]string {
 	if m != nil {
@@ -216,6 +313,13 @@ func (m *LoadBalancer) GetStatus() *Status {
 	return nil
 }
 
+func (m *LoadBalancer) GetJson() string {
+	if m != nil {
+		return m.Json
+	}
+	return ""
+}
+
 type Spec struct {
 	Backend *HTTPLoadBalancerRule `protobuf:"bytes,1,opt,name=backend" json:"backend,omitempty"`
 	Rules   []*LoadBalancerRule   `protobuf:"bytes,2,rep,name=rules" json:"rules,omitempty"`
@@ -224,7 +328,7 @@ type Spec struct {
 func (m *Spec) Reset()                    { *m = Spec{} }
 func (m *Spec) String() string            { return proto.CompactTextString(m) }
 func (*Spec) ProtoMessage()               {}
-func (*Spec) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{8} }
+func (*Spec) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{8} }
 
 func (m *Spec) GetBackend() *HTTPLoadBalancerRule {
 	if m != nil {
@@ -247,7 +351,7 @@ type Status struct {
 func (m *Status) Reset()                    { *m = Status{} }
 func (m *Status) String() string            { return proto.CompactTextString(m) }
 func (*Status) ProtoMessage()               {}
-func (*Status) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{9} }
+func (*Status) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{9} }
 
 func (m *Status) GetStatus() []*LoadBalancerStatus {
 	if m != nil {
@@ -264,7 +368,21 @@ type LoadBalancerStatus struct {
 func (m *LoadBalancerStatus) Reset()                    { *m = LoadBalancerStatus{} }
 func (m *LoadBalancerStatus) String() string            { return proto.CompactTextString(m) }
 func (*LoadBalancerStatus) ProtoMessage()               {}
-func (*LoadBalancerStatus) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{10} }
+func (*LoadBalancerStatus) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{10} }
+
+func (m *LoadBalancerStatus) GetIP() string {
+	if m != nil {
+		return m.IP
+	}
+	return ""
+}
+
+func (m *LoadBalancerStatus) GetHost() string {
+	if m != nil {
+		return m.Host
+	}
+	return ""
+}
 
 type LoadBalancerBackend struct {
 	ServiceName string `protobuf:"bytes,1,opt,name=service_name,json=serviceName" json:"service_name,omitempty"`
@@ -274,7 +392,21 @@ type LoadBalancerBackend struct {
 func (m *LoadBalancerBackend) Reset()                    { *m = LoadBalancerBackend{} }
 func (m *LoadBalancerBackend) String() string            { return proto.CompactTextString(m) }
 func (*LoadBalancerBackend) ProtoMessage()               {}
-func (*LoadBalancerBackend) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{11} }
+func (*LoadBalancerBackend) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{11} }
+
+func (m *LoadBalancerBackend) GetServiceName() string {
+	if m != nil {
+		return m.ServiceName
+	}
+	return ""
+}
+
+func (m *LoadBalancerBackend) GetServicePort() string {
+	if m != nil {
+		return m.ServicePort
+	}
+	return ""
+}
 
 type LoadBalancerRule struct {
 	Host string `protobuf:"bytes,1,opt,name=host" json:"host,omitempty"`
@@ -288,7 +420,21 @@ type LoadBalancerRule struct {
 func (m *LoadBalancerRule) Reset()                    { *m = LoadBalancerRule{} }
 func (m *LoadBalancerRule) String() string            { return proto.CompactTextString(m) }
 func (*LoadBalancerRule) ProtoMessage()               {}
-func (*LoadBalancerRule) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{12} }
+func (*LoadBalancerRule) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{12} }
+
+func (m *LoadBalancerRule) GetHost() string {
+	if m != nil {
+		return m.Host
+	}
+	return ""
+}
+
+func (m *LoadBalancerRule) GetSSLSecretName() string {
+	if m != nil {
+		return m.SSLSecretName
+	}
+	return ""
+}
 
 func (m *LoadBalancerRule) GetHttp() []*HTTPLoadBalancerRule {
 	if m != nil {
@@ -314,11 +460,32 @@ type HTTPLoadBalancerRule struct {
 func (m *HTTPLoadBalancerRule) Reset()                    { *m = HTTPLoadBalancerRule{} }
 func (m *HTTPLoadBalancerRule) String() string            { return proto.CompactTextString(m) }
 func (*HTTPLoadBalancerRule) ProtoMessage()               {}
-func (*HTTPLoadBalancerRule) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{13} }
+func (*HTTPLoadBalancerRule) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{13} }
+
+func (m *HTTPLoadBalancerRule) GetPath() string {
+	if m != nil {
+		return m.Path
+	}
+	return ""
+}
 
 func (m *HTTPLoadBalancerRule) GetBackend() *LoadBalancerBackend {
 	if m != nil {
 		return m.Backend
+	}
+	return nil
+}
+
+func (m *HTTPLoadBalancerRule) GetHeaderRules() []string {
+	if m != nil {
+		return m.HeaderRules
+	}
+	return nil
+}
+
+func (m *HTTPLoadBalancerRule) GetRewriteRules() []string {
+	if m != nil {
+		return m.RewriteRules
 	}
 	return nil
 }
@@ -333,13 +500,34 @@ type TCPLoadBalancerRule struct {
 func (m *TCPLoadBalancerRule) Reset()                    { *m = TCPLoadBalancerRule{} }
 func (m *TCPLoadBalancerRule) String() string            { return proto.CompactTextString(m) }
 func (*TCPLoadBalancerRule) ProtoMessage()               {}
-func (*TCPLoadBalancerRule) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{14} }
+func (*TCPLoadBalancerRule) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{14} }
+
+func (m *TCPLoadBalancerRule) GetPort() string {
+	if m != nil {
+		return m.Port
+	}
+	return ""
+}
 
 func (m *TCPLoadBalancerRule) GetBackend() *LoadBalancerBackend {
 	if m != nil {
 		return m.Backend
 	}
 	return nil
+}
+
+func (m *TCPLoadBalancerRule) GetSSLSecretName() string {
+	if m != nil {
+		return m.SSLSecretName
+	}
+	return ""
+}
+
+func (m *TCPLoadBalancerRule) GetSecretPemName() string {
+	if m != nil {
+		return m.SecretPemName
+	}
+	return ""
 }
 
 func init() {
@@ -366,7 +554,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for LoadBalancers service
 
@@ -561,12 +749,12 @@ var _LoadBalancers_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "loadbalancer.proto",
 }
 
-func init() { proto.RegisterFile("loadbalancer.proto", fileDescriptor0) }
+func init() { proto.RegisterFile("loadbalancer.proto", fileDescriptor4) }
 
-var fileDescriptor0 = []byte{
+var fileDescriptor4 = []byte{
 	// 1012 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xbc, 0x57, 0x4f, 0x6f, 0x1b, 0x45,
 	0x14, 0xd7, 0x78, 0x1d, 0x3b, 0x79, 0xb6, 0x9b, 0x74, 0x5a, 0x89, 0x95, 0xd5, 0x42, 0xbb, 0x55,

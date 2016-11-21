@@ -62,6 +62,13 @@ func (m *ChargeEstimateResponse) GetStatus() *appscode_dtypes.Status {
 	return nil
 }
 
+func (m *ChargeEstimateResponse) GetCostUsd() string {
+	if m != nil {
+		return m.CostUsd
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*ChargeEstimateResponse)(nil), "appscode.billing.v1beta1.ChargeEstimateResponse")
 }
@@ -72,7 +79,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Charges service
 
@@ -135,7 +142,7 @@ var _Charges_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "charge.proto",
 }
 
 func init() { proto.RegisterFile("charge.proto", fileDescriptor0) }

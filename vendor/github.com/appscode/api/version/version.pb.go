@@ -48,6 +48,90 @@ func (m *Version) String() string            { return proto.CompactTextString(m)
 func (*Version) ProtoMessage()               {}
 func (*Version) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *Version) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Version) GetVersion() string {
+	if m != nil {
+		return m.Version
+	}
+	return ""
+}
+
+func (m *Version) GetOs() string {
+	if m != nil {
+		return m.Os
+	}
+	return ""
+}
+
+func (m *Version) GetArch() string {
+	if m != nil {
+		return m.Arch
+	}
+	return ""
+}
+
+func (m *Version) GetCommitHash() string {
+	if m != nil {
+		return m.CommitHash
+	}
+	return ""
+}
+
+func (m *Version) GetGitBranch() string {
+	if m != nil {
+		return m.GitBranch
+	}
+	return ""
+}
+
+func (m *Version) GetGitTag() string {
+	if m != nil {
+		return m.GitTag
+	}
+	return ""
+}
+
+func (m *Version) GetCommitTimestamp() string {
+	if m != nil {
+		return m.CommitTimestamp
+	}
+	return ""
+}
+
+func (m *Version) GetBuildTimestamp() string {
+	if m != nil {
+		return m.BuildTimestamp
+	}
+	return ""
+}
+
+func (m *Version) GetBuildHost() string {
+	if m != nil {
+		return m.BuildHost
+	}
+	return ""
+}
+
+func (m *Version) GetBuildHostOs() string {
+	if m != nil {
+		return m.BuildHostOs
+	}
+	return ""
+}
+
+func (m *Version) GetBuildHostArch() string {
+	if m != nil {
+		return m.BuildHostArch
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*Version)(nil), "appscode.version.Version")
 }

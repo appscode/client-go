@@ -31,6 +31,27 @@ func (m *MasterCreateRequest) String() string            { return proto.CompactT
 func (*MasterCreateRequest) ProtoMessage()               {}
 func (*MasterCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{0} }
 
+func (m *MasterCreateRequest) GetClusterName() string {
+	if m != nil {
+		return m.ClusterName
+	}
+	return ""
+}
+
+func (m *MasterCreateRequest) GetVolumeId() string {
+	if m != nil {
+		return m.VolumeId
+	}
+	return ""
+}
+
+func (m *MasterCreateRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
 type MasterDeleteRequest struct {
 	ClusterName string `protobuf:"bytes,1,opt,name=cluster_name,json=clusterName" json:"cluster_name,omitempty"`
 	Namespace   string `protobuf:"bytes,2,opt,name=namespace" json:"namespace,omitempty"`
@@ -40,6 +61,20 @@ func (m *MasterDeleteRequest) Reset()                    { *m = MasterDeleteRequ
 func (m *MasterDeleteRequest) String() string            { return proto.CompactTextString(m) }
 func (*MasterDeleteRequest) ProtoMessage()               {}
 func (*MasterDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{1} }
+
+func (m *MasterDeleteRequest) GetClusterName() string {
+	if m != nil {
+		return m.ClusterName
+	}
+	return ""
+}
+
+func (m *MasterDeleteRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*MasterCreateRequest)(nil), "appscode.ci.v1beta1.MasterCreateRequest")
@@ -52,7 +87,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Master service
 
@@ -148,7 +183,7 @@ var _Master_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor3,
+	Metadata: "master.proto",
 }
 
 func init() { proto.RegisterFile("master.proto", fileDescriptor3) }

@@ -48,6 +48,13 @@ func (m *ClientReconfigureRequest) String() string            { return proto.Com
 func (*ClientReconfigureRequest) ProtoMessage()               {}
 func (*ClientReconfigureRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *ClientReconfigureRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*ClientReconfigureRequest)(nil), "appscode.backup.v1beta1.ClientReconfigureRequest")
 }
@@ -58,7 +65,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Clients service
 
@@ -121,7 +128,7 @@ var _Clients_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "client.proto",
 }
 
 func init() { proto.RegisterFile("client.proto", fileDescriptor0) }

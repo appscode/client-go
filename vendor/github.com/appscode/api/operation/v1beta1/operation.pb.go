@@ -126,6 +126,27 @@ func (m *Log) String() string            { return proto.CompactTextString(m) }
 func (*Log) ProtoMessage()               {}
 func (*Log) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *Log) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
+func (m *Log) GetTimestamp() int64 {
+	if m != nil {
+		return m.Timestamp
+	}
+	return 0
+}
+
+func (m *Log) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
 type DescribeRequest struct {
 	Phid string `protobuf:"bytes,1,opt,name=phid" json:"phid,omitempty"`
 }
@@ -134,6 +155,13 @@ func (m *DescribeRequest) Reset()                    { *m = DescribeRequest{} }
 func (m *DescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*DescribeRequest) ProtoMessage()               {}
 func (*DescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+
+func (m *DescribeRequest) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
 
 type DescribeResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -177,6 +205,20 @@ func (m *LogDescribeRequest) String() string            { return proto.CompactTe
 func (*LogDescribeRequest) ProtoMessage()               {}
 func (*LogDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
 
+func (m *LogDescribeRequest) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
+func (m *LogDescribeRequest) GetLogId() string {
+	if m != nil {
+		return m.LogId
+	}
+	return ""
+}
+
 type LogDescribeResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Log    *Log                    `protobuf:"bytes,2,opt,name=log" json:"log,omitempty"`
@@ -213,6 +255,34 @@ func (m *Auth) String() string            { return proto.CompactTextString(m) }
 func (*Auth) ProtoMessage()               {}
 func (*Auth) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
 
+func (m *Auth) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *Auth) GetUsername() string {
+	if m != nil {
+		return m.Username
+	}
+	return ""
+}
+
+func (m *Auth) GetToken() string {
+	if m != nil {
+		return m.Token
+	}
+	return ""
+}
+
+func (m *Auth) GetTokenType() string {
+	if m != nil {
+		return m.TokenType
+	}
+	return ""
+}
+
 // Metadata holds other on request or operation specific data
 // that could be used inside that operation.
 // An welldefined message instead of a map is used
@@ -230,6 +300,27 @@ func (m *Metadata) Reset()                    { *m = Metadata{} }
 func (m *Metadata) String() string            { return proto.CompactTextString(m) }
 func (*Metadata) ProtoMessage()               {}
 func (*Metadata) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
+
+func (m *Metadata) GetPurchasePhids() []string {
+	if m != nil {
+		return m.PurchasePhids
+	}
+	return nil
+}
+
+func (m *Metadata) GetAuthorPhid() string {
+	if m != nil {
+		return m.AuthorPhid
+	}
+	return ""
+}
+
+func (m *Metadata) GetAuthorName() string {
+	if m != nil {
+		return m.AuthorName
+	}
+	return ""
+}
 
 // Next Id: 22
 type Operation struct {
@@ -437,6 +528,20 @@ func (m *Operation) GetDatabaseDeleteRequest() *appscode_db_v1beta1.DatabaseDele
 		return x.DatabaseDeleteRequest
 	}
 	return nil
+}
+
+func (m *Operation) GetType() OperationType {
+	if m != nil {
+		return m.Type
+	}
+	return OperationType_UNKNOWN
+}
+
+func (m *Operation) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
 }
 
 func (m *Operation) GetAuth() *Auth {
@@ -785,6 +890,27 @@ func (m *DataBucketDeleteRequest) String() string            { return proto.Comp
 func (*DataBucketDeleteRequest) ProtoMessage()               {}
 func (*DataBucketDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{8} }
 
+func (m *DataBucketDeleteRequest) GetDataType() string {
+	if m != nil {
+		return m.DataType
+	}
+	return ""
+}
+
+func (m *DataBucketDeleteRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *DataBucketDeleteRequest) GetPrefix() string {
+	if m != nil {
+		return m.Prefix
+	}
+	return ""
+}
+
 type NamespaceAdminTaskRequest struct {
 	Namespace string `protobuf:"bytes,1,opt,name=namespace" json:"namespace,omitempty"`
 }
@@ -793,6 +919,13 @@ func (m *NamespaceAdminTaskRequest) Reset()                    { *m = NamespaceA
 func (m *NamespaceAdminTaskRequest) String() string            { return proto.CompactTextString(m) }
 func (*NamespaceAdminTaskRequest) ProtoMessage()               {}
 func (*NamespaceAdminTaskRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{9} }
+
+func (m *NamespaceAdminTaskRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*Log)(nil), "appscode.operation.v1beta1.Log")
@@ -814,7 +947,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Operations service
 
@@ -910,7 +1043,7 @@ var _Operations_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "operation.proto",
 }
 
 func init() { proto.RegisterFile("operation.proto", fileDescriptor0) }

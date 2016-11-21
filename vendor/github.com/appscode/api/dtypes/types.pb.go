@@ -156,6 +156,27 @@ func (m *Status) String() string            { return proto.CompactTextString(m) 
 func (*Status) ProtoMessage()               {}
 func (*Status) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *Status) GetCode() string {
+	if m != nil {
+		return m.Code
+	}
+	return ""
+}
+
+func (m *Status) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
+func (m *Status) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
 func (m *Status) GetHelp() *Help {
 	if m != nil {
 		return m.Help
@@ -184,6 +205,20 @@ func (m *Help) String() string            { return proto.CompactTextString(m) }
 func (*Help) ProtoMessage()               {}
 func (*Help) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
 
+func (m *Help) GetDescription() string {
+	if m != nil {
+		return m.Description
+	}
+	return ""
+}
+
+func (m *Help) GetUrl() string {
+	if m != nil {
+		return m.Url
+	}
+	return ""
+}
+
 // Basic Error details message to send in response. Application specific
 // error messages can be provided.
 type ErrorDetails struct {
@@ -195,6 +230,20 @@ func (m *ErrorDetails) Reset()                    { *m = ErrorDetails{} }
 func (m *ErrorDetails) String() string            { return proto.CompactTextString(m) }
 func (*ErrorDetails) ProtoMessage()               {}
 func (*ErrorDetails) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+
+func (m *ErrorDetails) GetRequestedResource() string {
+	if m != nil {
+		return m.RequestedResource
+	}
+	return ""
+}
+
+func (m *ErrorDetails) GetStacktrace() string {
+	if m != nil {
+		return m.Stacktrace
+	}
+	return ""
+}
 
 // Types for long running operation. usually called as jobs.
 // Next Id = 3
@@ -213,6 +262,13 @@ func (m *LongRunningResponse) GetStatus() *Status {
 		return m.Status
 	}
 	return nil
+}
+
+func (m *LongRunningResponse) GetJobPhid() string {
+	if m != nil {
+		return m.JobPhid
+	}
+	return ""
 }
 
 // Void Requests and response to use with other types.
@@ -250,6 +306,20 @@ func (m *Uid) Reset()                    { *m = Uid{} }
 func (m *Uid) String() string            { return proto.CompactTextString(m) }
 func (*Uid) ProtoMessage()               {}
 func (*Uid) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
+
+func (m *Uid) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
+func (m *Uid) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*Status)(nil), "appscode.dtypes.Status")

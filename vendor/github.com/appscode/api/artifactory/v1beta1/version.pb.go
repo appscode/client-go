@@ -31,6 +31,20 @@ func (m *VersionListRequest) String() string            { return proto.CompactTe
 func (*VersionListRequest) ProtoMessage()               {}
 func (*VersionListRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
 
+func (m *VersionListRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *VersionListRequest) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
 type VersionListResponse struct {
 	Status   *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Versions []*ArtifactVersion      `protobuf:"bytes,2,rep,name=versions" json:"versions,omitempty"`
@@ -65,6 +79,27 @@ func (m *VersionDescribeRequest) Reset()                    { *m = VersionDescri
 func (m *VersionDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*VersionDescribeRequest) ProtoMessage()               {}
 func (*VersionDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
+
+func (m *VersionDescribeRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *VersionDescribeRequest) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
+func (m *VersionDescribeRequest) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
 
 type VersionDescribeResponse struct {
 	Status  *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -136,6 +171,41 @@ func (m *ArtifactVersion) GetSpecs() isArtifactVersion_Specs {
 		return m.Specs
 	}
 	return nil
+}
+
+func (m *ArtifactVersion) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
+func (m *ArtifactVersion) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ArtifactVersion) GetVersion() string {
+	if m != nil {
+		return m.Version
+	}
+	return ""
+}
+
+func (m *ArtifactVersion) GetModifiedAt() int64 {
+	if m != nil {
+		return m.ModifiedAt
+	}
+	return 0
+}
+
+func (m *ArtifactVersion) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
 }
 
 func (m *ArtifactVersion) GetJava() *JavaSpec {
@@ -289,6 +359,27 @@ func (m *JavaSpec) String() string            { return proto.CompactTextString(m
 func (*JavaSpec) ProtoMessage()               {}
 func (*JavaSpec) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{5} }
 
+func (m *JavaSpec) GetGroupId() string {
+	if m != nil {
+		return m.GroupId
+	}
+	return ""
+}
+
+func (m *JavaSpec) GetArtifactId() string {
+	if m != nil {
+		return m.ArtifactId
+	}
+	return ""
+}
+
+func (m *JavaSpec) GetArtifactUrl() string {
+	if m != nil {
+		return m.ArtifactUrl
+	}
+	return ""
+}
+
 type DockerSpec struct {
 	TarSums     []string `protobuf:"bytes,1,rep,name=tar_sums,json=tarSums" json:"tar_sums,omitempty"`
 	ManifestUrl string   `protobuf:"bytes,2,opt,name=manifest_url,json=manifestUrl" json:"manifest_url,omitempty"`
@@ -299,6 +390,20 @@ func (m *DockerSpec) String() string            { return proto.CompactTextString
 func (*DockerSpec) ProtoMessage()               {}
 func (*DockerSpec) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{6} }
 
+func (m *DockerSpec) GetTarSums() []string {
+	if m != nil {
+		return m.TarSums
+	}
+	return nil
+}
+
+func (m *DockerSpec) GetManifestUrl() string {
+	if m != nil {
+		return m.ManifestUrl
+	}
+	return ""
+}
+
 type PhpSpec struct {
 	DownloadUrl string `protobuf:"bytes,1,opt,name=download_url,json=downloadUrl" json:"download_url,omitempty"`
 	Shasum      string `protobuf:"bytes,2,opt,name=shasum" json:"shasum,omitempty"`
@@ -308,6 +413,20 @@ func (m *PhpSpec) Reset()                    { *m = PhpSpec{} }
 func (m *PhpSpec) String() string            { return proto.CompactTextString(m) }
 func (*PhpSpec) ProtoMessage()               {}
 func (*PhpSpec) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{7} }
+
+func (m *PhpSpec) GetDownloadUrl() string {
+	if m != nil {
+		return m.DownloadUrl
+	}
+	return ""
+}
+
+func (m *PhpSpec) GetShasum() string {
+	if m != nil {
+		return m.Shasum
+	}
+	return ""
+}
 
 type NpmSpec struct {
 	Description string   `protobuf:"bytes,1,opt,name=description" json:"description,omitempty"`
@@ -321,6 +440,41 @@ func (m *NpmSpec) Reset()                    { *m = NpmSpec{} }
 func (m *NpmSpec) String() string            { return proto.CompactTextString(m) }
 func (*NpmSpec) ProtoMessage()               {}
 func (*NpmSpec) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{8} }
+
+func (m *NpmSpec) GetDescription() string {
+	if m != nil {
+		return m.Description
+	}
+	return ""
+}
+
+func (m *NpmSpec) GetArtifactId() string {
+	if m != nil {
+		return m.ArtifactId
+	}
+	return ""
+}
+
+func (m *NpmSpec) GetShasum() string {
+	if m != nil {
+		return m.Shasum
+	}
+	return ""
+}
+
+func (m *NpmSpec) GetKeywords() []string {
+	if m != nil {
+		return m.Keywords
+	}
+	return nil
+}
+
+func (m *NpmSpec) GetArtifactUrl() string {
+	if m != nil {
+		return m.ArtifactUrl
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*VersionListRequest)(nil), "appscode.artifactory.v1beta1.VersionListRequest")
@@ -340,7 +494,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Versions service
 
@@ -436,7 +590,7 @@ var _Versions_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor1,
+	Metadata: "version.proto",
 }
 
 func init() { proto.RegisterFile("version.proto", fileDescriptor1) }

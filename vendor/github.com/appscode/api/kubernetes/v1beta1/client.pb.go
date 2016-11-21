@@ -10,6 +10,7 @@ It is generated from these files:
 	cluster.proto
 	event.proto
 	incident.proto
+	loadbalancer.proto
 	metadata.proto
 
 It has these top-level messages:
@@ -74,6 +75,21 @@ It has these top-level messages:
 	IncidentDescribeResponse
 	IncidentNotifyRequest
 	IncidentEventCreateRequest
+	ListRequest
+	ListResponse
+	DescribeRequest
+	DescribeResponse
+	CreateRequest
+	UpdateRequest
+	DeleteRequest
+	LoadBalancer
+	Spec
+	Status
+	LoadBalancerStatus
+	LoadBalancerBackend
+	LoadBalancerRule
+	HTTPLoadBalancerRule
+	TCPLoadBalancerRule
 	RegionListRequest
 	RegionListResponse
 	ZoneListRequest
@@ -118,6 +134,34 @@ func (m *KubeResource) String() string            { return proto.CompactTextStri
 func (*KubeResource) ProtoMessage()               {}
 func (*KubeResource) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *KubeResource) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *KubeResource) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *KubeResource) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *KubeResource) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
 type IcingaState struct {
 	OK       int32 `protobuf:"varint,1,opt,name=OK" json:"OK,omitempty"`
 	Warning  int32 `protobuf:"varint,2,opt,name=Warning" json:"Warning,omitempty"`
@@ -129,6 +173,34 @@ func (m *IcingaState) Reset()                    { *m = IcingaState{} }
 func (m *IcingaState) String() string            { return proto.CompactTextString(m) }
 func (*IcingaState) ProtoMessage()               {}
 func (*IcingaState) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+
+func (m *IcingaState) GetOK() int32 {
+	if m != nil {
+		return m.OK
+	}
+	return 0
+}
+
+func (m *IcingaState) GetWarning() int32 {
+	if m != nil {
+		return m.Warning
+	}
+	return 0
+}
+
+func (m *IcingaState) GetCritical() int32 {
+	if m != nil {
+		return m.Critical
+	}
+	return 0
+}
+
+func (m *IcingaState) GetUnknown() int32 {
+	if m != nil {
+		return m.Unknown
+	}
+	return 0
+}
 
 type CopyResourceRequest struct {
 	Source      *KubeResource `protobuf:"bytes,1,opt,name=source" json:"source,omitempty"`
@@ -179,6 +251,13 @@ func (m *ClientRequest) String() string            { return proto.CompactTextStr
 func (*ClientRequest) ProtoMessage()               {}
 func (*ClientRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
 
+func (m *ClientRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
 type NodeListResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Nodes  []*Node                 `protobuf:"bytes,2,rep,name=nodes" json:"nodes,omitempty"`
@@ -221,11 +300,74 @@ func (m *Node) String() string            { return proto.CompactTextString(m) }
 func (*Node) ProtoMessage()               {}
 func (*Node) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
 
+func (m *Node) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Node) GetProviderId() string {
+	if m != nil {
+		return m.ProviderId
+	}
+	return ""
+}
+
+func (m *Node) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
 func (m *Node) GetCapacity() *Node_NodeCapacity {
 	if m != nil {
 		return m.Capacity
 	}
 	return nil
+}
+
+func (m *Node) GetOsImage() string {
+	if m != nil {
+		return m.OsImage
+	}
+	return ""
+}
+
+func (m *Node) GetKernelVersion() string {
+	if m != nil {
+		return m.KernelVersion
+	}
+	return ""
+}
+
+func (m *Node) GetContainerRuntime() string {
+	if m != nil {
+		return m.ContainerRuntime
+	}
+	return ""
+}
+
+func (m *Node) GetKubeletVersion() string {
+	if m != nil {
+		return m.KubeletVersion
+	}
+	return ""
+}
+
+func (m *Node) GetInstanceType() string {
+	if m != nil {
+		return m.InstanceType
+	}
+	return ""
+}
+
+func (m *Node) GetIsMaster() bool {
+	if m != nil {
+		return m.IsMaster
+	}
+	return false
 }
 
 type Node_NodeCapacity struct {
@@ -238,6 +380,27 @@ func (m *Node_NodeCapacity) Reset()                    { *m = Node_NodeCapacity{
 func (m *Node_NodeCapacity) String() string            { return proto.CompactTextString(m) }
 func (*Node_NodeCapacity) ProtoMessage()               {}
 func (*Node_NodeCapacity) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6, 0} }
+
+func (m *Node_NodeCapacity) GetCpu() int64 {
+	if m != nil {
+		return m.Cpu
+	}
+	return 0
+}
+
+func (m *Node_NodeCapacity) GetMemory() int64 {
+	if m != nil {
+		return m.Memory
+	}
+	return 0
+}
+
+func (m *Node_NodeCapacity) GetPods() int64 {
+	if m != nil {
+		return m.Pods
+	}
+	return 0
+}
 
 type NamespaceListResponse struct {
 	Status     *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -273,6 +436,27 @@ func (m *Namespace) Reset()                    { *m = Namespace{} }
 func (m *Namespace) String() string            { return proto.CompactTextString(m) }
 func (*Namespace) ProtoMessage()               {}
 func (*Namespace) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{8} }
+
+func (m *Namespace) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Namespace) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
+func (m *Namespace) GetPhase() string {
+	if m != nil {
+		return m.Phase
+	}
+	return ""
+}
 
 type SecretListResponse struct {
 	Status  *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -310,6 +494,41 @@ func (m *Secret) Reset()                    { *m = Secret{} }
 func (m *Secret) String() string            { return proto.CompactTextString(m) }
 func (*Secret) ProtoMessage()               {}
 func (*Secret) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{10} }
+
+func (m *Secret) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Secret) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *Secret) GetResourceVersion() string {
+	if m != nil {
+		return m.ResourceVersion
+	}
+	return ""
+}
+
+func (m *Secret) GetSecretType() string {
+	if m != nil {
+		return m.SecretType
+	}
+	return ""
+}
+
+func (m *Secret) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
 
 type JobListResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -355,11 +574,88 @@ func (m *Job) String() string            { return proto.CompactTextString(m) }
 func (*Job) ProtoMessage()               {}
 func (*Job) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{12} }
 
+func (m *Job) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Job) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *Job) GetApp() string {
+	if m != nil {
+		return m.App
+	}
+	return ""
+}
+
+func (m *Job) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
+func (m *Job) GetParallelism() int32 {
+	if m != nil {
+		return m.Parallelism
+	}
+	return 0
+}
+
+func (m *Job) GetCompletions() int32 {
+	if m != nil {
+		return m.Completions
+	}
+	return 0
+}
+
 func (m *Job) GetContainers() []*Container {
 	if m != nil {
 		return m.Containers
 	}
 	return nil
+}
+
+func (m *Job) GetStartTime() int64 {
+	if m != nil {
+		return m.StartTime
+	}
+	return 0
+}
+
+func (m *Job) GetCompletionTime() int64 {
+	if m != nil {
+		return m.CompletionTime
+	}
+	return 0
+}
+
+func (m *Job) GetActive() int32 {
+	if m != nil {
+		return m.Active
+	}
+	return 0
+}
+
+func (m *Job) GetSucceeded() int32 {
+	if m != nil {
+		return m.Succeeded
+	}
+	return 0
+}
+
+func (m *Job) GetFailed() int32 {
+	if m != nil {
+		return m.Failed
+	}
+	return 0
 }
 
 type PodListResponse struct {
@@ -405,11 +701,74 @@ func (m *Pod) String() string            { return proto.CompactTextString(m) }
 func (*Pod) ProtoMessage()               {}
 func (*Pod) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{14} }
 
+func (m *Pod) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Pod) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *Pod) GetApp() string {
+	if m != nil {
+		return m.App
+	}
+	return ""
+}
+
+func (m *Pod) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
 func (m *Pod) GetContainers() []*Container {
 	if m != nil {
 		return m.Containers
 	}
 	return nil
+}
+
+func (m *Pod) GetServiceAccount() string {
+	if m != nil {
+		return m.ServiceAccount
+	}
+	return ""
+}
+
+func (m *Pod) GetNodeName() string {
+	if m != nil {
+		return m.NodeName
+	}
+	return ""
+}
+
+func (m *Pod) GetPhase() string {
+	if m != nil {
+		return m.Phase
+	}
+	return ""
+}
+
+func (m *Pod) GetStartTime() int64 {
+	if m != nil {
+		return m.StartTime
+	}
+	return 0
+}
+
+func (m *Pod) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
 }
 
 func (m *Pod) GetLinks() map[string]string {
@@ -429,6 +788,27 @@ func (m *Container) Reset()                    { *m = Container{} }
 func (m *Container) String() string            { return proto.CompactTextString(m) }
 func (*Container) ProtoMessage()               {}
 func (*Container) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{15} }
+
+func (m *Container) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Container) GetImage() string {
+	if m != nil {
+		return m.Image
+	}
+	return ""
+}
+
+func (m *Container) GetCommands() []string {
+	if m != nil {
+		return m.Commands
+	}
+	return nil
+}
 
 type ServiceListResponse struct {
 	Status   *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -471,9 +851,58 @@ func (m *Service) String() string            { return proto.CompactTextString(m)
 func (*Service) ProtoMessage()               {}
 func (*Service) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{17} }
 
+func (m *Service) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Service) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *Service) GetApp() string {
+	if m != nil {
+		return m.App
+	}
+	return ""
+}
+
+func (m *Service) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
+func (m *Service) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *Service) GetClusterIp() string {
+	if m != nil {
+		return m.ClusterIp
+	}
+	return ""
+}
+
 func (m *Service) GetPorts() []*Service_Port {
 	if m != nil {
 		return m.Ports
+	}
+	return nil
+}
+
+func (m *Service) GetExternalIps() []string {
+	if m != nil {
+		return m.ExternalIps
 	}
 	return nil
 }
@@ -498,6 +927,41 @@ func (m *Service_Port) String() string            { return proto.CompactTextStri
 func (*Service_Port) ProtoMessage()               {}
 func (*Service_Port) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{17, 0} }
 
+func (m *Service_Port) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Service_Port) GetProtocol() string {
+	if m != nil {
+		return m.Protocol
+	}
+	return ""
+}
+
+func (m *Service_Port) GetPort() int32 {
+	if m != nil {
+		return m.Port
+	}
+	return 0
+}
+
+func (m *Service_Port) GetTargetPort() string {
+	if m != nil {
+		return m.TargetPort
+	}
+	return ""
+}
+
+func (m *Service_Port) GetNodePort() int32 {
+	if m != nil {
+		return m.NodePort
+	}
+	return 0
+}
+
 type Service_LoadBalancerIngress struct {
 	HostName string `protobuf:"bytes,1,opt,name=host_name,json=hostName" json:"host_name,omitempty"`
 	Ip       string `protobuf:"bytes,2,opt,name=ip" json:"ip,omitempty"`
@@ -507,6 +971,20 @@ func (m *Service_LoadBalancerIngress) Reset()                    { *m = Service_
 func (m *Service_LoadBalancerIngress) String() string            { return proto.CompactTextString(m) }
 func (*Service_LoadBalancerIngress) ProtoMessage()               {}
 func (*Service_LoadBalancerIngress) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{17, 1} }
+
+func (m *Service_LoadBalancerIngress) GetHostName() string {
+	if m != nil {
+		return m.HostName
+	}
+	return ""
+}
+
+func (m *Service_LoadBalancerIngress) GetIp() string {
+	if m != nil {
+		return m.Ip
+	}
+	return ""
+}
 
 type AppDescribeRequest struct {
 	Name      string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
@@ -518,6 +996,27 @@ func (m *AppDescribeRequest) Reset()                    { *m = AppDescribeReques
 func (m *AppDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*AppDescribeRequest) ProtoMessage()               {}
 func (*AppDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{18} }
+
+func (m *AppDescribeRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *AppDescribeRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *AppDescribeRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
 
 type AppDescribeResponse struct {
 	Status      *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -596,6 +1095,41 @@ func (m *App) String() string            { return proto.CompactTextString(m) }
 func (*App) ProtoMessage()               {}
 func (*App) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{21} }
 
+func (m *App) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *App) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *App) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
+func (m *App) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *App) GetClusterIp() string {
+	if m != nil {
+		return m.ClusterIp
+	}
+	return ""
+}
+
 type ReplicationControllerListResponse struct {
 	Status                 *appscode_dtypes.Status  `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	ReplicationControllers []*ReplicationController `protobuf:"bytes,2,rep,name=replication_controllers,json=replicationControllers" json:"replication_controllers,omitempty"`
@@ -638,6 +1172,62 @@ func (m *ReplicationController) Reset()                    { *m = ReplicationCon
 func (m *ReplicationController) String() string            { return proto.CompactTextString(m) }
 func (*ReplicationController) ProtoMessage()               {}
 func (*ReplicationController) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{23} }
+
+func (m *ReplicationController) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ReplicationController) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *ReplicationController) GetApp() string {
+	if m != nil {
+		return m.App
+	}
+	return ""
+}
+
+func (m *ReplicationController) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
+func (m *ReplicationController) GetGeneration() int64 {
+	if m != nil {
+		return m.Generation
+	}
+	return 0
+}
+
+func (m *ReplicationController) GetCurrentReplicas() int32 {
+	if m != nil {
+		return m.CurrentReplicas
+	}
+	return 0
+}
+
+func (m *ReplicationController) GetReplicas() int32 {
+	if m != nil {
+		return m.Replicas
+	}
+	return 0
+}
+
+func (m *ReplicationController) GetObservedGeneration() int64 {
+	if m != nil {
+		return m.ObservedGeneration
+	}
+	return 0
+}
 
 func (m *ReplicationController) GetContainers() []*Container {
 	if m != nil {
@@ -683,6 +1273,41 @@ func (m *ConfigMap) String() string            { return proto.CompactTextString(
 func (*ConfigMap) ProtoMessage()               {}
 func (*ConfigMap) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{25} }
 
+func (m *ConfigMap) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ConfigMap) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *ConfigMap) GetSize() int32 {
+	if m != nil {
+		return m.Size
+	}
+	return 0
+}
+
+func (m *ConfigMap) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
+func (m *ConfigMap) GetResourceVersion() string {
+	if m != nil {
+		return m.ResourceVersion
+	}
+	return ""
+}
+
 type ConfigMapDescribeRequest struct {
 	Cluster   string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
 	Name      string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
@@ -694,6 +1319,34 @@ func (m *ConfigMapDescribeRequest) Reset()                    { *m = ConfigMapDe
 func (m *ConfigMapDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*ConfigMapDescribeRequest) ProtoMessage()               {}
 func (*ConfigMapDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{26} }
+
+func (m *ConfigMapDescribeRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *ConfigMapDescribeRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ConfigMapDescribeRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *ConfigMapDescribeRequest) GetRaw() string {
+	if m != nil {
+		return m.Raw
+	}
+	return ""
+}
 
 type ConfigMapDescribeResponse struct {
 	Status    *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -715,6 +1368,34 @@ func (m *ConfigMapDescribeResponse) GetStatus() *appscode_dtypes.Status {
 		return m.Status
 	}
 	return nil
+}
+
+func (m *ConfigMapDescribeResponse) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ConfigMapDescribeResponse) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *ConfigMapDescribeResponse) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *ConfigMapDescribeResponse) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
 }
 
 func (m *ConfigMapDescribeResponse) GetData() map[string]string {
@@ -743,6 +1424,34 @@ func (m *SecretDescribeRequest) String() string            { return proto.Compac
 func (*SecretDescribeRequest) ProtoMessage()               {}
 func (*SecretDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{28} }
 
+func (m *SecretDescribeRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *SecretDescribeRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *SecretDescribeRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *SecretDescribeRequest) GetRaw() string {
+	if m != nil {
+		return m.Raw
+	}
+	return ""
+}
+
 type SecretDescribeResponse struct {
 	Status          *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Cluster         string                  `protobuf:"bytes,2,opt,name=cluster" json:"cluster,omitempty"`
@@ -765,6 +1474,48 @@ func (m *SecretDescribeResponse) GetStatus() *appscode_dtypes.Status {
 		return m.Status
 	}
 	return nil
+}
+
+func (m *SecretDescribeResponse) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *SecretDescribeResponse) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *SecretDescribeResponse) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *SecretDescribeResponse) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
+func (m *SecretDescribeResponse) GetResourceVersion() string {
+	if m != nil {
+		return m.ResourceVersion
+	}
+	return ""
+}
+
+func (m *SecretDescribeResponse) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
 }
 
 func (m *SecretDescribeResponse) GetData() map[string]string {
@@ -790,6 +1541,20 @@ func (m *Raw) Reset()                    { *m = Raw{} }
 func (m *Raw) String() string            { return proto.CompactTextString(m) }
 func (*Raw) ProtoMessage()               {}
 func (*Raw) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{30} }
+
+func (m *Raw) GetFormat() string {
+	if m != nil {
+		return m.Format
+	}
+	return ""
+}
+
+func (m *Raw) GetData() string {
+	if m != nil {
+		return m.Data
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*KubeResource)(nil), "appscode.kubernetes.v1beta1.KubeResource")
@@ -834,7 +1599,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Clients service
 
@@ -1326,7 +2091,7 @@ var _Clients_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "client.proto",
 }
 
 func init() { proto.RegisterFile("client.proto", fileDescriptor0) }

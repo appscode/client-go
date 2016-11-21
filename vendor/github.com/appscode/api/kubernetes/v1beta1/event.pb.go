@@ -35,6 +35,41 @@ func (m *EventRequest) String() string            { return proto.CompactTextStri
 func (*EventRequest) ProtoMessage()               {}
 func (*EventRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
 
+func (m *EventRequest) GetClusterName() string {
+	if m != nil {
+		return m.ClusterName
+	}
+	return ""
+}
+
+func (m *EventRequest) GetKubeNamespace() string {
+	if m != nil {
+		return m.KubeNamespace
+	}
+	return ""
+}
+
+func (m *EventRequest) GetKubeObjectType() string {
+	if m != nil {
+		return m.KubeObjectType
+	}
+	return ""
+}
+
+func (m *EventRequest) GetKubeObjectName() string {
+	if m != nil {
+		return m.KubeObjectName
+	}
+	return ""
+}
+
+func (m *EventRequest) GetEventType() string {
+	if m != nil {
+		return m.EventType
+	}
+	return ""
+}
+
 func (m *EventRequest) GetMetadata() *EventRequest_ObjectMeta {
 	if m != nil {
 		return m.Metadata
@@ -52,6 +87,20 @@ func (m *EventRequest_Ancestors) String() string            { return proto.Compa
 func (*EventRequest_Ancestors) ProtoMessage()               {}
 func (*EventRequest_Ancestors) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0, 0} }
 
+func (m *EventRequest_Ancestors) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *EventRequest_Ancestors) GetNames() []string {
+	if m != nil {
+		return m.Names
+	}
+	return nil
+}
+
 type EventRequest_ObjectMeta struct {
 	Kind               string                    `protobuf:"bytes,1,opt,name=kind" json:"kind,omitempty"`
 	Ancestors          []*EventRequest_Ancestors `protobuf:"bytes,9,rep,name=ancestors" json:"ancestors,omitempty"`
@@ -68,11 +117,53 @@ func (m *EventRequest_ObjectMeta) String() string            { return proto.Comp
 func (*EventRequest_ObjectMeta) ProtoMessage()               {}
 func (*EventRequest_ObjectMeta) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0, 1} }
 
+func (m *EventRequest_ObjectMeta) GetKind() string {
+	if m != nil {
+		return m.Kind
+	}
+	return ""
+}
+
 func (m *EventRequest_ObjectMeta) GetAncestors() []*EventRequest_Ancestors {
 	if m != nil {
 		return m.Ancestors
 	}
 	return nil
+}
+
+func (m *EventRequest_ObjectMeta) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *EventRequest_ObjectMeta) GetPodIp() string {
+	if m != nil {
+		return m.PodIp
+	}
+	return ""
+}
+
+func (m *EventRequest_ObjectMeta) GetInstanceId() string {
+	if m != nil {
+		return m.InstanceId
+	}
+	return ""
+}
+
+func (m *EventRequest_ObjectMeta) GetInstanceInternalIp() string {
+	if m != nil {
+		return m.InstanceInternalIp
+	}
+	return ""
+}
+
+func (m *EventRequest_ObjectMeta) GetInstanceExternalIp() string {
+	if m != nil {
+		return m.InstanceExternalIp
+	}
+	return ""
 }
 
 func (m *EventRequest_ObjectMeta) GetLabels() map[string]string {
@@ -120,6 +211,48 @@ func (m *EventResponse_Handler) String() string            { return proto.Compac
 func (*EventResponse_Handler) ProtoMessage()               {}
 func (*EventResponse_Handler) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1, 0} }
 
+func (m *EventResponse_Handler) GetAction() string {
+	if m != nil {
+		return m.Action
+	}
+	return ""
+}
+
+func (m *EventResponse_Handler) GetReceiver() string {
+	if m != nil {
+		return m.Receiver
+	}
+	return ""
+}
+
+func (m *EventResponse_Handler) GetBase() string {
+	if m != nil {
+		return m.Base
+	}
+	return ""
+}
+
+func (m *EventResponse_Handler) GetSuffix() string {
+	if m != nil {
+		return m.Suffix
+	}
+	return ""
+}
+
+func (m *EventResponse_Handler) GetVerb() string {
+	if m != nil {
+		return m.Verb
+	}
+	return ""
+}
+
+func (m *EventResponse_Handler) GetData() []byte {
+	if m != nil {
+		return m.Data
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*EventRequest)(nil), "appscode.kubernetes.v1beta1.EventRequest")
 	proto.RegisterType((*EventRequest_Ancestors)(nil), "appscode.kubernetes.v1beta1.EventRequest.Ancestors")
@@ -134,7 +267,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Events service
 
@@ -230,7 +363,7 @@ var _Events_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor2,
+	Metadata: "event.proto",
 }
 
 func init() { proto.RegisterFile("event.proto", fileDescriptor2) }

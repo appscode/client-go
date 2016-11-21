@@ -8,6 +8,7 @@ Package v1beta1 is a generated protocol buffer package.
 It is generated from these files:
 	authentication.proto
 	conduit.proto
+	project.proto
 
 It has these top-level messages:
 	TokenRequest
@@ -20,6 +21,12 @@ It has these top-level messages:
 	ConduitUsersResponse
 	ConduitUser
 	Preferences
+	ProjectListRequest
+	ProjectListResponse
+	ProjectMemberListRequest
+	ProjectMemberListResponse
+	Project
+	Member
 */
 package v1beta1
 
@@ -57,6 +64,20 @@ func (m *TokenRequest) String() string            { return proto.CompactTextStri
 func (*TokenRequest) ProtoMessage()               {}
 func (*TokenRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *TokenRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *TokenRequest) GetToken() string {
+	if m != nil {
+		return m.Token
+	}
+	return ""
+}
+
 type TokenResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 }
@@ -85,6 +106,34 @@ func (m *LoginRequest) String() string            { return proto.CompactTextStri
 func (*LoginRequest) ProtoMessage()               {}
 func (*LoginRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
 
+func (m *LoginRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *LoginRequest) GetUsername() string {
+	if m != nil {
+		return m.Username
+	}
+	return ""
+}
+
+func (m *LoginRequest) GetSecret() string {
+	if m != nil {
+		return m.Secret
+	}
+	return ""
+}
+
+func (m *LoginRequest) GetIssueToken() bool {
+	if m != nil {
+		return m.IssueToken
+	}
+	return false
+}
+
 type LoginResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Token  string                  `protobuf:"bytes,2,opt,name=token" json:"token,omitempty"`
@@ -102,6 +151,13 @@ func (m *LoginResponse) GetStatus() *appscode_dtypes.Status {
 	return nil
 }
 
+func (m *LoginResponse) GetToken() string {
+	if m != nil {
+		return m.Token
+	}
+	return ""
+}
+
 type LogoutRequest struct {
 	Namespace string `protobuf:"bytes,1,opt,name=namespace" json:"namespace,omitempty"`
 	Token     string `protobuf:"bytes,2,opt,name=token" json:"token,omitempty"`
@@ -111,6 +167,20 @@ func (m *LogoutRequest) Reset()                    { *m = LogoutRequest{} }
 func (m *LogoutRequest) String() string            { return proto.CompactTextString(m) }
 func (*LogoutRequest) ProtoMessage()               {}
 func (*LogoutRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+
+func (m *LogoutRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *LogoutRequest) GetToken() string {
+	if m != nil {
+		return m.Token
+	}
+	return ""
+}
 
 type LogoutResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -143,7 +213,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Authentication service
 
@@ -276,7 +346,7 @@ var _Authentication_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "authentication.proto",
 }
 
 func init() { proto.RegisterFile("authentication.proto", fileDescriptor0) }

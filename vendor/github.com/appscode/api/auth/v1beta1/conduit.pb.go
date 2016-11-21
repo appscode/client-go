@@ -85,6 +85,55 @@ func (m *ConduitUser) String() string            { return proto.CompactTextStrin
 func (*ConduitUser) ProtoMessage()               {}
 func (*ConduitUser) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
 
+func (m *ConduitUser) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
+func (m *ConduitUser) GetUserName() string {
+	if m != nil {
+		return m.UserName
+	}
+	return ""
+}
+
+func (m *ConduitUser) GetRealName() string {
+	if m != nil {
+		return m.RealName
+	}
+	return ""
+}
+
+func (m *ConduitUser) GetImage() string {
+	if m != nil {
+		return m.Image
+	}
+	return ""
+}
+
+func (m *ConduitUser) GetUri() string {
+	if m != nil {
+		return m.Uri
+	}
+	return ""
+}
+
+func (m *ConduitUser) GetRoles() []string {
+	if m != nil {
+		return m.Roles
+	}
+	return nil
+}
+
+func (m *ConduitUser) GetPrimaryEmail() string {
+	if m != nil {
+		return m.PrimaryEmail
+	}
+	return ""
+}
+
 func (m *ConduitUser) GetPreferences() *Preferences {
 	if m != nil {
 		return m.Preferences
@@ -103,6 +152,27 @@ func (m *Preferences) String() string            { return proto.CompactTextStrin
 func (*Preferences) ProtoMessage()               {}
 func (*Preferences) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{3} }
 
+func (m *Preferences) GetTimeZone() string {
+	if m != nil {
+		return m.TimeZone
+	}
+	return ""
+}
+
+func (m *Preferences) GetTimeFormat() string {
+	if m != nil {
+		return m.TimeFormat
+	}
+	return ""
+}
+
+func (m *Preferences) GetDateFormate() string {
+	if m != nil {
+		return m.DateFormate
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*ConduitWhoAmIResponse)(nil), "appscode.auth.v1beta1.ConduitWhoAmIResponse")
 	proto.RegisterType((*ConduitUsersResponse)(nil), "appscode.auth.v1beta1.ConduitUsersResponse")
@@ -116,7 +186,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Conduit service
 
@@ -216,7 +286,7 @@ var _Conduit_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor1,
+	Metadata: "conduit.proto",
 }
 
 func init() { proto.RegisterFile("conduit.proto", fileDescriptor1) }

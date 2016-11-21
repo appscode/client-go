@@ -81,6 +81,13 @@ func (m *AgentListRequest) String() string            { return proto.CompactText
 func (*AgentListRequest) ProtoMessage()               {}
 func (*AgentListRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *AgentListRequest) GetStatus() []string {
+	if m != nil {
+		return m.Status
+	}
+	return nil
+}
+
 type AgentListResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Agents []*Agent                `protobuf:"bytes,2,rep,name=agents" json:"agents,omitempty"`
@@ -119,6 +126,48 @@ func (m *Agent) String() string            { return proto.CompactTextString(m) }
 func (*Agent) ProtoMessage()               {}
 func (*Agent) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
 
+func (m *Agent) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Agent) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
+func (m *Agent) GetAgentStatus() string {
+	if m != nil {
+		return m.AgentStatus
+	}
+	return ""
+}
+
+func (m *Agent) GetIsRefreshed() int32 {
+	if m != nil {
+		return m.IsRefreshed
+	}
+	return 0
+}
+
+func (m *Agent) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
+func (m *Agent) GetUpdatedAt() int64 {
+	if m != nil {
+		return m.UpdatedAt
+	}
+	return 0
+}
+
 type AgentCreateRequest struct {
 	Sku               string      `protobuf:"bytes,1,opt,name=sku" json:"sku,omitempty"`
 	Executors         int32       `protobuf:"varint,2,opt,name=executors" json:"executors,omitempty"`
@@ -135,11 +184,60 @@ func (m *AgentCreateRequest) String() string            { return proto.CompactTe
 func (*AgentCreateRequest) ProtoMessage()               {}
 func (*AgentCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
 
+func (m *AgentCreateRequest) GetSku() string {
+	if m != nil {
+		return m.Sku
+	}
+	return ""
+}
+
+func (m *AgentCreateRequest) GetExecutors() int32 {
+	if m != nil {
+		return m.Executors
+	}
+	return 0
+}
+
+func (m *AgentCreateRequest) GetLabels() string {
+	if m != nil {
+		return m.Labels
+	}
+	return ""
+}
+
+func (m *AgentCreateRequest) GetUserStartupScript() string {
+	if m != nil {
+		return m.UserStartupScript
+	}
+	return ""
+}
+
+func (m *AgentCreateRequest) GetSaltbaseVersion() string {
+	if m != nil {
+		return m.SaltbaseVersion
+	}
+	return ""
+}
+
+func (m *AgentCreateRequest) GetCiStarterVersion() string {
+	if m != nil {
+		return m.CiStarterVersion
+	}
+	return ""
+}
+
 func (m *AgentCreateRequest) GetPorts() []*PortInfo {
 	if m != nil {
 		return m.Ports
 	}
 	return nil
+}
+
+func (m *AgentCreateRequest) GetRole() string {
+	if m != nil {
+		return m.Role
+	}
+	return ""
 }
 
 type PortInfo struct {
@@ -152,6 +250,20 @@ func (m *PortInfo) String() string            { return proto.CompactTextString(m
 func (*PortInfo) ProtoMessage()               {}
 func (*PortInfo) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
 
+func (m *PortInfo) GetProtocol() string {
+	if m != nil {
+		return m.Protocol
+	}
+	return ""
+}
+
+func (m *PortInfo) GetPortRange() string {
+	if m != nil {
+		return m.PortRange
+	}
+	return ""
+}
+
 type AgentDescribeRequest struct {
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 }
@@ -160,6 +272,13 @@ func (m *AgentDescribeRequest) Reset()                    { *m = AgentDescribeRe
 func (m *AgentDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*AgentDescribeRequest) ProtoMessage()               {}
 func (*AgentDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
+
+func (m *AgentDescribeRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
 
 type AgentDescribeResponse struct {
 	Status           *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -187,6 +306,76 @@ func (m *AgentDescribeResponse) GetStatus() *appscode_dtypes.Status {
 	return nil
 }
 
+func (m *AgentDescribeResponse) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *AgentDescribeResponse) GetExecutors() int64 {
+	if m != nil {
+		return m.Executors
+	}
+	return 0
+}
+
+func (m *AgentDescribeResponse) GetAgentStatus() string {
+	if m != nil {
+		return m.AgentStatus
+	}
+	return ""
+}
+
+func (m *AgentDescribeResponse) GetAgentStatusCause() string {
+	if m != nil {
+		return m.AgentStatusCause
+	}
+	return ""
+}
+
+func (m *AgentDescribeResponse) GetLabel() string {
+	if m != nil {
+		return m.Label
+	}
+	return ""
+}
+
+func (m *AgentDescribeResponse) GetProvider() string {
+	if m != nil {
+		return m.Provider
+	}
+	return ""
+}
+
+func (m *AgentDescribeResponse) GetSku() string {
+	if m != nil {
+		return m.Sku
+	}
+	return ""
+}
+
+func (m *AgentDescribeResponse) GetStartupScript() string {
+	if m != nil {
+		return m.StartupScript
+	}
+	return ""
+}
+
+func (m *AgentDescribeResponse) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
+func (m *AgentDescribeResponse) GetUpdatedAt() int64 {
+	if m != nil {
+		return m.UpdatedAt
+	}
+	return 0
+}
+
 type AgentDeleteRequest struct {
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 }
@@ -196,6 +385,13 @@ func (m *AgentDeleteRequest) String() string            { return proto.CompactTe
 func (*AgentDeleteRequest) ProtoMessage()               {}
 func (*AgentDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{7} }
 
+func (m *AgentDeleteRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 type AgentRestartRequest struct {
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 }
@@ -204,6 +400,13 @@ func (m *AgentRestartRequest) Reset()                    { *m = AgentRestartRequ
 func (m *AgentRestartRequest) String() string            { return proto.CompactTextString(m) }
 func (*AgentRestartRequest) ProtoMessage()               {}
 func (*AgentRestartRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{8} }
+
+func (m *AgentRestartRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
 
 type AgentRestartResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -240,7 +443,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Agents service
 
@@ -435,7 +638,7 @@ var _Agents_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "agent.proto",
 }
 
 func init() { proto.RegisterFile("agent.proto", fileDescriptor0) }

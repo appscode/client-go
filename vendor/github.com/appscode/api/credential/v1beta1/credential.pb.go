@@ -55,6 +55,20 @@ func (m *CredentialCreateRequest) String() string            { return proto.Comp
 func (*CredentialCreateRequest) ProtoMessage()               {}
 func (*CredentialCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *CredentialCreateRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *CredentialCreateRequest) GetProvider() string {
+	if m != nil {
+		return m.Provider
+	}
+	return ""
+}
+
 func (m *CredentialCreateRequest) GetData() map[string]string {
 	if m != nil {
 		return m.Data
@@ -73,6 +87,20 @@ func (m *CredentialUpdateRequest) String() string            { return proto.Comp
 func (*CredentialUpdateRequest) ProtoMessage()               {}
 func (*CredentialUpdateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
 
+func (m *CredentialUpdateRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *CredentialUpdateRequest) GetProvider() string {
+	if m != nil {
+		return m.Provider
+	}
+	return ""
+}
+
 func (m *CredentialUpdateRequest) GetData() map[string]string {
 	if m != nil {
 		return m.Data
@@ -88,6 +116,13 @@ func (m *CredentialIsAuthorizedRequest) Reset()                    { *m = Creden
 func (m *CredentialIsAuthorizedRequest) String() string            { return proto.CompactTextString(m) }
 func (*CredentialIsAuthorizedRequest) ProtoMessage()               {}
 func (*CredentialIsAuthorizedRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+
+func (m *CredentialIsAuthorizedRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
 
 type CredentialIsAuthorizedResponse struct {
 	Status       *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -107,6 +142,20 @@ func (m *CredentialIsAuthorizedResponse) GetStatus() *appscode_dtypes.Status {
 	return nil
 }
 
+func (m *CredentialIsAuthorizedResponse) GetUnauthorized() bool {
+	if m != nil {
+		return m.Unauthorized
+	}
+	return false
+}
+
+func (m *CredentialIsAuthorizedResponse) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
 type CredentialDeleteRequest struct {
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 }
@@ -116,6 +165,13 @@ func (m *CredentialDeleteRequest) String() string            { return proto.Comp
 func (*CredentialDeleteRequest) ProtoMessage()               {}
 func (*CredentialDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
 
+func (m *CredentialDeleteRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 type CredentialDescribeRequest struct {
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 }
@@ -124,6 +180,13 @@ func (m *CredentialDescribeRequest) Reset()                    { *m = Credential
 func (m *CredentialDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*CredentialDescribeRequest) ProtoMessage()               {}
 func (*CredentialDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
+
+func (m *CredentialDescribeRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
 
 type CredentialListResponse struct {
 	Status      *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -185,6 +248,34 @@ func (m *Credential) String() string            { return proto.CompactTextString
 func (*Credential) ProtoMessage()               {}
 func (*Credential) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{8} }
 
+func (m *Credential) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Credential) GetProvider() string {
+	if m != nil {
+		return m.Provider
+	}
+	return ""
+}
+
+func (m *Credential) GetInformation() string {
+	if m != nil {
+		return m.Information
+	}
+	return ""
+}
+
+func (m *Credential) GetModifiedAt() int64 {
+	if m != nil {
+		return m.ModifiedAt
+	}
+	return 0
+}
+
 func init() {
 	proto.RegisterType((*CredentialCreateRequest)(nil), "appscode.credential.v1beta1.CredentialCreateRequest")
 	proto.RegisterType((*CredentialUpdateRequest)(nil), "appscode.credential.v1beta1.CredentialUpdateRequest")
@@ -203,7 +294,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Credentials service
 
@@ -431,7 +522,7 @@ var _Credentials_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "credential.proto",
 }
 
 func init() { proto.RegisterFile("credential.proto", fileDescriptor0) }

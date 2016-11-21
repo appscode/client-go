@@ -47,6 +47,13 @@ func (m *Incident) String() string            { return proto.CompactTextString(m
 func (*Incident) ProtoMessage()               {}
 func (*Incident) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{0} }
 
+func (m *Incident) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
 func (m *Incident) GetKubernetesCluster() *appscode_dtypes.Uid {
 	if m != nil {
 		return m.KubernetesCluster
@@ -54,11 +61,95 @@ func (m *Incident) GetKubernetesCluster() *appscode_dtypes.Uid {
 	return nil
 }
 
+func (m *Incident) GetKubernetesNamespace() string {
+	if m != nil {
+		return m.KubernetesNamespace
+	}
+	return ""
+}
+
+func (m *Incident) GetKubernetesObjectType() string {
+	if m != nil {
+		return m.KubernetesObjectType
+	}
+	return ""
+}
+
+func (m *Incident) GetKubernetesObjectName() string {
+	if m != nil {
+		return m.KubernetesObjectName
+	}
+	return ""
+}
+
+func (m *Incident) GetKubernetesAlertName() string {
+	if m != nil {
+		return m.KubernetesAlertName
+	}
+	return ""
+}
+
+func (m *Incident) GetIcingaHost() string {
+	if m != nil {
+		return m.IcingaHost
+	}
+	return ""
+}
+
+func (m *Incident) GetIcingaService() string {
+	if m != nil {
+		return m.IcingaService
+	}
+	return ""
+}
+
+func (m *Incident) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *Incident) GetState() string {
+	if m != nil {
+		return m.State
+	}
+	return ""
+}
+
 func (m *Incident) GetUser() *appscode_dtypes.Uid {
 	if m != nil {
 		return m.User
 	}
 	return nil
+}
+
+func (m *Incident) GetReportedAt() int64 {
+	if m != nil {
+		return m.ReportedAt
+	}
+	return 0
+}
+
+func (m *Incident) GetAcknowledgedAt() int64 {
+	if m != nil {
+		return m.AcknowledgedAt
+	}
+	return 0
+}
+
+func (m *Incident) GetRecoveredAt() int64 {
+	if m != nil {
+		return m.RecoveredAt
+	}
+	return 0
+}
+
+func (m *Incident) GetIcingawebUrl() string {
+	if m != nil {
+		return m.IcingawebUrl
+	}
+	return ""
 }
 
 func (m *Incident) GetEvents() []*Incident_Event {
@@ -81,11 +172,39 @@ func (m *Incident_Event) String() string            { return proto.CompactTextSt
 func (*Incident_Event) ProtoMessage()               {}
 func (*Incident_Event) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{0, 0} }
 
+func (m *Incident_Event) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *Incident_Event) GetState() string {
+	if m != nil {
+		return m.State
+	}
+	return ""
+}
+
+func (m *Incident_Event) GetReportedAt() int64 {
+	if m != nil {
+		return m.ReportedAt
+	}
+	return 0
+}
+
 func (m *Incident_Event) GetUser() *appscode_dtypes.Uid {
 	if m != nil {
 		return m.User
 	}
 	return nil
+}
+
+func (m *Incident_Event) GetComment() string {
+	if m != nil {
+		return m.Comment
+	}
+	return ""
 }
 
 // Next Id: 6
@@ -101,6 +220,41 @@ func (m *IncidentListRequest) Reset()                    { *m = IncidentListRequ
 func (m *IncidentListRequest) String() string            { return proto.CompactTextString(m) }
 func (*IncidentListRequest) ProtoMessage()               {}
 func (*IncidentListRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{1} }
+
+func (m *IncidentListRequest) GetKubernetesCluster() string {
+	if m != nil {
+		return m.KubernetesCluster
+	}
+	return ""
+}
+
+func (m *IncidentListRequest) GetKubernetesNamespace() string {
+	if m != nil {
+		return m.KubernetesNamespace
+	}
+	return ""
+}
+
+func (m *IncidentListRequest) GetKubernetesObjectType() string {
+	if m != nil {
+		return m.KubernetesObjectType
+	}
+	return ""
+}
+
+func (m *IncidentListRequest) GetKubernetesObjectName() string {
+	if m != nil {
+		return m.KubernetesObjectName
+	}
+	return ""
+}
+
+func (m *IncidentListRequest) GetStates() []string {
+	if m != nil {
+		return m.States
+	}
+	return nil
+}
 
 type IncidentListResponse struct {
 	Status    *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -135,6 +289,13 @@ func (m *IncidentDescribeRequest) Reset()                    { *m = IncidentDesc
 func (m *IncidentDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*IncidentDescribeRequest) ProtoMessage()               {}
 func (*IncidentDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{3} }
+
+func (m *IncidentDescribeRequest) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
 
 type IncidentDescribeResponse struct {
 	Status   *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -182,6 +343,83 @@ func (m *IncidentNotifyRequest) String() string            { return proto.Compac
 func (*IncidentNotifyRequest) ProtoMessage()               {}
 func (*IncidentNotifyRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{5} }
 
+func (m *IncidentNotifyRequest) GetAlertPhid() string {
+	if m != nil {
+		return m.AlertPhid
+	}
+	return ""
+}
+
+func (m *IncidentNotifyRequest) GetHostName() string {
+	if m != nil {
+		return m.HostName
+	}
+	return ""
+}
+
+func (m *IncidentNotifyRequest) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *IncidentNotifyRequest) GetState() string {
+	if m != nil {
+		return m.State
+	}
+	return ""
+}
+
+func (m *IncidentNotifyRequest) GetOutput() string {
+	if m != nil {
+		return m.Output
+	}
+	return ""
+}
+
+func (m *IncidentNotifyRequest) GetTime() int64 {
+	if m != nil {
+		return m.Time
+	}
+	return 0
+}
+
+func (m *IncidentNotifyRequest) GetAuthor() string {
+	if m != nil {
+		return m.Author
+	}
+	return ""
+}
+
+func (m *IncidentNotifyRequest) GetComment() string {
+	if m != nil {
+		return m.Comment
+	}
+	return ""
+}
+
+func (m *IncidentNotifyRequest) GetKubernetesAlertName() string {
+	if m != nil {
+		return m.KubernetesAlertName
+	}
+	return ""
+}
+
+func (m *IncidentNotifyRequest) GetKubernetesCluster() string {
+	if m != nil {
+		return m.KubernetesCluster
+	}
+	return ""
+}
+
+func (m *IncidentNotifyRequest) GetKubernetesNamespace() string {
+	if m != nil {
+		return m.KubernetesNamespace
+	}
+	return ""
+}
+
 // Next Id: 4
 type IncidentEventCreateRequest struct {
 	// Incident PHID
@@ -194,6 +432,27 @@ func (m *IncidentEventCreateRequest) Reset()                    { *m = IncidentE
 func (m *IncidentEventCreateRequest) String() string            { return proto.CompactTextString(m) }
 func (*IncidentEventCreateRequest) ProtoMessage()               {}
 func (*IncidentEventCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{6} }
+
+func (m *IncidentEventCreateRequest) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
+func (m *IncidentEventCreateRequest) GetComment() string {
+	if m != nil {
+		return m.Comment
+	}
+	return ""
+}
+
+func (m *IncidentEventCreateRequest) GetAcknowledge() bool {
+	if m != nil {
+		return m.Acknowledge
+	}
+	return false
+}
 
 func init() {
 	proto.RegisterType((*Incident)(nil), "appscode.kubernetes.v1beta1.Incident")
@@ -212,7 +471,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Incidents service
 
@@ -374,7 +633,7 @@ var _Incidents_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor3,
+	Metadata: "incident.proto",
 }
 
 func init() { proto.RegisterFile("incident.proto", fileDescriptor3) }

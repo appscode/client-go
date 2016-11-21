@@ -32,6 +32,27 @@ func (m *VolumeListRequest) String() string            { return proto.CompactTex
 func (*VolumeListRequest) ProtoMessage()               {}
 func (*VolumeListRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
 
+func (m *VolumeListRequest) GetKubeCluster() string {
+	if m != nil {
+		return m.KubeCluster
+	}
+	return ""
+}
+
+func (m *VolumeListRequest) GetKubeNamespace() string {
+	if m != nil {
+		return m.KubeNamespace
+	}
+	return ""
+}
+
+func (m *VolumeListRequest) GetGlusterfsCluster() string {
+	if m != nil {
+		return m.GlusterfsCluster
+	}
+	return ""
+}
+
 type VolumeListResponse struct {
 	Status  *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Volumes []*Volume               `protobuf:"bytes,2,rep,name=volumes" json:"volumes,omitempty"`
@@ -65,6 +86,13 @@ func (m *Volume) String() string            { return proto.CompactTextString(m) 
 func (*Volume) ProtoMessage()               {}
 func (*Volume) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
 
+func (m *Volume) GetPath() string {
+	if m != nil {
+		return m.Path
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*VolumeListRequest)(nil), "appscode.glusterfs.v1beta1.VolumeListRequest")
 	proto.RegisterType((*VolumeListResponse)(nil), "appscode.glusterfs.v1beta1.VolumeListResponse")
@@ -77,7 +105,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Volumes service
 
@@ -140,7 +168,7 @@ var _Volumes_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor1,
+	Metadata: "volume.proto",
 }
 
 func init() { proto.RegisterFile("volume.proto", fileDescriptor1) }

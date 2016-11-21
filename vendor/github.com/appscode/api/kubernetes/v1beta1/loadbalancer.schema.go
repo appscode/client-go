@@ -37,13 +37,9 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -55,6 +51,20 @@ func init() {
 	createRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
+    "loadbalancerv1beta1Spec": {
+      "properties": {
+        "backend": {
+          "$ref": "#/definitions/v1beta1HTTPLoadBalancerRule"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LoadBalancerRule"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "loadbalancerv1beta1Status": {
       "properties": {
         "status": {
@@ -102,13 +112,9 @@ func init() {
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "options": {
@@ -118,7 +124,7 @@ func init() {
           "type": "object"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta1Spec"
+          "$ref": "#/definitions/loadbalancerv1beta1Spec"
         },
         "status": {
           "$ref": "#/definitions/loadbalancerv1beta1Status"
@@ -172,20 +178,6 @@ func init() {
       },
       "type": "object"
     },
-    "v1beta1Spec": {
-      "properties": {
-        "backend": {
-          "$ref": "#/definitions/v1beta1HTTPLoadBalancerRule"
-        },
-        "rules": {
-          "items": {
-            "$ref": "#/definitions/v1beta1LoadBalancerRule"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
     "v1beta1TCPLoadBalancerRule": {
       "properties": {
         "SSL_secret_name": {
@@ -212,13 +204,9 @@ func init() {
       "$ref": "#/definitions/v1beta1LoadBalancer"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -237,13 +225,9 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     }
   },
@@ -255,6 +239,20 @@ func init() {
 	updateRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "definitions": {
+    "loadbalancerv1beta1Spec": {
+      "properties": {
+        "backend": {
+          "$ref": "#/definitions/v1beta1HTTPLoadBalancerRule"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/definitions/v1beta1LoadBalancerRule"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "loadbalancerv1beta1Status": {
       "properties": {
         "status": {
@@ -302,13 +300,9 @@ func init() {
           "type": "string"
         },
         "name": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "namespace": {
-          "maxLength": 63,
-          "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
           "type": "string"
         },
         "options": {
@@ -318,7 +312,7 @@ func init() {
           "type": "object"
         },
         "spec": {
-          "$ref": "#/definitions/v1beta1Spec"
+          "$ref": "#/definitions/loadbalancerv1beta1Spec"
         },
         "status": {
           "$ref": "#/definitions/loadbalancerv1beta1Status"
@@ -372,20 +366,6 @@ func init() {
       },
       "type": "object"
     },
-    "v1beta1Spec": {
-      "properties": {
-        "backend": {
-          "$ref": "#/definitions/v1beta1HTTPLoadBalancerRule"
-        },
-        "rules": {
-          "items": {
-            "$ref": "#/definitions/v1beta1LoadBalancerRule"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
     "v1beta1TCPLoadBalancerRule": {
       "properties": {
         "SSL_secret_name": {
@@ -412,8 +392,6 @@ func init() {
       "$ref": "#/definitions/v1beta1LoadBalancer"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     }
   },

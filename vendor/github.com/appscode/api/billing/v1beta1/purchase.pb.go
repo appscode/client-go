@@ -30,6 +30,20 @@ func (m *PurchaseBeginRequest) String() string            { return proto.Compact
 func (*PurchaseBeginRequest) ProtoMessage()               {}
 func (*PurchaseBeginRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
 
+func (m *PurchaseBeginRequest) GetProductSku() string {
+	if m != nil {
+		return m.ProductSku
+	}
+	return ""
+}
+
+func (m *PurchaseBeginRequest) GetCount() int32 {
+	if m != nil {
+		return m.Count
+	}
+	return 0
+}
+
 type PurchaseBeginResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Phids  []string                `protobuf:"bytes,2,rep,name=phids" json:"phids,omitempty"`
@@ -47,6 +61,13 @@ func (m *PurchaseBeginResponse) GetStatus() *appscode_dtypes.Status {
 	return nil
 }
 
+func (m *PurchaseBeginResponse) GetPhids() []string {
+	if m != nil {
+		return m.Phids
+	}
+	return nil
+}
+
 type PurchaseCompleteRequest struct {
 	Phid       string            `protobuf:"bytes,1,opt,name=phid" json:"phid,omitempty"`
 	ObjectPhid string            `protobuf:"bytes,2,opt,name=object_phid,json=objectPhid" json:"object_phid,omitempty"`
@@ -58,6 +79,27 @@ func (m *PurchaseCompleteRequest) Reset()                    { *m = PurchaseComp
 func (m *PurchaseCompleteRequest) String() string            { return proto.CompactTextString(m) }
 func (*PurchaseCompleteRequest) ProtoMessage()               {}
 func (*PurchaseCompleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
+
+func (m *PurchaseCompleteRequest) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
+func (m *PurchaseCompleteRequest) GetObjectPhid() string {
+	if m != nil {
+		return m.ObjectPhid
+	}
+	return ""
+}
+
+func (m *PurchaseCompleteRequest) GetFailed() bool {
+	if m != nil {
+		return m.Failed
+	}
+	return false
+}
 
 func (m *PurchaseCompleteRequest) GetMetadata() map[string]string {
 	if m != nil {
@@ -75,6 +117,13 @@ func (m *PurchaseCloseRequest) String() string            { return proto.Compact
 func (*PurchaseCloseRequest) ProtoMessage()               {}
 func (*PurchaseCloseRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
 
+func (m *PurchaseCloseRequest) GetObjectPhid() string {
+	if m != nil {
+		return m.ObjectPhid
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*PurchaseBeginRequest)(nil), "appscode.billing.v1beta1.PurchaseBeginRequest")
 	proto.RegisterType((*PurchaseBeginResponse)(nil), "appscode.billing.v1beta1.PurchaseBeginResponse")
@@ -88,7 +137,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Purchases service
 
@@ -217,7 +266,7 @@ var _Purchases_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor2,
+	Metadata: "purchase.proto",
 }
 
 func init() { proto.RegisterFile("purchase.proto", fileDescriptor2) }

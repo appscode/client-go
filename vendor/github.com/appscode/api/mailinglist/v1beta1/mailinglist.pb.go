@@ -50,6 +50,41 @@ func (m *SendEmailRequest) String() string            { return proto.CompactText
 func (*SendEmailRequest) ProtoMessage()               {}
 func (*SendEmailRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *SendEmailRequest) GetSenderName() string {
+	if m != nil {
+		return m.SenderName
+	}
+	return ""
+}
+
+func (m *SendEmailRequest) GetSenderEmail() string {
+	if m != nil {
+		return m.SenderEmail
+	}
+	return ""
+}
+
+func (m *SendEmailRequest) GetSubject() string {
+	if m != nil {
+		return m.Subject
+	}
+	return ""
+}
+
+func (m *SendEmailRequest) GetBody() string {
+	if m != nil {
+		return m.Body
+	}
+	return ""
+}
+
+func (m *SendEmailRequest) GetReceiverEmail() string {
+	if m != nil {
+		return m.ReceiverEmail
+	}
+	return ""
+}
+
 type SubscribeRequest struct {
 	Email string `protobuf:"bytes,1,opt,name=email" json:"email,omitempty"`
 }
@@ -58,6 +93,13 @@ func (m *SubscribeRequest) Reset()                    { *m = SubscribeRequest{} 
 func (m *SubscribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*SubscribeRequest) ProtoMessage()               {}
 func (*SubscribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+
+func (m *SubscribeRequest) GetEmail() string {
+	if m != nil {
+		return m.Email
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*SendEmailRequest)(nil), "appscode.mailinglist.v1beta1.SendEmailRequest")
@@ -70,7 +112,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for MailingList service
 
@@ -166,7 +208,7 @@ var _MailingList_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "mailinglist.proto",
 }
 
 func init() { proto.RegisterFile("mailinglist.proto", fileDescriptor0) }

@@ -60,6 +60,20 @@ func (m *ArtifactSearchRequest) String() string            { return proto.Compac
 func (*ArtifactSearchRequest) ProtoMessage()               {}
 func (*ArtifactSearchRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *ArtifactSearchRequest) GetQuery() string {
+	if m != nil {
+		return m.Query
+	}
+	return ""
+}
+
+func (m *ArtifactSearchRequest) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
 type ArtifactSearchResponse struct {
 	Status    *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Artifacts []*Artifact             `protobuf:"bytes,2,rep,name=artifacts" json:"artifacts,omitempty"`
@@ -92,6 +106,13 @@ func (m *ArtifactListRequest) Reset()                    { *m = ArtifactListRequ
 func (m *ArtifactListRequest) String() string            { return proto.CompactTextString(m) }
 func (*ArtifactListRequest) ProtoMessage()               {}
 func (*ArtifactListRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+
+func (m *ArtifactListRequest) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
 
 type ArtifactListResponse struct {
 	Status    *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -128,6 +149,27 @@ func (m *Artifact) String() string            { return proto.CompactTextString(m
 func (*Artifact) ProtoMessage()               {}
 func (*Artifact) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
 
+func (m *Artifact) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Artifact) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *Artifact) GetModifiedAt() int64 {
+	if m != nil {
+		return m.ModifiedAt
+	}
+	return 0
+}
+
 func init() {
 	proto.RegisterType((*ArtifactSearchRequest)(nil), "appscode.artifactory.v1beta1.ArtifactSearchRequest")
 	proto.RegisterType((*ArtifactSearchResponse)(nil), "appscode.artifactory.v1beta1.ArtifactSearchResponse")
@@ -142,7 +184,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Artifacts service
 
@@ -238,7 +280,7 @@ var _Artifacts_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "artifact.proto",
 }
 
 func init() { proto.RegisterFile("artifact.proto", fileDescriptor0) }

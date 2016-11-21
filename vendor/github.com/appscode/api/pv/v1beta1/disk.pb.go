@@ -70,6 +70,41 @@ func (m *DiskCreateRequest) String() string            { return proto.CompactTex
 func (*DiskCreateRequest) ProtoMessage()               {}
 func (*DiskCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *DiskCreateRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *DiskCreateRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *DiskCreateRequest) GetZone() string {
+	if m != nil {
+		return m.Zone
+	}
+	return ""
+}
+
+func (m *DiskCreateRequest) GetDiskType() string {
+	if m != nil {
+		return m.DiskType
+	}
+	return ""
+}
+
+func (m *DiskCreateRequest) GetSizeGb() int64 {
+	if m != nil {
+		return m.SizeGb
+	}
+	return 0
+}
+
 type DiskDeleteRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
 	Uid     string `protobuf:"bytes,2,opt,name=uid" json:"uid,omitempty"`
@@ -80,6 +115,20 @@ func (m *DiskDeleteRequest) String() string            { return proto.CompactTex
 func (*DiskDeleteRequest) ProtoMessage()               {}
 func (*DiskDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
 
+func (m *DiskDeleteRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *DiskDeleteRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
+
 type DiskListRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
 }
@@ -88,6 +137,13 @@ func (m *DiskListRequest) Reset()                    { *m = DiskListRequest{} }
 func (m *DiskListRequest) String() string            { return proto.CompactTextString(m) }
 func (*DiskListRequest) ProtoMessage()               {}
 func (*DiskListRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+
+func (m *DiskListRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
 
 type DiskListResponse struct {
 	Status  *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -105,6 +161,13 @@ func (m *DiskListResponse) GetStatus() *appscode_dtypes.Status {
 		return m.Status
 	}
 	return nil
+}
+
+func (m *DiskListResponse) GetKube() string {
+	if m != nil {
+		return m.Kube
+	}
+	return ""
 }
 
 func (m *DiskListResponse) GetResults() []*Result {
@@ -165,6 +228,83 @@ func (m *Disk) String() string            { return proto.CompactTextString(m) }
 func (*Disk) ProtoMessage()               {}
 func (*Disk) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
 
+func (m *Disk) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Disk) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
+func (m *Disk) GetPlugin() string {
+	if m != nil {
+		return m.Plugin
+	}
+	return ""
+}
+
+func (m *Disk) GetSizeGb() int64 {
+	if m != nil {
+		return m.SizeGb
+	}
+	return 0
+}
+
+func (m *Disk) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *Disk) GetZone() string {
+	if m != nil {
+		return m.Zone
+	}
+	return ""
+}
+
+func (m *Disk) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
+func (m *Disk) GetUsers() []string {
+	if m != nil {
+		return m.Users
+	}
+	return nil
+}
+
+func (m *Disk) GetKind() string {
+	if m != nil {
+		return m.Kind
+	}
+	return ""
+}
+
+func (m *Disk) GetEndpoint() string {
+	if m != nil {
+		return m.Endpoint
+	}
+	return ""
+}
+
+func (m *Disk) GetIops() int64 {
+	if m != nil {
+		return m.Iops
+	}
+	return 0
+}
+
 type PV struct {
 	Name   string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	SizeGb int64  `protobuf:"varint,2,opt,name=size_gb,json=sizeGb" json:"size_gb,omitempty"`
@@ -180,6 +320,55 @@ func (m *PV) String() string            { return proto.CompactTextString(m) }
 func (*PV) ProtoMessage()               {}
 func (*PV) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
 
+func (m *PV) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *PV) GetSizeGb() int64 {
+	if m != nil {
+		return m.SizeGb
+	}
+	return 0
+}
+
+func (m *PV) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
+func (m *PV) GetClaim() string {
+	if m != nil {
+		return m.Claim
+	}
+	return ""
+}
+
+func (m *PV) GetVolume() string {
+	if m != nil {
+		return m.Volume
+	}
+	return ""
+}
+
+func (m *PV) GetPlugin() string {
+	if m != nil {
+		return m.Plugin
+	}
+	return ""
+}
+
+func (m *PV) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
 type PVC struct {
 	Name      string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	SizeGb    int64  `protobuf:"varint,2,opt,name=size_gb,json=sizeGb" json:"size_gb,omitempty"`
@@ -193,6 +382,41 @@ func (m *PVC) String() string            { return proto.CompactTextString(m) }
 func (*PVC) ProtoMessage()               {}
 func (*PVC) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{7} }
 
+func (m *PVC) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *PVC) GetSizeGb() int64 {
+	if m != nil {
+		return m.SizeGb
+	}
+	return 0
+}
+
+func (m *PVC) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
+func (m *PVC) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
+func (m *PVC) GetVolume() string {
+	if m != nil {
+		return m.Volume
+	}
+	return ""
+}
+
 type DiskDescribeRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
 	Name    string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
@@ -203,6 +427,27 @@ func (m *DiskDescribeRequest) Reset()                    { *m = DiskDescribeRequ
 func (m *DiskDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*DiskDescribeRequest) ProtoMessage()               {}
 func (*DiskDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{8} }
+
+func (m *DiskDescribeRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *DiskDescribeRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *DiskDescribeRequest) GetPlugin() string {
+	if m != nil {
+		return m.Plugin
+	}
+	return ""
+}
 
 type DiskDescribeResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -247,7 +492,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Disks service
 
@@ -409,7 +654,7 @@ var _Disks_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "disk.proto",
 }
 
 func init() { proto.RegisterFile("disk.proto", fileDescriptor0) }

@@ -31,6 +31,27 @@ func (m *SubscriptionSubscribeRequest) String() string            { return proto
 func (*SubscriptionSubscribeRequest) ProtoMessage()               {}
 func (*SubscriptionSubscribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{0} }
 
+func (m *SubscriptionSubscribeRequest) GetProductId() string {
+	if m != nil {
+		return m.ProductId
+	}
+	return ""
+}
+
+func (m *SubscriptionSubscribeRequest) GetAutoExtend() bool {
+	if m != nil {
+		return m.AutoExtend
+	}
+	return false
+}
+
+func (m *SubscriptionSubscribeRequest) GetStartTime() int64 {
+	if m != nil {
+		return m.StartTime
+	}
+	return 0
+}
+
 func init() {
 	proto.RegisterType((*SubscriptionSubscribeRequest)(nil), "appscode.billing.v1beta1.SubscriptionSubscribeRequest")
 }
@@ -41,7 +62,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Subscriptions service
 
@@ -104,7 +125,7 @@ var _Subscriptions_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor4,
+	Metadata: "subscription.proto",
 }
 
 func init() { proto.RegisterFile("subscription.proto", fileDescriptor4) }

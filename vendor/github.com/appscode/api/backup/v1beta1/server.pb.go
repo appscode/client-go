@@ -35,6 +35,41 @@ func (m *ServerCreateRequest) String() string            { return proto.CompactT
 func (*ServerCreateRequest) ProtoMessage()               {}
 func (*ServerCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
 
+func (m *ServerCreateRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *ServerCreateRequest) GetCredential() string {
+	if m != nil {
+		return m.Credential
+	}
+	return ""
+}
+
+func (m *ServerCreateRequest) GetBucketName() string {
+	if m != nil {
+		return m.BucketName
+	}
+	return ""
+}
+
+func (m *ServerCreateRequest) GetDisk() string {
+	if m != nil {
+		return m.Disk
+	}
+	return ""
+}
+
+func (m *ServerCreateRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
+
 type ServerDeleteRequest struct {
 	Cluster   string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
 	Namespace string `protobuf:"bytes,2,opt,name=namespace" json:"namespace,omitempty"`
@@ -44,6 +79,20 @@ func (m *ServerDeleteRequest) Reset()                    { *m = ServerDeleteRequ
 func (m *ServerDeleteRequest) String() string            { return proto.CompactTextString(m) }
 func (*ServerDeleteRequest) ProtoMessage()               {}
 func (*ServerDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
+
+func (m *ServerDeleteRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *ServerDeleteRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*ServerCreateRequest)(nil), "appscode.backup.v1beta1.ServerCreateRequest")
@@ -56,7 +105,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Servers service
 
@@ -152,7 +201,7 @@ var _Servers_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor1,
+	Metadata: "server.proto",
 }
 
 func init() { proto.RegisterFile("server.proto", fileDescriptor1) }

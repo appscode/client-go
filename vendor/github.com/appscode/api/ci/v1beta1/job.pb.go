@@ -30,6 +30,13 @@ func (m *JobListRequest) String() string            { return proto.CompactTextSt
 func (*JobListRequest) ProtoMessage()               {}
 func (*JobListRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
 
+func (m *JobListRequest) GetParents() string {
+	if m != nil {
+		return m.Parents
+	}
+	return ""
+}
+
 type JobListResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Jobs   []*Job                  `protobuf:"bytes,2,rep,name=jobs" json:"jobs,omitempty"`
@@ -65,6 +72,27 @@ func (m *JobBuildRequest) String() string            { return proto.CompactTextS
 func (*JobBuildRequest) ProtoMessage()               {}
 func (*JobBuildRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
 
+func (m *JobBuildRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *JobBuildRequest) GetParents() string {
+	if m != nil {
+		return m.Parents
+	}
+	return ""
+}
+
+func (m *JobBuildRequest) GetParam() string {
+	if m != nil {
+		return m.Param
+	}
+	return ""
+}
+
 type JobDescribeRequest struct {
 	Name    string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	Parents string `protobuf:"bytes,2,opt,name=parents" json:"parents,omitempty"`
@@ -74,6 +102,20 @@ func (m *JobDescribeRequest) Reset()                    { *m = JobDescribeReques
 func (m *JobDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*JobDescribeRequest) ProtoMessage()               {}
 func (*JobDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
+
+func (m *JobDescribeRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *JobDescribeRequest) GetParents() string {
+	if m != nil {
+		return m.Parents
+	}
+	return ""
+}
 
 type JobDescribeResponse struct {
 	Status                *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -107,6 +149,111 @@ func (m *JobDescribeResponse) GetStatus() *appscode_dtypes.Status {
 	return nil
 }
 
+func (m *JobDescribeResponse) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *JobDescribeResponse) GetParents() string {
+	if m != nil {
+		return m.Parents
+	}
+	return ""
+}
+
+func (m *JobDescribeResponse) GetDescription() string {
+	if m != nil {
+		return m.Description
+	}
+	return ""
+}
+
+func (m *JobDescribeResponse) GetDisplayName() string {
+	if m != nil {
+		return m.DisplayName
+	}
+	return ""
+}
+
+func (m *JobDescribeResponse) GetJobType() string {
+	if m != nil {
+		return m.JobType
+	}
+	return ""
+}
+
+func (m *JobDescribeResponse) GetJobColor() string {
+	if m != nil {
+		return m.JobColor
+	}
+	return ""
+}
+
+func (m *JobDescribeResponse) GetBuildable() bool {
+	if m != nil {
+		return m.Buildable
+	}
+	return false
+}
+
+func (m *JobDescribeResponse) GetBuildCount() int64 {
+	if m != nil {
+		return m.BuildCount
+	}
+	return 0
+}
+
+func (m *JobDescribeResponse) GetBuildIds() []int64 {
+	if m != nil {
+		return m.BuildIds
+	}
+	return nil
+}
+
+func (m *JobDescribeResponse) GetFirstBuildId() int64 {
+	if m != nil {
+		return m.FirstBuildId
+	}
+	return 0
+}
+
+func (m *JobDescribeResponse) GetLastBuildId() int64 {
+	if m != nil {
+		return m.LastBuildId
+	}
+	return 0
+}
+
+func (m *JobDescribeResponse) GetLastCompletedBuildId() int64 {
+	if m != nil {
+		return m.LastCompletedBuildId
+	}
+	return 0
+}
+
+func (m *JobDescribeResponse) GetLastFailedBuildId() int64 {
+	if m != nil {
+		return m.LastFailedBuildId
+	}
+	return 0
+}
+
+func (m *JobDescribeResponse) GetLastSuccessfulBuildId() int64 {
+	if m != nil {
+		return m.LastSuccessfulBuildId
+	}
+	return 0
+}
+
+func (m *JobDescribeResponse) GetNextBuildNumber() int64 {
+	if m != nil {
+		return m.NextBuildNumber
+	}
+	return 0
+}
+
 func (m *JobDescribeResponse) GetHealthReports() []*JobHealth {
 	if m != nil {
 		return m.HealthReports
@@ -124,6 +271,20 @@ func (m *JobHealth) String() string            { return proto.CompactTextString(
 func (*JobHealth) ProtoMessage()               {}
 func (*JobHealth) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{5} }
 
+func (m *JobHealth) GetDescription() string {
+	if m != nil {
+		return m.Description
+	}
+	return ""
+}
+
+func (m *JobHealth) GetScore() int64 {
+	if m != nil {
+		return m.Score
+	}
+	return 0
+}
+
 type JobDeleteRequest struct {
 	Name    string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	Parents string `protobuf:"bytes,2,opt,name=parents" json:"parents,omitempty"`
@@ -133,6 +294,20 @@ func (m *JobDeleteRequest) Reset()                    { *m = JobDeleteRequest{} 
 func (m *JobDeleteRequest) String() string            { return proto.CompactTextString(m) }
 func (*JobDeleteRequest) ProtoMessage()               {}
 func (*JobDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{6} }
+
+func (m *JobDeleteRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *JobDeleteRequest) GetParents() string {
+	if m != nil {
+		return m.Parents
+	}
+	return ""
+}
 
 type JobCreateRequest struct {
 	Name    string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
@@ -145,6 +320,27 @@ func (m *JobCreateRequest) String() string            { return proto.CompactText
 func (*JobCreateRequest) ProtoMessage()               {}
 func (*JobCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{7} }
 
+func (m *JobCreateRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *JobCreateRequest) GetParents() string {
+	if m != nil {
+		return m.Parents
+	}
+	return ""
+}
+
+func (m *JobCreateRequest) GetShFile() string {
+	if m != nil {
+		return m.ShFile
+	}
+	return ""
+}
+
 type JobCopyRequest struct {
 	Source      string `protobuf:"bytes,1,opt,name=source" json:"source,omitempty"`
 	Destination string `protobuf:"bytes,2,opt,name=destination" json:"destination,omitempty"`
@@ -154,6 +350,20 @@ func (m *JobCopyRequest) Reset()                    { *m = JobCopyRequest{} }
 func (m *JobCopyRequest) String() string            { return proto.CompactTextString(m) }
 func (*JobCopyRequest) ProtoMessage()               {}
 func (*JobCopyRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{8} }
+
+func (m *JobCopyRequest) GetSource() string {
+	if m != nil {
+		return m.Source
+	}
+	return ""
+}
+
+func (m *JobCopyRequest) GetDestination() string {
+	if m != nil {
+		return m.Destination
+	}
+	return ""
+}
 
 type Job struct {
 	Name    string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
@@ -167,6 +377,41 @@ func (m *Job) Reset()                    { *m = Job{} }
 func (m *Job) String() string            { return proto.CompactTextString(m) }
 func (*Job) ProtoMessage()               {}
 func (*Job) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{9} }
+
+func (m *Job) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Job) GetParents() string {
+	if m != nil {
+		return m.Parents
+	}
+	return ""
+}
+
+func (m *Job) GetJobType() string {
+	if m != nil {
+		return m.JobType
+	}
+	return ""
+}
+
+func (m *Job) GetColor() string {
+	if m != nil {
+		return m.Color
+	}
+	return ""
+}
+
+func (m *Job) GetUrl() string {
+	if m != nil {
+		return m.Url
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*JobListRequest)(nil), "appscode.ci.v1beta1.JobListRequest")
@@ -187,7 +432,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Jobs service
 
@@ -415,7 +660,7 @@ var _Jobs_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor2,
+	Metadata: "job.proto",
 }
 
 func init() { proto.RegisterFile("job.proto", fileDescriptor2) }

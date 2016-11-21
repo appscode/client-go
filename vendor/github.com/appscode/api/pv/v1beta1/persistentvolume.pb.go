@@ -35,6 +35,48 @@ func (m *PVRegisterRequest) String() string            { return proto.CompactTex
 func (*PVRegisterRequest) ProtoMessage()               {}
 func (*PVRegisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
 
+func (m *PVRegisterRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *PVRegisterRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *PVRegisterRequest) GetIdentifier() string {
+	if m != nil {
+		return m.Identifier
+	}
+	return ""
+}
+
+func (m *PVRegisterRequest) GetPlugin() string {
+	if m != nil {
+		return m.Plugin
+	}
+	return ""
+}
+
+func (m *PVRegisterRequest) GetSizeGb() int64 {
+	if m != nil {
+		return m.SizeGb
+	}
+	return 0
+}
+
+func (m *PVRegisterRequest) GetEndpoint() string {
+	if m != nil {
+		return m.Endpoint
+	}
+	return ""
+}
+
 type PVUnregisterRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
 	Name    string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
@@ -45,6 +87,20 @@ func (m *PVUnregisterRequest) String() string            { return proto.CompactT
 func (*PVUnregisterRequest) ProtoMessage()               {}
 func (*PVUnregisterRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
 
+func (m *PVUnregisterRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *PVUnregisterRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 type PVDescribeRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
 	Name    string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
@@ -54,6 +110,20 @@ func (m *PVDescribeRequest) Reset()                    { *m = PVDescribeRequest{
 func (m *PVDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*PVDescribeRequest) ProtoMessage()               {}
 func (*PVDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
+
+func (m *PVDescribeRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *PVDescribeRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
 
 type PVInfo struct {
 	Name        string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
@@ -69,6 +139,55 @@ func (m *PVInfo) Reset()                    { *m = PVInfo{} }
 func (m *PVInfo) String() string            { return proto.CompactTextString(m) }
 func (*PVInfo) ProtoMessage()               {}
 func (*PVInfo) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
+
+func (m *PVInfo) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *PVInfo) GetSizeGb() int64 {
+	if m != nil {
+		return m.SizeGb
+	}
+	return 0
+}
+
+func (m *PVInfo) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
+func (m *PVInfo) GetVolume() string {
+	if m != nil {
+		return m.Volume
+	}
+	return ""
+}
+
+func (m *PVInfo) GetClaim() string {
+	if m != nil {
+		return m.Claim
+	}
+	return ""
+}
+
+func (m *PVInfo) GetPlugin() string {
+	if m != nil {
+		return m.Plugin
+	}
+	return ""
+}
+
+func (m *PVInfo) GetAccessModes() []string {
+	if m != nil {
+		return m.AccessModes
+	}
+	return nil
+}
 
 type PVDescribeResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -108,7 +227,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for PersistentVolumes service
 
@@ -237,7 +356,7 @@ var _PersistentVolumes_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor2,
+	Metadata: "persistentvolume.proto",
 }
 
 func init() { proto.RegisterFile("persistentvolume.proto", fileDescriptor2) }

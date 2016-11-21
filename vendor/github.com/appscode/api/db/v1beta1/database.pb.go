@@ -82,6 +82,125 @@ func (m *Database) String() string            { return proto.CompactTextString(m
 func (*Database) ProtoMessage()               {}
 func (*Database) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *Database) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
+func (m *Database) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *Database) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Database) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *Database) GetSku() string {
+	if m != nil {
+		return m.Sku
+	}
+	return ""
+}
+
+func (m *Database) GetVersion() string {
+	if m != nil {
+		return m.Version
+	}
+	return ""
+}
+
+func (m *Database) GetAuthSecretName() string {
+	if m != nil {
+		return m.AuthSecretName
+	}
+	return ""
+}
+
+func (m *Database) GetScheduleCronExpr() string {
+	if m != nil {
+		return m.ScheduleCronExpr
+	}
+	return ""
+}
+
+func (m *Database) GetPvSizeGb() int32 {
+	if m != nil {
+		return m.PvSizeGb
+	}
+	return 0
+}
+
+func (m *Database) GetLastBackupAt() int64 {
+	if m != nil {
+		return m.LastBackupAt
+	}
+	return 0
+}
+
+func (m *Database) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
+func (m *Database) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
+func (m *Database) GetDeletedAt() int64 {
+	if m != nil {
+		return m.DeletedAt
+	}
+	return 0
+}
+
+func (m *Database) GetDoNotDelete() bool {
+	if m != nil {
+		return m.DoNotDelete
+	}
+	return false
+}
+
+func (m *Database) GetNodeCount() int32 {
+	if m != nil {
+		return m.NodeCount
+	}
+	return 0
+}
+
+func (m *Database) GetHostname() string {
+	if m != nil {
+		return m.Hostname
+	}
+	return ""
+}
+
+func (m *Database) GetStorageClass() string {
+	if m != nil {
+		return m.StorageClass
+	}
+	return ""
+}
+
 // Next Id: 4
 type DatabaseListRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -101,6 +220,27 @@ func (m *DatabaseListRequest) Reset()                    { *m = DatabaseListRequ
 func (m *DatabaseListRequest) String() string            { return proto.CompactTextString(m) }
 func (*DatabaseListRequest) ProtoMessage()               {}
 func (*DatabaseListRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+
+func (m *DatabaseListRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *DatabaseListRequest) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *DatabaseListRequest) GetStatus() []string {
+	if m != nil {
+		return m.Status
+	}
+	return nil
+}
 
 // Next Id: 3
 type DatabaseListResponse struct {
@@ -148,6 +288,90 @@ func (m *DatabaseCreateRequest) Reset()                    { *m = DatabaseCreate
 func (m *DatabaseCreateRequest) String() string            { return proto.CompactTextString(m) }
 func (*DatabaseCreateRequest) ProtoMessage()               {}
 func (*DatabaseCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
+
+func (m *DatabaseCreateRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *DatabaseCreateRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *DatabaseCreateRequest) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *DatabaseCreateRequest) GetSku() string {
+	if m != nil {
+		return m.Sku
+	}
+	return ""
+}
+
+func (m *DatabaseCreateRequest) GetVersion() string {
+	if m != nil {
+		return m.Version
+	}
+	return ""
+}
+
+func (m *DatabaseCreateRequest) GetPvSizeGb() int32 {
+	if m != nil {
+		return m.PvSizeGb
+	}
+	return 0
+}
+
+func (m *DatabaseCreateRequest) GetAuthSecretName() string {
+	if m != nil {
+		return m.AuthSecretName
+	}
+	return ""
+}
+
+func (m *DatabaseCreateRequest) GetNodeCount() int32 {
+	if m != nil {
+		return m.NodeCount
+	}
+	return 0
+}
+
+func (m *DatabaseCreateRequest) GetSnapshotPhid() string {
+	if m != nil {
+		return m.SnapshotPhid
+	}
+	return ""
+}
+
+func (m *DatabaseCreateRequest) GetHostname() string {
+	if m != nil {
+		return m.Hostname
+	}
+	return ""
+}
+
+func (m *DatabaseCreateRequest) GetStorageClass() string {
+	if m != nil {
+		return m.StorageClass
+	}
+	return ""
+}
+
+func (m *DatabaseCreateRequest) GetIgnoreValidation() bool {
+	if m != nil {
+		return m.IgnoreValidation
+	}
+	return false
+}
 
 func (m *DatabaseCreateRequest) GetInitialScript() *DatabaseCreateRequest_InitialScript {
 	if m != nil {
@@ -198,6 +422,13 @@ func (m *DatabaseCreateRequest_InitialScript) GetScriptSource() isDatabaseCreate
 		return m.ScriptSource
 	}
 	return nil
+}
+
+func (m *DatabaseCreateRequest_InitialScript) GetScriptPath() string {
+	if m != nil {
+		return m.ScriptPath
+	}
+	return ""
 }
 
 func (m *DatabaseCreateRequest_InitialScript) GetGitRepo() *DatabaseCreateRequest_InitialScript_GitRepo {
@@ -331,6 +562,27 @@ func (*DatabaseCreateRequest_InitialScript_GitRepo) Descriptor() ([]byte, []int)
 	return fileDescriptor0, []int{3, 0, 0}
 }
 
+func (m *DatabaseCreateRequest_InitialScript_GitRepo) GetRepository() string {
+	if m != nil {
+		return m.Repository
+	}
+	return ""
+}
+
+func (m *DatabaseCreateRequest_InitialScript_GitRepo) GetRevision() string {
+	if m != nil {
+		return m.Revision
+	}
+	return ""
+}
+
+func (m *DatabaseCreateRequest_InitialScript_GitRepo) GetDirectory() string {
+	if m != nil {
+		return m.Directory
+	}
+	return ""
+}
+
 type DatabaseCreateRequest_InitialScript_Secret struct {
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 }
@@ -344,6 +596,13 @@ func (m *DatabaseCreateRequest_InitialScript_Secret) String() string {
 func (*DatabaseCreateRequest_InitialScript_Secret) ProtoMessage() {}
 func (*DatabaseCreateRequest_InitialScript_Secret) Descriptor() ([]byte, []int) {
 	return fileDescriptor0, []int{3, 0, 1}
+}
+
+func (m *DatabaseCreateRequest_InitialScript_Secret) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
 }
 
 type DatabaseCreateRequest_InitialScript_ConfigMap struct {
@@ -361,6 +620,13 @@ func (*DatabaseCreateRequest_InitialScript_ConfigMap) Descriptor() ([]byte, []in
 	return fileDescriptor0, []int{3, 0, 2}
 }
 
+func (m *DatabaseCreateRequest_InitialScript_ConfigMap) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 // Next Id: 4
 type DatabaseScaleRequest struct {
 	Cluster   string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -372,6 +638,27 @@ func (m *DatabaseScaleRequest) Reset()                    { *m = DatabaseScaleRe
 func (m *DatabaseScaleRequest) String() string            { return proto.CompactTextString(m) }
 func (*DatabaseScaleRequest) ProtoMessage()               {}
 func (*DatabaseScaleRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+
+func (m *DatabaseScaleRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *DatabaseScaleRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
+
+func (m *DatabaseScaleRequest) GetNodeCount() int32 {
+	if m != nil {
+		return m.NodeCount
+	}
+	return 0
+}
 
 // Next Id: 4
 type DatabaseUpdateRequest struct {
@@ -385,6 +672,27 @@ func (m *DatabaseUpdateRequest) String() string            { return proto.Compac
 func (*DatabaseUpdateRequest) ProtoMessage()               {}
 func (*DatabaseUpdateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
 
+func (m *DatabaseUpdateRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *DatabaseUpdateRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
+
+func (m *DatabaseUpdateRequest) GetDoNotDelete() bool {
+	if m != nil {
+		return m.DoNotDelete
+	}
+	return false
+}
+
 // Next Id: 3
 type DatabaseDescribeRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -395,6 +703,20 @@ func (m *DatabaseDescribeRequest) Reset()                    { *m = DatabaseDesc
 func (m *DatabaseDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*DatabaseDescribeRequest) ProtoMessage()               {}
 func (*DatabaseDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
+
+func (m *DatabaseDescribeRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *DatabaseDescribeRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
 
 // Next Id: 7
 type SnapshotSummary struct {
@@ -408,6 +730,34 @@ func (m *SnapshotSummary) Reset()                    { *m = SnapshotSummary{} }
 func (m *SnapshotSummary) String() string            { return proto.CompactTextString(m) }
 func (*SnapshotSummary) ProtoMessage()               {}
 func (*SnapshotSummary) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{7} }
+
+func (m *SnapshotSummary) GetBackupAttempt() int32 {
+	if m != nil {
+		return m.BackupAttempt
+	}
+	return 0
+}
+
+func (m *SnapshotSummary) GetBackupSuccess() int32 {
+	if m != nil {
+		return m.BackupSuccess
+	}
+	return 0
+}
+
+func (m *SnapshotSummary) GetRestoreAttempt() int32 {
+	if m != nil {
+		return m.RestoreAttempt
+	}
+	return 0
+}
+
+func (m *SnapshotSummary) GetRestoreSuccess() int32 {
+	if m != nil {
+		return m.RestoreSuccess
+	}
+	return 0
+}
 
 // Next Id: 17
 type DatabaseDescribeResponse struct {
@@ -454,6 +804,27 @@ func (m *DatabaseDeleteRequest) String() string            { return proto.Compac
 func (*DatabaseDeleteRequest) ProtoMessage()               {}
 func (*DatabaseDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{9} }
 
+func (m *DatabaseDeleteRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *DatabaseDeleteRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
+
+func (m *DatabaseDeleteRequest) GetDestroy() bool {
+	if m != nil {
+		return m.Destroy
+	}
+	return false
+}
+
 // Next Id: 3
 type DatabaseRecoverRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -465,6 +836,20 @@ func (m *DatabaseRecoverRequest) String() string            { return proto.Compa
 func (*DatabaseRecoverRequest) ProtoMessage()               {}
 func (*DatabaseRecoverRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{10} }
 
+func (m *DatabaseRecoverRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *DatabaseRecoverRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
+
 // Next Id: 4
 type DatabaseCheckRequest struct {
 	Cluster string `protobuf:"bytes,1,opt,name=cluster" json:"cluster,omitempty"`
@@ -475,6 +860,20 @@ func (m *DatabaseCheckRequest) Reset()                    { *m = DatabaseCheckRe
 func (m *DatabaseCheckRequest) String() string            { return proto.CompactTextString(m) }
 func (*DatabaseCheckRequest) ProtoMessage()               {}
 func (*DatabaseCheckRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{11} }
+
+func (m *DatabaseCheckRequest) GetCluster() string {
+	if m != nil {
+		return m.Cluster
+	}
+	return ""
+}
+
+func (m *DatabaseCheckRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*Database)(nil), "appscode.db.v1beta1.Database")
@@ -501,7 +900,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Databases service
 
@@ -762,7 +1161,7 @@ var _Databases_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "database.proto",
 }
 
 func init() { proto.RegisterFile("database.proto", fileDescriptor0) }

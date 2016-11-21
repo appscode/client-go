@@ -84,6 +84,13 @@ func (m *CertificateDescribeRequest) String() string            { return proto.C
 func (*CertificateDescribeRequest) ProtoMessage()               {}
 func (*CertificateDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
 
+func (m *CertificateDescribeRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
+
 type CertificateDescribeResponse struct {
 	Status      *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Certificate *Certificate            `protobuf:"bytes,2,opt,name=certificate" json:"certificate,omitempty"`
@@ -130,6 +137,83 @@ func (m *Certificate) String() string            { return proto.CompactTextStrin
 func (*Certificate) ProtoMessage()               {}
 func (*Certificate) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
 
+func (m *Certificate) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
+func (m *Certificate) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Certificate) GetCommonName() string {
+	if m != nil {
+		return m.CommonName
+	}
+	return ""
+}
+
+func (m *Certificate) GetIssuedBy() string {
+	if m != nil {
+		return m.IssuedBy
+	}
+	return ""
+}
+
+func (m *Certificate) GetValidFrom() int64 {
+	if m != nil {
+		return m.ValidFrom
+	}
+	return 0
+}
+
+func (m *Certificate) GetExpireDate() int64 {
+	if m != nil {
+		return m.ExpireDate
+	}
+	return 0
+}
+
+func (m *Certificate) GetSans() []string {
+	if m != nil {
+		return m.Sans
+	}
+	return nil
+}
+
+func (m *Certificate) GetCert() string {
+	if m != nil {
+		return m.Cert
+	}
+	return ""
+}
+
+func (m *Certificate) GetKey() string {
+	if m != nil {
+		return m.Key
+	}
+	return ""
+}
+
+func (m *Certificate) GetVersion() int32 {
+	if m != nil {
+		return m.Version
+	}
+	return 0
+}
+
+func (m *Certificate) GetSerialNumber() string {
+	if m != nil {
+		return m.SerialNumber
+	}
+	return ""
+}
+
 type CertificateObtainRequest struct {
 	Name     string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	CertData string `protobuf:"bytes,2,opt,name=cert_data,json=certData" json:"cert_data,omitempty"`
@@ -141,6 +225,27 @@ func (m *CertificateObtainRequest) String() string            { return proto.Com
 func (*CertificateObtainRequest) ProtoMessage()               {}
 func (*CertificateObtainRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
 
+func (m *CertificateObtainRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *CertificateObtainRequest) GetCertData() string {
+	if m != nil {
+		return m.CertData
+	}
+	return ""
+}
+
+func (m *CertificateObtainRequest) GetKeyData() string {
+	if m != nil {
+		return m.KeyData
+	}
+	return ""
+}
+
 type CertificateDeleteRequest struct {
 	Uid string `protobuf:"bytes,1,opt,name=uid" json:"uid,omitempty"`
 }
@@ -149,6 +254,13 @@ func (m *CertificateDeleteRequest) Reset()                    { *m = Certificate
 func (m *CertificateDeleteRequest) String() string            { return proto.CompactTextString(m) }
 func (*CertificateDeleteRequest) ProtoMessage()               {}
 func (*CertificateDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
+
+func (m *CertificateDeleteRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
 
 type CertificateDeployRequest struct {
 	Uid         string `protobuf:"bytes,1,opt,name=uid" json:"uid,omitempty"`
@@ -161,6 +273,34 @@ func (m *CertificateDeployRequest) Reset()                    { *m = Certificate
 func (m *CertificateDeployRequest) String() string            { return proto.CompactTextString(m) }
 func (*CertificateDeployRequest) ProtoMessage()               {}
 func (*CertificateDeployRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{7} }
+
+func (m *CertificateDeployRequest) GetUid() string {
+	if m != nil {
+		return m.Uid
+	}
+	return ""
+}
+
+func (m *CertificateDeployRequest) GetSecretName() string {
+	if m != nil {
+		return m.SecretName
+	}
+	return ""
+}
+
+func (m *CertificateDeployRequest) GetClusterName() string {
+	if m != nil {
+		return m.ClusterName
+	}
+	return ""
+}
+
+func (m *CertificateDeployRequest) GetNamespace() string {
+	if m != nil {
+		return m.Namespace
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*CertificateListRequest)(nil), "appscode.certificate.v1beta1.CertificateListRequest")
@@ -179,7 +319,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Certificates service
 
@@ -374,7 +514,7 @@ var _Certificates_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "certificate.proto",
 }
 
 func init() { proto.RegisterFile("certificate.proto", fileDescriptor0) }

@@ -57,6 +57,62 @@ func (m *CreateRequest) String() string            { return proto.CompactTextStr
 func (*CreateRequest) ProtoMessage()               {}
 func (*CreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *CreateRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *CreateRequest) GetDisplayName() string {
+	if m != nil {
+		return m.DisplayName
+	}
+	return ""
+}
+
+func (m *CreateRequest) GetEmail() string {
+	if m != nil {
+		return m.Email
+	}
+	return ""
+}
+
+func (m *CreateRequest) GetUserName() string {
+	if m != nil {
+		return m.UserName
+	}
+	return ""
+}
+
+func (m *CreateRequest) GetPassword() string {
+	if m != nil {
+		return m.Password
+	}
+	return ""
+}
+
+func (m *CreateRequest) GetInviteEmails() []string {
+	if m != nil {
+		return m.InviteEmails
+	}
+	return nil
+}
+
+func (m *CreateRequest) GetSubscriptionType() string {
+	if m != nil {
+		return m.SubscriptionType
+	}
+	return ""
+}
+
+func (m *CreateRequest) GetClientIp() string {
+	if m != nil {
+		return m.ClientIp
+	}
+	return ""
+}
+
 type CreateResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 }
@@ -82,6 +138,13 @@ func (m *GetRequest) String() string            { return proto.CompactTextString
 func (*GetRequest) ProtoMessage()               {}
 func (*GetRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
 
+func (m *GetRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 type GetResponse struct {
 	Status *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
 	Phid   string                  `protobuf:"bytes,2,opt,name=phid" json:"phid,omitempty"`
@@ -99,6 +162,13 @@ func (m *GetResponse) GetStatus() *appscode_dtypes.Status {
 	return nil
 }
 
+func (m *GetResponse) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
 type IsAvailableRequest struct {
 	Name string `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 }
@@ -107,6 +177,13 @@ func (m *IsAvailableRequest) Reset()                    { *m = IsAvailableReques
 func (m *IsAvailableRequest) String() string            { return proto.CompactTextString(m) }
 func (*IsAvailableRequest) ProtoMessage()               {}
 func (*IsAvailableRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+
+func (m *IsAvailableRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
 
 type SubscriptionResponse struct {
 	Status     *appscode_dtypes.Status       `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -136,6 +213,34 @@ func (m *SubscriptionResponse) GetProduct() *SubscriptionResponse_Product {
 	return nil
 }
 
+func (m *SubscriptionResponse) GetAutoExtend() bool {
+	if m != nil {
+		return m.AutoExtend
+	}
+	return false
+}
+
+func (m *SubscriptionResponse) GetQuota() string {
+	if m != nil {
+		return m.Quota
+	}
+	return ""
+}
+
+func (m *SubscriptionResponse) GetDateStart() int64 {
+	if m != nil {
+		return m.DateStart
+	}
+	return 0
+}
+
+func (m *SubscriptionResponse) GetDateEnd() int64 {
+	if m != nil {
+		return m.DateEnd
+	}
+	return 0
+}
+
 type SubscriptionResponse_Product struct {
 	Sku          string `protobuf:"bytes,1,opt,name=sku" json:"sku,omitempty"`
 	Type         string `protobuf:"bytes,2,opt,name=type" json:"type,omitempty"`
@@ -147,6 +252,34 @@ func (m *SubscriptionResponse_Product) Reset()                    { *m = Subscri
 func (m *SubscriptionResponse_Product) String() string            { return proto.CompactTextString(m) }
 func (*SubscriptionResponse_Product) ProtoMessage()               {}
 func (*SubscriptionResponse_Product) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5, 0} }
+
+func (m *SubscriptionResponse_Product) GetSku() string {
+	if m != nil {
+		return m.Sku
+	}
+	return ""
+}
+
+func (m *SubscriptionResponse_Product) GetType() string {
+	if m != nil {
+		return m.Type
+	}
+	return ""
+}
+
+func (m *SubscriptionResponse_Product) GetDisplayName() string {
+	if m != nil {
+		return m.DisplayName
+	}
+	return ""
+}
+
+func (m *SubscriptionResponse_Product) GetPricingModel() string {
+	if m != nil {
+		return m.PricingModel
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*CreateRequest)(nil), "appscode.namespace.v1beta1.CreateRequest")
@@ -164,7 +297,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Teams service
 
@@ -334,7 +467,7 @@ var _Teams_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "team.proto",
 }
 
 func init() { proto.RegisterFile("team.proto", fileDescriptor0) }

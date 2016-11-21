@@ -62,6 +62,62 @@ func (m *Cluster) String() string            { return proto.CompactTextString(m)
 func (*Cluster) ProtoMessage()               {}
 func (*Cluster) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
+func (m *Cluster) GetPhid() string {
+	if m != nil {
+		return m.Phid
+	}
+	return ""
+}
+
+func (m *Cluster) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Cluster) GetKubeCluster() string {
+	if m != nil {
+		return m.KubeCluster
+	}
+	return ""
+}
+
+func (m *Cluster) GetKubeNamespace() string {
+	if m != nil {
+		return m.KubeNamespace
+	}
+	return ""
+}
+
+func (m *Cluster) GetReplica() int32 {
+	if m != nil {
+		return m.Replica
+	}
+	return 0
+}
+
+func (m *Cluster) GetEndpoint() string {
+	if m != nil {
+		return m.Endpoint
+	}
+	return ""
+}
+
+func (m *Cluster) GetCreatedAt() int64 {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return 0
+}
+
+func (m *Cluster) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
 type ClusterListRequest struct {
 	KubeCluster string `protobuf:"bytes,1,opt,name=kube_cluster,json=kubeCluster" json:"kube_cluster,omitempty"`
 	// List of status to get the agent filterd on the status
@@ -77,6 +133,20 @@ func (m *ClusterListRequest) Reset()                    { *m = ClusterListReques
 func (m *ClusterListRequest) String() string            { return proto.CompactTextString(m) }
 func (*ClusterListRequest) ProtoMessage()               {}
 func (*ClusterListRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+
+func (m *ClusterListRequest) GetKubeCluster() string {
+	if m != nil {
+		return m.KubeCluster
+	}
+	return ""
+}
+
+func (m *ClusterListRequest) GetStatus() []string {
+	if m != nil {
+		return m.Status
+	}
+	return nil
+}
 
 type ClusterListResponse struct {
 	Status   *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -112,6 +182,27 @@ func (m *ClusterDescribeRequest) Reset()                    { *m = ClusterDescri
 func (m *ClusterDescribeRequest) String() string            { return proto.CompactTextString(m) }
 func (*ClusterDescribeRequest) ProtoMessage()               {}
 func (*ClusterDescribeRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
+
+func (m *ClusterDescribeRequest) GetKubeCluster() string {
+	if m != nil {
+		return m.KubeCluster
+	}
+	return ""
+}
+
+func (m *ClusterDescribeRequest) GetKubeNamespace() string {
+	if m != nil {
+		return m.KubeNamespace
+	}
+	return ""
+}
+
+func (m *ClusterDescribeRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
 
 type ClusterDescribeResponse struct {
 	Status    *appscode_dtypes.Status `protobuf:"bytes,1,opt,name=status" json:"status,omitempty"`
@@ -151,6 +242,48 @@ func (m *ClusterCreateRequest) String() string            { return proto.Compact
 func (*ClusterCreateRequest) ProtoMessage()               {}
 func (*ClusterCreateRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
 
+func (m *ClusterCreateRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *ClusterCreateRequest) GetNode() int32 {
+	if m != nil {
+		return m.Node
+	}
+	return 0
+}
+
+func (m *ClusterCreateRequest) GetDiskSizeGb() int32 {
+	if m != nil {
+		return m.DiskSizeGb
+	}
+	return 0
+}
+
+func (m *ClusterCreateRequest) GetKubeCluster() string {
+	if m != nil {
+		return m.KubeCluster
+	}
+	return ""
+}
+
+func (m *ClusterCreateRequest) GetKubeNamespace() string {
+	if m != nil {
+		return m.KubeNamespace
+	}
+	return ""
+}
+
+func (m *ClusterCreateRequest) GetStorageClass() string {
+	if m != nil {
+		return m.StorageClass
+	}
+	return ""
+}
+
 type ClusterDeleteRequest struct {
 	KubeCluster   string `protobuf:"bytes,1,opt,name=kube_cluster,json=kubeCluster" json:"kube_cluster,omitempty"`
 	KubeNamespace string `protobuf:"bytes,2,opt,name=kube_namespace,json=kubeNamespace" json:"kube_namespace,omitempty"`
@@ -161,6 +294,27 @@ func (m *ClusterDeleteRequest) Reset()                    { *m = ClusterDeleteRe
 func (m *ClusterDeleteRequest) String() string            { return proto.CompactTextString(m) }
 func (*ClusterDeleteRequest) ProtoMessage()               {}
 func (*ClusterDeleteRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
+
+func (m *ClusterDeleteRequest) GetKubeCluster() string {
+	if m != nil {
+		return m.KubeCluster
+	}
+	return ""
+}
+
+func (m *ClusterDeleteRequest) GetKubeNamespace() string {
+	if m != nil {
+		return m.KubeNamespace
+	}
+	return ""
+}
+
+func (m *ClusterDeleteRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
 
 func init() {
 	proto.RegisterType((*Cluster)(nil), "appscode.glusterfs.v1beta1.Cluster")
@@ -178,7 +332,7 @@ var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion3
+const _ = grpc.SupportPackageIsVersion4
 
 // Client API for Clusters service
 
@@ -350,7 +504,7 @@ var _Clusters_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: fileDescriptor0,
+	Metadata: "cluster.proto",
 }
 
 func init() { proto.RegisterFile("cluster.proto", fileDescriptor0) }
