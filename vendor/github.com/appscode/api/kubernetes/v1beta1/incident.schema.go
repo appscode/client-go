@@ -35,9 +35,6 @@ func init() {
     "kubernetes_cluster": {
       "type": "string"
     },
-    "kubernetes_namespace": {
-      "type": "string"
-    },
     "output": {
       "type": "string"
     },
