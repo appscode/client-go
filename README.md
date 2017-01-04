@@ -1,6 +1,6 @@
 [![CLA assistant](https://cla-assistant.io/readme/badge/appscode/client)](https://cla-assistant.io/appscode/client)
 
-[Website](https://appscode.com) • [Slack](https://appscode.slack.com) • [Forum](https://discuss.appscode.com) • [Twitter](https://twitter.com/AppsCodeHQ)
+[Website](https://appscode.com) • [Slack](https://slack.appscode.com) • [Forum](https://discuss.appscode.com) • [Twitter](https://twitter.com/AppsCodeHQ)
 
 GO language client for AppsCode [apis](https://github.com/appscode/api).
 
