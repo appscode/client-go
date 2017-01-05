@@ -1,16 +1,14 @@
-hash: 4ecad1d9680e437a885eeed6cbaf04c0ba1b33924bbfc3ce8190b7e2dbbdbc75
-updated: 2016-12-15T00:03:11.315414998-08:00
+hash: 8ef036c4c8e8a74f62fe3abd71f70a31769eaec3ccf792c775b54f28392fea86
+updated: 2017-01-05T03:22:18.18904912-08:00
 imports:
 - name: github.com/appscode/api
-  version: 7042e51f302961ea4151fdc06f6af5f0a8748983
+  version: e66df0da5656fc1868b0dca7a6b610d31fd1c981
   repo: git@diffusion.appscode.com:appscode/37/api.git
   vcs: git
   subpackages:
-  - alert/v1beta1
   - artifactory/v1beta1
   - auth/v1beta1
   - backup/v1beta1
-  - billing/v1beta1
   - certificate/v1beta1
   - ci/v1beta1
   - credential/v1beta1
@@ -20,7 +18,6 @@ imports:
   - health
   - kubernetes/v1beta1
   - kubernetes/v1beta2
-  - loadbalancer/v1beta1
   - mailinglist/v1beta1
   - namespace/v1beta1
   - operation/v1beta1
@@ -54,10 +51,6 @@ imports:
   version: 792786c7400a136282c1664665ae0a8db921c6c2
   subpackages:
   - difflib
-- name: github.com/stretchr/testify
-  version: e3a8ff8ce36581f87a15341206f205b1da467059
-  subpackages:
-  - assert
 - name: github.com/xeipuuv/gojsonpointer
   version: e0fe6f68307607d540ed8eac07a342c33fa1b54a
 - name: github.com/xeipuuv/gojsonreference
@@ -85,4 +78,8 @@ imports:
   - naming
   - peer
   - transport
-testImports: []
+testImports:
+- name: github.com/stretchr/testify
+  version: 69483b4bd14f5845b5a1e55bca19e954e827f1d0
+  subpackages:
+  - assert
