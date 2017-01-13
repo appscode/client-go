@@ -5,7 +5,6 @@ import (
 	auth "github.com/appscode/api/auth/v1beta1"
 	backup "github.com/appscode/api/backup/v1beta1"
 	ca "github.com/appscode/api/certificate/v1beta1"
-	ci "github.com/appscode/api/ci/v1beta1"
 	db "github.com/appscode/api/db/v1beta1"
 	glusterfs "github.com/appscode/api/glusterfs/v1beta1"
 	kubernetesV1beta1 "github.com/appscode/api/kubernetes/v1beta1"
@@ -23,7 +22,6 @@ type multiClientInterface interface {
 	Backup() *backupService
 	Namespace() *nsService
 	CA() *caService
-	CI() *ciService
 	DB() *dbService
 	GlusterFS() *glusterFSService
 	Kubernetes() *versionedKubernetesService
@@ -36,7 +34,6 @@ type multiClientServices struct {
 	backupClient              *backupService
 	nsClient                  *nsService
 	caClient                  *caService
-	ciClient                  *ciService
 	glusterfsClient           *glusterFSService
 	versionedKubernetesClient *versionedKubernetesService
 	pvClient                  *pvService
@@ -64,12 +61,6 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 		},
 		caClient: &caService{
 			certificateClient: ca.NewCertificatesClient(conn),
-		},
-		ciClient: &ciService{
-			buildClient:  ci.NewBuildsClient(conn),
-			jobClient:    ci.NewJobsClient(conn),
-			masterClient: ci.NewMasterClient(conn),
-			agentClient:  ci.NewAgentsClient(conn),
 		},
 		glusterfsClient: &glusterFSService{
 			clusterClient: glusterfs.NewClustersClient(conn),
@@ -119,10 +110,6 @@ func (s *multiClientServices) Namespace() *nsService {
 
 func (s *multiClientServices) CA() *caService {
 	return s.caClient
-}
-
-func (s *multiClientServices) CI() *ciService {
-	return s.ciClient
 }
 
 func (s *multiClientServices) GlusterFS() *glusterFSService {
@@ -206,29 +193,6 @@ type caService struct {
 
 func (c *caService) CertificatesClient() ca.CertificatesClient {
 	return c.certificateClient
-}
-
-type ciService struct {
-	agentClient  ci.AgentsClient
-	buildClient  ci.BuildsClient
-	jobClient    ci.JobsClient
-	masterClient ci.MasterClient
-}
-
-func (c *ciService) Build() ci.BuildsClient {
-	return c.buildClient
-}
-
-func (c *ciService) Job() ci.JobsClient {
-	return c.jobClient
-}
-
-func (c *ciService) Master() ci.MasterClient {
-	return c.masterClient
-}
-
-func (c *ciService) Agent() ci.AgentsClient {
-	return c.agentClient
 }
 
 type glusterFSService struct {
