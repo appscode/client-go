@@ -3,7 +3,6 @@ package client
 import (
 	artifactory "github.com/appscode/api/artifactory/v1beta1"
 	auth "github.com/appscode/api/auth/v1beta1"
-	backup "github.com/appscode/api/backup/v1beta1"
 	ca "github.com/appscode/api/certificate/v1beta1"
 	db "github.com/appscode/api/db/v1beta1"
 	glusterfs "github.com/appscode/api/glusterfs/v1beta1"
@@ -19,7 +18,6 @@ import (
 type multiClientInterface interface {
 	Artifactory() *artifactoryService
 	Authentication() *authenticationService
-	Backup() *backupService
 	Namespace() *nsService
 	CA() *caService
 	DB() *dbService
@@ -31,7 +29,6 @@ type multiClientInterface interface {
 type multiClientServices struct {
 	artifactoryClient         *artifactoryService
 	authenticationClient      *authenticationService
-	backupClient              *backupService
 	nsClient                  *nsService
 	caClient                  *caService
 	glusterfsClient           *glusterFSService
@@ -50,10 +47,6 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 			authenticationClient: auth.NewAuthenticationClient(conn),
 			conduitClient:        auth.NewConduitClient(conn),
 			projectClient:        auth.NewProjectsClient(conn),
-		},
-		backupClient: &backupService{
-			backupServerClient: backup.NewServersClient(conn),
-			backupClientClient: backup.NewClientsClient(conn),
 		},
 		nsClient: &nsService{
 			teamClient:    namespace.NewTeamsClient(conn),
@@ -98,10 +91,6 @@ func (s *multiClientServices) Artifactory() *artifactoryService {
 
 func (s *multiClientServices) Authentication() *authenticationService {
 	return s.authenticationClient
-}
-
-func (s *multiClientServices) Backup() *backupService {
-	return s.backupClient
 }
 
 func (s *multiClientServices) Namespace() *nsService {
@@ -159,19 +148,6 @@ func (a *authenticationService) Conduit() auth.ConduitClient {
 
 func (a *authenticationService) Project() auth.ProjectsClient {
 	return a.projectClient
-}
-
-type backupService struct {
-	backupClientClient backup.ClientsClient
-	backupServerClient backup.ServersClient
-}
-
-func (b *backupService) Server() backup.ServersClient {
-	return b.backupServerClient
-}
-
-func (b *backupService) Client() backup.ClientsClient {
-	return b.backupClientClient
 }
 
 type nsService struct {
