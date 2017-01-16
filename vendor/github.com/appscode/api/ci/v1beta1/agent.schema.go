@@ -25,7 +25,7 @@ func init() {
       "type": "string"
     },
     "jenkins_jnlp_port": {
-      "type": "string"
+      "type": "integer"
     },
     "name": {
       "type": "string"
@@ -34,7 +34,7 @@ func init() {
       "type": "string"
     },
     "ssh_port": {
-      "type": "string"
+      "type": "integer"
     },
     "ssh_user": {
       "type": "string"
