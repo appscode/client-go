@@ -1,5 +1,5 @@
 hash: 06682789a8f101aca5bbd71605da522466ce4a84720fab9cb27aaadb8eb3a07f
-updated: 2017-02-07T03:22:02.258127172-08:00
+updated: 2017-02-07T03:55:22.529989648-08:00
 imports:
 - name: github.com/appscode/api
   version: a0aa24b5b48454245292967b3ec7195722c30648
@@ -32,6 +32,8 @@ imports:
   - io
 - name: github.com/appscode/go-term
   version: f3615b583144c395b1189d6a131b5023d276847c
+- name: github.com/appscode/go-tracer
+  version: 01dab6fa8d48a96bf54d07ee082b60bad8b44449
 - name: github.com/appscode/log
   version: 68e0e42e42c01371f3950571fc87c2298a51dd8f
 - name: github.com/davecgh/go-spew
@@ -61,6 +63,10 @@ imports:
   - third_party/appscodeapis/appscode/api
   - third_party/googleapis/google/api
   - utilities
+- name: github.com/inconshreveable/mousetrap
+  version: 76626ae9c91c4f2a10f34cad8ce83ea42c93bb75
+- name: github.com/jpillora/go-ogle-analytics
+  version: 2fcc54fe85cce40ab0d9ce84d974f3be9948b9c0
 - name: github.com/mattn/go-colorable
   version: 3dac7b4f76f6e17fb39b768b89e3783d16e237fe
 - name: github.com/mattn/go-isatty
@@ -71,6 +77,10 @@ imports:
   version: 792786c7400a136282c1664665ae0a8db921c6c2
   subpackages:
   - difflib
+- name: github.com/spf13/cobra
+  version: 9c28e4bbd74e5c3ed7aacbc552b2cab7cfdfe744
+- name: github.com/spf13/pflag
+  version: c7e63cf4530bcd3ba943729cee0efeff2ebea63f
 - name: github.com/xeipuuv/gojsonpointer
   version: e0fe6f68307607d540ed8eac07a342c33fa1b54a
 - name: github.com/xeipuuv/gojsonreference
