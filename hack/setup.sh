@@ -16,6 +16,8 @@ deps() {
 build() {
     local -r owd=$PWD
     cd $GOPATH/src/github.com/appscode/client
+    goimports -w cli credential *.go
+    gofmt -s -w cli credential *.go
     go build ./...
     cd $owd
 }

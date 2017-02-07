@@ -2,11 +2,12 @@ package client
 
 import (
 	"fmt"
+	"testing"
+
 	auth "github.com/appscode/api/auth/v1beta1"
 	kv1beta1 "github.com/appscode/api/kubernetes/v1beta1"
 	kv1beta2 "github.com/appscode/api/kubernetes/v1beta2"
 	"github.com/appscode/client/credential"
-	"testing"
 )
 
 func TestKubernetesClient(t *testing.T) {
