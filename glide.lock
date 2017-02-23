@@ -1,12 +1,12 @@
 hash: 06682789a8f101aca5bbd71605da522466ce4a84720fab9cb27aaadb8eb3a07f
-updated: 2017-02-07T06:41:23.30477971-08:00
+updated: 2017-02-22T23:56:29.089492838-08:00
 imports:
 - name: github.com/appscode/api
-  version: 61bde2caf45993e76e75f4a260506b159e84af27
+  version: c4ddd0d5ef6dec1151ff50b775661378fbe027d6
   repo: git@diffusion.appscode.com:appscode/37/api.git
   vcs: git
   subpackages:
-  - artifactory/v1beta1
+  - attic/v1beta1
   - auth/v1beta1
   - certificate/v1beta1
   - ci/v1beta1
