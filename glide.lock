@@ -1,8 +1,8 @@
 hash: 06682789a8f101aca5bbd71605da522466ce4a84720fab9cb27aaadb8eb3a07f
-updated: 2017-02-22T23:56:29.089492838-08:00
+updated: 2017-03-13T05:54:39.936760221-07:00
 imports:
 - name: github.com/appscode/api
-  version: c4ddd0d5ef6dec1151ff50b775661378fbe027d6
+  version: 95a4b285ee3d0e392b86d7a4b221668c8cabd8a7
   repo: git@diffusion.appscode.com:appscode/37/api.git
   vcs: git
   subpackages:
@@ -25,7 +25,7 @@ imports:
 - name: github.com/appscode/errors
   version: 6a668ba07d02064c06707b7d8b0f5239db707045
 - name: github.com/appscode/go
-  version: 7ba1c0a441c6c319a501e54db6e93deaff5fe0dd
+  version: b9008e99fa90d7806f404e0eab52bdecb4444826
   subpackages:
   - env
   - io

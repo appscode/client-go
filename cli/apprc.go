@@ -57,7 +57,7 @@ func (rc *Apprc) DeleteAuth() error {
 }
 
 func (rc *Apprc) Write() error {
-	err := io.WriteFile(apprcPath, rc)
+	err := io.WriteJson(apprcPath, rc)
 	if err != nil {
 		return err
 	}
