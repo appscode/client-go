@@ -7,7 +7,7 @@ package v1beta1
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import _ "github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api"
+import _ "google.golang.org/genproto/googleapis/api/annotations"
 import _ "github.com/grpc-ecosystem/grpc-gateway/third_party/appscodeapis/appscode/api"
 import appscode_dtypes "github.com/appscode/api/dtypes"
 
@@ -33,7 +33,7 @@ type EventRequest struct {
 func (m *EventRequest) Reset()                    { *m = EventRequest{} }
 func (m *EventRequest) String() string            { return proto.CompactTextString(m) }
 func (*EventRequest) ProtoMessage()               {}
-func (*EventRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
+func (*EventRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
 
 func (m *EventRequest) GetClusterName() string {
 	if m != nil {
@@ -85,7 +85,7 @@ type EventRequest_Ancestors struct {
 func (m *EventRequest_Ancestors) Reset()                    { *m = EventRequest_Ancestors{} }
 func (m *EventRequest_Ancestors) String() string            { return proto.CompactTextString(m) }
 func (*EventRequest_Ancestors) ProtoMessage()               {}
-func (*EventRequest_Ancestors) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0, 0} }
+func (*EventRequest_Ancestors) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0, 0} }
 
 func (m *EventRequest_Ancestors) GetType() string {
 	if m != nil {
@@ -115,7 +115,7 @@ type EventRequest_ObjectMeta struct {
 func (m *EventRequest_ObjectMeta) Reset()                    { *m = EventRequest_ObjectMeta{} }
 func (m *EventRequest_ObjectMeta) String() string            { return proto.CompactTextString(m) }
 func (*EventRequest_ObjectMeta) ProtoMessage()               {}
-func (*EventRequest_ObjectMeta) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0, 1} }
+func (*EventRequest_ObjectMeta) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0, 1} }
 
 func (m *EventRequest_ObjectMeta) GetKind() string {
 	if m != nil {
@@ -181,7 +181,7 @@ type EventResponse struct {
 func (m *EventResponse) Reset()                    { *m = EventResponse{} }
 func (m *EventResponse) String() string            { return proto.CompactTextString(m) }
 func (*EventResponse) ProtoMessage()               {}
-func (*EventResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
+func (*EventResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
 
 func (m *EventResponse) GetStatus() *appscode_dtypes.Status {
 	if m != nil {
@@ -209,7 +209,7 @@ type EventResponse_Handler struct {
 func (m *EventResponse_Handler) Reset()                    { *m = EventResponse_Handler{} }
 func (m *EventResponse_Handler) String() string            { return proto.CompactTextString(m) }
 func (*EventResponse_Handler) ProtoMessage()               {}
-func (*EventResponse_Handler) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1, 0} }
+func (*EventResponse_Handler) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1, 0} }
 
 func (m *EventResponse_Handler) GetAction() string {
 	if m != nil {
@@ -366,11 +366,11 @@ var _Events_serviceDesc = grpc.ServiceDesc{
 	Metadata: "event.proto",
 }
 
-func init() { proto.RegisterFile("event.proto", fileDescriptor2) }
+func init() { proto.RegisterFile("event.proto", fileDescriptor1) }
 
-var fileDescriptor2 = []byte{
+var fileDescriptor1 = []byte{
 	// 737 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xb4, 0x55, 0xdd, 0x6e, 0xd3, 0x48,
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x55, 0xdd, 0x6e, 0xd3, 0x48,
 	0x14, 0x96, 0x93, 0xc6, 0x49, 0x8e, 0xd3, 0x55, 0x35, 0xea, 0xee, 0x5a, 0xde, 0xee, 0x36, 0xdb,
 	0xd5, 0x4a, 0xd9, 0x4a, 0x6b, 0xd3, 0x14, 0x24, 0xa8, 0xb8, 0x80, 0x42, 0xa5, 0x56, 0x82, 0x52,
 	0xcc, 0x8f, 0x50, 0xb9, 0x88, 0x26, 0xf6, 0x69, 0xe5, 0x26, 0x19, 0x1b, 0xcf, 0x24, 0x6a, 0x84,

@@ -1,17 +1,16 @@
 package: github.com/appscode/client
 import:
 - package: github.com/appscode/api
-  repo: git@diffusion.appscode.com:appscode/37/api.git
-  vcs: git
+  version: master
 - package: github.com/davecgh/go-spew
   version: 3e6e67c4dcea3ac2f25fd4731abc0e1deaf36216
 - package: github.com/golang/glog
   version: 44145f04b68cf362d9c4df2182967c2275eaefed
 - package: github.com/golang/protobuf
-  version: 888eb0692c857ec880338addf316bd662d5e630e
+  version: 8ee79997227bf9b34611aee7946ae64735e6fd93
 - package: github.com/grpc-ecosystem/grpc-gateway
-  version: 1923bb600d4a5a045b73f5c61549398bc5de9d56
-  repo: git@github.com:appscode/grpc-gateway.git
+  version: master
+  repo: https://github.com/appscode/grpc-gateway.git
   vcs: git
 - package: github.com/pmezard/go-difflib
   version: v1.0.0
@@ -22,9 +21,8 @@ import:
 - package: github.com/xeipuuv/gojsonschema
   version: 93e72a773fade158921402d6a24c819b48aba29d
 - package: golang.org/x/net
-  version: f4b625ec9b21d620bb5ce57f2dfc3e08ca97fce6
 - package: google.golang.org/grpc
-  version: v1.0.4
+  version: v1.2.0
 - package: github.com/mitchellh/go-homedir
 testImport:
 - package: github.com/stretchr/testify
