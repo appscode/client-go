@@ -1,15 +1,14 @@
 hash: 089835c33530cc9c0aa5aff2113ee545480e0adc2fcc7b857db28b2dc04a03ec
-updated: 2017-03-25T07:44:50.358505805-07:00
+updated: 2017-03-29T13:24:49.881140857-07:00
 imports:
 - name: github.com/appscode/api
-  version: 070b98da693ac24b32f2fc6f8c621bd2c8ba4a6a
+  version: ad19f776e450745e557c249ec549e9b15cd46025
   subpackages:
   - attic/v1beta1
   - auth/v1beta1
   - certificate/v1beta1
   - ci/v1beta1
   - credential/v1beta1
-  - db/v1beta1
   - dtypes
   - health
   - kubernetes/v1beta1
@@ -22,7 +21,7 @@ imports:
 - name: github.com/appscode/errors
   version: 6a668ba07d02064c06707b7d8b0f5239db707045
 - name: github.com/appscode/go
-  version: b9008e99fa90d7806f404e0eab52bdecb4444826
+  version: c8deaa7e2fdb25334d9d1f8589a13183703c7158
   subpackages:
   - env
   - io
@@ -50,7 +49,7 @@ imports:
   - protoc-gen-go/descriptor
   - ptypes/any
 - name: github.com/grpc-ecosystem/grpc-gateway
-  version: fe33d6a271382b97fc8b8c296269f736b64ef3af
+  version: 0105e1c52e9b941244cf1840be2dad9c971fa534
   repo: https://github.com/appscode/grpc-gateway.git
   vcs: git
   subpackages:

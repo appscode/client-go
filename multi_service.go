@@ -5,7 +5,6 @@ import (
 	auth "github.com/appscode/api/auth/v1beta1"
 	ca "github.com/appscode/api/certificate/v1beta1"
 	ci "github.com/appscode/api/ci/v1beta1"
-	db "github.com/appscode/api/db/v1beta1"
 	kubernetesV1beta1 "github.com/appscode/api/kubernetes/v1beta1"
 	kubernetesV1beta2 "github.com/appscode/api/kubernetes/v1beta2"
 	namespace "github.com/appscode/api/namespace/v1beta1"
@@ -19,7 +18,6 @@ type multiClientInterface interface {
 	Authentication() *authenticationService
 	CA() *caService
 	CI() *ciService
-	DB() *dbService
 	Namespace() *nsService
 	Kubernetes() *versionedKubernetesService
 }
@@ -31,7 +29,6 @@ type multiClientServices struct {
 	ciClient                  *ciService
 	nsClient                  *nsService
 	versionedKubernetesClient *versionedKubernetesService
-	dbClient                  *dbService
 }
 
 func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
@@ -69,10 +66,6 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 			teamClient:    namespace.NewTeamsClient(conn),
 			billingClient: namespace.NewBillingClient(conn),
 		},
-		dbClient: &dbService{
-			database: db.NewDatabasesClient(conn),
-			snapshot: db.NewSnapshotsClient(conn),
-		},
 	}
 }
 
@@ -98,10 +91,6 @@ func (s *multiClientServices) CI() *ciService {
 
 func (s *multiClientServices) Kubernetes() *versionedKubernetesService {
 	return s.versionedKubernetesClient
-}
-
-func (s *multiClientServices) DB() *dbService {
-	return s.dbClient
 }
 
 // original service clients that needs to exposed under grouped wrapper
@@ -223,17 +212,4 @@ func (k *kubernetesV1beta2Service) Client() kubernetesV1beta2.ClientsClient {
 
 func (k *kubernetesV1beta2Service) Disk() kubernetesV1beta2.DisksClient {
 	return k.diskClient
-}
-
-type dbService struct {
-	database db.DatabasesClient
-	snapshot db.SnapshotsClient
-}
-
-func (p *dbService) Database() db.DatabasesClient {
-	return p.database
-}
-
-func (p *dbService) Snapshot() db.SnapshotsClient {
-	return p.snapshot
 }
