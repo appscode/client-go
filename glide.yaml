@@ -22,7 +22,7 @@ import:
   version: 93e72a773fade158921402d6a24c819b48aba29d
 - package: golang.org/x/net
 - package: google.golang.org/grpc
-  version: v1.2.0
+  version: v1.2.1
 - package: github.com/mitchellh/go-homedir
 testImport:
 - package: github.com/stretchr/testify

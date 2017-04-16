@@ -7,7 +7,6 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-var clusterInstanceListRequestSchema *gojsonschema.Schema
 var clusterInstanceByIPRequestSchema *gojsonschema.Schema
 var clusterUpdateRequestSchema *gojsonschema.Schema
 var clusterDeleteRequestSchema *gojsonschema.Schema
@@ -20,20 +19,6 @@ var clusterClientConfigRequestSchema *gojsonschema.Schema
 
 func init() {
 	var err error
-	clusterInstanceListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "properties": {
-    "cluster_name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
-      "type": "string"
-    }
-  },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
 	clusterInstanceByIPRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
@@ -298,11 +283,6 @@ func init() {
 	}
 }
 
-func (m *ClusterInstanceListRequest) IsValid() (*gojsonschema.Result, error) {
-	return clusterInstanceListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *ClusterInstanceListRequest) IsRequest() {}
-
 func (m *ClusterInstanceByIPRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterInstanceByIPRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
@@ -348,21 +328,18 @@ func (m *ClusterClientConfigRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *ClusterClientConfigRequest) IsRequest() {}
 
-func (m *ClusterStartupConfigResponse) SetStatus(s *dtypes.Status) {
-	m.Status = s
-}
-func (m *ClusterDescribeResponse) SetStatus(s *dtypes.Status) {
-	m.Status = s
-}
 func (m *ClusterListResponse) SetStatus(s *dtypes.Status) {
+	m.Status = s
+}
+func (m *ClusterInstanceByIPResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
 func (m *ClusterClientConfigResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-func (m *ClusterInstanceListResponse) SetStatus(s *dtypes.Status) {
+func (m *ClusterStartupConfigResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
-func (m *ClusterInstanceResponse) SetStatus(s *dtypes.Status) {
+func (m *ClusterDescribeResponse) SetStatus(s *dtypes.Status) {
 	m.Status = s
 }
