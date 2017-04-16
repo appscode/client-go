@@ -22,8 +22,9 @@ type Auth struct {
 		DateFormat       string `json:"date_format,omitempty"`
 	} `json:"settings,omitempty"`
 	Network struct {
-		PublicUrls api.URLBase `json:"public_urls,omitempty"`
-		TeamUrls   api.URLBase `json:"team_urls,omitempty"`
+		ClusterUrls api.URLBase `json:"cluster_urls,omitempty"`
+		PublicUrls  api.URLBase `json:"public_urls,omitempty"`
+		TeamUrls    api.URLBase `json:"team_urls,omitempty"`
 	} `json:"network,omitempty"`
 }
 
