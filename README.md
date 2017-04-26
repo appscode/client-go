@@ -1,3 +1,5 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/appscode/client)](https://goreportcard.com/report/github.com/appscode/client)
+
 [Website](https://appscode.com) • [Slack](https://slack.appscode.com) • [Forum](https://discuss.appscode.com) • [Twitter](https://twitter.com/AppsCodeHQ)
 
 GO language client for AppsCode [apis](https://github.com/appscode/api).
