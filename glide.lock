@@ -1,8 +1,8 @@
 hash: 5bfe184d3254e3b8cb859d9aa742be93307a4715215d6531671c2c0baec9d972
-updated: 2017-04-17T13:11:45.024588228-07:00
+updated: 2017-04-28T16:39:19.830329401-07:00
 imports:
 - name: github.com/appscode/api
-  version: 3aa094f7c79d45f2f269df8b2e0d95d0a21f82af
+  version: 33eb674722b154635f17b5b81a4ace04742c5dc0
   subpackages:
   - attic/v1beta1
   - auth/v1beta1
@@ -21,12 +21,12 @@ imports:
 - name: github.com/appscode/errors
   version: 87fb529db75df5295ccccd15cb038587cd5a9dd2
 - name: github.com/appscode/go
-  version: bd371af23fb2398b60c065a9e07df5084422d6ad
+  version: 012bea0c1af6e00bca05dd1c795bd7c7a9b2b235
   subpackages:
   - env
   - io
 - name: github.com/appscode/go-term
-  version: f3615b583144c395b1189d6a131b5023d276847c
+  version: 6d5e0cc5d69ced22952400ef6222664057b19fa2
 - name: github.com/appscode/go-tracer
   version: 01dab6fa8d48a96bf54d07ee082b60bad8b44449
 - name: github.com/appscode/log
