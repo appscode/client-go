@@ -1,8 +1,8 @@
 hash: 5bfe184d3254e3b8cb859d9aa742be93307a4715215d6531671c2c0baec9d972
-updated: 2017-04-28T16:39:19.830329401-07:00
+updated: 2017-04-28T17:42:54.373896887-07:00
 imports:
 - name: github.com/appscode/api
-  version: 33eb674722b154635f17b5b81a4ace04742c5dc0
+  version: cbed0a298748dbd96945b1dffd79006f82ea3309
   subpackages:
   - attic/v1beta1
   - auth/v1beta1
