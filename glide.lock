@@ -1,8 +1,8 @@
-hash: 5bfe184d3254e3b8cb859d9aa742be93307a4715215d6531671c2c0baec9d972
-updated: 2017-04-28T17:42:54.373896887-07:00
+hash: f2c2d58a300309c11ee4eb89ebe5e92cf0983165cad2e961658e5b7803e5a56f
+updated: 2017-04-28T20:49:22.485639134-07:00
 imports:
 - name: github.com/appscode/api
-  version: cbed0a298748dbd96945b1dffd79006f82ea3309
+  version: ca0987240ed0c60252fa08ee6c3d6ef07405070f
   subpackages:
   - attic/v1beta1
   - auth/v1beta1
@@ -21,7 +21,7 @@ imports:
 - name: github.com/appscode/errors
   version: 87fb529db75df5295ccccd15cb038587cd5a9dd2
 - name: github.com/appscode/go
-  version: 012bea0c1af6e00bca05dd1c795bd7c7a9b2b235
+  version: 16dae34745b8c485f42293ad6d16ea7d6c129564
   subpackages:
   - env
   - io
@@ -49,7 +49,7 @@ imports:
   - protoc-gen-go/descriptor
   - ptypes/any
 - name: github.com/grpc-ecosystem/grpc-gateway
-  version: c5404aec15f65a822be621c29f98bfd14a046494
+  version: b5bcec04fb714d637954c82827c2d5381e873e93
   repo: https://github.com/appscode/grpc-gateway.git
   vcs: git
   subpackages:
@@ -72,9 +72,9 @@ imports:
   subpackages:
   - difflib
 - name: github.com/spf13/cobra
-  version: 9c28e4bbd74e5c3ed7aacbc552b2cab7cfdfe744
+  version: 7b1b6e8dc027253d45fc029bc269d1c019f83a34
 - name: github.com/spf13/pflag
-  version: c7e63cf4530bcd3ba943729cee0efeff2ebea63f
+  version: f1d95a35e132e8a1868023a08932b14f0b8b8fcb
 - name: github.com/xeipuuv/gojsonpointer
   version: e0fe6f68307607d540ed8eac07a342c33fa1b54a
 - name: github.com/xeipuuv/gojsonreference
@@ -82,7 +82,7 @@ imports:
 - name: github.com/xeipuuv/gojsonschema
   version: 93e72a773fade158921402d6a24c819b48aba29d
 - name: golang.org/x/net
-  version: f4b625ec9b21d620bb5ce57f2dfc3e08ca97fce6
+  version: da118f7b8e5954f39d0d2130ab35d4bf0e3cb344
   subpackages:
   - context
   - http2
@@ -95,15 +95,24 @@ imports:
   version: 8f0908ab3b2457e2e15403d3697c9ef5cb4b57a9
   subpackages:
   - unix
+- name: golang.org/x/text
+  version: 470f45bf29f4147d6fbd7dfd0a02a848e49f5bf4
+  subpackages:
+  - secure/bidirule
+  - transform
+  - unicode/bidi
+  - unicode/norm
 - name: google.golang.org/genproto
   version: 411e09b969b1170a9f0c467558eb4c4c110d9c77
   subpackages:
   - googleapis/api/annotations
+  - googleapis/rpc/status
 - name: google.golang.org/grpc
-  version: 8050b9cbc271307e5a716a9d782803d09b0d6f2d
+  version: d2e1b51f33ff8c5e4a15560ff049d200e83726c5
   subpackages:
   - codes
   - credentials
+  - grpclb/grpc_lb_v1
   - grpclog
   - internal
   - keepalive
@@ -111,6 +120,7 @@ imports:
   - naming
   - peer
   - stats
+  - status
   - tap
   - transport
 testImports:

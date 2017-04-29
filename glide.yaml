@@ -9,7 +9,7 @@ import:
 - package: github.com/golang/protobuf
   version: 8ee79997227bf9b34611aee7946ae64735e6fd93
 - package: github.com/grpc-ecosystem/grpc-gateway
-  version: master
+  version: v1.2.2-ac
   repo: https://github.com/appscode/grpc-gateway.git
   vcs: git
 - package: github.com/pmezard/go-difflib
@@ -21,8 +21,11 @@ import:
 - package: github.com/xeipuuv/gojsonschema
   version: 93e72a773fade158921402d6a24c819b48aba29d
 - package: golang.org/x/net
+  version: da118f7b8e5954f39d0d2130ab35d4bf0e3cb344
+- package: golang.org/x/text
+  version: 470f45bf29f4147d6fbd7dfd0a02a848e49f5bf4
 - package: google.golang.org/grpc
-  version: v1.2.1
+  version: v1.3.0
 - package: github.com/mitchellh/go-homedir
 testImport:
 - package: github.com/stretchr/testify

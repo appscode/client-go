@@ -68,9 +68,9 @@ func ForwardResponseStream(ctx context.Context, mux *ServeMux, marshaler Marshal
 func handleForwardResponseServerMetadata(w http.ResponseWriter, mux *ServeMux, md ServerMetadata) {
 	for k, vs := range md.HeaderMD {
 		hKey := fmt.Sprintf("%s%s", MetadataHeaderPrefix, k)
-		for _, m := range mux.headerMatchers {
-			if m(k) {
-				hKey = k
+		if mux.outgoingHeaderMatcher != nil {
+			if h, ok := mux.outgoingHeaderMatcher(k); ok {
+				hKey = h
 				break
 			}
 		}
