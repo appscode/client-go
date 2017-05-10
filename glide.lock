@@ -1,8 +1,8 @@
-hash: f2c2d58a300309c11ee4eb89ebe5e92cf0983165cad2e961658e5b7803e5a56f
-updated: 2017-04-28T20:49:22.485639134-07:00
+hash: 6e59fef306e89173c482e256cbab299864a7891d0099cdf0f468c5050e8960b5
+updated: 2017-05-10T08:31:28.198971617-07:00
 imports:
 - name: github.com/appscode/api
-  version: ca0987240ed0c60252fa08ee6c3d6ef07405070f
+  version: 50fcce42b236af3765b08b020219744b782a2dba
   subpackages:
   - attic/v1beta1
   - auth/v1beta1
@@ -19,14 +19,14 @@ imports:
   - ssh/v1beta1
   - version
 - name: github.com/appscode/errors
-  version: 87fb529db75df5295ccccd15cb038587cd5a9dd2
+  version: 61db995d0bb9fc75cc7be1f772759a56e59ae4d3
 - name: github.com/appscode/go
-  version: 16dae34745b8c485f42293ad6d16ea7d6c129564
+  version: 496a78e678c2a161788f53f94bdb0ab9c812231f
   subpackages:
   - env
   - io
 - name: github.com/appscode/go-term
-  version: 6d5e0cc5d69ced22952400ef6222664057b19fa2
+  version: cb6c56adde62eee8e6f74f1bd6b575469456fbcc
 - name: github.com/appscode/go-tracer
   version: 01dab6fa8d48a96bf54d07ee082b60bad8b44449
 - name: github.com/appscode/log
@@ -49,7 +49,7 @@ imports:
   - protoc-gen-go/descriptor
   - ptypes/any
 - name: github.com/grpc-ecosystem/grpc-gateway
-  version: b5bcec04fb714d637954c82827c2d5381e873e93
+  version: 6c3de148e0ee58664e370c84dfc6bb082de03cd6
   repo: https://github.com/appscode/grpc-gateway.git
   vcs: git
   subpackages:
@@ -72,9 +72,9 @@ imports:
   subpackages:
   - difflib
 - name: github.com/spf13/cobra
-  version: 7b1b6e8dc027253d45fc029bc269d1c019f83a34
+  version: 1362f95a8d6fe330d00a64380d6e0b65f4992c72
 - name: github.com/spf13/pflag
-  version: f1d95a35e132e8a1868023a08932b14f0b8b8fcb
+  version: e57e3eeb33f795204c1ca35f56c44f83227c6e66
 - name: github.com/xeipuuv/gojsonpointer
   version: e0fe6f68307607d540ed8eac07a342c33fa1b54a
 - name: github.com/xeipuuv/gojsonreference
@@ -106,6 +106,7 @@ imports:
   version: 411e09b969b1170a9f0c467558eb4c4c110d9c77
   subpackages:
   - googleapis/api/annotations
+  - googleapis/rpc/code
   - googleapis/rpc/status
 - name: google.golang.org/grpc
   version: d2e1b51f33ff8c5e4a15560ff049d200e83726c5

@@ -1,7 +1,6 @@
 package api
 
 import (
-	"github.com/appscode/api/dtypes"
 	"github.com/xeipuuv/gojsonschema"
 )
 
@@ -18,6 +17,4 @@ type Response interface {
 	Reset()
 	String() string
 	ProtoMessage()
-	GetStatus() *dtypes.Status
-	SetStatus(*dtypes.Status)
 }

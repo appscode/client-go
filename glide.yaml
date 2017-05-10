@@ -1,7 +1,9 @@
 package: github.com/appscode/client
 import:
 - package: github.com/appscode/api
-  version: master
+  version: fix-status
+- package: github.com/appscode/go-term
+  version: fix-status
 - package: github.com/davecgh/go-spew
   version: 3e6e67c4dcea3ac2f25fd4731abc0e1deaf36216
 - package: github.com/golang/glog
