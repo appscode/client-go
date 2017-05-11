@@ -1,8 +1,8 @@
-hash: 6e59fef306e89173c482e256cbab299864a7891d0099cdf0f468c5050e8960b5
-updated: 2017-05-10T08:31:28.198971617-07:00
+hash: 4bb69dc091276b15ff5e36b3fbb9496581b4bbb663197083687c1102dfa36c9e
+updated: 2017-05-11T10:01:13.270248102-07:00
 imports:
 - name: github.com/appscode/api
-  version: 50fcce42b236af3765b08b020219744b782a2dba
+  version: e591036d12bb00c59c6a2c6f7530adea9d30e6b6
   subpackages:
   - attic/v1beta1
   - auth/v1beta1
@@ -26,11 +26,7 @@ imports:
   - env
   - io
 - name: github.com/appscode/go-term
-  version: cb6c56adde62eee8e6f74f1bd6b575469456fbcc
-- name: github.com/appscode/go-tracer
-  version: 01dab6fa8d48a96bf54d07ee082b60bad8b44449
-- name: github.com/appscode/log
-  version: 68e0e42e42c01371f3950571fc87c2298a51dd8f
+  version: cf834d364f844971f861e27684920cc6b4e565aa
 - name: github.com/davecgh/go-spew
   version: 3e6e67c4dcea3ac2f25fd4731abc0e1deaf36216
   subpackages:
@@ -57,10 +53,6 @@ imports:
   - runtime/internal
   - third_party/appscodeapis/appscode/api
   - utilities
-- name: github.com/inconshreveable/mousetrap
-  version: 76626ae9c91c4f2a10f34cad8ce83ea42c93bb75
-- name: github.com/jpillora/go-ogle-analytics
-  version: 2fcc54fe85cce40ab0d9ce84d974f3be9948b9c0
 - name: github.com/mattn/go-colorable
   version: 3dac7b4f76f6e17fb39b768b89e3783d16e237fe
 - name: github.com/mattn/go-isatty
@@ -71,10 +63,6 @@ imports:
   version: 792786c7400a136282c1664665ae0a8db921c6c2
   subpackages:
   - difflib
-- name: github.com/spf13/cobra
-  version: 1362f95a8d6fe330d00a64380d6e0b65f4992c72
-- name: github.com/spf13/pflag
-  version: e57e3eeb33f795204c1ca35f56c44f83227c6e66
 - name: github.com/xeipuuv/gojsonpointer
   version: e0fe6f68307607d540ed8eac07a342c33fa1b54a
 - name: github.com/xeipuuv/gojsonreference
