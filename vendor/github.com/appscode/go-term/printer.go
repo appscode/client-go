@@ -35,16 +35,10 @@ func Successln(i ...interface{}) {
 
 func Errorln(i ...interface{}) {
 	doPrintln([]color.Attribute{color.FgRed, color.Bold}, i)
-	if Env != env.Prod {
-		fmt.Fprintln(os.Stderr, errors.New().Error())
-	}
 }
 
 func Fatalln(i ...interface{}) {
 	doPrintln([]color.Attribute{color.FgRed, color.Bold}, i)
-	if Env != env.Prod {
-		fmt.Fprintln(os.Stderr, errors.New().Error())
-	}
 	os.Exit(1)
 }
 
@@ -52,7 +46,7 @@ func ExitOnError(err error) {
 	if err != nil {
 		doPrintln([]color.Attribute{color.FgRed, color.Bold}, []interface{}{err.Error()})
 		if Env != env.Prod {
-			fmt.Fprintln(os.Stderr, errors.New().Error())
+			fmt.Fprintln(os.Stderr, errors.FromErr(err).Error())
 		}
 		os.Exit(1)
 	}

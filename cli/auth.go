@@ -29,10 +29,10 @@ type Auth struct {
 }
 
 func (a *Auth) TeamAddr() string {
-	if a.Env == _env.Onebox || a.Env == _env.BoxDev {
-		return a.Network.TeamUrls.BaseAddr
-	} else {
+	if a.Env.IsHosted() {
 		return a.TeamId + "." + a.Network.TeamUrls.BaseAddr
+	} else {
+		return a.Network.TeamUrls.BaseAddr
 	}
 }
 
