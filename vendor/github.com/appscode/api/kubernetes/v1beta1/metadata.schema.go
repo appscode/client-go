@@ -43,6 +43,9 @@ func init() {
     "gce_project": {
       "type": "string"
     },
+    "provider": {
+      "type": "string"
+    },
     "secret_name": {
       "maxLength": 63,
       "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",

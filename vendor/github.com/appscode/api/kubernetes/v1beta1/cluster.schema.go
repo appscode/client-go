@@ -12,6 +12,7 @@ var clusterDeleteRequestSchema *gojsonschema.Schema
 var clusterCreateRequestSchema *gojsonschema.Schema
 var clusterDescribeRequestSchema *gojsonschema.Schema
 var clusterListRequestSchema *gojsonschema.Schema
+var clusterMetadataRequestSchema *gojsonschema.Schema
 var clusterReconfigureRequestSchema *gojsonschema.Schema
 var clusterStartupConfigRequestSchema *gojsonschema.Schema
 var clusterClientConfigRequestSchema *gojsonschema.Schema
@@ -212,6 +213,18 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
+	clusterMetadataRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "uid": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
 	clusterReconfigureRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
@@ -311,6 +324,11 @@ func (m *ClusterListRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ClusterListRequest) IsRequest() {}
+
+func (m *ClusterMetadataRequest) IsValid() (*gojsonschema.Result, error) {
+	return clusterMetadataRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *ClusterMetadataRequest) IsRequest() {}
 
 func (m *ClusterReconfigureRequest) IsValid() (*gojsonschema.Result, error) {
 	return clusterReconfigureRequestSchema.Validate(gojsonschema.NewGoLoader(m))

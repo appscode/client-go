@@ -1,8 +1,8 @@
 hash: 4bb69dc091276b15ff5e36b3fbb9496581b4bbb663197083687c1102dfa36c9e
-updated: 2017-05-20T03:47:20.038070192-07:00
+updated: 2017-10-16T12:16:46.449690971-07:00
 imports:
 - name: github.com/appscode/api
-  version: 6f9cbc01285599f828bb7cacdb3ff0b93eacd0a6
+  version: 65e3cf97d02501c39b5c5a4378cb6b17189183b9
   subpackages:
   - attic/v1beta1
   - auth/v1beta1
@@ -12,29 +12,28 @@ imports:
   - dtypes
   - health
   - kubernetes/v1beta1
-  - kubernetes/v1beta2
   - mailinglist/v1beta1
   - namespace/v1beta1
   - operation/v1beta1
   - ssh/v1beta1
   - version
 - name: github.com/appscode/errors
-  version: 45337f4d7774392043ed9f8c237f9e810974dd98
+  version: 748883e321a9f99fe901bd2663c7af3fcae43ea4
 - name: github.com/appscode/go
-  version: 04abd631dc552c01c9448db0763611932590cbc4
+  version: f719fe83ed5dd094e07c4456dc68e1227131d581
   subpackages:
   - env
   - io
 - name: github.com/appscode/go-term
-  version: 620ebcf71e8e9dd59363149cd05ce8d3d57231e6
+  version: d0c677f2d84034b1357d3f69ffd29c5fb81f662f
 - name: github.com/davecgh/go-spew
   version: 3e6e67c4dcea3ac2f25fd4731abc0e1deaf36216
   subpackages:
   - spew
 - name: github.com/facebookgo/stack
-  version: d9d227395bc3d7a635388c75b2e3b3a750e11888
+  version: 751773369052141c013c6e827a71e8f35c07879c
 - name: github.com/fatih/color
-  version: 9aae6aaa22315390f03959adca2c4d395b02fcef
+  version: 5df930a27be2502f99b292b7cc09ebad4d0891f4
 - name: github.com/golang/glog
   version: 44145f04b68cf362d9c4df2182967c2275eaefed
 - name: github.com/golang/protobuf
@@ -45,7 +44,7 @@ imports:
   - protoc-gen-go/descriptor
   - ptypes/any
 - name: github.com/grpc-ecosystem/grpc-gateway
-  version: e40837d7cc3a3e454c1e42012704e92bd49310af
+  version: 42a2d1c4991e79a4a8318984e5c81031b21f3c76
   repo: https://github.com/appscode/grpc-gateway.git
   vcs: git
   subpackages:
@@ -53,12 +52,16 @@ imports:
   - runtime/internal
   - third_party/appscodeapis/appscode/api
   - utilities
+- name: github.com/howeyc/gopass
+  version: bf9dde6d0d2c004a008c27aaee91170c786f6db8
 - name: github.com/mattn/go-colorable
-  version: 3dac7b4f76f6e17fb39b768b89e3783d16e237fe
+  version: 5411d3eea5978e6cdc258b30de592b60df6aba96
+  repo: https://github.com/mattn/go-colorable
 - name: github.com/mattn/go-isatty
-  version: 56b76bdf51f7708750eac80fa38b952bb9f32639
+  version: 57fdcb988a5c543893cc61bce354a6e24ab70022
+  repo: https://github.com/mattn/go-isatty
 - name: github.com/mitchellh/go-homedir
-  version: d682a8f0cf139663a984ff12528da460ca963de9
+  version: b8bc1bf767474819792c23f32d8286a45736f1c6
 - name: github.com/pmezard/go-difflib
   version: 792786c7400a136282c1664665ae0a8db921c6c2
   subpackages:
@@ -69,6 +72,10 @@ imports:
   version: e02fc20de94c78484cd5ffb007f8af96be030a45
 - name: github.com/xeipuuv/gojsonschema
   version: 93e72a773fade158921402d6a24c819b48aba29d
+- name: golang.org/x/crypto
+  version: 81e90905daefcd6fd217b62423c0908922eadb30
+  subpackages:
+  - ssh/terminal
 - name: golang.org/x/net
   version: da118f7b8e5954f39d0d2130ab35d4bf0e3cb344
   subpackages:
@@ -80,9 +87,11 @@ imports:
   - lex/httplex
   - trace
 - name: golang.org/x/sys
-  version: 8f0908ab3b2457e2e15403d3697c9ef5cb4b57a9
+  version: e24f485414aeafb646f6fca458b0bf869c0880a1
+  repo: https://go.googlesource.com/sys
   subpackages:
   - unix
+  - windows
 - name: golang.org/x/text
   version: 470f45bf29f4147d6fbd7dfd0a02a848e49f5bf4
   subpackages:
@@ -91,7 +100,7 @@ imports:
   - unicode/bidi
   - unicode/norm
 - name: google.golang.org/genproto
-  version: bb3573be0c484136831138976d444b8754777aff
+  version: f676e0f3ac6395ff1a529ae59a6670878a8371a6
   subpackages:
   - googleapis/api/annotations
   - googleapis/rpc/status

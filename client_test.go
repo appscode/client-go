@@ -6,14 +6,13 @@ import (
 
 	auth "github.com/appscode/api/auth/v1beta1"
 	kv1beta1 "github.com/appscode/api/kubernetes/v1beta1"
-	kv1beta2 "github.com/appscode/api/kubernetes/v1beta2"
 	"github.com/appscode/client/credential"
 )
 
 func TestKubernetesClient(t *testing.T) {
 	c := getClient()
 	//Clients client Test
-	reqV1beta2 := &kv1beta2.ListResourceRequest{
+	reqV1beta2 := &kv1beta1.ListResourceRequest{
 		Cluster: "qa",
 		Type:    "pods",
 	}
@@ -27,7 +26,7 @@ func TestKubernetesClient(t *testing.T) {
 	}
 	_, err = c.Kubernetes().V1beta1().LoadBalancer().List(c.Context(), req)
 	//Disk client Test
-	reqV1beta2Disk := &kv1beta2.DiskListRequest{
+	reqV1beta2Disk := &kv1beta1.DiskListRequest{
 		Cluster: "qa",
 	}
 	_, err = c.Kubernetes().V1beta2().Disk().List(c.Context(), reqV1beta2Disk)

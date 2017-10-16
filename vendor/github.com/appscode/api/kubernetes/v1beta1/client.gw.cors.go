@@ -3,11 +3,11 @@
 // DO NOT EDIT!
 
 /*
-Package v1beta2 is a reverse proxy.
+Package v1beta1 is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package v1beta2
+package v1beta1
 
 import "github.com/grpc-ecosystem/grpc-gateway/runtime"
 
@@ -27,6 +27,7 @@ func ExportClientsCorsPatterns() []runtime.Pattern {
 		pattern_Clients_UnregisterPersistentVolume_0,
 		pattern_Clients_RegisterPersistentVolumeClaim_0,
 		pattern_Clients_UnregisterPersistentVolumeClaim_0,
+		pattern_Clients_ReverseIndex_0,
 	}
 }
 
