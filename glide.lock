@@ -1,39 +1,61 @@
-hash: 4bb69dc091276b15ff5e36b3fbb9496581b4bbb663197083687c1102dfa36c9e
-updated: 2017-10-16T12:16:46.449690971-07:00
+hash: f5d0717079c2e58b6fee9ea99eaff2efd4c1a59d1aac45eb6b2a8da7d3100986
+updated: 2017-11-15T23:16:29.609450793-08:00
 imports:
 - name: github.com/appscode/api
-  version: 65e3cf97d02501c39b5c5a4378cb6b17189183b9
+  version: d4dcfb11277d3266730d4bd14391a10c0b39a755
   subpackages:
   - attic/v1beta1
   - auth/v1beta1
   - certificate/v1beta1
   - ci/v1beta1
-  - credential/v1beta1
+  - cluster/v1alpha1
   - dtypes
   - health
   - kubernetes/v1beta1
   - mailinglist/v1beta1
   - namespace/v1beta1
   - operation/v1beta1
-  - ssh/v1beta1
   - version
 - name: github.com/appscode/errors
   version: 748883e321a9f99fe901bd2663c7af3fcae43ea4
 - name: github.com/appscode/go
-  version: f719fe83ed5dd094e07c4456dc68e1227131d581
+  version: 6c0d0eba230ad31f74a18b44beee6f865b01bdec
   subpackages:
+  - context
   - env
   - io
+  - log
 - name: github.com/appscode/go-term
   version: d0c677f2d84034b1357d3f69ffd29c5fb81f662f
+- name: github.com/appscode/pharmer
+  version: eac7e131030bf3a7198ef022d799466c7f5c97c4
+  subpackages:
+  - apis/v1alpha1
 - name: github.com/davecgh/go-spew
   version: 3e6e67c4dcea3ac2f25fd4731abc0e1deaf36216
   subpackages:
   - spew
+- name: github.com/emicklei/go-restful
+  version: ff4f55a206334ef123e4f79bbf348980da81ca46
+  subpackages:
+  - log
 - name: github.com/facebookgo/stack
   version: 751773369052141c013c6e827a71e8f35c07879c
 - name: github.com/fatih/color
-  version: 5df930a27be2502f99b292b7cc09ebad4d0891f4
+  version: 9aae6aaa22315390f03959adca2c4d395b02fcef
+- name: github.com/go-openapi/jsonpointer
+  version: 46af16f9f7b149af66e5d1bd010e3574dc06de98
+- name: github.com/go-openapi/jsonreference
+  version: 13c6e3589ad90f49bd3e3bbe2c2cb3d7a4142272
+- name: github.com/go-openapi/spec
+  version: 6aced65f8501fe1217321abf0749d354824ba2ff
+- name: github.com/go-openapi/swag
+  version: 1d0bd113de87027671077d3c71eb3ac5d7dbba72
+- name: github.com/gogo/protobuf
+  version: c0656edd0d9eab7c66d1eb0c568f9039345796f7
+  subpackages:
+  - proto
+  - sortkeys
 - name: github.com/golang/glog
   version: 44145f04b68cf362d9c4df2182967c2275eaefed
 - name: github.com/golang/protobuf
@@ -43,6 +65,10 @@ imports:
   - proto
   - protoc-gen-go/descriptor
   - ptypes/any
+- name: github.com/google/gofuzz
+  version: 44d81051d367757e1c7c6a5a86423ece9afcf63c
+- name: github.com/google/uuid
+  version: 8c31c18f31ede9fc8eae72290a7e7a8064e9b3e3
 - name: github.com/grpc-ecosystem/grpc-gateway
   version: 42a2d1c4991e79a4a8318984e5c81031b21f3c76
   repo: https://github.com/appscode/grpc-gateway.git
@@ -54,18 +80,28 @@ imports:
   - utilities
 - name: github.com/howeyc/gopass
   version: bf9dde6d0d2c004a008c27aaee91170c786f6db8
+- name: github.com/mailru/easyjson
+  version: d5b7844b561a7bc640052f1b935f7b800330d7e0
+  subpackages:
+  - buffer
+  - jlexer
+  - jwriter
 - name: github.com/mattn/go-colorable
-  version: 5411d3eea5978e6cdc258b30de592b60df6aba96
-  repo: https://github.com/mattn/go-colorable
+  version: ed8eb9e318d7a84ce5915b495b7d35e0cfe7b5a8
 - name: github.com/mattn/go-isatty
   version: 57fdcb988a5c543893cc61bce354a6e24ab70022
-  repo: https://github.com/mattn/go-isatty
 - name: github.com/mitchellh/go-homedir
   version: b8bc1bf767474819792c23f32d8286a45736f1c6
 - name: github.com/pmezard/go-difflib
   version: 792786c7400a136282c1664665ae0a8db921c6c2
   subpackages:
   - difflib
+- name: github.com/PuerkitoBio/purell
+  version: 8a290539e2e8629dbc4e6bad948158f790ec31f4
+- name: github.com/PuerkitoBio/urlesc
+  version: 5bd2802263f21d8788851d5305584c82a5c75d7e
+- name: github.com/spf13/pflag
+  version: e57e3eeb33f795204c1ca35f56c44f83227c6e66
 - name: github.com/xeipuuv/gojsonpointer
   version: e0fe6f68307607d540ed8eac07a342c33fa1b54a
 - name: github.com/xeipuuv/gojsonreference
@@ -73,7 +109,7 @@ imports:
 - name: github.com/xeipuuv/gojsonschema
   version: 93e72a773fade158921402d6a24c819b48aba29d
 - name: golang.org/x/crypto
-  version: 81e90905daefcd6fd217b62423c0908922eadb30
+  version: 84e98f45760e87786b7f24603b8166a6fa09811d
   subpackages:
   - ssh/terminal
 - name: golang.org/x/net
@@ -87,20 +123,25 @@ imports:
   - lex/httplex
   - trace
 - name: golang.org/x/sys
-  version: e24f485414aeafb646f6fca458b0bf869c0880a1
-  repo: https://go.googlesource.com/sys
+  version: 7ddbeae9ae08c6a06a59597f0c9edbc5ff2444ce
   subpackages:
   - unix
-  - windows
 - name: golang.org/x/text
   version: 470f45bf29f4147d6fbd7dfd0a02a848e49f5bf4
   subpackages:
+  - cases
+  - internal
+  - internal/tag
+  - language
+  - runes
   - secure/bidirule
+  - secure/precis
   - transform
   - unicode/bidi
   - unicode/norm
+  - width
 - name: google.golang.org/genproto
-  version: f676e0f3ac6395ff1a529ae59a6670878a8371a6
+  version: 11c7f9e547da6db876260ce49ea7536985904c9b
   subpackages:
   - googleapis/api/annotations
   - googleapis/rpc/status
@@ -120,6 +161,50 @@ imports:
   - status
   - tap
   - transport
+- name: gopkg.in/inf.v0
+  version: 3887ee99ecf07df5b447e9b00d9c0b2adaa9f3e4
+- name: k8s.io/api
+  version: 4df58c811fe2e65feb879227b2b245e4dc26e7ad
+  subpackages:
+  - core/v1
+- name: k8s.io/apimachinery
+  version: 1ea04657e64ddf330b7b86849ca22c6fcd8d600a
+  repo: https://github.com/tamalsaha/apimachinery.git
+  vcs: git
+  subpackages:
+  - pkg/api/resource
+  - pkg/apis/meta/v1
+  - pkg/conversion
+  - pkg/conversion/queryparams
+  - pkg/fields
+  - pkg/labels
+  - pkg/runtime
+  - pkg/runtime/schema
+  - pkg/selection
+  - pkg/types
+  - pkg/util/errors
+  - pkg/util/intstr
+  - pkg/util/net
+  - pkg/util/runtime
+  - pkg/util/sets
+  - pkg/util/validation
+  - pkg/util/validation/field
+  - pkg/util/wait
+  - pkg/watch
+  - third_party/forked/golang/reflect
+- name: k8s.io/kube-openapi
+  version: 868f2f29720b192240e18284659231b440f9cda5
+  subpackages:
+  - pkg/common
+- name: k8s.io/kubernetes
+  version: bd3f06169027dbe485a1791860b3768d54b199dd
+  repo: https://github.com/appscode/kubernetes.git
+  vcs: git
+  subpackages:
+  - cmd/kubeadm/app/apis/kubeadm
+  - cmd/kubeadm/app/apis/kubeadm/v1alpha1
+  - cmd/kubeadm/app/constants
+  - pkg/util/version
 testImports:
 - name: github.com/stretchr/testify
   version: 69483b4bd14f5845b5a1e55bca19e954e827f1d0
