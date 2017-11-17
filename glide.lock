@@ -1,8 +1,8 @@
-hash: f5d0717079c2e58b6fee9ea99eaff2efd4c1a59d1aac45eb6b2a8da7d3100986
-updated: 2017-11-15T23:16:29.609450793-08:00
+hash: 3757f178a8fac97affbe35d6cb43ac6e95c1f910280c474ad10081ee84f1d5fa
+updated: 2017-11-17T02:46:53.779882053-08:00
 imports:
 - name: github.com/appscode/api
-  version: d4dcfb11277d3266730d4bd14391a10c0b39a755
+  version: 8da2a4d326ce313d6864b33b8684d92504aacd65
   subpackages:
   - attic/v1beta1
   - auth/v1beta1
@@ -16,19 +16,17 @@ imports:
   - namespace/v1beta1
   - operation/v1beta1
   - version
-- name: github.com/appscode/errors
-  version: 748883e321a9f99fe901bd2663c7af3fcae43ea4
 - name: github.com/appscode/go
-  version: 6c0d0eba230ad31f74a18b44beee6f865b01bdec
+  version: 1cd97c853ad364376f9c792106deb0bfd197bca0
   subpackages:
   - context
   - env
+  - errors
   - io
   - log
-- name: github.com/appscode/go-term
-  version: d0c677f2d84034b1357d3f69ffd29c5fb81f662f
+  - term
 - name: github.com/appscode/pharmer
-  version: eac7e131030bf3a7198ef022d799466c7f5c97c4
+  version: 2366785b37f1d3f37aa887813cb5c42fdfa31b51
   subpackages:
   - apis/v1alpha1
 - name: github.com/davecgh/go-spew
@@ -42,7 +40,7 @@ imports:
 - name: github.com/facebookgo/stack
   version: 751773369052141c013c6e827a71e8f35c07879c
 - name: github.com/fatih/color
-  version: 9aae6aaa22315390f03959adca2c4d395b02fcef
+  version: 5df930a27be2502f99b292b7cc09ebad4d0891f4
 - name: github.com/go-openapi/jsonpointer
   version: 46af16f9f7b149af66e5d1bd010e3574dc06de98
 - name: github.com/go-openapi/jsonreference
@@ -87,9 +85,11 @@ imports:
   - jlexer
   - jwriter
 - name: github.com/mattn/go-colorable
-  version: ed8eb9e318d7a84ce5915b495b7d35e0cfe7b5a8
+  version: 5411d3eea5978e6cdc258b30de592b60df6aba96
+  repo: https://github.com/mattn/go-colorable
 - name: github.com/mattn/go-isatty
   version: 57fdcb988a5c543893cc61bce354a6e24ab70022
+  repo: https://github.com/mattn/go-isatty
 - name: github.com/mitchellh/go-homedir
   version: b8bc1bf767474819792c23f32d8286a45736f1c6
 - name: github.com/pmezard/go-difflib
@@ -123,7 +123,8 @@ imports:
   - lex/httplex
   - trace
 - name: golang.org/x/sys
-  version: 7ddbeae9ae08c6a06a59597f0c9edbc5ff2444ce
+  version: e24f485414aeafb646f6fca458b0bf869c0880a1
+  repo: https://go.googlesource.com/sys
   subpackages:
   - unix
 - name: golang.org/x/text

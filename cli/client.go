@@ -4,7 +4,7 @@ import (
 	"errors"
 
 	"github.com/appscode/client"
-	term "github.com/appscode/go-term"
+	"github.com/appscode/go/term"
 	"google.golang.org/grpc/grpclog"
 )
 
