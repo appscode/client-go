@@ -3,7 +3,6 @@ package client
 import (
 	attic "github.com/appscode/api/attic/v1beta1"
 	auth "github.com/appscode/api/auth/v1beta1"
-	ca "github.com/appscode/api/certificate/v1beta1"
 	ci "github.com/appscode/api/ci/v1beta1"
 	cloud_v1alpha1 "github.com/appscode/api/cloud/v1alpha1"
 	k8s_v1beta1 "github.com/appscode/api/kubernetes/v1beta1"
@@ -16,7 +15,6 @@ import (
 type multiClientInterface interface {
 	Attic() *atticService
 	Authentication() *authenticationService
-	CA() *caService
 	CI() *ciService
 	Namespace() *nsService
 	Cloud() *versionedClusterService
@@ -26,7 +24,6 @@ type multiClientInterface interface {
 type multiClientServices struct {
 	atticClient               *atticService
 	authenticationClient      *authenticationService
-	caClient                  *caService
 	ciClient                  *ciService
 	nsClient                  *nsService
 	versionedClusterClient    *versionedClusterService
@@ -44,20 +41,18 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 			conduitClient:        auth.NewConduitClient(conn),
 			projectClient:        auth.NewProjectsClient(conn),
 		},
-		caClient: &caService{
-			certificateClient: ca.NewCertificatesClient(conn),
-		},
 		ciClient: &ciService{
 			agentsClient:   ci.NewAgentsClient(conn),
 			metadataClient: ci.NewMetadataClient(conn),
 		},
 		versionedClusterClient: &versionedClusterService{
 			v1alpha1Service: &clusterV1alpha1Service{
-				credentialClient: cloud_v1alpha1.NewCredentialsClient(conn),
-				clusterClient:    cloud_v1alpha1.NewClustersClient(conn),
-				nodeGroupClient:  cloud_v1alpha1.NewNodeGroupsClient(conn),
-				sshConfigClient:  cloud_v1alpha1.NewSSHConfigClient(conn),
-				metdataClient:    cloud_v1alpha1.NewMetadataClient(conn),
+				certificateClient: cloud_v1alpha1.NewCertificatesClient(conn),
+				credentialClient:  cloud_v1alpha1.NewCredentialsClient(conn),
+				clusterClient:     cloud_v1alpha1.NewClustersClient(conn),
+				nodeGroupClient:   cloud_v1alpha1.NewNodeGroupsClient(conn),
+				sshConfigClient:   cloud_v1alpha1.NewSSHConfigClient(conn),
+				metadataClient:    cloud_v1alpha1.NewMetadataClient(conn),
 			},
 		},
 		versionedKubernetesClient: &versionedKubernetesService{
@@ -83,10 +78,6 @@ func (s *multiClientServices) Authentication() *authenticationService {
 
 func (s *multiClientServices) Namespace() *nsService {
 	return s.nsClient
-}
-
-func (s *multiClientServices) CA() *caService {
-	return s.caClient
 }
 
 func (s *multiClientServices) CI() *ciService {
@@ -155,14 +146,6 @@ func (b *nsService) Team() namespace.TeamsClient {
 	return b.teamClient
 }
 
-type caService struct {
-	certificateClient ca.CertificatesClient
-}
-
-func (c *caService) CertificatesClient() ca.CertificatesClient {
-	return c.certificateClient
-}
-
 type versionedClusterService struct {
 	v1alpha1Service *clusterV1alpha1Service
 }
@@ -172,11 +155,16 @@ func (v *versionedClusterService) V1alpha1() *clusterV1alpha1Service {
 }
 
 type clusterV1alpha1Service struct {
-	credentialClient cloud_v1alpha1.CredentialsClient
-	clusterClient    cloud_v1alpha1.ClustersClient
-	nodeGroupClient  cloud_v1alpha1.NodeGroupsClient
-	sshConfigClient  cloud_v1alpha1.SSHConfigClient
-	metdataClient    cloud_v1alpha1.MetadataClient
+	certificateClient cloud_v1alpha1.CertificatesClient
+	credentialClient  cloud_v1alpha1.CredentialsClient
+	clusterClient     cloud_v1alpha1.ClustersClient
+	nodeGroupClient   cloud_v1alpha1.NodeGroupsClient
+	sshConfigClient   cloud_v1alpha1.SSHConfigClient
+	metadataClient    cloud_v1alpha1.MetadataClient
+}
+
+func (k *clusterV1alpha1Service) CertificatesClient() cloud_v1alpha1.CertificatesClient {
+	return k.certificateClient
 }
 
 func (k *clusterV1alpha1Service) Credential() cloud_v1alpha1.CredentialsClient {
@@ -196,7 +184,7 @@ func (k *clusterV1alpha1Service) SSHConfig() cloud_v1alpha1.SSHConfigClient {
 }
 
 func (k *clusterV1alpha1Service) Metadata() cloud_v1alpha1.MetadataClient {
-	return k.metdataClient
+	return k.metadataClient
 }
 
 type versionedKubernetesService struct {

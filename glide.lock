@@ -1,12 +1,11 @@
 hash: 3757f178a8fac97affbe35d6cb43ac6e95c1f910280c474ad10081ee84f1d5fa
-updated: 2017-11-20T03:38:51.267364317-08:00
+updated: 2017-11-20T06:37:24.631237813-08:00
 imports:
 - name: github.com/appscode/api
-  version: 7e8a20d6ceb0b1819f5021b3df2850496e1fd404
+  version: e628ad8f165b982d485cb0eb84933124ba5beecb
   subpackages:
   - attic/v1beta1
   - auth/v1beta1
-  - certificate/v1beta1
   - ci/v1beta1
   - cloud/v1alpha1
   - dtypes
@@ -26,7 +25,7 @@ imports:
   - log
   - term
 - name: github.com/appscode/pharmer
-  version: 8ba95550b320cbbf266cd7c304a75dbbc65745bf
+  version: a24181e231050fcbd72c424ba4a40cded7a0f0be
   subpackages:
   - apis/v1alpha1
 - name: github.com/davecgh/go-spew

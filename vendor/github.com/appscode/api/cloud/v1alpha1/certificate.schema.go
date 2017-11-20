@@ -1,4 +1,4 @@
-package v1beta1
+package v1alpha1
 
 // Auto-generated. DO NOT EDIT.
 import (
@@ -8,8 +8,8 @@ import (
 
 var certificateDeleteRequestSchema *gojsonschema.Schema
 var certificateDescribeRequestSchema *gojsonschema.Schema
-var certificateLoadRequestSchema *gojsonschema.Schema
 var certificateListRequestSchema *gojsonschema.Schema
+var certificateLoadRequestSchema *gojsonschema.Schema
 var certificateDeployRequestSchema *gojsonschema.Schema
 
 func init() {
@@ -38,6 +38,13 @@ func init() {
 	if err != nil {
 		glog.Fatal(err)
 	}
+	certificateListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object"
+}`))
+	if err != nil {
+		glog.Fatal(err)
+	}
 	certificateLoadRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
@@ -48,18 +55,9 @@ func init() {
       "type": "string"
     },
     "name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     }
   },
-  "type": "object"
-}`))
-	if err != nil {
-		glog.Fatal(err)
-	}
-	certificateListRequestSchema, err = gojsonschema.NewSchema(gojsonschema.NewStringLoader(`{
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object"
 }`))
 	if err != nil {
@@ -69,18 +67,12 @@ func init() {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "properties": {
     "cluster_name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "namespace": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "secret_name": {
-      "maxLength": 63,
-      "pattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "type": "string"
     },
     "uid": {
@@ -104,15 +96,15 @@ func (m *CertificateDescribeRequest) IsValid() (*gojsonschema.Result, error) {
 }
 func (m *CertificateDescribeRequest) IsRequest() {}
 
-func (m *CertificateLoadRequest) IsValid() (*gojsonschema.Result, error) {
-	return certificateLoadRequestSchema.Validate(gojsonschema.NewGoLoader(m))
-}
-func (m *CertificateLoadRequest) IsRequest() {}
-
 func (m *CertificateListRequest) IsValid() (*gojsonschema.Result, error) {
 	return certificateListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *CertificateListRequest) IsRequest() {}
+
+func (m *CertificateLoadRequest) IsValid() (*gojsonschema.Result, error) {
+	return certificateLoadRequestSchema.Validate(gojsonschema.NewGoLoader(m))
+}
+func (m *CertificateLoadRequest) IsRequest() {}
 
 func (m *CertificateDeployRequest) IsValid() (*gojsonschema.Result, error) {
 	return certificateDeployRequestSchema.Validate(gojsonschema.NewGoLoader(m))
