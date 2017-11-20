@@ -5,7 +5,7 @@ import (
 	auth "github.com/appscode/api/auth/v1beta1"
 	ca "github.com/appscode/api/certificate/v1beta1"
 	ci "github.com/appscode/api/ci/v1beta1"
-	cluster_v1alpha1 "github.com/appscode/api/cluster/v1alpha1"
+	cloud_v1alpha1 "github.com/appscode/api/cloud/v1alpha1"
 	k8s_v1beta1 "github.com/appscode/api/kubernetes/v1beta1"
 	namespace "github.com/appscode/api/namespace/v1beta1"
 	"google.golang.org/grpc"
@@ -19,7 +19,7 @@ type multiClientInterface interface {
 	CA() *caService
 	CI() *ciService
 	Namespace() *nsService
-	Cluster() *versionedClusterService
+	Cloud() *versionedClusterService
 	Kubernetes() *versionedKubernetesService
 }
 
@@ -53,11 +53,11 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 		},
 		versionedClusterClient: &versionedClusterService{
 			v1alpha1Service: &clusterV1alpha1Service{
-				credentialClient: cluster_v1alpha1.NewCredentialsClient(conn),
-				clusterClient:    cluster_v1alpha1.NewClustersClient(conn),
-				nodeGroupClient:  cluster_v1alpha1.NewNodeGroupsClient(conn),
-				sshConfigClient:  cluster_v1alpha1.NewSSHConfigClient(conn),
-				metdataClient:    cluster_v1alpha1.NewMetadataClient(conn),
+				credentialClient: cloud_v1alpha1.NewCredentialsClient(conn),
+				clusterClient:    cloud_v1alpha1.NewClustersClient(conn),
+				nodeGroupClient:  cloud_v1alpha1.NewNodeGroupsClient(conn),
+				sshConfigClient:  cloud_v1alpha1.NewSSHConfigClient(conn),
+				metdataClient:    cloud_v1alpha1.NewMetadataClient(conn),
 			},
 		},
 		versionedKubernetesClient: &versionedKubernetesService{
@@ -93,7 +93,7 @@ func (s *multiClientServices) CI() *ciService {
 	return s.ciClient
 }
 
-func (s *multiClientServices) Cluster() *versionedClusterService {
+func (s *multiClientServices) Cloud() *versionedClusterService {
 	return s.versionedClusterClient
 }
 
@@ -172,30 +172,30 @@ func (v *versionedClusterService) V1alpha1() *clusterV1alpha1Service {
 }
 
 type clusterV1alpha1Service struct {
-	credentialClient cluster_v1alpha1.CredentialsClient
-	clusterClient    cluster_v1alpha1.ClustersClient
-	nodeGroupClient  cluster_v1alpha1.NodeGroupsClient
-	sshConfigClient  cluster_v1alpha1.SSHConfigClient
-	metdataClient    cluster_v1alpha1.MetadataClient
+	credentialClient cloud_v1alpha1.CredentialsClient
+	clusterClient    cloud_v1alpha1.ClustersClient
+	nodeGroupClient  cloud_v1alpha1.NodeGroupsClient
+	sshConfigClient  cloud_v1alpha1.SSHConfigClient
+	metdataClient    cloud_v1alpha1.MetadataClient
 }
 
-func (k *clusterV1alpha1Service) Credential() cluster_v1alpha1.CredentialsClient {
+func (k *clusterV1alpha1Service) Credential() cloud_v1alpha1.CredentialsClient {
 	return k.credentialClient
 }
 
-func (k *clusterV1alpha1Service) Cluster() cluster_v1alpha1.ClustersClient {
+func (k *clusterV1alpha1Service) Cluster() cloud_v1alpha1.ClustersClient {
 	return k.clusterClient
 }
 
-func (k *clusterV1alpha1Service) NodeGroup() cluster_v1alpha1.NodeGroupsClient {
+func (k *clusterV1alpha1Service) NodeGroup() cloud_v1alpha1.NodeGroupsClient {
 	return k.nodeGroupClient
 }
 
-func (k *clusterV1alpha1Service) SSHConfig() cluster_v1alpha1.SSHConfigClient {
+func (k *clusterV1alpha1Service) SSHConfig() cloud_v1alpha1.SSHConfigClient {
 	return k.sshConfigClient
 }
 
-func (k *clusterV1alpha1Service) Metadata() cluster_v1alpha1.MetadataClient {
+func (k *clusterV1alpha1Service) Metadata() cloud_v1alpha1.MetadataClient {
 	return k.metdataClient
 }
 

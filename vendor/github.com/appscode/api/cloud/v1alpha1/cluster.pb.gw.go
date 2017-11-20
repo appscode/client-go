@@ -732,15 +732,15 @@ func RegisterCredentialsHandler(ctx context.Context, mux *runtime.ServeMux, conn
 }
 
 var (
-	pattern_Credentials_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"_appscode", "api", "cluster", "v1alpha1", "credentials", "json"}, ""))
+	pattern_Credentials_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"_appscode", "api", "cloud", "v1alpha1", "credentials", "json"}, ""))
 
-	pattern_Credentials_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cluster", "v1alpha1", "credentials", "name", "json"}, ""))
+	pattern_Credentials_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha1", "credentials", "name", "json"}, ""))
 
-	pattern_Credentials_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"_appscode", "api", "cluster", "v1alpha1", "credentials", "json"}, ""))
+	pattern_Credentials_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"_appscode", "api", "cloud", "v1alpha1", "credentials", "json"}, ""))
 
-	pattern_Credentials_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cluster", "v1alpha1", "credentials", "credential.metadata.name", "json"}, ""))
+	pattern_Credentials_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha1", "credentials", "credential.metadata.name", "json"}, ""))
 
-	pattern_Credentials_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cluster", "v1alpha1", "credentials", "name", "json"}, ""))
+	pattern_Credentials_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha1", "credentials", "name", "json"}, ""))
 )
 
 var (
@@ -992,19 +992,19 @@ func RegisterClustersHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 }
 
 var (
-	pattern_Clusters_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"_appscode", "api", "cluster", "v1alpha1", "clusters", "json"}, ""))
+	pattern_Clusters_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"_appscode", "api", "cloud", "v1alpha1", "clusters", "json"}, ""))
 
-	pattern_Clusters_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cluster", "v1alpha1", "clusters", "name", "json"}, ""))
+	pattern_Clusters_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha1", "clusters", "name", "json"}, ""))
 
-	pattern_Clusters_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"_appscode", "api", "cluster", "v1alpha1", "clusters", "json"}, ""))
+	pattern_Clusters_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5}, []string{"_appscode", "api", "cloud", "v1alpha1", "clusters", "json"}, ""))
 
-	pattern_Clusters_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cluster", "v1alpha1", "clusters", "cluster.metadata.name", "json"}, ""))
+	pattern_Clusters_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha1", "clusters", "cluster.metadata.name", "json"}, ""))
 
-	pattern_Clusters_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cluster", "v1alpha1", "clusters", "name", "json"}, ""))
+	pattern_Clusters_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"_appscode", "api", "cloud", "v1alpha1", "clusters", "name", "json"}, ""))
 
-	pattern_Clusters_Apply_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7, 2, 8}, []string{"_appscode", "api", "cluster", "v1alpha1", "clusters", "name", "actions", "apply", "json"}, ""))
+	pattern_Clusters_Apply_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7, 2, 8}, []string{"_appscode", "api", "cloud", "v1alpha1", "clusters", "name", "actions", "apply", "json"}, ""))
 
-	pattern_Clusters_Metadata_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"_appscode", "api", "cluster", "v1alpha1", "clusters", "uid", "metadata", "json"}, ""))
+	pattern_Clusters_Metadata_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha1", "clusters", "uid", "metadata", "json"}, ""))
 )
 
 var (
@@ -1202,15 +1202,15 @@ func RegisterNodeGroupsHandler(ctx context.Context, mux *runtime.ServeMux, conn 
 }
 
 var (
-	pattern_NodeGroups_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"_appscode", "api", "cluster", "v1alpha1", "clusters", "clusterName", "nodegroups", "json"}, ""))
+	pattern_NodeGroups_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha1", "clusters", "clusterName", "nodegroups", "json"}, ""))
 
-	pattern_NodeGroups_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8}, []string{"_appscode", "api", "cluster", "v1alpha1", "clusters", "clusterName", "nodegroups", "name", "json"}, ""))
+	pattern_NodeGroups_Describe_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8}, []string{"_appscode", "api", "cloud", "v1alpha1", "clusters", "clusterName", "nodegroups", "name", "json"}, ""))
 
-	pattern_NodeGroups_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"_appscode", "api", "cluster", "v1alpha1", "clusters", "nodeGroup.metadata.clusterName", "nodegroups", "json"}, ""))
+	pattern_NodeGroups_Create_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha1", "clusters", "nodeGroup.metadata.clusterName", "nodegroups", "json"}, ""))
 
-	pattern_NodeGroups_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8}, []string{"_appscode", "api", "cluster", "v1alpha1", "clusters", "nodeGroup.metadata.clusterName", "nodegroups", "nodeGroup.metadata.name", "json"}, ""))
+	pattern_NodeGroups_Update_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8}, []string{"_appscode", "api", "cloud", "v1alpha1", "clusters", "nodeGroup.metadata.clusterName", "nodegroups", "nodeGroup.metadata.name", "json"}, ""))
 
-	pattern_NodeGroups_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8}, []string{"_appscode", "api", "cluster", "v1alpha1", "clusters", "clusterName", "nodegroups", "name", "json"}, ""))
+	pattern_NodeGroups_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8}, []string{"_appscode", "api", "cloud", "v1alpha1", "clusters", "clusterName", "nodegroups", "name", "json"}, ""))
 )
 
 var (
@@ -1288,7 +1288,7 @@ func RegisterSSHConfigHandler(ctx context.Context, mux *runtime.ServeMux, conn *
 }
 
 var (
-	pattern_SSHConfig_Get_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"_appscode", "api", "cluster", "v1alpha1", "clusters", "clusterName", "ssh", "json"}, ""))
+	pattern_SSHConfig_Get_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 2, 7}, []string{"_appscode", "api", "cloud", "v1alpha1", "clusters", "clusterName", "ssh", "json"}, ""))
 )
 
 var (

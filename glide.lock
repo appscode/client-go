@@ -1,14 +1,14 @@
 hash: 3757f178a8fac97affbe35d6cb43ac6e95c1f910280c474ad10081ee84f1d5fa
-updated: 2017-11-17T02:46:53.779882053-08:00
+updated: 2017-11-20T03:38:51.267364317-08:00
 imports:
 - name: github.com/appscode/api
-  version: 8da2a4d326ce313d6864b33b8684d92504aacd65
+  version: 7e8a20d6ceb0b1819f5021b3df2850496e1fd404
   subpackages:
   - attic/v1beta1
   - auth/v1beta1
   - certificate/v1beta1
   - ci/v1beta1
-  - cluster/v1alpha1
+  - cloud/v1alpha1
   - dtypes
   - health
   - kubernetes/v1beta1
@@ -26,7 +26,7 @@ imports:
   - log
   - term
 - name: github.com/appscode/pharmer
-  version: 2366785b37f1d3f37aa887813cb5c42fdfa31b51
+  version: 8ba95550b320cbbf266cd7c304a75dbbc65745bf
   subpackages:
   - apis/v1alpha1
 - name: github.com/davecgh/go-spew
@@ -40,7 +40,7 @@ imports:
 - name: github.com/facebookgo/stack
   version: 751773369052141c013c6e827a71e8f35c07879c
 - name: github.com/fatih/color
-  version: 5df930a27be2502f99b292b7cc09ebad4d0891f4
+  version: 9aae6aaa22315390f03959adca2c4d395b02fcef
 - name: github.com/go-openapi/jsonpointer
   version: 46af16f9f7b149af66e5d1bd010e3574dc06de98
 - name: github.com/go-openapi/jsonreference
@@ -86,10 +86,8 @@ imports:
   - jwriter
 - name: github.com/mattn/go-colorable
   version: 5411d3eea5978e6cdc258b30de592b60df6aba96
-  repo: https://github.com/mattn/go-colorable
 - name: github.com/mattn/go-isatty
   version: 57fdcb988a5c543893cc61bce354a6e24ab70022
-  repo: https://github.com/mattn/go-isatty
 - name: github.com/mitchellh/go-homedir
   version: b8bc1bf767474819792c23f32d8286a45736f1c6
 - name: github.com/pmezard/go-difflib
@@ -123,8 +121,7 @@ imports:
   - lex/httplex
   - trace
 - name: golang.org/x/sys
-  version: e24f485414aeafb646f6fca458b0bf869c0880a1
-  repo: https://go.googlesource.com/sys
+  version: 7ddbeae9ae08c6a06a59597f0c9edbc5ff2444ce
   subpackages:
   - unix
 - name: golang.org/x/text
