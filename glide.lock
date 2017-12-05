@@ -1,8 +1,8 @@
 hash: 3757f178a8fac97affbe35d6cb43ac6e95c1f910280c474ad10081ee84f1d5fa
-updated: 2017-11-20T06:37:24.631237813-08:00
+updated: 2017-12-05T02:43:09.575331217-08:00
 imports:
 - name: github.com/appscode/api
-  version: e628ad8f165b982d485cb0eb84933124ba5beecb
+  version: 00bbe943e4903bb9a5c745bdea6229e0bd58354c
   subpackages:
   - attic/v1beta1
   - auth/v1beta1
@@ -16,7 +16,7 @@ imports:
   - operation/v1beta1
   - version
 - name: github.com/appscode/go
-  version: 1cd97c853ad364376f9c792106deb0bfd197bca0
+  version: 85b510edd14fe8d6beb2ad365afd3c5b3afc8c49
   subpackages:
   - context
   - env
@@ -24,10 +24,6 @@ imports:
   - io
   - log
   - term
-- name: github.com/appscode/pharmer
-  version: a24181e231050fcbd72c424ba4a40cded7a0f0be
-  subpackages:
-  - apis/v1alpha1
 - name: github.com/davecgh/go-spew
   version: 3e6e67c4dcea3ac2f25fd4731abc0e1deaf36216
   subpackages:
@@ -65,7 +61,7 @@ imports:
 - name: github.com/google/gofuzz
   version: 44d81051d367757e1c7c6a5a86423ece9afcf63c
 - name: github.com/google/uuid
-  version: 8c31c18f31ede9fc8eae72290a7e7a8064e9b3e3
+  version: dec09d789f3dba190787f8b4454c7d3c936fed9e
 - name: github.com/grpc-ecosystem/grpc-gateway
   version: 42a2d1c4991e79a4a8318984e5c81031b21f3c76
   repo: https://github.com/appscode/grpc-gateway.git
@@ -84,11 +80,15 @@ imports:
   - jlexer
   - jwriter
 - name: github.com/mattn/go-colorable
-  version: 5411d3eea5978e6cdc258b30de592b60df6aba96
+  version: 6fcc0c1fd9b620311d821b106a400b35dc95c497
 - name: github.com/mattn/go-isatty
-  version: 57fdcb988a5c543893cc61bce354a6e24ab70022
+  version: 6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c
 - name: github.com/mitchellh/go-homedir
   version: b8bc1bf767474819792c23f32d8286a45736f1c6
+- name: github.com/pharmer/pharmer
+  version: 537013ddfc0b4748b4a6f0436b440afbb30c61a3
+  subpackages:
+  - apis/v1alpha1
 - name: github.com/pmezard/go-difflib
   version: 792786c7400a136282c1664665ae0a8db921c6c2
   subpackages:
@@ -138,7 +138,7 @@ imports:
   - unicode/norm
   - width
 - name: google.golang.org/genproto
-  version: 11c7f9e547da6db876260ce49ea7536985904c9b
+  version: 7f0da29060c682909f650ad8ed4e515bd74fa12a
   subpackages:
   - googleapis/api/annotations
   - googleapis/rpc/status

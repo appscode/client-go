@@ -753,6 +753,9 @@ func init() {
         "region": {
           "type": "string"
         },
+        "sshKeyName": {
+          "type": "string"
+        },
         "zone": {
           "type": "string"
         }
@@ -763,6 +766,9 @@ func init() {
       "properties": {
         "aws": {
           "$ref": "#/definitions/v1alpha1AWSStatus"
+        },
+        "sshKeyExternalID": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -874,9 +880,6 @@ func init() {
             "$ref": "#/definitions/v1alpha1ReservedIP"
           },
           "type": "array"
-        },
-        "sshKeyExternalID": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -1219,8 +1222,11 @@ func init() {
         "sku": {
           "type": "string"
         },
-        "spotInstances": {
-          "type": "boolean"
+        "spotPriceMax": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -1561,8 +1567,11 @@ func init() {
         "sku": {
           "type": "string"
         },
-        "spotInstances": {
-          "type": "boolean"
+        "spotPriceMax": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -2498,6 +2507,9 @@ func init() {
         "region": {
           "type": "string"
         },
+        "sshKeyName": {
+          "type": "string"
+        },
         "zone": {
           "type": "string"
         }
@@ -2508,6 +2520,9 @@ func init() {
       "properties": {
         "aws": {
           "$ref": "#/definitions/v1alpha1AWSStatus"
+        },
+        "sshKeyExternalID": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -2619,9 +2634,6 @@ func init() {
             "$ref": "#/definitions/v1alpha1ReservedIP"
           },
           "type": "array"
-        },
-        "sshKeyExternalID": {
-          "type": "string"
         }
       },
       "type": "object"
