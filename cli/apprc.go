@@ -3,7 +3,7 @@ package cli
 import (
 	"os"
 
-	"github.com/appscode/go/io"
+	"github.com/appscode/go/ioutil"
 	"github.com/appscode/go/term"
 	homeDir "github.com/mitchellh/go-homedir"
 )
@@ -57,7 +57,7 @@ func (rc *Apprc) DeleteAuth() error {
 }
 
 func (rc *Apprc) Write() error {
-	err := io.WriteJson(apprcPath, rc)
+	err := ioutil.WriteJson(apprcPath, rc)
 	if err != nil {
 		return err
 	}
@@ -72,7 +72,7 @@ func LoadApprc() (*Apprc, error) {
 
 	os.Chmod(apprcPath, 0600)
 	rc := &Apprc{}
-	err := io.ReadFileAs(apprcPath, rc)
+	err := ioutil.ReadFileAs(apprcPath, rc)
 	if err != nil {
 		return nil, err
 	}

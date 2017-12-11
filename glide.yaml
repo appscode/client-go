@@ -29,6 +29,12 @@ import:
 - package: google.golang.org/grpc
   version: v1.3.0
 - package: github.com/mitchellh/go-homedir
+- package: k8s.io/api
+  version: kubernetes-1.8.3
+- package: k8s.io/apimachinery
+  repo: https://github.com/tamalsaha/apimachinery.git
+  version: release-1.8
+  vcs: git
 testImport:
 - package: github.com/stretchr/testify
   version: v1.1.4

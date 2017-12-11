@@ -1,5 +1,5 @@
-hash: 3757f178a8fac97affbe35d6cb43ac6e95c1f910280c474ad10081ee84f1d5fa
-updated: 2017-12-05T02:43:09.575331217-08:00
+hash: 4c699eaffa44388bde0eb98c1abc77b055dabdd2d66b71bf35306e025b9aaa34
+updated: 2017-12-11T11:37:55.228138039-08:00
 imports:
 - name: github.com/appscode/api
   version: 00bbe943e4903bb9a5c745bdea6229e0bd58354c
@@ -16,12 +16,12 @@ imports:
   - operation/v1beta1
   - version
 - name: github.com/appscode/go
-  version: 85b510edd14fe8d6beb2ad365afd3c5b3afc8c49
+  version: cb650d0b1a3c04a86595cf2a31fa704dbf1bc42a
   subpackages:
   - context
   - env
   - errors
-  - io
+  - ioutil
   - log
   - term
 - name: github.com/davecgh/go-spew
@@ -86,7 +86,7 @@ imports:
 - name: github.com/mitchellh/go-homedir
   version: b8bc1bf767474819792c23f32d8286a45736f1c6
 - name: github.com/pharmer/pharmer
-  version: 537013ddfc0b4748b4a6f0436b440afbb30c61a3
+  version: 95d60b83b2f136d38341d738342836c5b9f81202
   subpackages:
   - apis/v1alpha1
 - name: github.com/pmezard/go-difflib
@@ -138,7 +138,7 @@ imports:
   - unicode/norm
   - width
 - name: google.golang.org/genproto
-  version: 7f0da29060c682909f650ad8ed4e515bd74fa12a
+  version: 73cb5d0be5af113b42057925bd6c93e3cd9f60fd
   subpackages:
   - googleapis/api/annotations
   - googleapis/rpc/status
