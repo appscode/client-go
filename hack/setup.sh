@@ -6,16 +6,16 @@ set -o pipefail
 RETVAL=0
 
 deps() {
-    go get github.com/appscode/api/...
+    go get appscode.com/api/...
     local -r owd=$PWD
-    cd $GOPATH/src/github.com/appscode/api
+    cd $GOPATH/src/appscode.com/api
     ./hack/gen.sh
     cd $owd
 }
 
 build() {
     local -r owd=$PWD
-    cd $GOPATH/src/github.com/appscode/client
+    cd $GOPATH/src/appscode.com/client-go
     goimports -w cli credential *.go
     gofmt -s -w cli credential *.go
     go build ./...

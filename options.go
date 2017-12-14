@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/appscode/client/credential"
+	"appscode.com/client-go/credential"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 )

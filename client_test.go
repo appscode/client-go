@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"testing"
 
-	auth "github.com/appscode/api/auth/v1beta1"
-	kv1beta1 "github.com/appscode/api/kubernetes/v1beta1"
-	"github.com/appscode/client/credential"
+	auth "appscode.com/api/auth/v1beta1"
+	kv1beta1 "appscode.com/api/kubernetes/v1beta1"
+	"appscode.com/client-go/credential"
 )
 
 func TestKubernetesClient(t *testing.T) {

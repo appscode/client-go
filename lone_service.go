@@ -1,9 +1,9 @@
 package client
 
 import (
-	"github.com/appscode/api/health"
-	mailinglist "github.com/appscode/api/mailinglist/v1beta1"
-	operation "github.com/appscode/api/operation/v1beta1"
+	"appscode.com/api/health"
+	mailinglist "appscode.com/api/mailinglist/v1beta1"
+	operation "appscode.com/api/operation/v1beta1"
 	"google.golang.org/grpc"
 )
 

@@ -3,7 +3,7 @@ package cli
 import (
 	"strings"
 
-	api "github.com/appscode/api/health"
+	api "appscode.com/api/health"
 	_env "github.com/appscode/go/env"
 )
 

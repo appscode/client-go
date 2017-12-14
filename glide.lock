@@ -1,8 +1,9 @@
-hash: 4c699eaffa44388bde0eb98c1abc77b055dabdd2d66b71bf35306e025b9aaa34
-updated: 2017-12-11T11:37:55.228138039-08:00
+hash: b807ce6305bb8984a193c1e4c375700d52e411620dd44a128926c975e72785d5
+updated: 2017-12-14T00:11:08.792224478-08:00
 imports:
-- name: github.com/appscode/api
-  version: 00bbe943e4903bb9a5c745bdea6229e0bd58354c
+- name: appscode.com/api
+  version: d7d74f7d7dc434984b6592aa95d7ec8339b74d3d
+  repo: git@bitbucket.org:appscode/api.git
   subpackages:
   - attic/v1beta1
   - auth/v1beta1
@@ -82,11 +83,11 @@ imports:
 - name: github.com/mattn/go-colorable
   version: 6fcc0c1fd9b620311d821b106a400b35dc95c497
 - name: github.com/mattn/go-isatty
-  version: 6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c
+  version: 57fdcb988a5c543893cc61bce354a6e24ab70022
 - name: github.com/mitchellh/go-homedir
   version: b8bc1bf767474819792c23f32d8286a45736f1c6
 - name: github.com/pharmer/pharmer
-  version: 95d60b83b2f136d38341d738342836c5b9f81202
+  version: 20fbb2ee4467e6f6788eb5f4bd2a65a8f747efc4
   subpackages:
   - apis/v1alpha1
 - name: github.com/pmezard/go-difflib
@@ -138,7 +139,7 @@ imports:
   - unicode/norm
   - width
 - name: google.golang.org/genproto
-  version: 73cb5d0be5af113b42057925bd6c93e3cd9f60fd
+  version: a8101f21cf983e773d0c1133ebc5424792003214
   subpackages:
   - googleapis/api/annotations
   - googleapis/rpc/status

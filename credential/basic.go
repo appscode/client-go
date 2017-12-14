@@ -1,7 +1,7 @@
 package credential
 
 import (
-	"github.com/appscode/client/util"
+	"appscode.com/client-go/util"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc/credentials"
 )

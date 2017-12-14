@@ -5,7 +5,7 @@ jobs:
     script: |
       echo $GOPATH
       mv vendor/* $GOPATH/src/ || true #godep restore that actually works
-      mkdir -p $GOPATH/src/github.com/appscode/client
-      cp -a . $GOPATH/src/github.com/appscode/client
-      cd $GOPATH/src/github.com/appscode/client
+      mkdir -p $GOPATH/src/appscode.com/client-go
+      cp -a . $GOPATH/src/appscode.com/client-go
+      cd $GOPATH/src/appscode.com/client-go
       go build ./...

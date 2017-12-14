@@ -1,12 +1,12 @@
 package client
 
 import (
-	attic "github.com/appscode/api/attic/v1beta1"
-	auth "github.com/appscode/api/auth/v1beta1"
-	ci "github.com/appscode/api/ci/v1beta1"
-	cloud_v1alpha1 "github.com/appscode/api/cloud/v1alpha1"
-	k8s_v1beta1 "github.com/appscode/api/kubernetes/v1beta1"
-	namespace "github.com/appscode/api/namespace/v1beta1"
+	attic "appscode.com/api/attic/v1beta1"
+	auth "appscode.com/api/auth/v1beta1"
+	ci "appscode.com/api/ci/v1beta1"
+	cloud_v1alpha1 "appscode.com/api/cloud/v1alpha1"
+	k8s_v1beta1 "appscode.com/api/kubernetes/v1beta1"
+	namespace "appscode.com/api/namespace/v1beta1"
 	"google.golang.org/grpc"
 )
 

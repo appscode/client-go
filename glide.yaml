@@ -1,6 +1,7 @@
-package: github.com/appscode/client
+package: appscode.com/client-go
 import:
-- package: github.com/appscode/api
+- package: appscode.com/api
+  repo: git@bitbucket.org:appscode/api.git
   version: master
 - package: github.com/appscode/go
   version: master
