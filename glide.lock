@@ -1,9 +1,9 @@
-hash: b807ce6305bb8984a193c1e4c375700d52e411620dd44a128926c975e72785d5
-updated: 2017-12-14T00:11:08.792224478-08:00
+hash: 5cc989eda93381db57d595b609f94bb00f0a212c2dfe965bb1b65be948f0cb76
+updated: 2017-12-20T10:49:53.83051702-05:00
 imports:
 - name: appscode.com/api
-  version: d7d74f7d7dc434984b6592aa95d7ec8339b74d3d
-  repo: git@bitbucket.org:appscode/api.git
+  version: b073e26f0109898426e0b4978ef973fc15bf0b5c
+  repo: https://bitbucket.org/appscode/api.git
   subpackages:
   - attic/v1beta1
   - auth/v1beta1
@@ -59,10 +59,16 @@ imports:
   - proto
   - protoc-gen-go/descriptor
   - ptypes/any
+- name: github.com/google/btree
+  version: 7d79101e329e5a3adf994758c578dab82b90c017
 - name: github.com/google/gofuzz
   version: 44d81051d367757e1c7c6a5a86423ece9afcf63c
 - name: github.com/google/uuid
   version: dec09d789f3dba190787f8b4454c7d3c936fed9e
+- name: github.com/gregjones/httpcache
+  version: 787624de3eb7bd915c329cba748687a3b22666a6
+  subpackages:
+  - diskcache
 - name: github.com/grpc-ecosystem/grpc-gateway
   version: 42a2d1c4991e79a4a8318984e5c81031b21f3c76
   repo: https://github.com/appscode/grpc-gateway.git
@@ -74,6 +80,8 @@ imports:
   - utilities
 - name: github.com/howeyc/gopass
   version: bf9dde6d0d2c004a008c27aaee91170c786f6db8
+- name: github.com/juju/ratelimit
+  version: 5b9ff866471762aa2ab2dced63c9fb6f53921342
 - name: github.com/mailru/easyjson
   version: d5b7844b561a7bc640052f1b935f7b800330d7e0
   subpackages:
@@ -81,13 +89,15 @@ imports:
   - jlexer
   - jwriter
 - name: github.com/mattn/go-colorable
-  version: 6fcc0c1fd9b620311d821b106a400b35dc95c497
+  version: 5411d3eea5978e6cdc258b30de592b60df6aba96
 - name: github.com/mattn/go-isatty
   version: 57fdcb988a5c543893cc61bce354a6e24ab70022
 - name: github.com/mitchellh/go-homedir
   version: b8bc1bf767474819792c23f32d8286a45736f1c6
+- name: github.com/peterbourgon/diskv
+  version: 5f041e8faa004a95c88a202771f4cc3e991971e6
 - name: github.com/pharmer/pharmer
-  version: 20fbb2ee4467e6f6788eb5f4bd2a65a8f747efc4
+  version: db019e8c35ea98a0d39023c098889885a82bba17
   subpackages:
   - apis/v1alpha1
 - name: github.com/pmezard/go-difflib
@@ -139,7 +149,7 @@ imports:
   - unicode/norm
   - width
 - name: google.golang.org/genproto
-  version: a8101f21cf983e773d0c1133ebc5424792003214
+  version: 09f6ed296fc66555a25fe4ce95173148778dfa85
   subpackages:
   - googleapis/api/annotations
   - googleapis/rpc/status
@@ -170,6 +180,7 @@ imports:
   repo: https://github.com/tamalsaha/apimachinery.git
   vcs: git
   subpackages:
+  - pkg/api/errors
   - pkg/api/resource
   - pkg/apis/meta/v1
   - pkg/conversion
@@ -178,8 +189,10 @@ imports:
   - pkg/labels
   - pkg/runtime
   - pkg/runtime/schema
+  - pkg/runtime/serializer/streaming
   - pkg/selection
   - pkg/types
+  - pkg/util/clock
   - pkg/util/errors
   - pkg/util/intstr
   - pkg/util/net
@@ -188,8 +201,21 @@ imports:
   - pkg/util/validation
   - pkg/util/validation/field
   - pkg/util/wait
+  - pkg/version
   - pkg/watch
   - third_party/forked/golang/reflect
+- name: k8s.io/client-go
+  version: 60bf397d7966ab2285d3ba7701ead2cc376111d4
+  subpackages:
+  - pkg/version
+  - rest
+  - rest/watch
+  - tools/clientcmd/api
+  - tools/metrics
+  - transport
+  - util/cert
+  - util/flowcontrol
+  - util/integer
 - name: k8s.io/kube-openapi
   version: 868f2f29720b192240e18284659231b440f9cda5
   subpackages:
