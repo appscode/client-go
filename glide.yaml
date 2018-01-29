@@ -12,7 +12,7 @@ import:
 - package: github.com/golang/protobuf
   version: 8ee79997227bf9b34611aee7946ae64735e6fd93
 - package: github.com/grpc-ecosystem/grpc-gateway
-  version: v1.2.2-ac
+  version: v1.3.1-ac
   repo: https://github.com/appscode/grpc-gateway.git
   vcs: git
 - package: github.com/pmezard/go-difflib
@@ -28,13 +28,13 @@ import:
 - package: golang.org/x/text
   version: 470f45bf29f4147d6fbd7dfd0a02a848e49f5bf4
 - package: google.golang.org/grpc
-  version: v1.3.0
+  version: v1.9.2
 - package: github.com/mitchellh/go-homedir
 - package: k8s.io/api
-  version: kubernetes-1.8.3
+  version: kubernetes-1.9.0
 - package: k8s.io/apimachinery
   repo: https://github.com/tamalsaha/apimachinery.git
-  version: release-1.8
+  version: release-1.9
   vcs: git
 testImport:
 - package: github.com/stretchr/testify
