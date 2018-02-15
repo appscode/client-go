@@ -19,9 +19,8 @@ type loneClientServices struct {
 
 func newLoneClientService(conn *grpc.ClientConn) loneClientInterface {
 	return &loneClientServices{
-		healthClient:      health.NewHealthClient(conn),
-		mailingListClient: mailinglist.NewMailingListClient(conn),
-		operationClient:   operation.NewOperationsClient(conn),
+		healthClient:    health.NewHealthClient(conn),
+		operationClient: operation.NewOperationsClient(conn),
 	}
 }
 
