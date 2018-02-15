@@ -1,8 +1,8 @@
 hash: 4318db515640a84119f304008861423685d7acfb1aca5ece16f08be368162499
-updated: 2018-01-29T08:53:38.622177927-08:00
+updated: 2018-02-14T23:32:16.9596186-08:00
 imports:
 - name: appscode.com/api
-  version: 2733926adcb883bd2c8d4b19f98e28a3893ff732
+  version: 0c6c0b0670ba63d7e090002804a17707e739f4cd
   repo: https://bitbucket.org/appscode/api.git
   subpackages:
   - attic/v1beta1
@@ -12,12 +12,11 @@ imports:
   - dtypes
   - health
   - kubernetes/v1beta1
-  - mailinglist/v1beta1
   - namespace/v1beta1
   - operation/v1beta1
   - version
 - name: github.com/appscode/go
-  version: 99dbf420807d9459b63d1d0bf702537bb7aa976f
+  version: 1be9b0441d73831aaa93df76e42a751caa5dba88
   subpackages:
   - context
   - env
@@ -38,6 +37,8 @@ imports:
   version: 751773369052141c013c6e827a71e8f35c07879c
 - name: github.com/fatih/color
   version: 9aae6aaa22315390f03959adca2c4d395b02fcef
+- name: github.com/fsnotify/fsnotify
+  version: c2828203cd70a50dcccfb2761f8b1f8ceef9a8e9
 - name: github.com/ghodss/yaml
   version: 0ca9ea5df5451ffdf184b4428c902747c2c11cd7
 - name: github.com/go-openapi/jsonpointer
@@ -101,7 +102,7 @@ imports:
   - jlexer
   - jwriter
 - name: github.com/mattn/go-colorable
-  version: 6cc8b475d4682021d75d2cbe2bc481bec4ce98e5
+  version: 5411d3eea5978e6cdc258b30de592b60df6aba96
 - name: github.com/mattn/go-isatty
   version: 57fdcb988a5c543893cc61bce354a6e24ab70022
 - name: github.com/mitchellh/go-homedir
@@ -109,7 +110,7 @@ imports:
 - name: github.com/peterbourgon/diskv
   version: 5f041e8faa004a95c88a202771f4cc3e991971e6
 - name: github.com/pharmer/pharmer
-  version: bd87eb23b28714273621132b152dbc0ff3eb6684
+  version: a1e23a7c079e42658fe6b8d49791065f7960cbc7
   subpackages:
   - apis/v1alpha1
 - name: github.com/pmezard/go-difflib
