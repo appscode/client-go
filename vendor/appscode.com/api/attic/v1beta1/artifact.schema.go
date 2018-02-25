@@ -40,12 +40,12 @@ func init() {
 	}
 }
 
-func (m *ArtifactSearchRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *ArtifactSearchRequest) Valid() (*gojsonschema.Result, error) {
 	return artifactSearchRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ArtifactSearchRequest) IsRequest() {}
 
-func (m *ArtifactListRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *ArtifactListRequest) Valid() (*gojsonschema.Result, error) {
 	return artifactListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ArtifactListRequest) IsRequest() {}

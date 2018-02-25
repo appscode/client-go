@@ -43,12 +43,12 @@ func init() {
 	}
 }
 
-func (m *DescribeRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *DescribeRequest) Valid() (*gojsonschema.Result, error) {
 	return describeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *DescribeRequest) IsRequest() {}
 
-func (m *LogDescribeRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *LogDescribeRequest) Valid() (*gojsonschema.Result, error) {
 	return logDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *LogDescribeRequest) IsRequest() {}

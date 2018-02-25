@@ -46,12 +46,12 @@ func init() {
 	}
 }
 
-func (m *VersionDescribeRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *VersionDescribeRequest) Valid() (*gojsonschema.Result, error) {
 	return versionDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *VersionDescribeRequest) IsRequest() {}
 
-func (m *VersionListRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *VersionListRequest) Valid() (*gojsonschema.Result, error) {
 	return versionListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *VersionListRequest) IsRequest() {}

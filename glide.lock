@@ -1,13 +1,12 @@
 hash: 4318db515640a84119f304008861423685d7acfb1aca5ece16f08be368162499
-updated: 2018-02-14T23:32:16.9596186-08:00
+updated: 2018-02-25T00:34:57.933269554-08:00
 imports:
 - name: appscode.com/api
-  version: 0c6c0b0670ba63d7e090002804a17707e739f4cd
+  version: 0a5e746668c72e93758da85b584a53705149be7f
   repo: https://bitbucket.org/appscode/api.git
   subpackages:
   - attic/v1beta1
   - auth/v1beta1
-  - ci/v1beta1
   - cloud/v1alpha1
   - dtypes
   - health
@@ -16,11 +15,10 @@ imports:
   - operation/v1beta1
   - version
 - name: github.com/appscode/go
-  version: 1be9b0441d73831aaa93df76e42a751caa5dba88
+  version: 83e7fc1967ed737eedfc87da60c42e9fc4dc684c
   subpackages:
   - context
   - env
-  - errors
   - ioutil
   - log
   - sets
@@ -33,8 +31,6 @@ imports:
   version: ff4f55a206334ef123e4f79bbf348980da81ca46
   subpackages:
   - log
-- name: github.com/facebookgo/stack
-  version: 751773369052141c013c6e827a71e8f35c07879c
 - name: github.com/fatih/color
   version: 9aae6aaa22315390f03959adca2c4d395b02fcef
 - name: github.com/fsnotify/fsnotify
@@ -110,9 +106,11 @@ imports:
 - name: github.com/peterbourgon/diskv
   version: 5f041e8faa004a95c88a202771f4cc3e991971e6
 - name: github.com/pharmer/pharmer
-  version: a1e23a7c079e42658fe6b8d49791065f7960cbc7
+  version: 454bb3dea1b9f8fbfb3da5306386cbcd6aeb179e
   subpackages:
   - apis/v1alpha1
+- name: github.com/pkg/errors
+  version: 645ef00459ed84a119197bfb8d8205042c6df63d
 - name: github.com/pmezard/go-difflib
   version: 792786c7400a136282c1664665ae0a8db921c6c2
   subpackages:
@@ -144,7 +142,7 @@ imports:
   - lex/httplex
   - trace
 - name: golang.org/x/sys
-  version: 7ddbeae9ae08c6a06a59597f0c9edbc5ff2444ce
+  version: 95c6576299259db960f6c5b9b69ea52422860fce
   subpackages:
   - unix
 - name: golang.org/x/text
@@ -238,7 +236,7 @@ imports:
   - pkg/watch
   - third_party/forked/golang/reflect
 - name: k8s.io/apiserver
-  version: 1270e9f1ad9eaf6127691df90af0836f7e152495
+  version: ac8d2245af4cbb47d4ee5e0a6088a7e2294eaa2f
   subpackages:
   - pkg/util/feature
 - name: k8s.io/client-go

@@ -122,17 +122,17 @@ func init() {
 	}
 }
 
-func (m *CreateRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *CreateRequest) Valid() (*gojsonschema.Result, error) {
 	return createRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *CreateRequest) IsRequest() {}
 
-func (m *GetRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *GetRequest) Valid() (*gojsonschema.Result, error) {
 	return getRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *GetRequest) IsRequest() {}
 
-func (m *IsAvailableRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *IsAvailableRequest) Valid() (*gojsonschema.Result, error) {
 	return isAvailableRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *IsAvailableRequest) IsRequest() {}

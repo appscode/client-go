@@ -43,12 +43,12 @@ func init() {
 	}
 }
 
-func (m *ProjectListRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *ProjectListRequest) Valid() (*gojsonschema.Result, error) {
 	return projectListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ProjectListRequest) IsRequest() {}
 
-func (m *ProjectMemberListRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *ProjectMemberListRequest) Valid() (*gojsonschema.Result, error) {
 	return projectMemberListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ProjectMemberListRequest) IsRequest() {}

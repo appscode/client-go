@@ -38,7 +38,7 @@ func init() {
 	}
 }
 
-func (m *LoginRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *LoginRequest) Valid() (*gojsonschema.Result, error) {
 	return loginRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *LoginRequest) IsRequest() {}

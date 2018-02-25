@@ -510,87 +510,87 @@ func init() {
 	}
 }
 
-func (m *SecretEditRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *SecretEditRequest) Valid() (*gojsonschema.Result, error) {
 	return secretEditRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *SecretEditRequest) IsRequest() {}
 
-func (m *PersistentVolumeClaimRegisterRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *PersistentVolumeClaimRegisterRequest) Valid() (*gojsonschema.Result, error) {
 	return persistentVolumeClaimRegisterRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *PersistentVolumeClaimRegisterRequest) IsRequest() {}
 
-func (m *DiskListRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *DiskListRequest) Valid() (*gojsonschema.Result, error) {
 	return diskListRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *DiskListRequest) IsRequest() {}
 
-func (m *CreateResourceRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *CreateResourceRequest) Valid() (*gojsonschema.Result, error) {
 	return createResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *CreateResourceRequest) IsRequest() {}
 
-func (m *UpdateResourceRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *UpdateResourceRequest) Valid() (*gojsonschema.Result, error) {
 	return updateResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *UpdateResourceRequest) IsRequest() {}
 
-func (m *DiskDescribeRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *DiskDescribeRequest) Valid() (*gojsonschema.Result, error) {
 	return diskDescribeRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *DiskDescribeRequest) IsRequest() {}
 
-func (m *PersistentVolumeUnRegisterRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *PersistentVolumeUnRegisterRequest) Valid() (*gojsonschema.Result, error) {
 	return persistentVolumeUnRegisterRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *PersistentVolumeUnRegisterRequest) IsRequest() {}
 
-func (m *CopyResourceRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *CopyResourceRequest) Valid() (*gojsonschema.Result, error) {
 	return copyResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *CopyResourceRequest) IsRequest() {}
 
-func (m *DescribeResourceRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *DescribeResourceRequest) Valid() (*gojsonschema.Result, error) {
 	return describeResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *DescribeResourceRequest) IsRequest() {}
 
-func (m *ConfigMapEditRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *ConfigMapEditRequest) Valid() (*gojsonschema.Result, error) {
 	return configMapEditRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ConfigMapEditRequest) IsRequest() {}
 
-func (m *ListResourceRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *ListResourceRequest) Valid() (*gojsonschema.Result, error) {
 	return listResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ListResourceRequest) IsRequest() {}
 
-func (m *PersistentVolumeClaimUnRegisterRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *PersistentVolumeClaimUnRegisterRequest) Valid() (*gojsonschema.Result, error) {
 	return persistentVolumeClaimUnRegisterRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *PersistentVolumeClaimUnRegisterRequest) IsRequest() {}
 
-func (m *DiskCreateRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *DiskCreateRequest) Valid() (*gojsonschema.Result, error) {
 	return diskCreateRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *DiskCreateRequest) IsRequest() {}
 
-func (m *DiskDeleteRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *DiskDeleteRequest) Valid() (*gojsonschema.Result, error) {
 	return diskDeleteRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *DiskDeleteRequest) IsRequest() {}
 
-func (m *PersistentVolumeRegisterRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *PersistentVolumeRegisterRequest) Valid() (*gojsonschema.Result, error) {
 	return persistentVolumeRegisterRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *PersistentVolumeRegisterRequest) IsRequest() {}
 
-func (m *DeleteResourceRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *DeleteResourceRequest) Valid() (*gojsonschema.Result, error) {
 	return deleteResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *DeleteResourceRequest) IsRequest() {}
 
-func (m *ReverseIndexResourceRequest) IsValid() (*gojsonschema.Result, error) {
+func (m *ReverseIndexResourceRequest) Valid() (*gojsonschema.Result, error) {
 	return reverseIndexResourceRequestSchema.Validate(gojsonschema.NewGoLoader(m))
 }
 func (m *ReverseIndexResourceRequest) IsRequest() {}
