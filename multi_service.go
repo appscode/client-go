@@ -1,18 +1,16 @@
 package client
 
 import (
-	attic "appscode.com/api/attic/v1beta1"
-	auth "appscode.com/api/auth/v1beta1"
+	auth "appscode.com/api/auth/v1alpha1"
 	cloud_v1alpha1 "appscode.com/api/cloud/v1alpha1"
-	k8s_v1beta1 "appscode.com/api/kubernetes/v1beta1"
-	namespace "appscode.com/api/namespace/v1beta1"
+	k8s_v1beta1 "appscode.com/api/kubernetes/v1alpha1"
+	namespace "appscode.com/api/namespace/v1alpha1"
 	"google.golang.org/grpc"
 )
 
 // multi client services are grouped by there main client. the api service
 // clients are wrapped around with sub-service.
 type multiClientInterface interface {
-	Attic() *atticService
 	Authentication() *authenticationService
 	Namespace() *nsService
 	Cloud() *versionedClusterService
@@ -20,7 +18,6 @@ type multiClientInterface interface {
 }
 
 type multiClientServices struct {
-	atticClient               *atticService
 	authenticationClient      *authenticationService
 	nsClient                  *nsService
 	versionedClusterClient    *versionedClusterService
@@ -29,10 +26,6 @@ type multiClientServices struct {
 
 func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 	return &multiClientServices{
-		atticClient: &atticService{
-			artifactClient: attic.NewArtifactsClient(conn),
-			versionClient:  attic.NewVersionsClient(conn),
-		},
 		authenticationClient: &authenticationService{
 			authenticationClient: auth.NewAuthenticationClient(conn),
 			conduitClient:        auth.NewConduitClient(conn),
@@ -60,10 +53,6 @@ func newMultiClientService(conn *grpc.ClientConn) multiClientInterface {
 	}
 }
 
-func (s *multiClientServices) Attic() *atticService {
-	return s.atticClient
-}
-
 func (s *multiClientServices) Authentication() *authenticationService {
 	return s.authenticationClient
 }
@@ -78,21 +67,6 @@ func (s *multiClientServices) Cloud() *versionedClusterService {
 
 func (s *multiClientServices) Kubernetes() *versionedKubernetesService {
 	return s.versionedKubernetesClient
-}
-
-// original service clients that needs to exposed under grouped wrapper
-// services.
-type atticService struct {
-	artifactClient attic.ArtifactsClient
-	versionClient  attic.VersionsClient
-}
-
-func (a *atticService) Artifacts() attic.ArtifactsClient {
-	return a.artifactClient
-}
-
-func (a *atticService) Versions() attic.VersionsClient {
-	return a.versionClient
 }
 
 type authenticationService struct {

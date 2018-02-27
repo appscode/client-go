@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	auth "appscode.com/api/auth/v1beta1"
-	kv1beta1 "appscode.com/api/kubernetes/v1beta1"
+	auth "appscode.com/api/auth/v1alpha1"
+	kv1beta1 "appscode.com/api/kubernetes/v1alpha1"
 	"appscode.com/client-go/credential"
 )
 
